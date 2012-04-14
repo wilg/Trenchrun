@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Trenchrun' target in the 'Trenchrun' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
