@@ -6,8 +6,7 @@
 //
 
 #import "MocoSerialConnection.h"
-
-static int kMocoSerialConnectionPacketLength = 6;
+#import "MocoSharedSpec.h"
 
 @implementation MocoSerialConnection
 
@@ -327,11 +326,18 @@ static int kMocoSerialConnectionPacketLength = 6;
 // send a byte to the serial port
 - (void) writeByte: (uint8_t *) val {
 	if(serialFileDescriptor!=-1) {
+        NSLog(@"writing byte %i", (int)val);
 		write(serialFileDescriptor, val, 1);
 	} else {
+        NSLog(@"can't write byte");
 		// make sure the user knows they should select a serial port
 		[self appendToIncomingText:@"\n ERROR:  Select a Serial Port from the pull-down menu\n"];
 	}
+}
+
+- (void) writeIntAsByte: (int) val {
+    unsigned char x = val;
+    [self writeByte:&x];
 }
 
 // action sent when serial port selected

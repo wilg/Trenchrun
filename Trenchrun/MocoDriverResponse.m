@@ -7,17 +7,13 @@
 //
 
 #import "MocoDriverResponse.h"
-#import "MocoAxis.h"
+#import "MocoSharedSpec.h"
 
 @interface MocoDriverResponse ( /* class extension */ ) {
 @private
 }
 
 @end
-
-// HANDSHAKE PROTOCOL
-static char         kMocoHandshakeRequest     = '?'; // ASCII 63
-static char         kMocoHandshakeResponse    = '!';
 
 // IMPLEMENTATION
 

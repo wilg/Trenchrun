@@ -37,6 +37,8 @@
 - (void) refreshSerialList: (NSString *) selectedText;
 - (void) writeString: (NSString *) str;
 - (void) writeByte: (uint8_t *) val;
+- (void) writeIntAsByte: (int) val;
+
 //- (IBAction) serialPortSelected: (id) cntrl;
 //- (IBAction) baudAction: (id) cntrl;
 //- (IBAction) refreshAction: (id) cntrl;

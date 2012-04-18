@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AMSerialPort.h"
-#import "MocoAxis.h"
+#import "MocoSharedSpec.h"
 #import "MocoSerialConnection.h"
 
 typedef enum {

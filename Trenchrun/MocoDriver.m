@@ -12,16 +12,6 @@
 #import "MocoDriverResponse.h"
 
 
-// PROTOCOL CONFIGURATION
-static char         kMocoHandshakeRequest     = '?'; // ASCII 63
-static char         kMocoHandshakeResponse    = '!';
-
-static unsigned char *kMocoBeginSendingAxisDataInstruction = 0;
-
-
-// BASICS
-static int          kMocoBaudRate             = 1000000;
-
 
 @interface MocoDriver ( /* class extension */ ) {
 @private
@@ -98,7 +88,7 @@ static int          kMocoBaudRate             = 1000000;
 
 - (void)beginStreaming {
     NSLog(@"begin stream");
-    [_serialConnection writeByte:kMocoBeginSendingAxisDataInstruction];
+    [_serialConnection writeIntAsByte:kMocoBeginSendingAxisDataInstruction];
 }
 
 
@@ -165,7 +155,8 @@ static int          kMocoBaudRate             = 1000000;
 - (void)handshakeRequestCallback {
     
     if([port isOpen]) {
-        [port writeData:[NSData dataWithBytes:&kMocoHandshakeRequest length:sizeof(kMocoHandshakeRequest)] error:NULL];
+        
+//        [port writeData:[NSData dataWithBytes:&kMocoHandshakeRequest length:sizeof(kMocoHandshakeRequest)] error:NULL];
         NSLog(@"MocoDriver - Connected and requested handshake with %@", [_portPaths objectAtIndex:_currentPortPathIndex]);
         
         // If we could send a handshake request to this device.
