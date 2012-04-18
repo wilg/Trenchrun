@@ -11,14 +11,16 @@
 #import "AMSerialPortAdditions.h"
 #import "MocoDriverResponse.h"
 
+
 // PROTOCOL CONFIGURATION
+static char         kMocoHandshakeRequest     = '?'; // ASCII 63
+static char         kMocoHandshakeResponse    = '!';
+
+static unsigned char *kMocoBeginSendingAxisDataInstruction = 0;
+
 
 // BASICS
 static int          kMocoBaudRate             = 1000000;
-
-// HANDSHAKE
-static char         kMocoHandshakeRequest     = '?'; // ASCII 63
-static NSString *   kMocoHandshakeResponse    = @"MocoHandshakeConfirm";
 
 
 @interface MocoDriver ( /* class extension */ ) {
@@ -31,6 +33,9 @@ static NSString *   kMocoHandshakeResponse    = @"MocoHandshakeConfirm";
     int _currentPortPathIndex;
     BOOL _waitingForPortHandshakeResponse;
     NSString *_rigPortPath;
+    
+    
+    MocoSerialConnection *_serialConnection;
 }
 @property (retain) AMSerialPort *port;
 @property (assign) MocoStatusCode status;
@@ -69,13 +74,37 @@ static NSString *   kMocoHandshakeResponse    = @"MocoHandshakeConfirm";
         // Search all available ports for moco rig.
 //        [self findMocoRig];
         
+        _serialConnection = [[MocoSerialConnection alloc] init];
+        _serialConnection.delegate = self;
+        
         NSLog(@"intializing one port");
-        if ([self initPortWithDeviceName:@"/dev/cu.usbserial-A800H22L"]) {
-            self.status = MocoStatusIdle;
-        }
+        
+        [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:kMocoBaudRate];
+        self.status = MocoStatusIdle;
+        
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.5f
+                                         target:self 
+                                       selector:@selector(beginStreaming) 
+                                       userInfo:nil 
+                                        repeats:NO];
+        
+
+        
         
 	}
 	return self;
+}
+
+- (void)beginStreaming {
+    NSLog(@"begin stream");
+    [_serialConnection writeByte:kMocoBeginSendingAxisDataInstruction];
+}
+
+
+- (void)serialMessageReceived:(NSData *)data {
+    MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
+    NSLog(@"serialMessageReceived: %@", driverResponse);
 }
 
 - (void)severConnections {
@@ -285,7 +314,7 @@ static NSString *   kMocoHandshakeResponse    = @"MocoHandshakeConfirm";
             
             NSLog(@"Serial Port Data Received: %@", receivedText);
             
-            if ([whitespacelessText isEqualToString:kMocoHandshakeResponse]) {
+            if ([whitespacelessText isEqualToString:@"fa"]) {
                 [self receiveHandshakeConfirmation];
             }
 

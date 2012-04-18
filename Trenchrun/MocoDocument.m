@@ -38,17 +38,14 @@ static NSString * kTrackEditContext = @"Track Edit";
                        options:0
                        context:&kTrackEditContext];
 
-        
-        MocoTrack *track = [[MocoTrack alloc] init];
-        track.axis = MocoAxisFocus;
-        [trackList addObject:track];
-        
-        MocoTrack *track2 = [[MocoTrack alloc] init];
-        track2.axis = MocoAxisIris;
-        [trackList addObject:track2];
-        
-        [self add1000BogusFrames:nil];
 
+        for (int i = 0; i < 8; i++) {
+            MocoTrack *track = [[MocoTrack alloc] init];
+            track.axis = i;
+            [trackList addObject:track];
+        }
+        
+    
 	}
 	return self;
 }

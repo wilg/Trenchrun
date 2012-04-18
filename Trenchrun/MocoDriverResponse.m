@@ -7,6 +7,7 @@
 //
 
 #import "MocoDriverResponse.h"
+#import "MocoAxis.h"
 
 @interface MocoDriverResponse ( /* class extension */ ) {
 @private
@@ -14,11 +15,16 @@
 
 @end
 
+// HANDSHAKE PROTOCOL
+static char         kMocoHandshakeRequest     = '?'; // ASCII 63
+static char         kMocoHandshakeResponse    = '!';
+
 // IMPLEMENTATION
 
 @implementation MocoDriverResponse
 @synthesize data = _data;
 @synthesize type = _type;
+@synthesize parsedResponse = _parsedResponse;
 
 -(id)init {
 	self = [super init];
@@ -32,6 +38,7 @@
 	self = [self init];
 	if (self) {
         _data = data;
+        [self processData];
 	}
 	return self;
 }
@@ -40,6 +47,14 @@
     return [[MocoDriverResponse alloc] initWithData:data];
 }
 
++(unsigned long int)longIntFromFourBytes:(Byte *)fourBytes {
+    return     ( (fourBytes[0] << 24) 
+                + (fourBytes[1] << 16) 
+                + (fourBytes[2] << 8) 
+                + (fourBytes[3] ) );
+}
+
+
 -(BOOL)processData {
     
     Byte *bytes = [self byteData];
@@ -47,17 +62,39 @@
     // Process first byte.
     // This should directly correspond with the enum values for MocoDriverResponseType.
     self.type = (int)bytes[0];
+        
+    if (self.type == MocoDriverResponseTypeHandshake) {
+        BOOL handshakeSuccessful = NO;
+        if ((int)bytes[1] == (int)kMocoHandshakeResponse) {
+            handshakeSuccessful = YES;
+        }
+        _parsedResponse = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
+
+    }
+    else if (self.type = MocoDriverResponseTypeAxisPosition) {
+        MocoAxis axis = (int)bytes[1];
+        
+        Byte fourbytes[4];
+        fourbytes[0] = bytes[2];
+        fourbytes[1] = bytes[3];
+        fourbytes[2] = bytes[4];
+        fourbytes[3] = bytes[5];
+        
+        unsigned long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
+        
+        _parsedResponse = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"position", [NSNumber numberWithInt:axis], @"axis", nil];
+        
+    }
     
     return YES;
 }
 
 -(BOOL)understood {
-    [self processData];
     return YES;
 }
 
 -(NSString *)description {
-    return [NSString stringWithFormat:@"MocoDriverResponse type=%@ data=%@", self.type, self.data];
+    return [NSString stringWithFormat:@"MocoDriverResponse type=%i data=%@ parsed=%@", self.type, self.data, self.parsedResponse];
 }
 
 -(Byte *)byteData {
@@ -67,19 +104,20 @@
     return byteData;
 }
 
--(NSArray *)byteArray {
-    
-//    NSMutableArray * targetArray = [[NSMutableArray alloc] initWithCapacity: SIZE];
-//    
-//    int i;
-//    NSNumber *number;
-//    for (i = 0; i < SIZE; i++)
-//    {
-//        number = [NSNumber numberWithDouble: sourceArray[i]];
-//        [targetArray addObject: number];
-//    }
 
-}
+//-(NSArray *)byteArray {
+//    
+////    NSMutableArray * targetArray = [[NSMutableArray alloc] initWithCapacity: SIZE];
+////    
+////    int i;
+////    NSNumber *number;
+////    for (i = 0; i < SIZE; i++)
+////    {
+////        number = [NSNumber numberWithDouble: sourceArray[i]];
+////        [targetArray addObject: number];
+////    }
+//
+//}
 
 //-(NSString *)byteDescription {
 //    
@@ -99,12 +137,6 @@
 //    return [description stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
 //}
 
-+(unsigned long int)longIntFromFourBytes:(Byte *)fourBytes {
-    return     ( (fourBytes[0] << 24) 
-                + (fourBytes[1] << 16) 
-                + (fourBytes[2] << 8) 
-                + (fourBytes[3] ) );
-}
 
 //
 //NSUInteger len = [data length];

@@ -10,8 +10,8 @@
 
 typedef enum {
     MocoDriverResponseTypeUnknown      = -1,
-    MocoDriverResponseTypeAxisPosition = 0,
-    MocoDriverResponseTypeHandshake    = 1
+    MocoDriverResponseTypeHandshake    = 0,
+    MocoDriverResponseTypeAxisPosition = 1
 } MocoDriverResponseType;
 
 @interface MocoDriverResponse : NSObject

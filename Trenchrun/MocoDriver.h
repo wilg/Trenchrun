@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AMSerialPort.h"
 #import "MocoAxis.h"
+#import "MocoSerialConnection.h"
 
 typedef enum {
     MocoStatusDisconnected,       // The rig is disconnected.
@@ -19,7 +20,7 @@ typedef enum {
     MocoStatusPlayback            // The driver is playing back data to the rig.
 } MocoStatusCode;
 
-@interface MocoDriver : NSObject {
+@interface MocoDriver : NSObject <MocoSerialConnectionDelegate> {
     MocoStatusCode status;
 }
 

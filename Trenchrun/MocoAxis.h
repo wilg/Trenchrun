@@ -4,7 +4,7 @@ typedef enum {
     MocoAxisJibLift         = 2,
     MocoAxisJibSwing        = 3,
     MocoAxisDollyPosition   = 4,
-    MocoAxisFocus           = 101,
-    MocoAxisIris            = 102,
-    MocoAxisZoom            = 103
+    MocoAxisFocus           = 5,
+    MocoAxisIris            = 6,
+    MocoAxisZoom            = 7
 } MocoAxis;
