@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0483E7153D3690004531CC /* AMSerialPort_Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0483E5153D3684004531CC /* AMSerialPort_Deprecated.m */; };
 		3B166850153B833700DD7498 /* MocoDriverStatusValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16684F153B829F00DD7498 /* MocoDriverStatusValueTransformer.m */; };
 		3B166854153B868600DD7498 /* PlayInactive.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166851153B868600DD7498 /* PlayInactive.tif */; };
 		3B166855153B868600DD7498 /* PlayN.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166852153B868600DD7498 /* PlayN.tif */; };
@@ -47,6 +48,7 @@
 		3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFAB4153B583E00D465E7 /* MocoDriver.m */; };
 		3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */; };
 		3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */; };
+		3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */; };
 		3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBD248153BA0CD00D8E088 /* playhead.png */; };
 		3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD24D153BA5E300D8E088 /* MocoTrack.m */; };
 		3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */; };
@@ -90,6 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B0483E4153D3684004531CC /* AMSerialPort_Deprecated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMSerialPort_Deprecated.h; sourceTree = "<group>"; };
+		3B0483E5153D3684004531CC /* AMSerialPort_Deprecated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMSerialPort_Deprecated.m; sourceTree = "<group>"; };
 		3B16684E153B829F00DD7498 /* MocoDriverStatusValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MocoDriverStatusValueTransformer.h; sourceTree = "<group>"; };
 		3B16684F153B829F00DD7498 /* MocoDriverStatusValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MocoDriverStatusValueTransformer.m; sourceTree = "<group>"; };
 		3B166851153B868600DD7498 /* PlayInactive.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PlayInactive.tif; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 		3B7FFAB4153B583E00D465E7 /* MocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriver.m; sourceTree = "<group>"; };
 		3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomIn.pdf; sourceTree = "<group>"; };
 		3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomOut.pdf; sourceTree = "<group>"; };
+		3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoSerialConnection.h; sourceTree = "<group>"; };
+		3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoSerialConnection.m; sourceTree = "<group>"; };
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
 		3BCBD24C153BA5E300D8E088 /* MocoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTrack.h; sourceTree = "<group>"; };
 		3BCBD24D153BA5E300D8E088 /* MocoTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTrack.m; sourceTree = "<group>"; };
@@ -236,6 +242,8 @@
 				3B16C5B9153AD76C00F40A56 /* AMSerialPort */,
 				3B16C5C1153AD7ED00F40A56 /* SerialConnectionViewController.h */,
 				3B16C5C2153AD7ED00F40A56 /* SerialConnectionViewController.m */,
+				3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */,
+				3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */,
 				3B7FFAB3153B583E00D465E7 /* MocoDriver.h */,
 				3B7FFAB4153B583E00D465E7 /* MocoDriver.m */,
 				3B2E0313153CFADD00890049 /* MocoDriverResponse.h */,
@@ -255,6 +263,8 @@
 			children = (
 				3B16C5A8153AD76600F40A56 /* AMSDKCompatibility.h */,
 				3B16C5A9153AD76600F40A56 /* AMSerialErrors.h */,
+				3B0483E4153D3684004531CC /* AMSerialPort_Deprecated.h */,
+				3B0483E5153D3684004531CC /* AMSerialPort_Deprecated.m */,
 				3B16C5AA153AD76600F40A56 /* AMSerialPort.h */,
 				3B16C5AB153AD76600F40A56 /* AMSerialPort.m */,
 				3B16C5AC153AD76600F40A56 /* AMSerialPortAdditions.h */,
@@ -471,9 +481,11 @@
 				3B166850153B833700DD7498 /* MocoDriverStatusValueTransformer.m in Sources */,
 				3B166873153B8B0F00DD7498 /* MocoTimelineView.m in Sources */,
 				3B166876153B8B7A00DD7498 /* MocoTimelineTrackView.m in Sources */,
+				3B0483E7153D3690004531CC /* AMSerialPort_Deprecated.m in Sources */,
 				3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */,
 				3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */,
 				3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */,
+				3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
