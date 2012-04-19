@@ -14,7 +14,7 @@
 #define PADDING 15.0f
 #define TRACK_BOTTOM_MARGIN 5.0f
 
-#define PIXELS_PER_FRAME_AT_100_PERCENT 2.0f
+#define PIXELS_PER_FRAME_AT_100_PERCENT 10.0f
 
 @interface MocoTimelineView ( /* class extension */ ) {
 @private
@@ -48,7 +48,7 @@
         
         [self updateBounds];
         
-        self.scaleFactor = 1.0f;
+        self.scaleFactor = 0.5f;
         
         playheadImageView = [[NSImageView alloc] initWithFrame:[self playheadRect]];
         [playheadImageView setImage:[NSImage imageNamed:@"playhead.png"]];

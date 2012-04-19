@@ -21,20 +21,16 @@
     return self;
 }
 
-- (MocoTimelineView *)timelineView {
-    return (MocoTimelineView *)self.view;
-}
-
 - (void)awakeFromNib {
     
-    [self timelineView].dataSource = self;
-    [[self timelineView] reload];
+    timelineView.dataSource = self;
+    [timelineView reload];
     
 //    NSLog(@"FUCK FACE");
 }
 
 - (IBAction)refreshGraph:(id)sender {
-    [[self timelineView] reload];
+    [timelineView reload];
 }
 
 #pragma mark -

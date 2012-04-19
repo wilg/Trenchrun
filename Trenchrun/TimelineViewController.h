@@ -13,6 +13,10 @@
 
 @interface TimelineViewController : NSViewController <MocoTimelineViewDataSource> {
     __weak IBOutlet MocoDocument *document;
+    IBOutlet MocoTimelineView *timelineView;
 }
+
+- (IBAction)refreshGraph:(id)sender;
+
 
 @end

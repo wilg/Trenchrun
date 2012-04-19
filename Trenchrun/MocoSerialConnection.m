@@ -18,9 +18,27 @@
 	
         serialFileDescriptor = -1;
         readThreadRunning = FALSE;
+        killThread = 0;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(killThread) 
+                                                     name:@"MocoSerialConnectionShouldKillPortNotification" 
+                                                   object:nil];
+
     
     }
 	return self;
+}
+
+-(void)closePort {
+    if (serialFileDescriptor != -1) {
+        close(serialFileDescriptor);
+        serialFileDescriptor = -1;
+        NSLog(@"allegedly closed");
+    }
+    else {
+        NSLog(@"didn't close");
+    }
 }
 
 -(void)openThreadedConnectionWithSerialPort:(NSString *)port baud:(int)baud {
@@ -154,7 +172,11 @@
         [NSThread setThreadPriority:1.0];
         
         // this will loop unitl the serial port closes
-        while(TRUE) {
+        while(killThread == 0) {
+            
+            if (serialFileDescriptor == -1) {
+                break;
+            }
             
             while ([dataBuffer length] < kMocoSerialConnectionPacketLength) {
                 // read() blocks until some data is available or the port is closed
@@ -179,11 +201,13 @@
 
         }
         
+        NSLog(@"Killing thread.");
+        
         // make sure the serial port is closed
-        if (serialFileDescriptor != -1) {
-            close(serialFileDescriptor);
-            serialFileDescriptor = -1;
-        }
+//        if (serialFileDescriptor != -1) {
+//            close(serialFileDescriptor);
+//            serialFileDescriptor = -1;
+//        }
         
         // mark that the thread has quit
         readThreadRunning = FALSE;
@@ -233,7 +257,6 @@
 // send a byte to the serial port
 - (void) writeByte: (uint8_t *) val {
 	if(serialFileDescriptor!=-1) {
-        NSLog(@"writing byte %i", val);
 		write(serialFileDescriptor, val, 1);
 	} else {
         NSLog(@"can't write byte");

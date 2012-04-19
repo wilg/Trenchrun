@@ -23,12 +23,14 @@
     int serialFileDescriptor; // file handle to the serial port
 	struct termios gOriginalTTYAttrs; // Hold the original termios attributes so we can reset them on quit ( best practice )
 	bool readThreadRunning;
+    bool killThread;
 //	NSTextStorage *storage;
 }
 
 @property (assign) id<MocoSerialConnectionDelegate> delegate;
 
 -(void)openThreadedConnectionWithSerialPort:(NSString *)port baud:(int)baud;
+-(void)closePort;
 
 - (void) writeString: (NSString *) str;
 - (void) writeByte: (uint8_t *) val;

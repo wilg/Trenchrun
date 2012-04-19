@@ -45,6 +45,9 @@
 		3B34D4AB1539405800BB8F3D /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D4A815393FF300BB8F3D /* CorePlot.framework */; };
 		3B34D4AD1539407300BB8F3D /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B34D4A815393FF300BB8F3D /* CorePlot.framework */; };
 		3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */; };
+		3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA1153FC18A00793C8A /* TimelineView.xib */; };
+		3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */; };
+		3B6A4FA7153FC89D00793C8A /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA6153FC89D00793C8A /* noise.png */; };
 		3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFAB4153B583E00D465E7 /* MocoDriver.m */; };
 		3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */; };
 		3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */; };
@@ -154,6 +157,10 @@
 		3B34D49715393F8900BB8F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = CorePlot_1.0/Source/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B6A4FA1153FC18A00793C8A /* TimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineView.xib; sourceTree = "<group>"; };
+		3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineContainerView.h; sourceTree = "<group>"; };
+		3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineContainerView.m; sourceTree = "<group>"; };
+		3B6A4FA6153FC89D00793C8A /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		3B7FFAB3153B583E00D465E7 /* MocoDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriver.h; sourceTree = "<group>"; };
 		3B7FFAB4153B583E00D465E7 /* MocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriver.m; sourceTree = "<group>"; };
 		3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomIn.pdf; sourceTree = "<group>"; };
@@ -186,10 +193,15 @@
 		3B166867153B8A6100DD7498 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3B6A4FA1153FC18A00793C8A /* TimelineView.xib */,
+				3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */,
+				3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */,
 				3B166871153B8B0F00DD7498 /* MocoTimelineView.h */,
 				3B166872153B8B0F00DD7498 /* MocoTimelineView.m */,
 				3B166874153B8B7A00DD7498 /* MocoTimelineTrackView.h */,
 				3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */,
+				3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */,
+				3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -197,6 +209,7 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3B6A4FA6153FC89D00793C8A /* noise.png */,
 				3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */,
 				3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */,
 				3BCBD248153BA0CD00D8E088 /* playhead.png */,
@@ -223,8 +236,6 @@
 				3B34D49315393F8900BB8F3D /* MocoDocument.xib */,
 				3B16C559153A9D6600F40A56 /* TrackArrayController.h */,
 				3B16C55A153A9D6600F40A56 /* TrackArrayController.m */,
-				3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */,
-				3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */,
 			);
 			name = Document;
 			sourceTree = "<group>";
@@ -462,6 +473,8 @@
 				3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */,
 				3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */,
 				3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */,
+				3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */,
+				3B6A4FA7153FC89D00793C8A /* noise.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +507,7 @@
 				3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */,
 				3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */,
 				3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */,
+				3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

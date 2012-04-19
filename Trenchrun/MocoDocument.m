@@ -14,6 +14,7 @@
 #import "MocoDocument.h"
 #import "MocoFrame.h"
 #import "MocoTrack.h"
+#import "MocoDriverResponse.h"
 
 static NSString * kTrackEditContext = @"Track Edit";
 
@@ -53,6 +54,12 @@ static NSString * kTrackEditContext = @"Track Edit";
 	return self;
 }
 
+- (void)awakeFromNib {
+    [timelineViewController.view setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
+    [timelineViewController.view setFrame:[timelineContainer bounds]];
+    [timelineContainer addSubview:timelineViewController.view];
+}
+
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
     for (MocoTrack *track in trackList) {
         if (track.axis == axis)
@@ -68,13 +75,11 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 - (void)axisDataUpdated:(NSNotification *)notification {
-    
-    NSLog(@"notification received: %@", notification);
-    
     if (recording) {
-        [self savePosition:[notification valueForKey:@"position"] forAxis:[[notification valueForKey:@"axis"] intValue]];
+        MocoDriverResponse *driverResponse = notification.object;
+        [self savePosition:[driverResponse.parsedResponse valueForKey:@"position"]
+                   forAxis:[[driverResponse.parsedResponse valueForKey:@"axis"] intValue]];
     }
-    
 }
 
 
@@ -94,6 +99,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(void)tracksDidChange {
+    [timelineViewController refreshGraph:nil];
     [self updateChangeCount:NSChangeDone];
 }
 
@@ -156,7 +162,7 @@ static NSString * kTrackEditContext = @"Track Edit";
     for (MocoTrack *track in trackList) {
         [track appendFrameWithPosition:[NSNumber numberWithFloat:(float)random()/RAND_MAX]];
     }
-    [self updateChangeCount:NSChangeDone];
+    [self tracksDidChange];
 }
 
 -(IBAction)add1000BogusFrames:(id)sender {

@@ -17,6 +17,8 @@
     
     IBOutlet TimelineViewController *timelineViewController;
     
+    IBOutlet NSView *timelineContainer;
+    
     BOOL recording;
     
 //

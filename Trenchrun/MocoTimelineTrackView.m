@@ -9,6 +9,14 @@
 #import "MocoTrack.h"
 #import "MocoTimelineTrackView.h"
 
+@interface MocoTimelineTrackView ( /* class extension */ ) {
+@private
+    NSTextField *textView;
+}
+
+@end
+
+
 @implementation MocoTimelineTrackView
 @synthesize track;
 
@@ -17,6 +25,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code here.
+        textView = [[NSTextField alloc] initWithFrame:NSMakeRect(5, 5, 100, 30)];
+        textView.stringValue = @"penis pump";
+        [self addSubview:textView];
     }
     
     return self;

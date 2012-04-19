@@ -67,7 +67,7 @@
         _serialConnection = [[MocoSerialConnection alloc] init];
         _serialConnection.delegate = self;
         
-        NSLog(@"intializing hardcoded port port");
+        NSLog(@"intializing hardcoded port");
         
         [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:kMocoBaudRate];
         self.status = MocoStatusIdle;
@@ -87,9 +87,8 @@
 }
 
 - (void)beginStreaming {
-    NSLog(@"begin stream");
+    NSLog(@"Asking rig to start sending axis data...");
     [_serialConnection writeIntAsByte:kMocoStartSendingAxisDataInstruction];
-//    [_serialConnection writeByte:kMocoStartSendingAxisDataInstruction];
 }
 
 
@@ -105,10 +104,10 @@
 
 }
 
-//- (void)severConnections {
-//    NSLog(@"MocoDriver - Closing ports.");
-//    [port close];
-//}
+- (void)severConnections {
+    NSLog(@"MocoDriver - Closing ports.");
+    [_serialConnection closePort];
+}
 
 # pragma mark Auto-discovery
 //- (void)findMocoRig {
