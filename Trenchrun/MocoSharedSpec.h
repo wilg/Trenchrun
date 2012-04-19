@@ -5,12 +5,13 @@ enum {
     kMocoBaudRate = 1000000,
     kMocoSerialConnectionPacketLength = 6,
     
-	// Handshake
+    // Handshake
     kMocoHandshakeRequest = '?',
     kMocoHandshakeResponse = '!',
-	
-	// Axis Data
-	kMocoBeginSendingAxisDataInstruction = 0,
+    
+    // Axis Data
+    kMocoStartSendingAxisDataInstruction = 1,
+    kMocoStopSendingAxisDataInstruction = 0
 
 };
 

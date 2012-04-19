@@ -15,10 +15,11 @@
 }
 @property (copy)    NSMutableArray *frames;
 @property (assign)  MocoAxis axis;
-@property (readonly)  NSString *humanAxis;
+@property (readonly)  NSString *title;
 
 +(NSArray *)flattenedTracks:(NSArray *)tracks;
 
 -(void)addFrame:(MocoFrame *)frame;
+-(void)appendFrameWithPosition:(NSNumber *)position;
 
 @end

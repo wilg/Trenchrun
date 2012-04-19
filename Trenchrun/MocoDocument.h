@@ -10,12 +10,14 @@
 #import "TimelineViewController.h"
 #import "TrackArrayController.h"
 
-@interface MocoDocument : NSDocument <CPTPlotDataSource, CPTPlotSpaceDelegate> {
+@interface MocoDocument : NSDocument {
     
     IBOutlet TrackArrayController *trackArrayController;
     IBOutlet NSArrayController    *flattenedFrameArrayController;
     
     IBOutlet TimelineViewController *timelineViewController;
+    
+    BOOL recording;
     
 //
 //    IBOutlet CPTGraphHostingView *graphView;
@@ -31,5 +33,7 @@
 
 @property (copy) NSMutableArray *trackList;
 @property (copy) NSMutableArray *flattenedFrameArray;
+
+-(IBAction)record:(id)sender;
 
 @end
