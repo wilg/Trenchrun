@@ -1,0 +1,7 @@
+
+#define TRACK_HEIGHT 50.0f
+#define PADDING_LEFT 15.0f
+#define PADDING 15.0f
+#define TRACK_BOTTOM_MARGIN 5.0f
+
+#define PIXELS_PER_FRAME_AT_100_PERCENT 10.0f

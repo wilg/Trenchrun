@@ -45,7 +45,7 @@
 	NSString *error = [self openSerialPort:port baud:baud];
         
 	if (error!=nil) {
-        NSLog(@"BIG FAT SPIDER: %@", error);
+        NSLog(@"MocoSerialConnection: %@", error);
 	} else {
 		[self performSelectorInBackground:@selector(serialPortUpdateThread:) withObject:[NSThread currentThread]];
 	}

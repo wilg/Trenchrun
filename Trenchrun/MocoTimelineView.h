@@ -8,22 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MocoTrack.h"
+#import "MocoTimelineTrackView.h"
+#import "TimelineViewController.h"
 
-@protocol MocoTimelineViewDataSource <NSObject>
-@required;
-- (int)numberOfTracks;
-- (MocoTrack *)trackAtIndex:(int)index;
-@end
-
+@class TimelineViewController;
 
 @interface MocoTimelineView : NSView {
 }
 
-@property (assign) int playheadPosition; // in frames
-@property (assign) float scaleFactor;    // 0.0-1.0
-@property (assign) IBOutlet id<MocoTimelineViewDataSource> dataSource;
+@property (assign) TimelineViewController *controller;
 
 - (void)reload;
-
+- (void)addTrackView:(MocoTimelineTrackView *)trackView;
+- (void)removeAllTrackViews;
 
 @end

@@ -94,7 +94,7 @@
 
 - (void)serialMessageReceived:(NSData *)data {
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
-    NSLog(@"Serial Message Received: %@", driverResponse);
+//    NSLog(@"Serial Message Received: %@", driverResponse);
     
     if (driverResponse.type == MocoDriverResponseTypeAxisPosition) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"

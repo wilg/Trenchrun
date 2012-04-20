@@ -48,9 +48,17 @@
 		3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA1153FC18A00793C8A /* TimelineView.xib */; };
 		3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */; };
 		3B6A4FA7153FC89D00793C8A /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA6153FC89D00793C8A /* noise.png */; };
+		3B70DAD2153FE579006230BC /* MocoTimelineTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DAD1153FE579006230BC /* MocoTimelineTrackViewController.m */; };
+		3B70DAD5153FFF2E006230BC /* MocoTimelineHeaderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DAD4153FFF2E006230BC /* MocoTimelineHeaderListView.m */; };
+		3B70DAD815400220006230BC /* MocoTimelineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DAD715400220006230BC /* MocoTimelineHeaderView.m */; };
+		3B70DADC154005C3006230BC /* MocoTimelineHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */; };
+		3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */; };
 		3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFAB4153B583E00D465E7 /* MocoDriver.m */; };
 		3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */; };
 		3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */; };
+		3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B615412EB400421D14 /* track-header-bg.png */; };
+		3B9D52B91541339D00421D14 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B81541339D00421D14 /* divider.png */; };
+		3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D52BB1541365500421D14 /* MocoLineGraphView.m */; };
 		3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */; };
 		3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBD248153BA0CD00D8E088 /* playhead.png */; };
 		3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD24D153BA5E300D8E088 /* MocoTrack.m */; };
@@ -161,10 +169,24 @@
 		3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineContainerView.h; sourceTree = "<group>"; };
 		3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineContainerView.m; sourceTree = "<group>"; };
 		3B6A4FA6153FC89D00793C8A /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
+		3B70DACF153FE492006230BC /* MocoTimelineViewConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineViewConstants.h; sourceTree = "<group>"; };
+		3B70DAD0153FE579006230BC /* MocoTimelineTrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineTrackViewController.h; sourceTree = "<group>"; };
+		3B70DAD1153FE579006230BC /* MocoTimelineTrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineTrackViewController.m; sourceTree = "<group>"; };
+		3B70DAD3153FFF2E006230BC /* MocoTimelineHeaderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineHeaderListView.h; sourceTree = "<group>"; };
+		3B70DAD4153FFF2E006230BC /* MocoTimelineHeaderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineHeaderListView.m; sourceTree = "<group>"; };
+		3B70DAD615400220006230BC /* MocoTimelineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineHeaderView.h; sourceTree = "<group>"; };
+		3B70DAD715400220006230BC /* MocoTimelineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineHeaderView.m; sourceTree = "<group>"; };
+		3B70DAD9154005C2006230BC /* MocoTimelineHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineHeaderViewController.h; sourceTree = "<group>"; };
+		3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineHeaderViewController.m; sourceTree = "<group>"; };
+		3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MocoTimelineHeaderViewController.xib; sourceTree = "<group>"; };
 		3B7FFAB3153B583E00D465E7 /* MocoDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriver.h; sourceTree = "<group>"; };
 		3B7FFAB4153B583E00D465E7 /* MocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriver.m; sourceTree = "<group>"; };
 		3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomIn.pdf; sourceTree = "<group>"; };
 		3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomOut.pdf; sourceTree = "<group>"; };
+		3B9D52B615412EB400421D14 /* track-header-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track-header-bg.png"; sourceTree = "<group>"; };
+		3B9D52B81541339D00421D14 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
+		3B9D52BA1541365500421D14 /* MocoLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoLineGraphView.h; sourceTree = "<group>"; };
+		3B9D52BB1541365500421D14 /* MocoLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoLineGraphView.m; sourceTree = "<group>"; };
 		3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoSerialConnection.h; sourceTree = "<group>"; };
 		3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoSerialConnection.m; sourceTree = "<group>"; };
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
@@ -193,15 +215,27 @@
 		3B166867153B8A6100DD7498 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3B70DACF153FE492006230BC /* MocoTimelineViewConstants.h */,
 				3B6A4FA1153FC18A00793C8A /* TimelineView.xib */,
 				3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */,
 				3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */,
 				3B166871153B8B0F00DD7498 /* MocoTimelineView.h */,
 				3B166872153B8B0F00DD7498 /* MocoTimelineView.m */,
+				3B70DAD0153FE579006230BC /* MocoTimelineTrackViewController.h */,
+				3B70DAD1153FE579006230BC /* MocoTimelineTrackViewController.m */,
 				3B166874153B8B7A00DD7498 /* MocoTimelineTrackView.h */,
 				3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */,
+				3B70DAD9154005C2006230BC /* MocoTimelineHeaderViewController.h */,
+				3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */,
+				3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */,
+				3B70DAD3153FFF2E006230BC /* MocoTimelineHeaderListView.h */,
+				3B70DAD4153FFF2E006230BC /* MocoTimelineHeaderListView.m */,
+				3B70DAD615400220006230BC /* MocoTimelineHeaderView.h */,
+				3B70DAD715400220006230BC /* MocoTimelineHeaderView.m */,
 				3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */,
 				3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */,
+				3B9D52BA1541365500421D14 /* MocoLineGraphView.h */,
+				3B9D52BB1541365500421D14 /* MocoLineGraphView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -209,6 +243,8 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3B9D52B81541339D00421D14 /* divider.png */,
+				3B9D52B615412EB400421D14 /* track-header-bg.png */,
 				3B6A4FA6153FC89D00793C8A /* noise.png */,
 				3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */,
 				3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */,
@@ -475,6 +511,9 @@
 				3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */,
 				3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */,
 				3B6A4FA7153FC89D00793C8A /* noise.png in Resources */,
+				3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */,
+				3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */,
+				3B9D52B91541339D00421D14 /* divider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +547,11 @@
 				3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */,
 				3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */,
 				3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */,
+				3B70DAD2153FE579006230BC /* MocoTimelineTrackViewController.m in Sources */,
+				3B70DAD5153FFF2E006230BC /* MocoTimelineHeaderListView.m in Sources */,
+				3B70DAD815400220006230BC /* MocoTimelineHeaderView.m in Sources */,
+				3B70DADC154005C3006230BC /* MocoTimelineHeaderViewController.m in Sources */,
+				3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

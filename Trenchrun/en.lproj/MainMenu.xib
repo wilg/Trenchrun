@@ -1202,7 +1202,8 @@
 								<object class="NSMenuItem" id="42680348">
 									<reference key="NSMenu" ref="628392282"/>
 									<string key="NSTitle">Add 1,000 Bogus Frames</string>
-									<string key="NSKeyEquiv"/>
+									<string key="NSKeyEquiv">=</string>
+									<int key="NSKeyEquivModMask">1572864</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1033313550"/>
 									<reference key="NSMixedImage" ref="310636482"/>

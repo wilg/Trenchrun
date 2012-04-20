@@ -44,6 +44,8 @@ static NSString * kTrackEditContext = @"Track Edit";
             [trackList addObject:track];
         }
         
+//        [self add1000BogusFrames:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(axisDataUpdated:)
                                                      name:@"MocoAxisPositionUpdated"
@@ -79,6 +81,7 @@ static NSString * kTrackEditContext = @"Track Edit";
         MocoDriverResponse *driverResponse = notification.object;
         [self savePosition:[driverResponse.parsedResponse valueForKey:@"position"]
                    forAxis:[[driverResponse.parsedResponse valueForKey:@"axis"] intValue]];
+//        [self tracksDidChange];
     }
 }
 
