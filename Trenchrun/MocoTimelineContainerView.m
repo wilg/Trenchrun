@@ -23,6 +23,7 @@
     if (self) {
         // Initialization code here.
         noiseColor = [NSColor colorWithPatternImage:[NSImage imageNamed:@"noise.png"]];
+        self.canDrawConcurrently = YES;
     }
     
     return self;

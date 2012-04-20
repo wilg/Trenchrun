@@ -32,18 +32,18 @@
 # pragma mark Base Drawing  Initialization
 
 - (void)awakeFromNib {
-
+    
     
     self.trackViews = [NSMutableArray array];
         
     [self updateBounds];
         
-//    playheadImageView = [[NSImageView alloc] initWithFrame:[self playheadRect]];
-//    [playheadImageView setImage:[NSImage imageNamed:@"playhead.png"]];
-//    [playheadImageView setImageScaling:NSImageScaleAxesIndependently];
+    playheadImageView = [[NSImageView alloc] initWithFrame:[self playheadRect]];
+    [playheadImageView setImage:[NSImage imageNamed:@"playhead.png"]];
+    [playheadImageView setImageScaling:NSImageScaleAxesIndependently];
     
     [self addSubview:playheadImageView];
-
+    
 }
 
 - (void)removeAllTrackViews {
@@ -54,7 +54,10 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-//    playheadImageView.frame = [self playheadRect];
+    
+    if ([self needsToDrawRect:[self playheadRect]]) {
+        playheadImageView.frame = [self playheadRect];
+    }
     
     
 //    NSLog(@"%@", NSStringFromRect([self frame]));
@@ -63,9 +66,10 @@
 //    NSRectFill(self.bounds);
 
     
-    for (MocoTimelineTrackView *trackView in self.trackViews) {
-        [trackView setNeedsDisplay:YES];
-    }
+//    for (MocoTimelineTrackView *trackView in self.trackViews) {
+//        [trackView setNeedsDisplay:YES];
+//    }
+    
 
 }
 
@@ -86,54 +90,54 @@
 }
 
 # pragma mark Interaction
-//
-//- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent {
-//    return YES;
-//}
-//
-//- (BOOL)acceptsFirstResponder {
-//    return YES;
-//}
-//
-//- (void)mouseDown:(NSEvent *)event {
-//    NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
-//    [self movePlayheadToPoint:center];
-//}
-//
-//- (void)mouseDragged:(NSEvent *)event {
-//    NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
-//    [self movePlayheadToPoint:center];
-//}
+
+- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent {
+    return YES;
+}
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)mouseDown:(NSEvent *)event {
+    NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
+    [self movePlayheadToPoint:center];
+}
+
+- (void)mouseDragged:(NSEvent *)event {
+    NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
+    [self movePlayheadToPoint:center];
+}
 
 
 
 # pragma mark Drawing Playhead
 
-//- (NSRect)playheadRect {
-//    return NSMakeRect([self absolutePlayheadPosition], 0, 12.0, self.bounds.size.height);
-//}
-//
-//- (float)absolutePlayheadPosition {
-//    return PADDING_LEFT + (float)playheadPosition * [self pixelsPerFrame] - playheadImageView.bounds.size.width / 2;
-//}
+- (NSRect)playheadRect {
+    return NSMakeRect([self absolutePlayheadPosition], 0, 12.0, self.bounds.size.height);
+}
+
+- (float)absolutePlayheadPosition {
+    return PADDING_LEFT + (float)self.controller.playheadPosition * [self pixelsPerFrame] - playheadImageView.bounds.size.width / 2;
+}
 
 - (float)pixelsPerFrame {
     return PIXELS_PER_FRAME_AT_100_PERCENT * self.controller.scaleFactor;
 }
-//
-//- (void)movePlayheadToPoint:(NSPoint)viewPoint {
-//    
-//    
-//    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / [self pixelsPerFrame];
-//    
-//    if (playheadPositionInFrames < 0)
-//        playheadPositionInFrames = 0;
-//    
-//    playheadPosition = playheadPositionInFrames;
-//    
-//    clickPoint = viewPoint;
-//    [self setNeedsDisplay:YES];
-//}
+
+- (void)movePlayheadToPoint:(NSPoint)viewPoint {
+    
+    
+    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / [self pixelsPerFrame];
+    
+    if (playheadPositionInFrames < 0)
+        playheadPositionInFrames = 0;
+    
+    self.controller.playheadPosition = playheadPositionInFrames;
+    
+    clickPoint = viewPoint;
+    [self setNeedsDisplay:YES];
+}
 
 # pragma mark Drawing Tracks
 

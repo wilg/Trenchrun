@@ -176,6 +176,15 @@ static NSString * kTrackEditContext = @"Track Edit";
     }
 }
 
+-(IBAction)swapViews:(id)sender {
+    if (viewSwapControl.selectedSegment == 0) {
+        viewSwapControl.selectedSegment = 1;
+    }
+    else {
+        viewSwapControl.selectedSegment = 0;
+    }
+    [self updateFakeTabs:viewSwapControl];
+}
 
 -(IBAction)record:(id)sender {
     NSButton *button = (NSButton *)sender;
@@ -183,6 +192,21 @@ static NSString * kTrackEditContext = @"Track Edit";
         recording = YES;
     else {
         recording = NO;
+    }
+}
+
+-(IBAction)updateFakeTabs:(id)sender {
+    NSSegmentedControl *button = (NSSegmentedControl *)sender;
+    if (button.selectedSegment == 0) {
+        timelineViewController.view.frame = timelineContainer.bounds;
+
+        [timelineContainer addSubview:timelineViewController.view];
+        [listView removeFromSuperview];
+    }
+    else {
+        listView.frame = timelineContainer.bounds;
+        [timelineContainer addSubview:listView];
+        [timelineViewController.view removeFromSuperview];
     }
 }
 

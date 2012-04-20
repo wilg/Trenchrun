@@ -12,6 +12,7 @@
 #import "MocoTimelineTrackView.h"
 #import "MocoTimelineTrackViewController.h"
 #import "MocoTimelineHeaderViewController.h"
+#import "MocoTimelineRulerView.h"
 
 @interface TimelineViewController ( /* class extension */ ) {
 @private
@@ -51,6 +52,11 @@
     else {
         NSLog(@"no document attached to timeline view controller");
     }
+//
+//    [NSScrollView setRulerViewClass:[MocoTimelineRulerView class]];
+//    timelineScrollView.hasHorizontalRuler = YES;
+//    timelineScrollView.rulersVisible = YES;
+    
 }
 
 - (IBAction)refreshGraph:(id)sender {

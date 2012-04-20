@@ -108,7 +108,7 @@
 																<string key="NSFrameSize">{395, 464}</string>
 																<reference key="NSSuperview" ref="1031727205"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="624224527"/>
+																<reference key="NSNextKeyView" ref="360414118"/>
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 															</object>
 														</array>
@@ -161,7 +161,7 @@
 												<string key="NSFrame">{{199, 20}, {384, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="360414118"/>
+												<reference key="NSNextKeyView" ref="1031727205"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<int key="NSsFlags">137376</int>
 												<reference key="NSVScroller" ref="360414118"/>
@@ -173,7 +173,7 @@
 										<string key="NSFrameSize">{582, 506}</string>
 										<reference key="NSSuperview" ref="268689469"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="368395529"/>
+										<reference key="NSNextKeyView" ref="617774985"/>
 										<string key="NSClassName">NSView</string>
 									</object>
 								</array>
@@ -220,7 +220,7 @@
 						<string key="NSFrame">{{0, -21}, {584, 508}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="617774985"/>
+						<reference key="NSNextKeyView" ref="268689469"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133138</int>
 						<reference key="NSVScroller" ref="231092597"/>
@@ -260,6 +260,14 @@
 						<reference key="destination" ref="368395529"/>
 					</object>
 					<int key="connectionID">76</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">timelineScrollView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="977344762"/>
+					</object>
+					<int key="connectionID">79</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -395,34 +403,48 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">78</int>
+			<int key="maxID">79</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">MocoDocument</string>
 					<string key="superclassName">NSDocument</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">record:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">record:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="record:">id</string>
+						<string key="swapViews:">id</string>
+						<string key="updateFakeTabs:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="record:">
 							<string key="name">record:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="swapViews:">
+							<string key="name">swapViews:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateFakeTabs:">
+							<string key="name">updateFakeTabs:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="flattenedFrameArrayController">NSArrayController</string>
+						<string key="listView">NSView</string>
 						<string key="timelineContainer">NSView</string>
 						<string key="timelineViewController">TimelineViewController</string>
 						<string key="trackArrayController">TrackArrayController</string>
+						<string key="viewSwapControl">NSSegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="flattenedFrameArrayController">
 							<string key="name">flattenedFrameArrayController</string>
 							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="listView">
+							<string key="name">listView</string>
+							<string key="candidateClassName">NSView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="timelineContainer">
 							<string key="name">timelineContainer</string>
@@ -435,6 +457,10 @@
 						<object class="IBToOneOutletInfo" key="trackArrayController">
 							<string key="name">trackArrayController</string>
 							<string key="candidateClassName">TrackArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewSwapControl">
+							<string key="name">viewSwapControl</string>
+							<string key="candidateClassName">NSSegmentedControl</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -483,6 +509,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="document">MocoDocument</string>
 						<string key="headerList">MocoTimelineHeaderListView</string>
+						<string key="timelineScrollView">NSScrollView</string>
 						<string key="timelineView">MocoTimelineView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -493,6 +520,10 @@
 						<object class="IBToOneOutletInfo" key="headerList">
 							<string key="name">headerList</string>
 							<string key="candidateClassName">MocoTimelineHeaderListView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="timelineScrollView">
+							<string key="name">timelineScrollView</string>
+							<string key="candidateClassName">NSScrollView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="timelineView">
 							<string key="name">timelineView</string>

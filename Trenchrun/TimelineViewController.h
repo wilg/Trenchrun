@@ -18,6 +18,8 @@
     __weak IBOutlet MocoDocument *document;
     IBOutlet MocoTimelineView *timelineView;
     IBOutlet MocoTimelineHeaderListView *headerList;
+    
+    IBOutlet NSScrollView *timelineScrollView;
 }
 @property (assign) int playheadPosition; // in frames
 @property (assign) float scaleFactor;    // 0.0-1.0

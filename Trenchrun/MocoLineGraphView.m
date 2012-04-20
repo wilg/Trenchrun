@@ -8,7 +8,7 @@
 
 #import "MocoLineGraphView.h"
 
-#define PADDING 6
+#define PADDING 8
 
 @interface MocoLineGraphView () {
     NSBezierPath *_graphPath;
@@ -24,7 +24,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code here.
-
+        _graphPath = nil;
+//        self.canDrawConcurrently = YES;
     }
     
     return self;
@@ -32,6 +33,12 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    
+//    NSLog(@"MocoLineGraphView dirty: %@", NSStringFromRect(dirtyRect));
+
+
+    [NSGraphicsContext saveGraphicsState];
+//    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
 
     [[NSColor whiteColor] set];
 
@@ -42,6 +49,7 @@
     
     [line stroke];
 
+    [NSGraphicsContext restoreGraphicsState];
 
 //    NSLog(@"line graph draw rect");
     
@@ -49,11 +57,12 @@
 
 - (NSBezierPath *) graphLine {
     
-//    if (_graphPath) {
+//    if (_graphPath != nil) {
 //        return _graphPath;
 //    }
-//    
+    
     NSBezierPath *line = [NSBezierPath bezierPath];
+    line.flatness = 1.0;
     
     if (self.controller && self.controller.track && self.controller.track.frames) {
         
@@ -93,6 +102,8 @@
         }
         
     }
+    
+    _graphPath = [line copy];
     
     return line;
 }

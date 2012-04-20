@@ -18,7 +18,11 @@
     IBOutlet TimelineViewController *timelineViewController;
     
     IBOutlet NSView *timelineContainer;
+
+    IBOutlet NSView *listView;
     
+    IBOutlet NSSegmentedControl *viewSwapControl;
+
     BOOL recording;
     
 //
@@ -37,5 +41,7 @@
 @property (copy) NSMutableArray *flattenedFrameArray;
 
 -(IBAction)record:(id)sender;
+-(IBAction)updateFakeTabs:(id)sender;
+-(IBAction)swapViews:(id)sender;
 
 @end

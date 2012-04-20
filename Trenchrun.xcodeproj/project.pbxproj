@@ -42,8 +42,6 @@
 		3B34D49215393F8900BB8F3D /* MocoDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D49115393F8900BB8F3D /* MocoDocument.m */; };
 		3B34D49515393F8900BB8F3D /* MocoDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D49315393F8900BB8F3D /* MocoDocument.xib */; };
 		3B34D49815393F8900BB8F3D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D49615393F8900BB8F3D /* MainMenu.xib */; };
-		3B34D4AB1539405800BB8F3D /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D4A815393FF300BB8F3D /* CorePlot.framework */; };
-		3B34D4AD1539407300BB8F3D /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B34D4A815393FF300BB8F3D /* CorePlot.framework */; };
 		3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */; };
 		3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA1153FC18A00793C8A /* TimelineView.xib */; };
 		3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */; };
@@ -60,34 +58,11 @@
 		3B9D52B91541339D00421D14 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B81541339D00421D14 /* divider.png */; };
 		3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D52BB1541365500421D14 /* MocoLineGraphView.m */; };
 		3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */; };
+		3BC12F2815415C6F00EE149F /* MocoTimelineRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */; };
 		3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBD248153BA0CD00D8E088 /* playhead.png */; };
 		3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD24D153BA5E300D8E088 /* MocoTrack.m */; };
 		3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3B3247FE1539482000C1A4C8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CorePlot;
-		};
-		3B34D4A715393FF300BB8F3D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = CorePlot;
-		};
-		3B34D4A915393FF300BB8F3D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0730F600109492D800E95162;
-			remoteInfo = UnitTests;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3B34D4AC1539406300BB8F3D /* CopyFiles */ = {
@@ -96,7 +71,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B34D4AD1539407300BB8F3D /* CorePlot.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +137,6 @@
 		3B34D49115393F8900BB8F3D /* MocoDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MocoDocument.m; sourceTree = "<group>"; };
 		3B34D49415393F8900BB8F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MocoDocument.xib; sourceTree = "<group>"; };
 		3B34D49715393F8900BB8F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = CorePlot_1.0/Source/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B6A4FA1153FC18A00793C8A /* TimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineView.xib; sourceTree = "<group>"; };
 		3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineContainerView.h; sourceTree = "<group>"; };
@@ -189,6 +162,8 @@
 		3B9D52BB1541365500421D14 /* MocoLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoLineGraphView.m; sourceTree = "<group>"; };
 		3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoSerialConnection.h; sourceTree = "<group>"; };
 		3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoSerialConnection.m; sourceTree = "<group>"; };
+		3BC12F2615415C6F00EE149F /* MocoTimelineRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineRulerView.h; sourceTree = "<group>"; };
+		3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineRulerView.m; sourceTree = "<group>"; };
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
 		3BCBD24C153BA5E300D8E088 /* MocoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTrack.h; sourceTree = "<group>"; };
 		3BCBD24D153BA5E300D8E088 /* MocoTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTrack.m; sourceTree = "<group>"; };
@@ -204,7 +179,6 @@
 			files = (
 				3B16C5C0153AD7CE00F40A56 /* IOKit.framework in Frameworks */,
 				3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */,
-				3B34D4AB1539405800BB8F3D /* CorePlot.framework in Frameworks */,
 				3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +210,8 @@
 				3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */,
 				3B9D52BA1541365500421D14 /* MocoLineGraphView.h */,
 				3B9D52BB1541365500421D14 /* MocoLineGraphView.m */,
+				3BC12F2615415C6F00EE149F /* MocoTimelineRulerView.h */,
+				3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -332,7 +308,6 @@
 				3B34D48415393F8900BB8F3D /* Trenchrun */,
 				3B34D47D15393F8900BB8F3D /* Frameworks */,
 				3B34D47B15393F8900BB8F3D /* Products */,
-				3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -398,15 +373,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3B34D49F15393FF200BB8F3D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3B34D4A815393FF300BB8F3D /* CorePlot.framework */,
-				3B34D4AA15393FF300BB8F3D /* UnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		3B7579CB153E4022000A1C3F /* Specs */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +396,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3B3247FF1539482000C1A4C8 /* PBXTargetDependency */,
 			);
 			name = Trenchrun;
 			productName = Trenchrun;
@@ -456,35 +421,12 @@
 			mainGroup = 3B34D46F15393F8900BB8F3D;
 			productRefGroup = 3B34D47B15393F8900BB8F3D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3B34D49F15393FF200BB8F3D /* Products */;
-					ProjectRef = 3B34D49E15393FF200BB8F3D /* CorePlot.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3B34D47915393F8900BB8F3D /* Trenchrun */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3B34D4A815393FF300BB8F3D /* CorePlot.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CorePlot.framework;
-			remoteRef = 3B34D4A715393FF300BB8F3D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B34D4AA15393FF300BB8F3D /* UnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTests.octest;
-			remoteRef = 3B34D4A915393FF300BB8F3D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3B34D47815393F8900BB8F3D /* Resources */ = {
@@ -552,18 +494,11 @@
 				3B70DAD815400220006230BC /* MocoTimelineHeaderView.m in Sources */,
 				3B70DADC154005C3006230BC /* MocoTimelineHeaderViewController.m in Sources */,
 				3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */,
+				3BC12F2815415C6F00EE149F /* MocoTimelineRulerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3B3247FF1539482000C1A4C8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CorePlot;
-			targetProxy = 3B3247FE1539482000C1A4C8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3B34D48715393F8900BB8F3D /* InfoPlist.strings */ = {
@@ -654,6 +589,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -665,6 +601,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
