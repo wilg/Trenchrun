@@ -36,6 +36,8 @@
     return self;
 }
 
+
+
 - (void)awakeFromNib {
     
     self.playheadPosition = 0;
@@ -43,21 +45,28 @@
     self.timelineLength = 0;
 
     timelineView.controller = self;
-//    timelineView.dataSource = self;
-//    [timelineView reload];
-    
-//    NSLog(@"FUCK FACE");
+
     if (document)
         [self setupTracks];
     else {
         NSLog(@"no document attached to timeline view controller");
     }
-//
-//    [NSScrollView setRulerViewClass:[MocoTimelineRulerView class]];
-//    timelineScrollView.hasHorizontalRuler = YES;
-//    timelineScrollView.rulersVisible = YES;
+
+    [document addObserver:self
+            forKeyPath:@"trackList"
+               options:0
+               context:@"MocoTimelineTrackViewControllerObserveTrackList"];
     
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    [self calculateTimelineLength];
+}
+
 
 - (IBAction)refreshGraph:(id)sender {
     
@@ -67,28 +76,31 @@
 
 - (void)setupTracks {
     
-    
+    [self calculateTimelineLength];
     [self resetTrackViews];
     [self setupHeaderViews];
 
 }
 
+- (void)calculateTimelineLength {
+    int newLength = 0;
+    for (MocoTrack *track in document.trackList) {
+        int trackLength = track.frames.count;
+        if (trackLength > newLength)
+            newLength = trackLength;
+    }
+    timelineLength = newLength;
+}
+
 - (void)resetTrackViews {
-    
+        
     [timelineView removeAllTrackViews];
     
-    for (MocoTrack *track in document.trackList) {
-        
-        int trackLength = track.frames.count;
-        
-        if (trackLength > timelineLength)
-            timelineLength = trackLength;
-        
+    for (MocoTrack *track in document.trackList) {        
         MocoTimelineTrackViewController *trackViewController = [[MocoTimelineTrackViewController alloc] initWithNibName:nil bundle:nil];
         trackViewController.track = track;
         [trackViewControllers addObject:trackViewController];
         [timelineView addTrackView:(MocoTimelineTrackView *)trackViewController.view];
-        
     }
     
 }

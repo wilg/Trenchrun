@@ -10,8 +10,11 @@
 
 #define PADDING 8
 
+#define SEGMENT_LENGTH 100
+// in frames
+
 @interface MocoLineGraphView () {
-    NSBezierPath *_graphPath;
+    NSArray *_paths;
 }
 @end
 
@@ -23,13 +26,72 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         // Initialization code here.
-        _graphPath = nil;
-//        self.canDrawConcurrently = YES;
+        _paths = nil;
+        
     }
     
     return self;
 }
+
+
+-(void)reloadData {
+    
+    NSMutableArray *tempPaths = [NSMutableArray array];
+
+    if (self.controller && self.controller.track && self.controller.track.frames) {
+        NSRange fullRange = NSMakeRange(0, self.controller.track.frames.count);
+        [tempPaths addObject:[self pathForFrames:fullRange]];
+    }
+                              
+    _paths = [tempPaths copy];
+
+    [self setNeedsDisplay:YES];
+}
+
+-(NSBezierPath *)pathForFrames:(NSRange)range {
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    path.flatness = 10.0;
+    
+    NSRect usableBounds = NSInsetRect(self.bounds, PADDING, PADDING);
+    
+    int frameCount = self.controller.track.frames.count;
+    
+    float maxPosition = 0;
+    for (MocoFrame *frame in self.controller.track.frames) {
+        float thisPosition = [frame.position floatValue];
+        if (thisPosition > maxPosition)
+            maxPosition = thisPosition;
+    }
+    
+    NSPoint lastPoint = NSZeroPoint;
+    BOOL first = YES;
+    
+    for (MocoFrame *frame in [self.controller.track.frames subarrayWithRange:range]) {
+        
+        float xPercentage = frame.frameNumber.floatValue / (float)frameCount;
+        float yPercentage = frame.position.floatValue / maxPosition;
+        
+        float xPositionForFrame = usableBounds.size.width * xPercentage;
+        float yPositionForFrame = usableBounds.size.height * yPercentage;
+        
+        NSPoint point = NSMakePoint(xPositionForFrame + PADDING / 2, yPositionForFrame + PADDING / 2);
+        
+        if (first) {
+            lastPoint = point;
+            first = NO;
+        }
+        
+        [path moveToPoint:lastPoint];
+        [path lineToPoint:point];
+        
+        lastPoint = point;
+    }
+            
+    return path;
+}
+
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -42,12 +104,14 @@
 
     [[NSColor whiteColor] set];
 
-    NSBezierPath *line = [self graphLine];
-
-    [line setLineWidth:2.0];
-    [[NSColor whiteColor] set];
     
-    [line stroke];
+    for (NSBezierPath *path in _paths) {
+        if ([self needsToDrawRect:[path bounds]]) {
+            [path setLineWidth:2.0];
+            [[NSColor whiteColor] set];
+            [path stroke];
+        }
+    }
 
     [NSGraphicsContext restoreGraphicsState];
 
@@ -55,57 +119,5 @@
     
 }
 
-- (NSBezierPath *) graphLine {
-    
-//    if (_graphPath != nil) {
-//        return _graphPath;
-//    }
-    
-    NSBezierPath *line = [NSBezierPath bezierPath];
-    line.flatness = 1.0;
-    
-    if (self.controller && self.controller.track && self.controller.track.frames) {
-        
-        NSRect usableBounds = NSInsetRect(self.bounds, PADDING, PADDING);
-        
-        int frameCount = self.controller.track.frames.count;
-        
-        float maxPosition = 0;
-        for (MocoFrame *frame in self.controller.track.frames) {
-            float thisPosition = [frame.position floatValue];
-            if (thisPosition > maxPosition)
-                maxPosition = thisPosition;
-        }
-        
-        NSPoint lastPoint = NSZeroPoint;
-        BOOL first = YES;
-        
-        for (MocoFrame *frame in self.controller.track.frames) {
-            
-            float xPercentage = frame.frameNumber.floatValue / (float)frameCount;
-            float yPercentage = frame.position.floatValue / maxPosition;
-            
-            float xPositionForFrame = usableBounds.size.width * xPercentage;
-            float yPositionForFrame = usableBounds.size.height * yPercentage;
-            
-            NSPoint point = NSMakePoint(xPositionForFrame + PADDING / 2, yPositionForFrame + PADDING / 2);
-            
-            if (first) {
-                lastPoint = point;
-                first = NO;
-            }
-            
-            [line moveToPoint:lastPoint];
-            [line lineToPoint:point];
-            
-            lastPoint = point;
-        }
-        
-    }
-    
-    _graphPath = [line copy];
-    
-    return line;
-}
 
 @end

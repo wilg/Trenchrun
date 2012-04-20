@@ -12,4 +12,6 @@
 @interface MocoLineGraphView : NSView
 @property (retain) MocoTimelineTrackViewController *controller;
 
+-(void)reloadData;
+
 @end

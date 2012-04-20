@@ -9,6 +9,7 @@
 #import "MocoTrack.h"
 #import "MocoTimelineTrackView.h"
 #import "MocoLineGraphView.h"
+#import "MocoTimelineView.h"
 
 @interface MocoTimelineTrackView ( /* class extension */ ) {
 @private
@@ -26,8 +27,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:self.bounds];
-        [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
+//        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:self.bounds];
+//        [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
 
 //        self.canDrawConcurrently = YES;
 
@@ -44,8 +45,6 @@
     // Drawing code here.
     
     lineGraphView.frame = self.bounds;
-//    NSLog(@"track view draw rect");
-    [lineGraphView setNeedsDisplay:YES];
         
     [NSGraphicsContext saveGraphicsState];
 //    
@@ -84,6 +83,11 @@
 //    [[NSColor yellowColor] set];
 //    NSRectFill(self.bounds);
 
+}
+
+-(void)reloadData {
+    [(MocoTimelineView *)self.superview reloadData];
+    [lineGraphView reloadData];
 }
 
 @end

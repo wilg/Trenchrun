@@ -11,11 +11,18 @@
 #import "MocoLineGraphView.h"
 
 @interface MocoTimelineTrackViewController () {
+    BOOL kvoRegistered;
 }
 @end
 
 @implementation MocoTimelineTrackViewController
 @synthesize track;
+
+- (id)init {
+    if (self = [super init]) {
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +34,10 @@
     return self;
 }
 
+- (MocoTimelineTrackView *)trackView {
+    return (MocoTimelineTrackView *)self.view;
+}
+
 - (void)loadView {
     [super loadView];
     
@@ -35,7 +46,31 @@
     self.view = tv;
     
     tv.lineGraphView.controller = self;
-
+    
+    NSLog(@"regster");
+    [track addObserver:self
+            forKeyPath:@"frames"
+               options:0
+               context:@"MocoTimelineTrackViewControllerObserveFrames"];
+        
 }
+         
+- (void)dealloc {
+    NSLog(@"unregister");
+    [track removeObserver:self forKeyPath:@"frames"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    
+    NSLog(@"change observed");
+    [[self trackView] reloadData];
+    
+//    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
 
 @end

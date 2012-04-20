@@ -102,7 +102,6 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(void)tracksDidChange {
-    [timelineViewController refreshGraph:nil];
     [self updateChangeCount:NSChangeDone];
 }
 

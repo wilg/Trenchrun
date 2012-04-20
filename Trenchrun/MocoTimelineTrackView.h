@@ -16,4 +16,6 @@
 @property (assign) MocoTimelineTrackViewController *controller;
 @property (readonly) MocoLineGraphView *lineGraphView;
 
+-(void)reloadData;
+
 @end

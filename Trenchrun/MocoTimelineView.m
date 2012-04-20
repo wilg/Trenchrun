@@ -141,30 +141,42 @@
 
 # pragma mark Drawing Tracks
 
+- (void)reloadData {
+    for (MocoTimelineTrackView *trackView in trackViews) {
+        [self positionTrackView:trackView];
+    }
+}
+
 - (void)addTrackView:(MocoTimelineTrackView *)trackView {
     
-    int idx = self.trackViews.count;
     [self.trackViews addObject:trackView];
-    trackView.frame = [self rectForTrackAtIndex:idx];
     [self addSubview:trackView positioned:NSWindowBelow relativeTo:nil];
     
-    [trackView setNeedsDisplay:YES];
-    
+    [self positionTrackView:trackView];
+}
+
+- (void)positionTrackView:(MocoTimelineTrackView *)trackView {
+    int index = [self.trackViews indexOfObject:trackView];
+    trackView.frame = [self rectForTrackAtIndex:index];
+
     [self updateBounds];
-    [self setNeedsDisplay:YES];
 }
 
 - (NSRect)tracksRect {
+    return [self tracksRectForTrackCount:self.trackViews.count];
+}
+
+- (NSRect)tracksRectForTrackCount:(int)count {
     return NSMakeRect(PADDING_LEFT,
                       PADDING,
                       self.controller.timelineLength * [self pixelsPerFrame], 
-                      (self.trackViews.count - 1) * TRACK_HEIGHT + ((self.trackViews.count - 1) * TRACK_BOTTOM_MARGIN)
+                      (count) * TRACK_HEIGHT + ((count) * TRACK_BOTTOM_MARGIN)
                       );
 }
 
 - (NSRect)rectForTrackAtIndex:(int)index {
     
-    NSRect tracks = [self tracksRect];
+    NSRect tracks = [self tracksRectForTrackCount:index];
     
     float trackWidth = 0;
     

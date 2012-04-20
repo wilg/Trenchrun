@@ -42,7 +42,7 @@
 }
 
 -(void)addFrame:(MocoFrame *)frame {
-    // KVO compliance
+    // KVO compliance    
     NSMutableArray *frames = [self mutableArrayValueForKey:@"frames"];
     [frames addObject:frame];
 }
