@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>$APPNAME Release Notes</title>
+    <style type="text/css">
+    body {
+    	margin: 12px;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        font-size: 12px;
+    }
+
+    .feature {
+        border: 1px dotted #ccc;
+        margin-bottom:16px;
+        overflow:auto;
+    }
+
+    .disclosure {
+        margin-bottom:16px;
+        font-weight:bold;
+    }
+
+    .disclosure_image {
+        margin-right:5px;
+    }
+
+    .feature_image {
+        float:left;
+        padding:0 8px 8px 0px;
+    }
+
+    .old_version {
+        display:none;
+    }
+
+    .title {
+        background-color: #e6edff;
+        font-size: 12px;
+    	font-weight: bold;
+        padding: 4px;
+    }
+
+    .title .date {
+    	color: #939393;
+    	font-weight: normal;
+    	font-style: normal;
+    	font-size: 10px;
+    	float: right;
+    }
+
+    .content {
+    	padding: 6px;
+    }
+
+    hr {
+        text-decoration: none;
+        border: solid 1px #bfbfbf
+    }
+
+    ul {
+    	font-size: 9pt;
+    	font-family: "Lucida Grande", Arial, sans-serif;
+    	line-height: 12pt;
+    	list-style-type: square;
+    	list-style-position: outside;
+    	margin-top: 12px;
+    	margin-bottom: 12px;
+    	margin-left: -24px;
+    	padding-left: 40px
+    }
+
+    ul li {
+    	margin-top: 6px;
+    	margin-bottom: 6px
+    }
+    </style>
+</head>
+<body>
+	
+	<div class="feature">
+        <div class="title">$APPNAME $VERSION <span class="date">$DATE</span></div>
+        <div class="content">
+            <ul>
+                $RELEASELIS
+            </ul>
+        </div>
+    </div>
+    
+    <div class="feature">
+        <div class="title">Previous Changes</div>
+        <div class="content">
+            <ul>
+                $PREV_CHANGES
+            </ul>
+        </div>
+    </div>
+	
+</body>
+</html>
