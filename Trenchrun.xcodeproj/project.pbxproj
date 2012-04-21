@@ -34,6 +34,8 @@
 		3B34D49515393F8900BB8F3D /* MocoDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D49315393F8900BB8F3D /* MocoDocument.xib */; };
 		3B34D49815393F8900BB8F3D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D49615393F8900BB8F3D /* MainMenu.xib */; };
 		3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */; };
+		3B4E9708154354E500E0A98E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4E9707154354E500E0A98E /* Sparkle.framework */; };
+		3B4E97091543550300E0A98E /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B4E9707154354E500E0A98E /* Sparkle.framework */; };
 		3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA1153FC18A00793C8A /* TimelineView.xib */; };
 		3B6A4FA5153FC5DC00793C8A /* MocoTimelineContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */; };
 		3B6A4FA7153FC89D00793C8A /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A4FA6153FC89D00793C8A /* noise.png */; };
@@ -65,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3B4E97091543550300E0A98E /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 		3B34D49415393F8900BB8F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MocoDocument.xib; sourceTree = "<group>"; };
 		3B34D49715393F8900BB8F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B4E9707154354E500E0A98E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		3B6A4FA1153FC18A00793C8A /* TimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineView.xib; sourceTree = "<group>"; };
 		3B6A4FA3153FC5DC00793C8A /* MocoTimelineContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineContainerView.h; sourceTree = "<group>"; };
 		3B6A4FA4153FC5DC00793C8A /* MocoTimelineContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineContainerView.m; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				3B16C5C0153AD7CE00F40A56 /* IOKit.framework in Frameworks */,
 				3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */,
 				3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */,
+				3B4E9708154354E500E0A98E /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +322,7 @@
 		3B34D48015393F8900BB8F3D /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B4E9707154354E500E0A98E /* Sparkle.framework */,
 				3B34D48115393F8900BB8F3D /* AppKit.framework */,
 				3B34D48215393F8900BB8F3D /* CoreData.framework */,
 				3B34D48315393F8900BB8F3D /* Foundation.framework */,
@@ -564,6 +570,10 @@
 		3B34D49C15393F8900BB8F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";
@@ -576,6 +586,10 @@
 		3B34D49D15393F8900BB8F3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";

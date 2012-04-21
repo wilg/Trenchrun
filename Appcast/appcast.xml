@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <channel>
+      <title>Trenchrun Changelog</title>
+      <link>https://trenchrun.s3.amazonaws.com/appcast.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>      
+         <item>
+            <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
+			<sparkle:releaseNotesLink>
+				https://trenchrun.s3.amazonaws.com/releasenotes.html
+			</sparkle:releaseNotesLink>
+			<description>Several updates occurred!</description>
+            <pubDate>Wed, 09 Jan 2006 19:20:11 +0000</pubDate>
+            <enclosure url="https://trenchrun.s3.amazonaws.com/trenchrun_build_1.zip" sparkle:version="2.0" type="application/octet-stream" />
+         </item>
+   </channel>
+</rss>
