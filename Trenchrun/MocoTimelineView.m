@@ -9,7 +9,7 @@
 #import "MocoTimelineView.h"
 #import "MocoTimelineTrackView.h"
 #import "MocoTimelineViewConstants.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface MocoTimelineView ( /* class extension */ ) {
 @private
