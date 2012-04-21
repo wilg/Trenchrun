@@ -33,6 +33,8 @@
 
 - (void)awakeFromNib {
     
+    self.wantsLayer = YES;
+//    self.layer.shouldRasterize = YES;
     
     self.trackViews = [NSMutableArray array];
         
@@ -54,6 +56,10 @@
 
 - (void)dealloc {
     [self.controller removeObserver:self forKeyPath:@"playheadPosition"];
+}
+
+- (BOOL)mouseDownCanMoveWindow {
+    return NO;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -152,6 +158,8 @@
 - (void)mouseDragged:(NSEvent *)event {
     NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
     [self movePlayheadToPoint:center];
+    [self autoscroll:event];
+
 }
 
 -(void)playheadMoved {

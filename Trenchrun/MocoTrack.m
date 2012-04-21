@@ -90,6 +90,35 @@
     return @"Unknown Track";
 }
 
+- (NSColor *)color {
+    if (self.axis == MocoAxisCameraPan) {
+        return [NSColor colorWithCalibratedHue:0.439 saturation:0.361 brightness:0.651 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisCameraTilt) {
+        return [NSColor colorWithCalibratedHue:0.125 saturation:0.888 brightness:0.949 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisJibLift) {
+        return [NSColor colorWithCalibratedHue:0.125 saturation:0.368 brightness:0.949 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisJibSwing) {
+        return [NSColor colorWithCalibratedHue:0.061 saturation:0.640 brightness:0.949 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisDollyPosition) {
+        return [NSColor colorWithCalibratedHue:1.000 saturation:0.838 brightness:0.749 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisFocus) {
+        return [NSColor colorWithCalibratedHue:0.553 saturation:0.265 brightness:0.325 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisIris) {
+        return [NSColor colorWithCalibratedHue:0.507 saturation:0.398 brightness:0.729 alpha:1.000];
+    }
+    else if (self.axis == MocoAxisZoom) {
+        return [NSColor colorWithCalibratedHue:0.114 saturation:0.082 brightness:0.906 alpha:1.000];
+    }
+    return [NSColor whiteColor];
+}
+
+
 #pragma mark ======== Archiving and unarchiving methods =========
 
 - (void)encodeWithCoder:(NSCoder *)coder 

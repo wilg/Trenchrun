@@ -144,6 +144,40 @@
     return NO;
 }
 
+- (NSString *)frameProgress {
+    
+    NSNumberFormatter *numberFormat = [[NSNumberFormatter alloc] init];
+    numberFormat.usesGroupingSeparator = YES;
+    numberFormat.groupingSeparator = @",";
+    numberFormat.groupingSize = 3;   
+
+    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:playheadPosition]];
+    NSString *length = [numberFormat stringFromNumber:[NSNumber numberWithInt:timelineLength]];
+
+    return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
+}
+
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    if ([key isEqualToString:@"playheadTime"])
+    {
+        NSSet *affectingKeys = [NSSet setWithObjects:@"playheadPosition",nil];
+        keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    }
+    
+    if ([key isEqualToString:@"frameProgress"])
+    {
+        NSSet *affectingKeys = [NSSet setWithObjects:@"playheadPosition", @"timelineLength", nil];
+        keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    }
+
+    return keyPaths;
+}
+
+
 
 //
 //#pragma mark -

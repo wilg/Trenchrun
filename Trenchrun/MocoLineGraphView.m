@@ -173,13 +173,12 @@
     [NSGraphicsContext saveGraphicsState];
 //    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
 
-    [[NSColor whiteColor] set];
+    [[NSColor colorWithDeviceWhite:1.0 alpha:0.9] set];
 
     
     for (NSBezierPath *path in _paths) {
         if ([self needsToDrawRect:[path bounds]]) {
             [path setLineWidth:2.0];
-            [[NSColor whiteColor] set];
             [path stroke];
         }
     }

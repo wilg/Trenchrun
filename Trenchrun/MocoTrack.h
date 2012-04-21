@@ -25,5 +25,6 @@
 
 -(void)addFrame:(MocoFrame *)frame;
 -(void)appendFrameWithPosition:(NSNumber *)position;
+- (NSColor *)color;
 
 @end

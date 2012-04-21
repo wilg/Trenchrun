@@ -29,6 +29,10 @@
     return self;
 }
 
+- (BOOL)mouseDownCanMoveWindow {
+    return NO;
+}
+
 - (void)drawRect:(NSRect)dirtyRec {
     
     // Fill view with a top-down gradient

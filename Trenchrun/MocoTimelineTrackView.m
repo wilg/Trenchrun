@@ -10,6 +10,7 @@
 #import "MocoTimelineTrackView.h"
 #import "MocoLineGraphView.h"
 #import "MocoTimelineView.h"
+#import "NSColor+M3Extensions.h"
 
 @interface MocoTimelineTrackView ( /* class extension */ ) {
 @private
@@ -59,18 +60,25 @@
 //    [theShadow set];
     
     NSBezierPath* thePath = [NSBezierPath bezierPath];
-    [thePath appendBezierPathWithRoundedRect:self.bounds xRadius:0 yRadius:0];
     
+    [thePath appendBezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5) xRadius:4 yRadius:4];
     
+    NSColor *trackColor = [self.controller.track color];
+    
+    //[NSColor colorWithCalibratedHue:0.622 saturation:0.785 brightness:0.940 alpha:1.000]
+    //[NSColor colorWithCalibratedHue:0.622 saturation:0.785 brightness:0.740 alpha:1.000]
     
     NSGradient* aGradient = [[NSGradient alloc]
-                              initWithColorsAndLocations:[NSColor colorWithCalibratedHue:0.622 saturation:0.785 brightness:0.940 alpha:1.000], (CGFloat)0.0,
-                              [NSColor colorWithCalibratedHue:0.622 saturation:0.785 brightness:0.740 alpha:1.000], (CGFloat)0.75,
+                              initWithColorsAndLocations:trackColor, (CGFloat)0.0,
+                              [trackColor darkerColourBy:0.14], (CGFloat)0.75,
                               nil];
     
     [aGradient drawInBezierPath:thePath angle:-90.0];
 
-    [[NSColor colorWithCalibratedHue:0.601 saturation:0.739 brightness:0.090 alpha:1.000] setStroke];
+    
+
+    [thePath setLineWidth:1.5];
+    [[trackColor darkerColourBy:0.1] setStroke];
     [thePath stroke];
 
     

@@ -25,6 +25,8 @@
 @property (assign) float scaleFactor;    // 0.0-1.0
 @property (assign) int timelineLength;    // in frames
 
+@property (readonly) NSString *frameProgress;
+
 - (IBAction)refreshGraph:(id)sender;
 
 - (void)movePlayheadToFrame:(int)frameNumber;

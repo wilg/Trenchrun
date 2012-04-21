@@ -82,8 +82,11 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 
 - (void)savePosition:(NSNumber *)position forAxis:(MocoAxis)axis {
-    [[self trackWithAxis:axis] appendFrameWithPosition:position];
-    [self updateChangeCount:NSChangeDone];
+    MocoTrack *track = [self trackWithAxis:axis];
+    if (track.recordEnabled) {
+        [track appendFrameWithPosition:position];
+        [self updateChangeCount:NSChangeDone];
+    }
 }
 
 - (void)axisDataUpdated:(NSNotification *)notification {
@@ -172,9 +175,8 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 -(IBAction)addBogusFrame:(id)sender {
     for (MocoTrack *track in trackList) {
-        [track appendFrameWithPosition:[NSNumber numberWithFloat:(float)random()/RAND_MAX]];
+        [self savePosition:[NSNumber numberWithFloat:(float)random()/RAND_MAX] forAxis:track.axis];
     }
-    [self tracksDidChange];
 }
 
 -(IBAction)add1000BogusFrames:(id)sender {
@@ -242,6 +244,8 @@ static NSString * kTrackEditContext = @"Track Edit";
         [timelineViewController.view removeFromSuperview];
     }
 }
+
+
 
 
 @end
