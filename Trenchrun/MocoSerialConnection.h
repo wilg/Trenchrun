@@ -17,6 +17,9 @@
 @protocol MocoSerialConnectionDelegate <NSObject>
 @required;
 - (void)serialMessageReceived:(NSData *)data;
+@optional;
+- (void)openSerialConnectionSuccessful;
+- (void)openSerialConnectionFailedWithMessage:(NSString *)string;
 @end
 
 @interface MocoSerialConnection : NSObject {

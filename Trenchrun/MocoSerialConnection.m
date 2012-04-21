@@ -45,9 +45,10 @@
 	NSString *error = [self openSerialPort:port baud:baud];
         
 	if (error!=nil) {
-        NSLog(@"MocoSerialConnection: %@", error);
+        [self.delegate openSerialConnectionFailedWithMessage:error];
 	} else {
 		[self performSelectorInBackground:@selector(serialPortUpdateThread:) withObject:[NSThread currentThread]];
+        [self.delegate openSerialConnectionSuccessful];
 	}
 
 }
