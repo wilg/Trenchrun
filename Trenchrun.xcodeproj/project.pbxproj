@@ -9,15 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B0483E7153D3690004531CC /* AMSerialPort_Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0483E5153D3684004531CC /* AMSerialPort_Deprecated.m */; };
 		3B166850153B833700DD7498 /* MocoDriverStatusValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16684F153B829F00DD7498 /* MocoDriverStatusValueTransformer.m */; };
-		3B166854153B868600DD7498 /* PlayInactive.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166851153B868600DD7498 /* PlayInactive.tif */; };
-		3B166855153B868600DD7498 /* PlayN.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166852153B868600DD7498 /* PlayN.tif */; };
-		3B166856153B868600DD7498 /* PlayP.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166853153B868600DD7498 /* PlayP.tif */; };
-		3B16685A153B868D00DD7498 /* RewindInactive.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166857153B868D00DD7498 /* RewindInactive.tif */; };
-		3B16685B153B868D00DD7498 /* RewindN.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166858153B868D00DD7498 /* RewindN.tif */; };
-		3B16685C153B868D00DD7498 /* RewindP.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B166859153B868D00DD7498 /* RewindP.tif */; };
-		3B166860153B869400DD7498 /* FastForwardInactive.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B16685D153B869400DD7498 /* FastForwardInactive.tif */; };
-		3B166861153B869400DD7498 /* FastForwardN.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B16685E153B869400DD7498 /* FastForwardN.tif */; };
-		3B166862153B869400DD7498 /* FastForwardP.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3B16685F153B869400DD7498 /* FastForwardP.tif */; };
 		3B166873153B8B0F00DD7498 /* MocoTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B166872153B8B0F00DD7498 /* MocoTimelineView.m */; };
 		3B166876153B8B7A00DD7498 /* MocoTimelineTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */; };
 		3B16C566153AA4F000F40A56 /* MocoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C558153A9AC400F40A56 /* MocoFrame.m */; };
@@ -83,15 +74,6 @@
 		3B0483E5153D3684004531CC /* AMSerialPort_Deprecated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMSerialPort_Deprecated.m; sourceTree = "<group>"; };
 		3B16684E153B829F00DD7498 /* MocoDriverStatusValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MocoDriverStatusValueTransformer.h; sourceTree = "<group>"; };
 		3B16684F153B829F00DD7498 /* MocoDriverStatusValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MocoDriverStatusValueTransformer.m; sourceTree = "<group>"; };
-		3B166851153B868600DD7498 /* PlayInactive.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PlayInactive.tif; sourceTree = "<group>"; };
-		3B166852153B868600DD7498 /* PlayN.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PlayN.tif; sourceTree = "<group>"; };
-		3B166853153B868600DD7498 /* PlayP.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PlayP.tif; sourceTree = "<group>"; };
-		3B166857153B868D00DD7498 /* RewindInactive.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RewindInactive.tif; sourceTree = "<group>"; };
-		3B166858153B868D00DD7498 /* RewindN.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RewindN.tif; sourceTree = "<group>"; };
-		3B166859153B868D00DD7498 /* RewindP.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = RewindP.tif; sourceTree = "<group>"; };
-		3B16685D153B869400DD7498 /* FastForwardInactive.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FastForwardInactive.tif; sourceTree = "<group>"; };
-		3B16685E153B869400DD7498 /* FastForwardN.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FastForwardN.tif; sourceTree = "<group>"; };
-		3B16685F153B869400DD7498 /* FastForwardP.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FastForwardP.tif; sourceTree = "<group>"; };
 		3B166871153B8B0F00DD7498 /* MocoTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineView.h; sourceTree = "<group>"; };
 		3B166872153B8B0F00DD7498 /* MocoTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineView.m; sourceTree = "<group>"; };
 		3B166874153B8B7A00DD7498 /* MocoTimelineTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineTrackView.h; sourceTree = "<group>"; };
@@ -233,15 +215,6 @@
 				3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */,
 				3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */,
 				3BCBD248153BA0CD00D8E088 /* playhead.png */,
-				3B16685D153B869400DD7498 /* FastForwardInactive.tif */,
-				3B16685E153B869400DD7498 /* FastForwardN.tif */,
-				3B16685F153B869400DD7498 /* FastForwardP.tif */,
-				3B166851153B868600DD7498 /* PlayInactive.tif */,
-				3B166852153B868600DD7498 /* PlayN.tif */,
-				3B166853153B868600DD7498 /* PlayP.tif */,
-				3B166857153B868D00DD7498 /* RewindInactive.tif */,
-				3B166858153B868D00DD7498 /* RewindN.tif */,
-				3B166859153B868D00DD7498 /* RewindP.tif */,
 				3B16C573153ABCCF00F40A56 /* shitty-x-wing.icns */,
 				3B16C571153ABC2700F40A56 /* porkins.icns */,
 			);
@@ -447,15 +420,6 @@
 				3B34D49815393F8900BB8F3D /* MainMenu.xib in Resources */,
 				3B16C572153ABC2700F40A56 /* porkins.icns in Resources */,
 				3B16C574153ABCCF00F40A56 /* shitty-x-wing.icns in Resources */,
-				3B166854153B868600DD7498 /* PlayInactive.tif in Resources */,
-				3B166855153B868600DD7498 /* PlayN.tif in Resources */,
-				3B166856153B868600DD7498 /* PlayP.tif in Resources */,
-				3B16685A153B868D00DD7498 /* RewindInactive.tif in Resources */,
-				3B16685B153B868D00DD7498 /* RewindN.tif in Resources */,
-				3B16685C153B868D00DD7498 /* RewindP.tif in Resources */,
-				3B166860153B869400DD7498 /* FastForwardInactive.tif in Resources */,
-				3B166861153B869400DD7498 /* FastForwardN.tif in Resources */,
-				3B166862153B869400DD7498 /* FastForwardP.tif in Resources */,
 				3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */,
 				3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */,
 				3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */,

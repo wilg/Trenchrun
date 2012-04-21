@@ -65,11 +65,6 @@ static NSString * kTrackEditContext = @"Track Edit";
     [timelineViewController.view setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
     [timelineViewController.view setFrame:[timelineContainer bounds]];
     [timelineContainer addSubview:timelineViewController.view];
-    
-    [documentWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMaxYEdge];
-    [documentWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMinYEdge];
-    [documentWindow setContentBorderThickness:0 forEdge:NSMaxYEdge];
-    [documentWindow setContentBorderThickness:70 forEdge:NSMinYEdge];
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
@@ -181,6 +176,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 -(IBAction)add1000BogusFrames:(id)sender {
     int i = 0;
+    
     while (i < 1000) {
         [self addBogusFrame:nil];
         i++;
