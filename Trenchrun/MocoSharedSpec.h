@@ -11,7 +11,12 @@ enum {
     
     // Axis Data
     kMocoStartSendingAxisDataInstruction = 1,
-    kMocoStopSendingAxisDataInstruction = 0
+    kMocoStopSendingAxisDataInstruction = 0,
+	
+    // Playback
+    kMocoStartPlaybackRequest = 2,
+    kMocoStopPlaybackRequest = 3,
+    kMocoNextFrameAxisPositionsRequest = 4
 
 };
 
