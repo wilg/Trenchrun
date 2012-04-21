@@ -196,7 +196,7 @@
 }
 
 - (float)pixelsPerFrame {
-    return PIXELS_PER_FRAME_AT_100_PERCENT * self.controller.scaleFactor;
+    return round(PIXELS_PER_FRAME_AT_100_PERCENT * self.controller.scaleFactor);
 }
 
 - (void)movePlayheadToPoint:(NSPoint)viewPoint {
