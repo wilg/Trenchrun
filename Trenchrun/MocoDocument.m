@@ -10,7 +10,6 @@
 
 #import "TrackArrayController.h"
 #import "MocoTimelineView.h"
-#import <CorePlot/CorePlot.h>
 #import "MocoDocument.h"
 #import "MocoFrame.h"
 #import "MocoTrack.h"
