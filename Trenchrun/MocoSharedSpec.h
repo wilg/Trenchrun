@@ -16,7 +16,10 @@ enum {
     // Playback
     kMocoStartPlaybackRequest = 2,
     kMocoStopPlaybackRequest = 3,
-    kMocoNextFrameAxisPositionsRequest = 4
+    kMocoNextFrameAxisPositionsRequest = 4,
+    
+    // Disconnection
+    kMocoHostWillDisconnectNotification = 5
 
 };
 

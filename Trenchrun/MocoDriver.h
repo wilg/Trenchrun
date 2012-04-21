@@ -15,6 +15,7 @@ typedef enum {
     MocoStatusDisconnected,       // The rig is disconnected.
     MocoStatusSearchingForDevice, // The driver is still waiting for a positive response from each
                                   // plausible port option.
+    MocoStatusAwaitingControl,    // The rig is connected but hasn't yet responded with control.
     MocoStatusIdle,               // The rig is connected but stationary.
     MocoStatusSeeking,            // The rig has been given a target position but is still moving towards it.
     MocoStatusPlayback            // The driver is playing back data to the rig.

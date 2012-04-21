@@ -69,17 +69,9 @@
         
         NSLog(@"intializing hardcoded port");
         
+        self.status = MocoStatusDisconnected;
         [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:kMocoBaudRate];
-        self.status = MocoStatusIdle;
         
-        
-        [NSTimer scheduledTimerWithTimeInterval:1.5f
-                                         target:self 
-                                       selector:@selector(beginStreaming) 
-                                       userInfo:nil 
-                                        repeats:NO];
-        
-
         
         
 	}
@@ -91,6 +83,21 @@
     [_serialConnection writeIntAsByte:kMocoStartSendingAxisDataInstruction];
 }
 
+- (void)openSerialConnectionSuccessful {
+    self.status = MocoStatusAwaitingControl;
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.5f
+                                     target:self 
+                                   selector:@selector(beginStreaming) 
+                                   userInfo:nil 
+                                    repeats:NO];
+
+}
+
+- (void)openSerialConnectionFailedWithMessage:(NSString *)string {
+    self.status = MocoStatusDisconnected;
+    NSLog(@"MocoDriver - Couldn't open connection - %@", string);
+}
 
 - (void)serialMessageReceived:(NSData *)data {
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
@@ -239,6 +246,8 @@
         return @"No Devices Found";
     } else if (code == MocoStatusSearchingForDevice) {
         return @"Searching for Devices...";
+    } else if (code == MocoStatusAwaitingControl) {
+        return @"Assuming control...";
     } else if (code == MocoStatusIdle) {
         return @"Idle";
     } else if (code == MocoStatusSeeking) {
