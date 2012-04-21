@@ -170,8 +170,9 @@
 - (void)mouseDragged:(NSEvent *)event {
     NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
     [self movePlayheadToPoint:center];
-    [self autoscroll:event];
     [self becomeFirstResponder];
+    
+    [self autoscroll:event];
 }
 
 -(void)playheadMoved {
@@ -182,6 +183,10 @@
     playheadImageView.layer.frame = [self playheadRect];
 
     [CATransaction commit];
+}
+
+-(void)scrollToPlayhead {
+    [self scrollPoint:NSMakePoint([self playheadRect].origin.x - 100, 0)];
 }
 
 

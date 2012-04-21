@@ -159,14 +159,18 @@
     [timelineView playheadMoved];
 }
 
+- (void)followPlayheadToFrame:(int)frameNumber {
+    [self movePlayheadToFrame:frameNumber];
+    [timelineView scrollToPlayhead];
+}
+
 -(BOOL)playOneFrame {
     int currentPos = self.playheadPosition;
     if (currentPos + 1 > timelineLength) {
         return NO;
     }
     else {
-        self.playheadPosition = currentPos + 1;
-        [timelineView playheadMoved];
+        [self followPlayheadToFrame:currentPos + 1];
         return YES;
     }
     return NO;
