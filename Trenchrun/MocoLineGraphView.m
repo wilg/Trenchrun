@@ -27,7 +27,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.canDrawConcurrently = YES;
+        self.canDrawConcurrently = YES;
         
         // Initialization code here.
         _paths = [NSMutableArray array];

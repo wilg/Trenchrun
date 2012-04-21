@@ -131,7 +131,6 @@
 							<string key="NSFrame">{{562, 24}, {133, 25}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSegmentedCell" key="NSCell" id="500876187">
@@ -201,7 +200,6 @@
 									<reference key="NSSuperview" ref="274028959"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="205868384"/>
-									<bool key="NSViewCanDrawConcurrently">YES</bool>
 									<string key="NSReuseIdentifierKey">_NS:1505</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="294094111">
@@ -225,7 +223,6 @@
 									<reference key="NSSuperview" ref="274028959"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="756195265"/>
-									<bool key="NSViewCanDrawConcurrently">YES</bool>
 									<string key="NSReuseIdentifierKey">_NS:1505</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="725250532">
