@@ -61,6 +61,12 @@ static NSString * kTrackEditContext = @"Track Edit";
 	return self;
 }
 
+- (void)windowControllerDidLoadNib:(NSWindowController *)windowController {
+    [timelineViewController refreshGraph:nil];
+    [super windowControllerDidLoadNib:windowController];
+    
+}
+
 - (void)awakeFromNib {
     [timelineViewController.view setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
     [timelineViewController.view setFrame:[timelineContainer bounds]];

@@ -61,7 +61,7 @@
     
     NSBezierPath* thePath = [NSBezierPath bezierPath];
     
-    [thePath appendBezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5) xRadius:4 yRadius:4];
+    [thePath appendBezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5) xRadius:0 yRadius:0];
     
     NSColor *trackColor = [self.controller.track color];
     
@@ -69,7 +69,7 @@
     //[NSColor colorWithCalibratedHue:0.622 saturation:0.785 brightness:0.740 alpha:1.000]
     
     NSGradient* aGradient = [[NSGradient alloc]
-                              initWithColorsAndLocations:trackColor, (CGFloat)0.0,
+                              initWithColorsAndLocations:[trackColor lighterColourBy:0.03], (CGFloat)0.0,
                               [trackColor darkerColourBy:0.14], (CGFloat)0.75,
                               nil];
     
@@ -77,9 +77,14 @@
 
     
 
-    [thePath setLineWidth:1.5];
-    [[trackColor darkerColourBy:0.1] setStroke];
+    [thePath setLineWidth:1];
+    
+    [[trackColor darkerColourBy:0.7] setStroke];
     [thePath stroke];
+
+    [[trackColor lighterColourBy:0.15] setStroke];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(1, self.bounds.size.height - 1.5)
+                              toPoint:NSMakePoint(self.bounds.size.width-1, self.bounds.size.height - 1.5)];
 
     
     // Draw your custom content here. Anything you draw
@@ -94,12 +99,12 @@
 }
 
 -(void)reloadData {
-    [(MocoTimelineView *)self.superview reloadData];
+    [(MocoTimelineView *)self.superview relayout];
     [lineGraphView reloadData];
 }
 
 -(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet {
-    [(MocoTimelineView *)self.superview reloadData];
+    [(MocoTimelineView *)self.superview relayout];
     [lineGraphView reloadDataForChangedFrames:changedFramesSet];
 }
 

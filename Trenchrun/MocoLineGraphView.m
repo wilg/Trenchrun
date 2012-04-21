@@ -27,6 +27,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+//        self.canDrawConcurrently = YES;
         
         // Initialization code here.
         _paths = [NSMutableArray array];
@@ -38,8 +39,8 @@
 
 -(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet {
     
-    [self reloadData];
-    return;
+//    [self reloadData];
+//    return;
     
     // Loop through the changed frames.
     NSUInteger currentIndex = [changedFramesSet firstIndex];
@@ -68,6 +69,7 @@
 
 -(void)reloadData {
     
+//    NSLog(@"line graph frame %@", NSStringFromRect(self.frame));
 
     NSMutableArray *tempPaths = [NSMutableArray array];
     

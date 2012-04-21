@@ -195,6 +195,16 @@
 
 - (void)reloadData {
         
+    [self updateBounds];
+
+    for (MocoTimelineTrackView *trackView in trackViews) {
+        [trackView reloadData];
+    }
+    
+}
+
+- (void)relayout {
+    
     for (MocoTimelineTrackView *trackView in trackViews) {
         [self positionTrackView:trackView];
     }
@@ -202,12 +212,14 @@
     [self updateBounds];
 }
 
+
 - (void)addTrackView:(MocoTimelineTrackView *)trackView {
     
     [self.trackViews addObject:trackView];
     [self addSubview:trackView positioned:NSWindowBelow relativeTo:nil];
     
     [self positionTrackView:trackView];
+        
 }
 
 - (void)positionTrackView:(MocoTimelineTrackView *)trackView {

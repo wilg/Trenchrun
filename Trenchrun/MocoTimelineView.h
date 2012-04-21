@@ -19,6 +19,8 @@
 @property (assign) TimelineViewController *controller;
 
 - (void)reloadData;
+- (void)relayout;
+
 - (void)addTrackView:(MocoTimelineTrackView *)trackView;
 - (void)removeAllTrackViews;
 -(void)playheadMoved;

@@ -9,6 +9,7 @@
 #import "MocoTimelineTrackView.h"
 #import "MocoTimelineTrackViewController.h"
 #import "MocoLineGraphView.h"
+#import "MocoTimelineViewConstants.h"
 
 @interface MocoTimelineTrackViewController () {
     BOOL kvoRegistered;
@@ -41,12 +42,11 @@
 - (void)loadView {
     [super loadView];
         
-    MocoTimelineTrackView *tv = [[MocoTimelineTrackView alloc] initWithFrame:NSMakeRect(0, 0, 500, 500)];
+    MocoTimelineTrackView *tv = [[MocoTimelineTrackView alloc] initWithFrame:NSMakeRect(0, 0, 100, TRACK_HEIGHT)];
     tv.controller = self;
     self.view = tv;
     
     tv.lineGraphView.controller = self;
-    [tv reloadData];
 
     [track addObserver:self
             forKeyPath:@"frames"

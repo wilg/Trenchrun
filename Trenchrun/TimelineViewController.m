@@ -59,6 +59,11 @@
                       context:@"MocoTimelineTrackViewControllerObserveTrackList"];
     }
 
+    [self addObserver:self
+            forKeyPath:@"scaleFactor"
+               options:0
+               context:@"MocoTimelineTrackViewControllerObserveTrackList"];
+
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -66,13 +71,20 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    [self calculateTimelineLength];
+    if ([keyPath isEqualToString:@"scaleFactor"]) {
+        [timelineView reloadData];
+
+    }
+    else {
+        [self calculateTimelineLength];
+    }
 }
 
 
 - (IBAction)refreshGraph:(id)sender {
     
-    [self resetTrackViews];
+//    [self resetTrackViews];
+    [timelineView reloadData];
 
 }
 
