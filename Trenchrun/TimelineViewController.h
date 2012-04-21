@@ -26,6 +26,7 @@
 @property (assign) int timelineLength;    // in frames
 
 @property (readonly) NSString *frameProgress;
+@property (readonly) NSString *playheadTime;
 
 - (IBAction)refreshGraph:(id)sender;
 

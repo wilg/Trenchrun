@@ -157,6 +157,14 @@
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
 }
 
+- (NSString *)playheadTime {
+    NSTimeInterval theTimeInterval = (NSTimeInterval)playheadPosition / 50.0;
+    NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:theTimeInterval];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"mm:ss.SSS"];
+    return [NSString stringWithFormat:@"%@s", [formatter stringFromDate: date1]];
+}
+
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
 {
@@ -176,27 +184,5 @@
 
     return keyPaths;
 }
-
-
-
-//
-//#pragma mark -
-//#pragma mark Track View Data Source
-//
-//- (int)numberOfTracks {
-//    if (document && document.trackList){
-//
-//    }
-//    else {
-//        return 0;
-//    }
-//    return document.trackList.count;
-//}
-//
-//- (MocoTrack *)trackAtIndex:(int)index {
-//    return [document.trackList objectAtIndex:index];
-//}
-
-
 
 @end
