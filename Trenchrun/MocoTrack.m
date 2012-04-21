@@ -12,10 +12,15 @@
 @implementation MocoTrack
 @synthesize frames = _frames;
 @synthesize axis = _axis;
+@synthesize soloed, muted, recordEnabled;
 
 - init {
 	if (self = [super init]) {
         _frames = [NSMutableArray array];
+        
+        recordEnabled = YES;
+        muted = NO;
+        soloed = NO;
 	}
 	return self;	
 }
@@ -91,6 +96,9 @@
 {
     [coder encodeObject:self.frames forKey:@"frames"];
     [coder encodeObject:[NSNumber numberWithInt:self.axis] forKey:@"axis"];
+    [coder encodeObject:[NSNumber numberWithInt:self.recordEnabled] forKey:@"recordEnabled"];
+    [coder encodeObject:[NSNumber numberWithInt:self.muted] forKey:@"muted"];
+    [coder encodeObject:[NSNumber numberWithInt:self.soloed] forKey:@"soloed"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder 
@@ -99,6 +107,9 @@
 	{
         self.frames = [coder decodeObjectForKey:@"frames"];
         self.axis   = [[coder decodeObjectForKey:@"axis"] intValue];
+        self.recordEnabled   = [[coder decodeObjectForKey:@"recordEnabled"] boolValue];
+        self.muted   = [[coder decodeObjectForKey:@"muted"] boolValue];
+        self.soloed   = [[coder decodeObjectForKey:@"soloed"] boolValue];
     }
     return self;
 }

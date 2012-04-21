@@ -17,6 +17,10 @@
 @property (assign)  MocoAxis axis;
 @property (readonly)  NSString *title;
 
+@property (assign) BOOL recordEnabled;
+@property (assign) BOOL muted;
+@property (assign) BOOL soloed;
+
 +(NSArray *)flattenedTracks:(NSArray *)tracks;
 
 -(void)addFrame:(MocoFrame *)frame;
