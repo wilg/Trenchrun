@@ -40,14 +40,13 @@
 
 - (void)loadView {
     [super loadView];
-    
+        
     MocoTimelineTrackView *tv = [[MocoTimelineTrackView alloc] initWithFrame:NSMakeRect(0, 0, 500, 500)];
     tv.controller = self;
     self.view = tv;
     
     tv.lineGraphView.controller = self;
     
-    NSLog(@"regster");
     [track addObserver:self
             forKeyPath:@"frames"
                options:0
@@ -56,7 +55,6 @@
 }
          
 - (void)dealloc {
-    NSLog(@"unregister");
     [track removeObserver:self forKeyPath:@"frames"];
 }
 
@@ -66,7 +64,6 @@
                        context:(void *)context
 {
     
-    NSLog(@"change observed");
     [[self trackView] reloadData];
     
 //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

@@ -13,7 +13,7 @@
 @class MocoLineGraphView;
 
 @interface MocoTimelineTrackView : NSView 
-@property (assign) MocoTimelineTrackViewController *controller;
+@property (retain) MocoTimelineTrackViewController *controller;
 @property (readonly) MocoLineGraphView *lineGraphView;
 
 -(void)reloadData;
