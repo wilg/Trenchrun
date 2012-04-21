@@ -142,9 +142,12 @@
 # pragma mark Drawing Tracks
 
 - (void)reloadData {
+        
     for (MocoTimelineTrackView *trackView in trackViews) {
         [self positionTrackView:trackView];
     }
+    
+    [self updateBounds];
 }
 
 - (void)addTrackView:(MocoTimelineTrackView *)trackView {

@@ -46,10 +46,11 @@
     self.view = tv;
     
     tv.lineGraphView.controller = self;
-    
+    [tv.lineGraphView reloadData];
+
     [track addObserver:self
             forKeyPath:@"frames"
-               options:0
+               options: (NSKeyValueObservingOptionNew)
                context:@"MocoTimelineTrackViewControllerObserveFrames"];
         
 }
@@ -64,7 +65,18 @@
                        context:(void *)context
 {
     
-    [[self trackView] reloadData];
+    NSKeyValueChange changeKind = [[change objectForKey:NSKeyValueChangeKindKey] intValue];
+    
+    if (changeKind == NSKeyValueChangeInsertion) {        
+        NSIndexSet *changedIndexes = [change objectForKey:NSKeyValueChangeIndexesKey];
+        [[self trackView] reloadDataForChangedFrames:changedIndexes];
+    }
+    else {
+        [[self trackView] reloadData];
+
+    }
+    
+    
     
 //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }

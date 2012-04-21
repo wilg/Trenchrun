@@ -13,5 +13,6 @@
 @property (retain) MocoTimelineTrackViewController *controller;
 
 -(void)reloadData;
+-(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet;
 
 @end

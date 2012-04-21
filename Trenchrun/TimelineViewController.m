@@ -52,11 +52,13 @@
         NSLog(@"no document attached to timeline view controller");
     }
 
-    [document addObserver:self
-            forKeyPath:@"trackList"
-               options:0
-               context:@"MocoTimelineTrackViewControllerObserveTrackList"];
-    
+    for (MocoTrack *track in document.trackList) {
+        [track addObserver:self
+                   forKeyPath:@"frames"
+                      options:0
+                      context:@"MocoTimelineTrackViewControllerObserveTrackList"];
+    }
+
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -89,7 +91,7 @@
         if (trackLength > newLength)
             newLength = trackLength;
     }
-    timelineLength = newLength;
+    self.timelineLength = newLength;
 }
 
 - (void)resetTrackViews {

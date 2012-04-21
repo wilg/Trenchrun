@@ -27,8 +27,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-//        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:self.bounds];
-//        [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
+        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:self.bounds];
+        [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
 
 //        self.canDrawConcurrently = YES;
 
@@ -88,6 +88,11 @@
 -(void)reloadData {
     [(MocoTimelineView *)self.superview reloadData];
     [lineGraphView reloadData];
+}
+
+-(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet {
+    [(MocoTimelineView *)self.superview reloadData];
+    [lineGraphView reloadDataForChangedFrames:changedFramesSet];
 }
 
 @end

@@ -17,5 +17,6 @@
 @property (readonly) MocoLineGraphView *lineGraphView;
 
 -(void)reloadData;
+-(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet;
 
 @end
