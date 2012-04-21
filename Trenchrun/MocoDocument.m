@@ -18,6 +18,11 @@
 
 static NSString * kTrackEditContext = @"Track Edit";
 
+@interface MocoDocument ( /* class extension */ ) {
+    NSTimer *_playbackTimer;
+}
+@end
+
 @implementation MocoDocument
 
 @synthesize trackList, flattenedFrameArray;
@@ -60,6 +65,11 @@ static NSString * kTrackEditContext = @"Track Edit";
     [timelineViewController.view setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
     [timelineViewController.view setFrame:[timelineContainer bounds]];
     [timelineContainer addSubview:timelineViewController.view];
+    
+    [documentWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMaxYEdge];
+    [documentWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMinYEdge];
+    [documentWindow setContentBorderThickness:0 forEdge:NSMaxYEdge];
+    [documentWindow setContentBorderThickness:70 forEdge:NSMinYEdge];
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
@@ -192,6 +202,30 @@ static NSString * kTrackEditContext = @"Track Edit";
     else {
         recording = NO;
     }
+}
+
+-(IBAction)play:(id)sender {
+    NSButton *button = (NSButton *)sender;
+    if (button.state == 1){
+        // play
+        _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/50.0 target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+    }
+    else {
+        // pause
+        [self stopPlayback:nil];
+    }
+}
+
+-(void)advanceFrame {
+    if (![timelineViewController playOneFrame]) {
+        [self stopPlayback:nil];
+    }
+}
+
+-(IBAction)stopPlayback:(id)sender {
+    [_playbackTimer invalidate];
+    _playbackTimer = nil;
+    playButton.state = 0;
 }
 
 -(IBAction)updateFakeTabs:(id)sender {

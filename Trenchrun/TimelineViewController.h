@@ -27,5 +27,8 @@
 
 - (IBAction)refreshGraph:(id)sender;
 
+- (void)movePlayheadToFrame:(int)frameNumber;
+
+-(BOOL)playOneFrame;
 
 @end

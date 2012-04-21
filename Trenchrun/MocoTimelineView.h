@@ -21,5 +21,6 @@
 - (void)reloadData;
 - (void)addTrackView:(MocoTimelineTrackView *)trackView;
 - (void)removeAllTrackViews;
+-(void)playheadMoved;
 
 @end

@@ -38,7 +38,8 @@
 
 -(void)reloadDataForChangedFrames:(NSIndexSet *)changedFramesSet {
     
-    
+    [self reloadData];
+    return;
     
     // Loop through the changed frames.
     NSUInteger currentIndex = [changedFramesSet firstIndex];
@@ -66,8 +67,6 @@
 
 
 -(void)reloadData {
-    
-    NSLog(@"reloading all frames");
     
 
     NSMutableArray *tempPaths = [NSMutableArray array];
@@ -126,7 +125,7 @@
     NSBezierPath *path = [NSBezierPath bezierPath];
     path.flatness = 10.0;
     
-    NSRect usableBounds = NSInsetRect(self.bounds, PADDING, PADDING);
+    NSRect usableBounds = NSInsetRect(self.bounds, 0, PADDING);
     
     int frameCount = self.controller.track.frames.count;
     
@@ -142,8 +141,8 @@
     
     for (MocoFrame *frame in [self.controller.track.frames subarrayWithRange:range]) {
         
-        float xPercentage = frame.frameNumber.floatValue / (float)frameCount;
-        float yPercentage = frame.position.floatValue / maxPosition;
+        double xPercentage = frame.frameNumber.floatValue / (float)frameCount;
+        double yPercentage = frame.position.floatValue / maxPosition;
         
         float xPositionForFrame = usableBounds.size.width * xPercentage;
         float yPositionForFrame = usableBounds.size.height * yPercentage;

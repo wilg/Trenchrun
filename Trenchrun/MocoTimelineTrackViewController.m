@@ -46,7 +46,7 @@
     self.view = tv;
     
     tv.lineGraphView.controller = self;
-    [tv.lineGraphView reloadData];
+    [tv reloadData];
 
     [track addObserver:self
             forKeyPath:@"frames"

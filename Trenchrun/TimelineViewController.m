@@ -123,6 +123,28 @@
     
 }
 
+- (void)movePlayheadToFrame:(int)frameNumber {
+    if (frameNumber < 0)
+        frameNumber = 0;
+    if (frameNumber > self.timelineLength)
+        frameNumber = self.timelineLength;
+    self.playheadPosition = frameNumber;
+}
+
+-(BOOL)playOneFrame {
+    int currentPos = self.playheadPosition;
+    if (currentPos + 1 > timelineLength) {
+        return NO;
+    }
+    else {
+        self.playheadPosition = currentPos + 1;
+        [timelineView playheadMoved];
+        return YES;
+    }
+    return NO;
+}
+
+
 //
 //#pragma mark -
 //#pragma mark Track View Data Source

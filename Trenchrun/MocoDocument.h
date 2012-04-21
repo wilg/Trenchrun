@@ -24,7 +24,10 @@
     IBOutlet NSSegmentedControl *viewSwapControl;
 
     BOOL recording;
+
+    IBOutlet NSButton *playButton;
     
+    IBOutlet NSWindow *documentWindow;
 //
 //    IBOutlet CPTGraphHostingView *graphView;
 //	CPTXYGraph *graph;

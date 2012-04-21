@@ -41,12 +41,35 @@
     playheadImageView = [[NSImageView alloc] initWithFrame:[self playheadRect]];
     [playheadImageView setImage:[NSImage imageNamed:@"playhead.png"]];
     [playheadImageView setImageScaling:NSImageScaleAxesIndependently];
+    playheadImageView.wantsLayer = YES;
     
     [self addSubview:playheadImageView];
     
+    [self.controller addObserver:self
+                        forKeyPath:@"playheadPosition"
+                           options:0
+                           context:@"MocoTimelineObservePlayhead"];
+    
 }
 
+- (void)dealloc {
+    [self.controller removeObserver:self forKeyPath:@"playheadPosition"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+
+    NSLog(@"plauyhead oved");
+
+}
+
+
 - (void)removeAllTrackViews {
+    
+    NSLog(@"removeAllTrackViews");
     for (MocoTimelineTrackView *trackView in self.trackViews) {
         [trackView removeFromSuperview];
     }
@@ -95,6 +118,28 @@
     return YES;
 }
 
+- (void)keyDown:(NSEvent*)event {
+    switch( [event keyCode] ) {
+//        case 126:       // up arrow
+//            break;
+//        case 125:       // down arrow
+//            break;
+        case 124:       // right arrow
+            [self.controller movePlayheadToFrame:self.controller.playheadPosition + 1];
+            [self setNeedsDisplayInRect:[self playheadRect]];
+
+            break;
+        case 123:       // left arrow
+            [self.controller movePlayheadToFrame:self.controller.playheadPosition - 1];
+            [self setNeedsDisplayInRect:[self playheadRect]];
+
+            break;
+        default:
+            [[self nextResponder] keyDown:event];
+            break;
+    }
+}
+
 - (BOOL)acceptsFirstResponder {
     return YES;
 }
@@ -109,6 +154,9 @@
     [self movePlayheadToPoint:center];
 }
 
+-(void)playheadMoved {
+    [self setNeedsDisplayInRect:[self playheadRect]];
+}
 
 
 # pragma mark Drawing Playhead
@@ -127,16 +175,12 @@
 
 - (void)movePlayheadToPoint:(NSPoint)viewPoint {
     
-    
     int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / [self pixelsPerFrame];
     
-    if (playheadPositionInFrames < 0)
-        playheadPositionInFrames = 0;
-    
-    self.controller.playheadPosition = playheadPositionInFrames;
+    [self.controller movePlayheadToFrame:playheadPositionInFrames];
     
     clickPoint = viewPoint;
-    [self setNeedsDisplay:YES];
+    [self setNeedsDisplayInRect:[self playheadRect]];
 }
 
 # pragma mark Drawing Tracks
@@ -190,7 +234,7 @@
             
     return NSMakeRect(tracks.origin.x, 
                       tracks.size.height + PADDING,
-                      trackWidth - PADDING - PADDING_LEFT,
+                      trackWidth,
                       TRACK_HEIGHT
                       );
     
