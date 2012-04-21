@@ -12,7 +12,7 @@
 @class TimelineViewController;
 
 @interface MocoTimelineHeaderViewController : NSViewController {
-
+    IBOutlet NSTextField *titleField;
 }
 @property (assign) MocoTrack *track;
 

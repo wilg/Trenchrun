@@ -33,6 +33,8 @@
 - (void)loadView {
     [super loadView];
     
+    [[titleField cell] setBackgroundStyle:NSBackgroundStyleLowered];
+
 }
 
 - (void)awakeFromNib {
