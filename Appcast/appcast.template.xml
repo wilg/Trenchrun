@@ -7,9 +7,9 @@
       <language>en</language>      
          <item>
             <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
-            <!-- <sparkle:releaseNotesLink>
-                https://trenchrun.s3.amazonaws.com/releasenotes.html
-            </sparkle:releaseNotesLink> -->
+            <sparkle:releaseNotesLink>
+                https://trenchrun.s3.amazonaws.com/release_notes.html
+            </sparkle:releaseNotesLink>
 			<description>$DESCRIPTION</description>
             <pubDate>Wed, 09 Jan 2006 19:20:11 +0000</pubDate>
             <enclosure url="$URL" sparkle:version="$VERSION" type="application/octet-stream" />

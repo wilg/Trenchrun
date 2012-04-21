@@ -1,5 +1,5 @@
 built_app_path: /Users/wil/Library/Developer/Xcode/DerivedData/Trenchrun-hbtvcfjhvrztuocfeyuyqctiyrgp/Build/Products/Debug/Trenchrun.app
-appcast_url: https://trenchrun.s3.amazonaws.com/appcast.xml
+base_url: https://trenchrun.s3.amazonaws.com
 
 app_name: Trenchrun
 

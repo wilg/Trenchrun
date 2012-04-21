@@ -8,6 +8,8 @@ require 'yaml'
 require 'fileutils'
 require 'pathname'
 require 'tmpdir'
+require 'grit'
+require 'open-uri'
 
 CURRENT_DIR =  File.expand_path File.dirname(__FILE__)
 SETTINGS = YAML.load_file "#{CURRENT_DIR}/autoappcast_config.yml"
@@ -17,6 +19,7 @@ class AutoAppcast
   # Setup shit
 
   def release!
+        
     puts "Publishing #{SETTINGS["app_name"]} release #{version_number}."
     puts "Compressing app..."
     AutoAppcast.zip_folder(SETTINGS["built_app_path"], temporary_zipped_version_path)
@@ -27,6 +30,16 @@ class AutoAppcast
     File.open(temporary_appcast_path, 'w') {|f| f.write(appcast_data) }
     upload_public_file_to_s3(temporary_appcast_path, "appcast.xml")
     
+    puts "Writing release notes..."
+    File.open(temporary_release_notes_path, 'w') {|f| f.write(release_notes_data) }
+    upload_public_file_to_s3(temporary_release_notes_path, "release_notes.html")
+    
+    puts "Writing head id..."
+    File.open(temporary_head_path, 'w') {|f| f.write(current_head_id) }
+    upload_public_file_to_s3(temporary_head_path, "head_id.txt")
+    
+    puts "Released!"
+    
   end
   
   def appcast_data
@@ -35,6 +48,52 @@ class AutoAppcast
     contents.sub!("$DESCRIPTION", "Updated to version #{version_number}, #{Time.now.to_s}")
     contents.sub!("$VERSION", version_number)
     contents.sub!("$URL", s3_url(zipped_filename))
+    contents
+  end
+  
+  def release_notes_data
+    repo = Grit::Repo.new(Pathname.new(CURRENT_DIR).parent)
+    commits = repo.commits_between(last_commit, repo.commits.first.id)
+    
+    file = File.open("#{CURRENT_DIR}/release_notes.template.html", "rb")
+    contents = file.read
+    
+    contents.gsub!("$APPNAME", SETTINGS["app_name"])
+    contents.sub!("$VERSION", human_version)
+    contents.sub!("$DATE", Time.now.strftime("%b %d %y, %I:%M%p"))
+    
+    lis = ""
+    for commit in commits
+      lis << "<li>#{commit.message}</li>"
+    end
+    
+    if lis.length < 1
+      lis <<"<li><em>Unknown changes.</em></li>"
+    end
+    
+    contents.sub!("$RELEASELIS", lis)
+    
+    lis = ""
+    for commit in repo.commits('master', false)
+      lis << "<li>#{commit.message}</li>"
+    end
+    contents.sub!("$PREV_CHANGES", lis)
+    
+    contents
+  end
+  
+  def current_head_id
+    repo = Grit::Repo.new(Pathname.new(CURRENT_DIR).parent)
+    repo.commits.first.id
+  end
+  
+  def human_version
+    "build #{version_number}"
+  end
+  
+  def last_commit
+    file = open("#{SETTINGS["base_url"]}/head_id.txt")
+    contents = file.read
     contents
   end
   
@@ -61,6 +120,14 @@ class AutoAppcast
   
   def temporary_appcast_path
     "#{tempdir}/appcast.xml"
+  end
+  
+  def temporary_release_notes_path
+    "#{tempdir}/release_notes.html"
+  end
+  
+  def temporary_head_path
+    "#{tempdir}/head_id.txt"
   end
   
   def zipped_filename
