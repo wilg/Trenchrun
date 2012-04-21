@@ -42,6 +42,7 @@
 		3B70DAD815400220006230BC /* MocoTimelineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DAD715400220006230BC /* MocoTimelineHeaderView.m */; };
 		3B70DADC154005C3006230BC /* MocoTimelineHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */; };
 		3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */; };
+		3B721E2A1543444F008F6D76 /* screengloss.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B721E291543444F008F6D76 /* screengloss.png */; };
 		3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFAB4153B583E00D465E7 /* MocoDriver.m */; };
 		3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */; };
 		3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */; };
@@ -136,6 +137,7 @@
 		3B70DAD9154005C2006230BC /* MocoTimelineHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineHeaderViewController.h; sourceTree = "<group>"; };
 		3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineHeaderViewController.m; sourceTree = "<group>"; };
 		3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MocoTimelineHeaderViewController.xib; sourceTree = "<group>"; };
+		3B721E291543444F008F6D76 /* screengloss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screengloss.png; sourceTree = "<group>"; };
 		3B7FFAB3153B583E00D465E7 /* MocoDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriver.h; sourceTree = "<group>"; };
 		3B7FFAB4153B583E00D465E7 /* MocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriver.m; sourceTree = "<group>"; };
 		3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomIn.pdf; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3B721E291543444F008F6D76 /* screengloss.png */,
 				3B8FC7BC154291ED00BC2B9D /* screen.png */,
 				3B9D52B81541339D00421D14 /* divider.png */,
 				3B9D52B615412EB400421D14 /* track-header-bg.png */,
@@ -429,6 +432,7 @@
 				3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */,
 				3B9D52B91541339D00421D14 /* divider.png in Resources */,
 				3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */,
+				3B721E2A1543444F008F6D76 /* screengloss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
