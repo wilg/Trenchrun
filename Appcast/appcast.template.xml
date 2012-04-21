@@ -7,12 +7,12 @@
       <language>en</language>      
          <item>
             <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
-			<sparkle:releaseNotesLink>
-				https://trenchrun.s3.amazonaws.com/releasenotes.html
-			</sparkle:releaseNotesLink>
-			<description>Several updates occurred!</description>
+            <!-- <sparkle:releaseNotesLink>
+                https://trenchrun.s3.amazonaws.com/releasenotes.html
+            </sparkle:releaseNotesLink> -->
+			<description>$DESCRIPTION</description>
             <pubDate>Wed, 09 Jan 2006 19:20:11 +0000</pubDate>
-            <enclosure url="https://trenchrun.s3.amazonaws.com/trenchrun_build_1.zip" sparkle:version="2.0" type="application/octet-stream" />
+            <enclosure url="$URL" sparkle:version="$VERSION" type="application/octet-stream" />
          </item>
    </channel>
 </rss>

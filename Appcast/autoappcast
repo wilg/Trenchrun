@@ -1,6 +1,83 @@
 #!/usr/bin/env ruby
 
+# Dependencies
 require "rubygems"
-gem "aws-sdk"
+require "aws-sdk"
+require 'cfpropertylist'
+require 'yaml'
+require 'fileutils'
+require 'pathname'
+require 'tmpdir'
 
-puts "fuckface"
+CURRENT_DIR =  File.expand_path File.dirname(__FILE__)
+SETTINGS = YAML.load_file "#{CURRENT_DIR}/autoappcast_config.yml"
+
+class AutoAppcast
+
+  # Setup shit
+
+  def release!
+    puts "Publishing #{SETTINGS["app_name"]} release #{version_number}."
+    puts "Compressing app..."
+    AutoAppcast.zip_folder(SETTINGS["built_app_path"], temporary_zipped_version_path)
+    puts "Uploading application..."
+    upload_public_file_to_s3(temporary_zipped_version_path, zipped_filename)
+    
+    puts "Writing appcast..."
+    File.open(temporary_appcast_path, 'w') {|f| f.write(appcast_data) }
+    upload_public_file_to_s3(temporary_appcast_path, "appcast.xml")
+    
+  end
+  
+  def appcast_data
+    file = File.open("#{CURRENT_DIR}/appcast.template.xml", "rb")
+    contents = file.read
+    contents.sub!("$DESCRIPTION", "Updated to version #{version_number}, #{Time.now.to_s}")
+    contents.sub!("$VERSION", version_number)
+    contents.sub!("$URL", s3_url(zipped_filename))
+    contents
+  end
+  
+  def upload_public_file_to_s3(file, s3_path)
+    s3 = AWS::S3.new( :access_key_id => SETTINGS["s3_access_key_id"], :secret_access_key => SETTINGS["s3_secret_access_key"])
+    file_thing = s3.buckets[SETTINGS["s3_bucket"]].objects[s3_path]
+    file_thing.write(File.read(file))
+    file_thing.acl = :public_read
+  end
+  
+  def s3_url(s3_path)
+    s3 = AWS::S3.new( :access_key_id => SETTINGS["s3_access_key_id"], :secret_access_key => SETTINGS["s3_secret_access_key"])
+    file_thing = s3.buckets[SETTINGS["s3_bucket"]].objects[s3_path]
+    file_thing.public_url(secure: true).to_s
+  end
+  
+  def tempdir
+    Dir.tmpdir
+  end
+  
+  def temporary_zipped_version_path
+    "#{tempdir}/#{zipped_filename}"
+  end
+  
+  def temporary_appcast_path
+    "#{tempdir}/appcast.xml"
+  end
+  
+  def zipped_filename
+    "#{SETTINGS["app_name"]}_#{version_number}.zip".downcase
+  end
+  
+  def version_number
+    plist = CFPropertyList::List.new(:file => "#{SETTINGS["built_app_path"]}/Contents/Info.plist")
+    data = CFPropertyList.native_types(plist.value)
+    data["CFBundleVersion"]
+  end
+
+  def self.zip_folder(folder_in, zip_name)
+    `cd #{folder_in};cd ..;zip -r "#{folder_in}.zip" "#{Pathname.new(folder_in).basename}"`
+    FileUtils.mv("#{folder_in}.zip", "#{zip_name}")
+  end
+  
+end
+
+AutoAppcast.new.release!

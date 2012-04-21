@@ -1,0 +1,8 @@
+built_app_path: /Users/wil/Library/Developer/Xcode/DerivedData/Trenchrun-hbtvcfjhvrztuocfeyuyqctiyrgp/Build/Products/Debug/Trenchrun.app
+appcast_url: https://trenchrun.s3.amazonaws.com/appcast.xml
+
+app_name: Trenchrun
+
+s3_access_key_id: AKIAJJALK7YFLCQJ4FLA
+s3_secret_access_key: 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
+s3_bucket: trenchrun
