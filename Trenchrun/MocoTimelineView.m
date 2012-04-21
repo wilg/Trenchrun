@@ -84,9 +84,9 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     
-    if ([self needsToDrawRect:[self playheadRect]]) {
-        playheadImageView.frame = [self playheadRect];
-    }
+//    if ([self needsToDrawRect:[self playheadRect]]) {
+//        playheadImageView.frame = [self playheadRect];
+//    }
     
     
 //    NSLog(@"%@", NSStringFromRect([self frame]));
@@ -163,7 +163,13 @@
 }
 
 -(void)playheadMoved {
-    [self setNeedsDisplayInRect:[self playheadRect]];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:0.05f]
+                     forKey:kCATransactionAnimationDuration];
+
+    playheadImageView.layer.frame = [self playheadRect];
+
+    [CATransaction commit];
 }
 
 
@@ -188,7 +194,6 @@
     [self.controller movePlayheadToFrame:playheadPositionInFrames];
     
     clickPoint = viewPoint;
-    [self setNeedsDisplayInRect:[self playheadRect]];
 }
 
 # pragma mark Drawing Tracks
@@ -201,6 +206,7 @@
         [trackView reloadData];
     }
     
+    [self playheadMoved];
 }
 
 - (void)relayout {
@@ -210,6 +216,8 @@
     }
     
     [self updateBounds];
+    [self playheadMoved];
+
 }
 
 

@@ -141,6 +141,7 @@
     if (frameNumber > self.timelineLength)
         frameNumber = self.timelineLength;
     self.playheadPosition = frameNumber;
+    [timelineView playheadMoved];
 }
 
 -(BOOL)playOneFrame {
