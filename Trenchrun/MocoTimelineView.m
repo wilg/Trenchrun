@@ -150,16 +150,28 @@
     return YES;
 }
 
+- (IBAction)zoomIn:(id)sender {
+    NSLog(@"zoomIn");
+    [self.controller zoomInOneStep];
+}
+
+- (IBAction)zoomOut:(id)sender {
+    NSLog(@"zoomOut");
+    [self.controller zoomOutOneStep];
+}
+
+
 - (void)mouseDown:(NSEvent *)event {
     NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
     [self movePlayheadToPoint:center];
+    [self becomeFirstResponder];
 }
 
 - (void)mouseDragged:(NSEvent *)event {
     NSPoint center = [self convertPoint:[event locationInWindow] fromView:nil];
     [self movePlayheadToPoint:center];
     [self autoscroll:event];
-
+    [self becomeFirstResponder];
 }
 
 -(void)playheadMoved {

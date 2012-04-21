@@ -80,6 +80,21 @@
     }
 }
 
+-(void)zoomInOneStep{
+    [self zoomToLevel:self.scaleFactor + 0.2];
+}
+
+-(void)zoomOutOneStep {
+    [self zoomToLevel:self.scaleFactor - 0.2];
+}
+
+- (void)zoomToLevel:(float)zoomLevel {
+    if (zoomLevel <= 0)
+        zoomLevel = 0.1;
+    if (zoomLevel > 3)
+        zoomLevel = 3;
+    self.scaleFactor = zoomLevel;
+}
 
 - (IBAction)refreshGraph:(id)sender {
     

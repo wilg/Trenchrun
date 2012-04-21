@@ -34,4 +34,7 @@
 
 -(BOOL)playOneFrame;
 
+-(void)zoomInOneStep;
+-(void)zoomOutOneStep;
+
 @end
