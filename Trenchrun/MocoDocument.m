@@ -94,10 +94,14 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 - (void)axisDataUpdated:(NSNotification *)notification {
+    MocoAxisPosition *axisPosition = notification.object;
     if (recording) {
-        MocoAxisPosition *axisPosition = notification.object;
         [self savePosition:axisPosition.position
                    forAxis:axisPosition.axis];
+    }
+    else {
+        MocoTrack *track = [self trackWithAxis:axisPosition.axis];
+        track.currentPosition = axisPosition;
     }
 }
 
@@ -223,13 +227,17 @@ static NSString * kTrackEditContext = @"Track Edit";
             }
             
             // fake playback on the driver
-            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/50.0 target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/(float)self.fps target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
         }
         else {
             // pause
             [self stopPlayback:nil];
         }
     }
+}
+
+-(int)fps {
+    return 10;
 }
 
 -(void)advanceFrame {

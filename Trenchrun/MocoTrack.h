@@ -21,6 +21,7 @@
 @property (assign) BOOL recordEnabled;
 @property (assign) BOOL muted;
 @property (assign) BOOL soloed;
+@property (retain) MocoAxisPosition *currentPosition;
 
 +(NSArray *)flattenedTracks:(NSArray *)tracks;
 

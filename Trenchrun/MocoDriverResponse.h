@@ -13,6 +13,7 @@
 @property (readonly) NSData *data;
 @property (assign) MocoProtocolResponseType type;
 @property (readonly) NSDictionary *payload;
+@property (readonly) NSString *typeDescription;
 
 +(MocoDriverResponse *)responseWithData:(NSData *)data;
 

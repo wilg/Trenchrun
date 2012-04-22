@@ -12,7 +12,7 @@
 @implementation MocoTrack
 @synthesize frames = _frames;
 @synthesize axis = _axis;
-@synthesize soloed, muted, recordEnabled;
+@synthesize soloed, muted, recordEnabled, currentPosition;
 
 - init {
 	if (self = [super init]) {

@@ -173,6 +173,9 @@
         // assign a high priority to this thread
         [NSThread setThreadPriority:1.0];
         
+        // debug mode
+        BOOL inDebugStringMode = NO;
+
         // this will loop unitl the serial port closes
         while(killThread == 0) {
             
@@ -181,11 +184,29 @@
                 break;
             }
             
-            while ([dataBuffer length] < MocoProtocolResponsePacketLength) {
+            while (inDebugStringMode || 
+                   [dataBuffer length] < MocoProtocolResponsePacketLength) {
                 // read() blocks until some data is available or the port is closed
                 numBytes = read(serialFileDescriptor, byte_buffer, SYSTEM_BUFFER_SIZE); // read up to the size of the buffer
                 if (numBytes > 0){
+                    
+                    // Throw us into debug mode if the first byte from the buffer is 
+                    // MocoProtocolNewlineDelimitedDebugStringResponseType
+                    // then wait for a newline.
+                    if (dataBuffer.length == 0 && 
+                        byte_buffer[0] == MocoProtocolNewlineDelimitedDebugStringResponseType) {
+                        inDebugStringMode = YES;
+                    }
+                                        
                     [dataBuffer appendBytes:byte_buffer length:numBytes];
+                    
+                    // If we're in debug mode and we just encountered a newline, gtfo.
+                    if (inDebugStringMode &&
+                        byte_buffer[0] == '\n') {
+                        inDebugStringMode = NO;
+                        break;
+                    }
+
                 }
                 else {
                     NSLog(@"Crazy progits!");

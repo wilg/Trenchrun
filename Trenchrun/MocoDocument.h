@@ -33,6 +33,7 @@
 @property BOOL rigPlaybackEngaged;
 @property (copy) NSMutableArray *trackList;
 @property (copy) NSMutableArray *flattenedFrameArray;
+@property (readonly) int fps;
 
 -(IBAction)record:(id)sender;
 -(IBAction)updateFakeTabs:(id)sender;
