@@ -13,7 +13,7 @@ enum {
     // Axis Data
     MocoProtocolStartSendingAxisDataInstruction = 1,
     MocoProtocolStopSendingAxisDataInstruction =  0,
-    MocoProtocolRequestAxisResolutionDataInstruction = 0,
+    MocoProtocolRequestAxisResolutionDataInstruction = 4,
 	
     // Playback
     MocoProtocolStartPlaybackInstruction = 2,
