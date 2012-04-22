@@ -272,6 +272,20 @@
 	}
 }
 
+// send a byte to the serial port
+- (void) writeMultipleBytes: (unsigned char[])arr length:(int)length {
+	if(serialFileDescriptor!=-1) {
+		int ret = write(serialFileDescriptor, arr, length);
+        if (ret == -1) {
+            NSLog(@"writing multiple bytes failed");
+        }
+	} else {
+        NSLog(@"can't write multiple  bytes");
+		// make sure the user knows they should select a serial port
+        //		[self appendToIncomingText:@"\n ERROR:  Select a Serial Port from the pull-down menu\n"];
+	}
+}
+
 - (void) writeIntAsByte: (int) val {
     uint8_t y = val;
     
@@ -289,10 +303,11 @@
     byteArray[2] = (int)((longInt >> 8) & 0XFF);
     byteArray[3] = (int)((longInt & 0XFF));
 
-    [self writeIntAsByte:byteArray[0]];
-    [self writeIntAsByte:byteArray[1]];
-    [self writeIntAsByte:byteArray[2]];
-    [self writeIntAsByte:byteArray[3]];
+//    [self writeIntAsByte:byteArray[0]];
+//    [self writeIntAsByte:byteArray[1]];
+//    [self writeIntAsByte:byteArray[2]];
+//    [self writeIntAsByte:byteArray[3]];
+    [self writeMultipleBytes:byteArray length:4];
 }
 
 @end
