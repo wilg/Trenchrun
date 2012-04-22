@@ -15,10 +15,4 @@
 
 @property (readonly) MocoDriver *mocoDriver;
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSProgressIndicator *panWheel;
-@property (assign) IBOutlet NSProgressIndicator *tiltWheel;
-@property (assign) IBOutlet NSTextField *panText;
-@property (assign) IBOutlet NSTextField *tiltText;
-
 @end
