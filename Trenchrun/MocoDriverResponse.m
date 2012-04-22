@@ -114,13 +114,44 @@
         _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"rawPosition", [NSNumber numberWithInt:axis], @"axis", nil];
         
     }
+    else if (self.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
+
+        NSData *subdata = [self.data subdataWithRange:NSMakeRange(1, self.data.length - 1)];
+        NSString *string = [[NSString alloc] initWithData:subdata encoding:NSASCIIStringEncoding];
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys:
+                    [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]], @"message", nil];
+        
+    }
+
 
     
     return YES;
 }
 
 -(NSString *)description {
-    return [NSString stringWithFormat:@"MocoDriverResponse type=%i data=%@ payload=%@", self.type, self.data, self.payload];
+    return [NSString stringWithFormat:@"MocoDriverResponse type=%@ (%i) data=%@ payload=%@", self.typeDescription, self.type, self.data, self.payload];
+}
+
+- (NSString *)typeDescription {
+    if (self.type == MocoProtocolUnknownResponseType) {
+        return @"No Type";
+    }
+    else if (self.type == MocoProtocolHandshakeResponseType) {
+        return @"Handshake";
+    }
+    else if (self.type == MocoProtocolAxisPositionResponseType) {
+        return @"Axis Position";
+    }
+    else if (self.type == MocoProtocolAxisResolutionResponseType) {
+        return @"Axis Resolution";
+    }
+    else if (self.type == MocoProtocolAdvancePlaybackRequestType) {
+        return @"Advance Playback";
+    }
+    else if (self.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
+        return @"Debug String";
+    }
+    return [NSString stringWithFormat:@"Undefined type: %i", self.type];
 }
 
 -(Byte *)byteData {

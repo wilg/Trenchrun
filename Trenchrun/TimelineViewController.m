@@ -13,6 +13,7 @@
 #import "MocoTimelineTrackViewController.h"
 #import "MocoTimelineHeaderViewController.h"
 #import "MocoTimelineRulerView.h"
+#import "MocoProtocolConstants.h"
 
 @interface TimelineViewController ( /* class extension */ ) {
 @private
@@ -190,7 +191,7 @@
 }
 
 - (NSString *)playheadTime {
-    NSTimeInterval theTimeInterval = (NSTimeInterval)playheadPosition / 50.0;
+    NSTimeInterval theTimeInterval = (NSTimeInterval)playheadPosition / (float)document.fps;
     NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:theTimeInterval];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm:ss.SSS"];

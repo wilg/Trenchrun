@@ -11,6 +11,7 @@
 #import "MocoAxisPosition.h"
 #import "MocoTrack.h"
 
+#define TIME_CONNECTION NO
 
 @interface MocoDriver ( /* class extension */ ) {
 @private
@@ -85,11 +86,12 @@
 
 - (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
     if (self.recordAndPlaybackOperational) {
-        NSLog(@"begin playback");
         _playbackTracks = tracks;
         _playbackPosition = frameNumber;
         
         [self stopStreamingPositionData];
+        
+        NSLog(@"Asked device to start playback...");
         [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
         self.status = MocoStatusPlayback;
     }
@@ -100,9 +102,9 @@
 
 - (void)pausePlayback {
     if (self.recordAndPlaybackOperational) {
+        NSLog(@"Asked device to stop playback...");
         [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
         [self beginStreamingPositionData];
-        NSLog(@"pause playback");
         self.status = MocoStatusIdle;
     }
     else {
@@ -164,19 +166,22 @@
 }
 
 - (void)serialMessageReceived:(NSData *)data {
-    NSDate *methodStart = [NSDate date];
+    NSDate *methodStart;
+    if (TIME_CONNECTION) {
+        methodStart = [NSDate date];
+    }
 
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
     
-    if (driverResponse.type != MocoProtocolAxisPositionResponseType) {
+    if (driverResponse.type != MocoProtocolAxisPositionResponseType &&
+        driverResponse.type != MocoProtocolNewlineDelimitedDebugStringResponseType) {
         NSLog(@"Serial Message Received: %@", driverResponse);
-    }
-    else {
-        NSLog(@"---------");
     }
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         
+        NSLog(@"Axis position received.");
+
         MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
         
         NSNumber *axisNumber = [driverResponse.payload objectForKey:@"axis"];
@@ -225,15 +230,18 @@
             [self handshakeFailed];
         }
     }
+    else if (driverResponse.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
+        NSLog(@"Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
+    }
     else {
         NSLog(@"Serial message recieved but not understood.");
     }
-    
-    /* ... Do whatever you need to do ... */
-    
-    NSDate *methodFinish = [NSDate date];
-    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-    NSLog(@"serialMessageReceived took %f ms", executionTime * 1000); 
+        
+    if (TIME_CONNECTION) {
+        NSDate *methodFinish = [NSDate date];
+        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+        NSLog(@"serialMessageReceived took %f ms", executionTime * 1000); 
+    }
 }
 
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
@@ -245,7 +253,7 @@
     
     _playbackPosition++;
     
-    NSLog(@"sent next frame to arduino... (raw position: %li)", [position.rawPosition longValue]);
+    NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
 }
 
 -(void)handshakeSuccessful {
