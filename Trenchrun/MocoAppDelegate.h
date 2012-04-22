@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MocoDriver.h"
 
 @interface MocoAppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet MocoDriver *mocoDriver;
 }
+
+@property (readonly) MocoDriver *mocoDriver;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSProgressIndicator *panWheel;

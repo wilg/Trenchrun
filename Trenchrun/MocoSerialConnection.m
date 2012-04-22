@@ -273,4 +273,21 @@
     uint8_t *x = &y;
     [self writeByte:x];
 }
+
+- (void) writeLongAsFourBytes: (long int)longInt {
+
+    unsigned char byteArray[4];
+
+    // convert from an unsigned long int to a 4-byte array
+    byteArray[0] = (int)((longInt >> 24) & 0xFF) ;
+    byteArray[1] = (int)((longInt >> 16) & 0xFF) ;
+    byteArray[2] = (int)((longInt >> 8) & 0XFF);
+    byteArray[3] = (int)((longInt & 0XFF));
+
+    [self writeIntAsByte:byteArray[0]];
+    [self writeIntAsByte:byteArray[1]];
+    [self writeIntAsByte:byteArray[2]];
+    [self writeIntAsByte:byteArray[3]];
+}
+
 @end

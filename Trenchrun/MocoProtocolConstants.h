@@ -18,6 +18,7 @@ enum {
     // Playback
     MocoProtocolStartPlaybackInstruction = 2,
     MocoProtocolStopPlaybackInstruction =  3,
+    MocoProtocolPlaybackFrameDataHeader =  7,
     
     // Disconnection
     MocoProtocolHostWillDisconnectNotificationInstruction = 5
@@ -40,7 +41,7 @@ typedef enum {
     MocoProtocolHandshakeResponseType        =  0,
     MocoProtocolAxisPositionResponseType     =  1,
     MocoProtocolAxisResolutionResponseType   =  2,
-	MocoProtocolAdvancePositionRequestType  =  3
+	MocoProtocolAdvancePlaybackRequestType  =  3
 } MocoProtocolResponseType;
 
 // Responses

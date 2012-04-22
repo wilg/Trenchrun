@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MocoFrame.h"
 #import "MocoProtocolConstants.h"
+#import "MocoAxisPosition.h"
 
 @interface MocoTrack : NSObject {
     
@@ -25,6 +26,9 @@
 
 -(void)addFrame:(MocoFrame *)frame;
 -(void)appendFrameWithPosition:(NSNumber *)position;
+-(MocoFrame *)frameAtFrameNumber:(NSInteger)frameNumber;
+-(MocoAxisPosition *)axisPositionAtFrameNumber:(NSInteger)frameNumber;
+
 - (NSColor *)color;
 
 @end

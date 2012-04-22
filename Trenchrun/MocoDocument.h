@@ -28,6 +28,7 @@
     IBOutlet NSButton *playButton;
     
     IBOutlet NSWindow *documentWindow;
+        
 //
 //    IBOutlet CPTGraphHostingView *graphView;
 //	CPTXYGraph *graph;
@@ -40,6 +41,7 @@
 //	CGPoint dragStart, dragEnd;    
 }
 
+@property BOOL rigPlaybackEngaged;
 @property (copy) NSMutableArray *trackList;
 @property (copy) NSMutableArray *flattenedFrameArray;
 

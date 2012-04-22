@@ -11,7 +11,7 @@
 #import "AMSerialPortAdditions.h"
 #import "MocoDriverResponse.h"
 #import "MocoAxisPosition.h"
-
+#import "MocoTrack.h"
 
 
 @interface MocoDriver ( /* class extension */ ) {
@@ -28,6 +28,9 @@
     NSMutableDictionary *_axisResolutions;
     
     MocoSerialConnection *_serialConnection;
+    
+    NSArray *_playbackTracks;
+    NSInteger _playbackPosition;
 }
 @property (retain) AMSerialPort *port;
 @property (assign) MocoStatusCode status;
@@ -82,6 +85,33 @@
 	return self;
 }
 
+- (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
+    _playbackTracks = tracks;
+    _playbackPosition = frameNumber;
+    
+    [_serialConnection writeIntAsByte:MocoProtocolStopSendingAxisDataInstruction];
+    [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
+}
+
+- (void)pausePlayback {
+    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
+    [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
+}
+
+- (MocoTrack *)trackWithAxis:(MocoAxis)axis {
+    for (MocoTrack *track in _playbackTracks) {
+        if (track.axis == axis)
+            return track;
+    }
+    return nil;
+}
+
+- (MocoAxisPosition *)positionForAxis:(MocoAxis)axis atFrame:(NSInteger)frameNumber {
+   MocoAxisPosition *ap = [[self trackWithAxis:axis] axisPositionAtFrameNumber:frameNumber];
+    ap.resolution = [_axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
+    return ap;
+}
+
 - (void)requestAxisResolutionData {
     NSLog(@"Asking rig to start sending axis resolution...");
     [_serialConnection writeIntAsByte:MocoProtocolRequestAxisResolutionDataInstruction];
@@ -123,7 +153,10 @@
 
 - (void)serialMessageReceived:(NSData *)data {
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
-    NSLog(@"Serial Message Received: %@", driverResponse);
+    
+    if (driverResponse.type != MocoProtocolAxisPositionResponseType) {
+        NSLog(@"Serial Message Received: %@", driverResponse);
+    }
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         
@@ -152,6 +185,21 @@
                              forKey:[driverResponse.payload objectForKey:@"axis"]];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
+                                                            object:driverResponse];
+        
+    }
+    else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
+        
+        MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
+        MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
+        
+        [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
+        [_serialConnection writeIntAsByte:axis];
+        [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+        
+        _playbackPosition++;
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
                                                             object:driverResponse];
         
     }

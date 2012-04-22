@@ -9,7 +9,6 @@
 
 
 #import <QuartzCore/QuartzCore.h>
-#import "MocoDriver.h"
 #import "MocoAppDelegate.h"
 
 @implementation MocoAppDelegate
@@ -19,6 +18,7 @@
 @synthesize tiltWheel;
 @synthesize panText;
 @synthesize tiltText;
+@synthesize mocoDriver;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 

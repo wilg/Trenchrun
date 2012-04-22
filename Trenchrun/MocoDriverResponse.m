@@ -100,6 +100,20 @@
         _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"resolution", [NSNumber numberWithInt:axis], @"axis", nil];
         
     }
+    else if (self.type == MocoProtocolAdvancePlaybackRequestType) {
+        MocoAxis axis = (int)bytes[1];
+        
+        Byte fourbytes[4];
+        fourbytes[0] = bytes[2];
+        fourbytes[1] = bytes[3];
+        fourbytes[2] = bytes[4];
+        fourbytes[3] = bytes[5];
+        
+        long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
+        
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"rawPosition", [NSNumber numberWithInt:axis], @"axis", nil];
+        
+    }
 
     
     return YES;

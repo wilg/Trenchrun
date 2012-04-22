@@ -52,7 +52,7 @@ typedef enum {
 // Places driver in MocoStatusPlayback.
 // When playback is concluded, the driver reverts to MocoStatusIdle.
 // This will cause a MocoDriverStatusDidChange notification to be issued. 
-- (void)playbackData:(NSData *)data;
+- (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber;
 
 // Still in MocoStatusPlayback. Just stops updating the MCU.
 - (void)pausePlayback;

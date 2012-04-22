@@ -62,6 +62,18 @@
     [self addFrame:frame];
 }
 
+-(MocoFrame *)frameAtFrameNumber:(NSInteger)frameNumber {
+    return [_frames objectAtIndex:frameNumber];
+}
+
+-(MocoAxisPosition *)axisPositionAtFrameNumber:(NSInteger)frameNumber {
+    MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
+    axisPosition.axis = self.axis;
+    axisPosition.position = [self frameAtFrameNumber:frameNumber].position;
+    return axisPosition;
+}
+
+
 - (NSString *)title {
     if (self.axis == MocoAxisCameraPan) {
         return @"Camera Pan";

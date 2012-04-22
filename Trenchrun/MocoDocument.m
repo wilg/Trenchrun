@@ -15,6 +15,8 @@
 #import "MocoTrack.h"
 #import "MocoDriverResponse.h"
 #import "MocoAxisPosition.h"
+#import "MocoAppDelegate.h"
+#import "MocoDriver.h"
 
 static NSString * kTrackEditContext = @"Track Edit";
 
@@ -25,7 +27,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 @implementation MocoDocument
 
-@synthesize trackList, flattenedFrameArray;
+@synthesize trackList, flattenedFrameArray, rigPlaybackEngaged;
 
 -(id)init
 {
@@ -209,14 +211,24 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(IBAction)play:(id)sender {
-    NSButton *button = (NSButton *)sender;
-    if (button.state == 1){
-        // play
-        _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/50.0 target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+    if (recording) {
+        [self record:nil];
     }
     else {
-        // pause
-        [self stopPlayback:nil];
+        NSButton *button = (NSButton *)sender;
+        if (button.state == 1){
+            // play
+            if (rigPlaybackEngaged) {
+                [[self driver] beginPlaybackWithTracks:self.trackList atFrame:timelineViewController.playheadPosition];
+            }
+            
+            // fake playback on the driver
+            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/50.0 target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+        }
+        else {
+            // pause
+            [self stopPlayback:nil];
+        }
     }
 }
 
@@ -226,7 +238,16 @@ static NSString * kTrackEditContext = @"Track Edit";
     }
 }
 
+- (MocoAppDelegate *)appDelegate {
+    return (MocoAppDelegate *)[[NSApplication sharedApplication] delegate];
+}
+
+- (MocoDriver *)driver {
+    return [self appDelegate].mocoDriver;
+}
+
 -(IBAction)stopPlayback:(id)sender {
+    [[self driver] pausePlayback];
     [_playbackTimer invalidate];
     _playbackTimer = nil;
     playButton.state = 0;
