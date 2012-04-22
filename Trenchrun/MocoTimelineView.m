@@ -151,12 +151,10 @@
 }
 
 - (IBAction)zoomIn:(id)sender {
-    NSLog(@"zoomIn");
     [self.controller zoomInOneStep];
 }
 
 - (IBAction)zoomOut:(id)sender {
-    NSLog(@"zoomOut");
     [self.controller zoomOutOneStep];
 }
 
