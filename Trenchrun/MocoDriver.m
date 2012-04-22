@@ -84,16 +84,18 @@
 }
 
 - (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
+    NSLog(@"begin playback");
     _playbackTracks = tracks;
     _playbackPosition = frameNumber;
     
-    [_serialConnection writeIntAsByte:MocoProtocolStopSendingAxisDataInstruction];
+    [self stopStreamingPositionData];
     [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
 }
 
 - (void)pausePlayback {
-//    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
-//    [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
+    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
+    [self requestAxisResolutionData];
+    NSLog(@"pause playback");
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
@@ -214,6 +216,9 @@
         else {
             [self handshakeFailed];
         }
+    }
+    else {
+        NSLog(@"Serial message recieved but not understood.");
     }
 
 }
