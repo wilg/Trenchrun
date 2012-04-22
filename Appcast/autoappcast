@@ -69,12 +69,10 @@ class AutoAppcast
     
     rels = releases_list_data
     
-    puts rels
-
     versions_html = ""
-    rels.keys.sort.reverse.each do |version|
+    rels.keys.map{|x| x.to_i}.sort.reverse.each do |version|
       
-      
+      version = version.to_s
       version_hash = rels[version]
       next_version = (version.to_i + 1).to_s
       next_version_hash = rels[next_version]
