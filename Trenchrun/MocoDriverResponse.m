@@ -43,7 +43,7 @@
     return [[MocoDriverResponse alloc] initWithData:data];
 }
 
-+(unsigned long int)longIntFromFourBytes:(Byte *)fourBytes {
++(long int)longIntFromFourBytes:(Byte *)fourBytes {
     return     ( (fourBytes[0] << 24) 
                 + (fourBytes[1] << 16) 
                 + (fourBytes[2] << 8) 
@@ -81,7 +81,7 @@
         fourbytes[2] = bytes[4];
         fourbytes[3] = bytes[5];
         
-        unsigned long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
+        long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
         _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"position", [NSNumber numberWithInt:axis], @"axis", nil];
         
