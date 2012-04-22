@@ -11,6 +11,7 @@
 
 @interface MocoDriverResponse ( /* class extension */ ) {
 @private
+    NSDictionary *_payload;
 }
 
 @end
@@ -20,7 +21,6 @@
 @implementation MocoDriverResponse
 @synthesize data = _data;
 @synthesize type = _type;
-@synthesize parsedResponse = _parsedResponse;
 
 -(id)init {
 	self = [super init];
@@ -50,6 +50,11 @@
                 + (fourBytes[3] ) );
 }
 
+-(NSDictionary *)payload {
+    if (!_payload)
+        [self processData];
+    return _payload;
+}
 
 -(BOOL)processData {
     
@@ -64,7 +69,7 @@
         if ((int)bytes[1] == (int)MocoProtocolHandshakeSuccessfulResponse) {
             handshakeSuccessful = YES;
         }
-        _parsedResponse = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
 
     }
     else if (self.type = MocoProtocolAxisPositionResponseType) {
@@ -78,7 +83,7 @@
         
         unsigned long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
-        _parsedResponse = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"position", [NSNumber numberWithInt:axis], @"axis", nil];
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"position", [NSNumber numberWithInt:axis], @"axis", nil];
         
     }
     
@@ -90,7 +95,7 @@
 }
 
 -(NSString *)description {
-    return [NSString stringWithFormat:@"MocoDriverResponse type=%i data=%@ parsed=%@", self.type, self.data, self.parsedResponse];
+    return [NSString stringWithFormat:@"MocoDriverResponse type=%i data=%@ payload=%@", self.type, self.data, self.payload];
 }
 
 -(Byte *)byteData {
@@ -99,60 +104,6 @@
     memcpy(byteData, [_data bytes], len);
     return byteData;
 }
-
-
-//-(NSArray *)byteArray {
-//    
-////    NSMutableArray * targetArray = [[NSMutableArray alloc] initWithCapacity: SIZE];
-////    
-////    int i;
-////    NSNumber *number;
-////    for (i = 0; i < SIZE; i++)
-////    {
-////        number = [NSNumber numberWithDouble: sourceArray[i]];
-////        [targetArray addObject: number];
-////    }
-//
-//}
-
-//-(NSString *)byteDescription {
-//    
-//    
-//    
-////    Byte byte_array[] = self.data.bytes;
-////    NSString *description = @"";
-////    int i = 0;
-////    while (i < sizeof(bytes)) {
-////        description = [NSString stringWithFormat:@"%@, %02X", description, (int)bytes[i]];
-////        i++;
-////    }
-//    
-//    unsigned char *bytePtr = (unsigned char *)self.data.bytes;
-//    
-//    
-//    return [description stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
-//}
-
-
-//
-//NSUInteger len = [data length];
-//Byte *byteData = (Byte*)malloc(len);
-//memcpy(byteData, [data bytes], len);
-//
-//int i = 0;
-//while (i < sizeof(byteData))
-//{
-//    NSLog(@"%02X",(int)byteData[i]);
-//    i++;
-//}
-//
-//
-//unsigned long int anotherLongInt;
-//anotherLongInt = ( (byteData[1] << 24) 
-//                  + (byteData[2] << 16) 
-//                  + (byteData[3] << 8) 
-//                  + (byteData[4] ) );
-//NSLog(@"long: %lu", anotherLongInt);
 
 
 @end

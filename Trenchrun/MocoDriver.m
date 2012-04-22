@@ -113,7 +113,7 @@
                                                             object:driverResponse];
     }
     else if (driverResponse.type = MocoProtocolHandshakeResponseType) {
-        if ([driverResponse.parsedResponse objectForKey:@"success"]) {
+        if ([driverResponse.payload objectForKey:@"success"]) {
             [self handshakeSuccessful];
         }
         else {

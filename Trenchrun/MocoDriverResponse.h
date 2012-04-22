@@ -12,12 +12,10 @@
 
 @property (readonly) NSData *data;
 @property (assign) MocoProtocolResponseType type;
-@property (readonly) NSDictionary *parsedResponse;
+@property (readonly) NSDictionary *payload;
 
 +(MocoDriverResponse *)responseWithData:(NSData *)data;
 
--(BOOL)understood;
--(NSString *)byteDescription;
 -(Byte *)byteData;
 
 @end

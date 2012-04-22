@@ -92,8 +92,8 @@ static NSString * kTrackEditContext = @"Track Edit";
 - (void)axisDataUpdated:(NSNotification *)notification {
     if (recording) {
         MocoDriverResponse *driverResponse = notification.object;
-        [self savePosition:[driverResponse.parsedResponse valueForKey:@"position"]
-                   forAxis:[[driverResponse.parsedResponse valueForKey:@"axis"] intValue]];
+        [self savePosition:[driverResponse.payload valueForKey:@"position"]
+                   forAxis:[[driverResponse.payload valueForKey:@"axis"] intValue]];
 //        [self tracksDidChange];
     }
 }
