@@ -68,7 +68,7 @@
 							<string key="NSFrame">{{77, 28}, {58, 25}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="450365076"/>
+							<reference key="NSNextKeyView" ref="1061313022"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="167240660">
@@ -115,32 +115,34 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="450365076">
+						<object class="NSButton" id="1061313022">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{20, 9}, {115, 17}}</string>
+							<string key="NSFrame">{{20, 8}, {117, 18}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="274028959"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="1068358098">
+							<object class="NSButtonCell" key="NSCell" id="963868504">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134479872</int>
-								<string key="NSContents">Rig Playback</string>
-								<object class="NSFont" key="NSSupport">
+								<int key="NSCellFlags2">131072</int>
+								<string key="NSContents">Play on Rig</string>
+								<object class="NSFont" key="NSSupport" id="26">
 									<string key="NSName">LucidaGrande</string>
-									<double key="NSSize">9</double>
-									<int key="NSfFlags">3614</int>
+									<double key="NSSize">11</double>
+									<int key="NSfFlags">3100</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="450365076"/>
-								<int key="NSButtonFlags">-1229569793</int>
-								<int key="NSButtonFlags2">163</int>
-								<object class="NSFont" key="NSAlternateImage">
-									<string key="NSName">LucidaGrande</string>
-									<double key="NSSize">9</double>
-									<int key="NSfFlags">16</int>
+								<reference key="NSControlView" ref="1061313022"/>
+								<int key="NSButtonFlags">1211912703</int>
+								<int key="NSButtonFlags2">2</int>
+								<object class="NSCustomResource" key="NSNormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">NSSwitch</string>
+								</object>
+								<object class="NSButtonImageSource" key="NSAlternateImage">
+									<string key="NSImageName">NSSwitch</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string type="base64-UTF8" key="NSKeyEquivalent">IA</string>
@@ -475,11 +477,7 @@
 													<int key="NSCellFlags">75628096</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Frame #</string>
-													<object class="NSFont" key="NSSupport" id="26">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">11</double>
-														<int key="NSfFlags">3100</int>
-													</object>
+													<reference key="NSSupport" ref="26"/>
 													<object class="NSColor" key="NSBackgroundColor" id="1017199605">
 														<int key="NSColorSpace">3</int>
 														<bytes key="NSWhite">MC4zMzMzMzI5ODU2AA</bytes>
@@ -1159,6 +1157,22 @@
 					<int key="connectionID">101846</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
+						<reference key="source" ref="160761301"/>
+						<reference key="destination" ref="796877042"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="160761301"/>
+							<reference key="NSDestination" ref="796877042"/>
+							<string key="NSLabel">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">delegate.mocoDriver.recordAndPlaybackOperational</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">101987</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">document</string>
 						<reference key="source" ref="471513768"/>
@@ -1217,10 +1231,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: rigPlaybackEngaged</string>
-						<reference key="source" ref="450365076"/>
+						<reference key="source" ref="1061313022"/>
 						<reference key="destination" ref="512844837"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="450365076"/>
+							<reference key="NSSource" ref="1061313022"/>
 							<reference key="NSDestination" ref="512844837"/>
 							<string key="NSLabel">value: rigPlaybackEngaged</string>
 							<string key="NSBinding">value</string>
@@ -1229,6 +1243,22 @@
 						</object>
 					</object>
 					<int key="connectionID">101978</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
+						<reference key="source" ref="1061313022"/>
+						<reference key="destination" ref="796877042"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1061313022"/>
+							<reference key="NSDestination" ref="796877042"/>
+							<string key="NSLabel">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">delegate.mocoDriver.recordAndPlaybackOperational</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">101990</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1269,7 +1299,7 @@
 							<reference ref="274028959"/>
 							<reference ref="672353393"/>
 							<reference ref="529513631"/>
-							<reference ref="450365076"/>
+							<reference ref="1061313022"/>
 							<reference ref="177976310"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
@@ -1631,16 +1661,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">101970</int>
-						<reference key="object" ref="450365076"/>
+						<reference key="object" ref="1061313022"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1068358098"/>
+							<reference ref="963868504"/>
 						</array>
 						<reference key="parent" ref="568628114"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">101971</int>
-						<reference key="object" ref="1068358098"/>
-						<reference key="parent" ref="450365076"/>
+						<reference key="object" ref="963868504"/>
+						<reference key="parent" ref="1061313022"/>
 					</object>
 				</array>
 			</object>
@@ -1713,7 +1743,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">101978</int>
+			<int key="maxID">101990</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1873,6 +1903,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NSSwitch">{15, 15}</string>
 			<string key="screen">{300, 52}</string>
 			<string key="screengloss">{300, 52}</string>
 		</dictionary>

@@ -35,6 +35,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 	if ( self ) {
 
         recording = NO;
+        self.rigPlaybackEngaged = YES;
         
         // create the collection array
         trackList = [[NSMutableArray alloc] init];

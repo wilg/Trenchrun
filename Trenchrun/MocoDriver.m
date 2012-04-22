@@ -94,7 +94,7 @@
 
 - (void)pausePlayback {
     [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
-    [self requestAxisResolutionData];
+    [self beginStreamingPositionData];
     NSLog(@"pause playback");
 }
 
@@ -195,10 +195,10 @@
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
         
-        for (int i = 0; i < 10; i++) {
+//        for (int i = 0; i < 10; i++) {
             MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
             [self writeNextPlaybackFrameToConnectionOnAxis:axis];
-        }
+//        }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
                                                             object:driverResponse];
@@ -404,5 +404,28 @@
 -(NSString *)statusDescription {
     return [MocoDriver statusDescriptionForStatusCode:self.status];
 }
+
+-(BOOL)recordAndPlaybackOperational {
+    if (self.status == MocoStatusIdle || 
+        self.status == MocoStatusSeeking ||
+        self.status == MocoStatusPlayback ) {
+        return YES;
+    }
+    return NO;
+}
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    if ([key isEqualToString:@"recordAndPlaybackOperational"])
+    {
+        NSSet *affectingKeys = [NSSet setWithObjects:@"status",nil];
+        keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    }
+    
+    return keyPaths;
+}
+
 
 @end

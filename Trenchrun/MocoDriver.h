@@ -27,6 +27,7 @@ typedef enum {
 // Returns the current status code
 @property(readonly) MocoStatusCode status;
 @property(readonly) NSString *statusDescription;
+@property(readonly) BOOL recordAndPlaybackOperational;
 
 // Driver is asynchronous. You can request the following notifications.
 // MocoDriverStatusDidChange
