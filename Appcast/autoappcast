@@ -60,7 +60,7 @@ class AutoAppcast
     
     contents.gsub!("$APPNAME", SETTINGS["app_name"])
     contents.sub!("$VERSION", human_version)
-    contents.sub!("$DATE", Time.now.strftime("%b %d %y, %I:%M%p"))
+    contents.sub!("$DATE", Time.now.strftime("%b %d %Y, %I:%M%p"))
     
     lis = ""
     for commit in commits
