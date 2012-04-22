@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MocoFrame.h"
-#import "MocoSharedSpec.h"
+#import "MocoProtocolConstants.h"
 
 @interface MocoTrack : NSObject {
     

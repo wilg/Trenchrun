@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "MocoProtocolConstants.h"
 #import "MocoDriverResponse.h"
-#import "MocoSharedSpec.h"
 
 @interface MocoDriverResponse ( /* class extension */ ) {
 @private
@@ -25,7 +25,7 @@
 -(id)init {
 	self = [super init];
 	if (self) {
-        self.type = MocoDriverResponseTypeUnknown;
+        self.type = MocoProtocolUnknownResponseType;
 	}
 	return self;
 }
@@ -59,15 +59,15 @@
     // This should directly correspond with the enum values for MocoDriverResponseType.
     self.type = (int)bytes[0];
         
-    if (self.type == MocoDriverResponseTypeHandshake) {
+    if (self.type == MocoProtocolHandshakeResponseType) {
         BOOL handshakeSuccessful = NO;
-        if ((int)bytes[1] == (int)kMocoHandshakeResponse) {
+        if ((int)bytes[1] == (int)MocoProtocolHandshakeSuccessfulResponse) {
             handshakeSuccessful = YES;
         }
         _parsedResponse = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
 
     }
-    else if (self.type = MocoDriverResponseTypeAxisPosition) {
+    else if (self.type = MocoProtocolAxisPositionResponseType) {
         MocoAxis axis = (int)bytes[1];
         
         Byte fourbytes[4];

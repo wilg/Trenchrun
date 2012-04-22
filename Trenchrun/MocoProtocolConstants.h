@@ -1,25 +1,54 @@
-//          PROTOCOL        //
+//          PROTOCOL HOST INSTRUCTIONS          //
 enum {
-
+    
+    // Instructions to the rig should take the form
+    // MocoProtocolFooBarInstruction
+    
     // Basics
-    kMocoBaudRate = 1000000,
-    kMocoSerialConnectionPacketLength = 6,
+    MocoProtocolBaudRate = 1000000,
     
     // Handshake
-    kMocoHandshakeRequest = '?',
-    kMocoHandshakeResponse = '!',
+    MocoProtocolRequestHandshakeInstruction = '?',
     
     // Axis Data
-    kMocoStartSendingAxisDataInstruction = 1,
-    kMocoStopSendingAxisDataInstruction = 0,
+    MocoProtocolStartSendingAxisDataInstruction = 1,
+    MocoProtocolStopSendingAxisDataInstruction = 0,
+    MocoProtocolRequestAxisResolutionDataInstruction = 0,
 	
     // Playback
-    kMocoStartPlaybackRequest = 2,
-    kMocoStopPlaybackRequest = 3,
-    kMocoNextFrameAxisPositionsRequest = 4,
+    MocoProtocolStartPlaybackRequestInstruction = 2,
+    MocoProtocolStopPlaybackRequestInstruction = 3,
+    MocoProtocolNextFrameAxisPositionsRequestInstruction = 4,
     
     // Disconnection
-    kMocoHostWillDisconnectNotification = 5
+    MocoProtocolHostWillDisconnectNotificationInstruction = 5
+
+};
+
+//          PROTOCOL DEVICE RESPONSES          //
+// Repsonses from the device have a uniform length of MocoProtocolResponsePacketLength
+// The first byte defines the MocoProtocolResponseType
+// The remaining bytes represent the payload
+
+enum {
+    MocoProtocolResponsePacketLength = 6
+};
+
+// Response ID tags from the rig should take the form
+// MocoProtocolFooBarResponse
+typedef enum {
+    MocoProtocolUnknownResponseType          = -1,
+    MocoProtocolHandshakeResponseType        = 0,
+    MocoProtocolAxisPositionResponseType     = 1,
+    MocoProtocolAxisResolutionResponseType   = 2
+} MocoProtocolResponseType;
+
+// Responses
+enum {
+    
+    // Handshake Responses
+    MocoProtocolHandshakeSuccessfulResponse = '!'
+
 
 };
 

@@ -6,7 +6,7 @@
 //
 
 #import "MocoSerialConnection.h"
-#import "MocoSharedSpec.h"
+#import "MocoProtocolConstants.h"
 
 @implementation MocoSerialConnection
 
@@ -179,7 +179,7 @@
                 break;
             }
             
-            while ([dataBuffer length] < kMocoSerialConnectionPacketLength) {
+            while ([dataBuffer length] < MocoProtocolResponsePacketLength) {
                 // read() blocks until some data is available or the port is closed
                 numBytes = read(serialFileDescriptor, byte_buffer, SYSTEM_BUFFER_SIZE); // read up to the size of the buffer
                 if (numBytes > 0){

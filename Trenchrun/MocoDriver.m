@@ -70,7 +70,7 @@
         NSLog(@"intializing hardcoded port");
         
         self.status = MocoStatusDisconnected;
-        [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:kMocoBaudRate];
+        [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:MocoProtocolBaudRate];
         
         
         
@@ -80,7 +80,12 @@
 
 - (void)beginStreaming {
     NSLog(@"Asking rig to start sending axis data...");
-    [_serialConnection writeIntAsByte:kMocoStartSendingAxisDataInstruction];
+    [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
+}
+
+- (void)notifyDeviceOfHostDisconnection {
+    NSLog(@"Notifying device of host disconnection...");
+    [_serialConnection writeIntAsByte:MocoProtocolHostWillDisconnectNotificationInstruction];
 }
 
 - (void)openSerialConnectionSuccessful {
@@ -103,15 +108,32 @@
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
 //    NSLog(@"Serial Message Received: %@", driverResponse);
     
-    if (driverResponse.type == MocoDriverResponseTypeAxisPosition) {
+    if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
                                                             object:driverResponse];
     }
-    
+    else if (driverResponse.type = MocoProtocolHandshakeResponseType) {
+        if ([driverResponse.parsedResponse objectForKey:@"success"]) {
+            [self handshakeSuccessful];
+        }
+        else {
+            [self handshakeFailed];
+        }
+    }
 
 }
 
+-(void)handshakeSuccessful {
+    self.status = MocoStatusIdle;
+}
+
+-(void)handshakeFailed {
+    NSLog(@"MocoDriver - Handshake failed.");
+}
+
 - (void)severConnections {
+    [self notifyDeviceOfHostDisconnection];
+
     NSLog(@"MocoDriver - Closing ports.");
     [_serialConnection closePort];
 }
