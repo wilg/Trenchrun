@@ -261,7 +261,10 @@
 // send a byte to the serial port
 - (void) writeByte: (uint8_t *) val {
 	if(serialFileDescriptor!=-1) {
-		write(serialFileDescriptor, val, 1);
+		int ret = write(serialFileDescriptor, val, 1);
+        if (ret == -1) {
+            NSLog(@"writing byte failed");
+        }
 	} else {
         NSLog(@"can't write byte");
 		// make sure the user knows they should select a serial port
