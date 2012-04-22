@@ -16,9 +16,9 @@ enum {
     MocoProtocolRequestAxisResolutionDataInstruction = 0,
 	
     // Playback
-    MocoProtocolStartPlaybackRequestInstruction = 2,
-    MocoProtocolStopPlaybackRequestInstruction = 3,
-    MocoProtocolNextFrameAxisPositionsRequestInstruction = 4,
+    MocoProtocolStartPlaybackInstruction = 2,
+    MocoProtocolStopPlaybackInstruction = 3,
+    MocoProtocolNextFrameAxisPositionsInstruction = 4,
     
     // Disconnection
     MocoProtocolHostWillDisconnectNotificationInstruction = 5
