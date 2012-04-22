@@ -152,6 +152,8 @@
 }
 
 - (void)serialMessageReceived:(NSData *)data {
+    NSDate *methodStart = [NSDate date];
+
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
     
     if (driverResponse.type != MocoProtocolAxisPositionResponseType) {
@@ -193,16 +195,10 @@
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
         
-        NSLog(@"Sending next frame to arduino...");
-        
-        MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
-        MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
-        
-        [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
-        [_serialConnection writeIntAsByte:axis];
-        [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
-        
-        _playbackPosition++;
+        for (int i = 0; i < 10; i++) {
+            MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
+            [self writeNextPlaybackFrameToConnectionOnAxis:axis];
+        }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
                                                             object:driverResponse];
@@ -220,7 +216,24 @@
     else {
         NSLog(@"Serial message recieved but not understood.");
     }
+    
+    /* ... Do whatever you need to do ... */
+    
+    NSDate *methodFinish = [NSDate date];
+    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+    NSLog(@"serialMessageReceived took %f ms", executionTime * 1000); 
+}
 
+-(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
+    MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
+    
+    [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
+    [_serialConnection writeIntAsByte:axis];
+    [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+    
+    _playbackPosition++;
+    
+    NSLog(@"sent next frame to arduino... (raw position: %li)", [position.rawPosition longValue]);
 }
 
 -(void)handshakeSuccessful {
