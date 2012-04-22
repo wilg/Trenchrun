@@ -68,7 +68,7 @@
 							<string key="NSFrame">{{77, 28}, {58, 25}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1061313022"/>
+							<reference key="NSNextKeyView" ref="221773819"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="167240660">
@@ -115,7 +115,7 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="1061313022">
+						<object class="NSButton" id="221773819">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 8}, {117, 18}}</string>
@@ -124,7 +124,7 @@
 							<reference key="NSNextKeyView" ref="274028959"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="963868504">
+							<object class="NSButtonCell" key="NSCell" id="152139618">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">131072</int>
 								<string key="NSContents">Play on Rig</string>
@@ -134,7 +134,7 @@
 									<int key="NSfFlags">3100</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="1061313022"/>
+								<reference key="NSControlView" ref="221773819"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -349,7 +349,7 @@
 						</object>
 						<object class="NSSlider" id="529513631">
 							<reference key="NSNextResponder" ref="568628114"/>
-							<int key="NSvFlags">292</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{564, 11}, {133, 15}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
@@ -1231,10 +1231,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: rigPlaybackEngaged</string>
-						<reference key="source" ref="1061313022"/>
+						<reference key="source" ref="221773819"/>
 						<reference key="destination" ref="512844837"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="1061313022"/>
+							<reference key="NSSource" ref="221773819"/>
 							<reference key="NSDestination" ref="512844837"/>
 							<string key="NSLabel">value: rigPlaybackEngaged</string>
 							<string key="NSBinding">value</string>
@@ -1247,10 +1247,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
-						<reference key="source" ref="1061313022"/>
+						<reference key="source" ref="221773819"/>
 						<reference key="destination" ref="796877042"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="1061313022"/>
+							<reference key="NSSource" ref="221773819"/>
 							<reference key="NSDestination" ref="796877042"/>
 							<string key="NSLabel">enabled: delegate.mocoDriver.recordAndPlaybackOperational</string>
 							<string key="NSBinding">enabled</string>
@@ -1298,9 +1298,9 @@
 							<reference ref="160761301"/>
 							<reference ref="274028959"/>
 							<reference ref="672353393"/>
-							<reference ref="529513631"/>
-							<reference ref="1061313022"/>
+							<reference ref="221773819"/>
 							<reference ref="177976310"/>
+							<reference ref="529513631"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1661,16 +1661,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">101970</int>
-						<reference key="object" ref="1061313022"/>
+						<reference key="object" ref="221773819"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="963868504"/>
+							<reference ref="152139618"/>
 						</array>
 						<reference key="parent" ref="568628114"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">101971</int>
-						<reference key="object" ref="963868504"/>
-						<reference key="parent" ref="1061313022"/>
+						<reference key="object" ref="152139618"/>
+						<reference key="parent" ref="221773819"/>
 					</object>
 				</array>
 			</object>
