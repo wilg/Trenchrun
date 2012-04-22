@@ -12,13 +12,12 @@ enum {
     
     // Axis Data
     MocoProtocolStartSendingAxisDataInstruction = 1,
-    MocoProtocolStopSendingAxisDataInstruction = 0,
+    MocoProtocolStopSendingAxisDataInstruction =  0,
     MocoProtocolRequestAxisResolutionDataInstruction = 0,
 	
     // Playback
     MocoProtocolStartPlaybackInstruction = 2,
-    MocoProtocolStopPlaybackInstruction = 3,
-    MocoProtocolNextFrameAxisPositionsInstruction = 4,
+    MocoProtocolStopPlaybackInstruction =  3,
     
     // Disconnection
     MocoProtocolHostWillDisconnectNotificationInstruction = 5
@@ -38,9 +37,10 @@ enum {
 // MocoProtocolFooBarResponse
 typedef enum {
     MocoProtocolUnknownResponseType          = -1,
-    MocoProtocolHandshakeResponseType        = 0,
-    MocoProtocolAxisPositionResponseType     = 1,
-    MocoProtocolAxisResolutionResponseType   = 2
+    MocoProtocolHandshakeResponseType        =  0,
+    MocoProtocolAxisPositionResponseType     =  1,
+    MocoProtocolAxisResolutionResponseType   =  2,
+    MocoProtocolAdvancePositionsRequestType  =  3
 } MocoProtocolResponseType;
 
 // Responses
