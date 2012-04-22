@@ -5,7 +5,7 @@ enum {
     // MocoProtocolFooBarInstruction
     
     // Basics
-    MocoProtocolBaudRate = 1000000,
+    MocoProtocolBaudRate = 2000000,
     
     // Handshake
     MocoProtocolRequestHandshakeInstruction = 6,
