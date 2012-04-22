@@ -34,6 +34,7 @@
     if (serialFileDescriptor != -1) {
         close(serialFileDescriptor);
         serialFileDescriptor = -1;
+        killThread = 1;
         NSLog(@"allegedly closed");
     }
     else {

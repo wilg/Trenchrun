@@ -78,9 +78,19 @@
 	return self;
 }
 
-- (void)beginStreaming {
+- (void)beginStreamingPositionData {
     NSLog(@"Asking rig to start sending axis data...");
     [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
+}
+
+- (void)stopStreamingPositionData {
+    NSLog(@"Asking rig to cease sending axis data...");
+    [_serialConnection writeIntAsByte:MocoProtocolStopSendingAxisDataInstruction];
+}
+
+- (void)requestHandshake {
+    NSLog(@"MocoDriver - Requesting handshake...");
+    [_serialConnection writeIntAsByte:MocoProtocolRequestHandshakeInstruction];
 }
 
 - (void)notifyDeviceOfHostDisconnection {
@@ -90,13 +100,11 @@
 
 - (void)openSerialConnectionSuccessful {
     self.status = MocoStatusAwaitingControl;
-    
     [NSTimer scheduledTimerWithTimeInterval:1.5f
                                      target:self 
-                                   selector:@selector(beginStreaming) 
+                                   selector:@selector(requestHandshake) 
                                    userInfo:nil 
                                     repeats:NO];
-
 }
 
 - (void)openSerialConnectionFailedWithMessage:(NSString *)string {
@@ -106,14 +114,15 @@
 
 - (void)serialMessageReceived:(NSData *)data {
     MocoDriverResponse *driverResponse = [MocoDriverResponse responseWithData:data];
-//    NSLog(@"Serial Message Received: %@", driverResponse);
+    NSLog(@"Serial Message Received: %@", driverResponse);
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
                                                             object:driverResponse];
     }
-    else if (driverResponse.type = MocoProtocolHandshakeResponseType) {
-        if ([driverResponse.payload objectForKey:@"success"]) {
+    else if (driverResponse.type == MocoProtocolHandshakeResponseType) {
+        NSLog(@"right tytpe");
+        if ([[driverResponse.payload objectForKey:@"successful"] boolValue] == YES) {
             [self handshakeSuccessful];
         }
         else {
@@ -125,17 +134,20 @@
 
 -(void)handshakeSuccessful {
     self.status = MocoStatusIdle;
+    
+    [self beginStreamingPositionData];
 }
 
 -(void)handshakeFailed {
     NSLog(@"MocoDriver - Handshake failed.");
+    self.status = MocoStatusDisconnected;
 }
 
 - (void)severConnections {
     [self notifyDeviceOfHostDisconnection];
 
-    NSLog(@"MocoDriver - Closing ports.");
-    [_serialConnection closePort];
+//    NSLog(@"MocoDriver - Closing ports.");
+//    [_serialConnection closePort];
 }
 
 # pragma mark Auto-discovery

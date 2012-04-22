@@ -90,10 +90,6 @@
     return YES;
 }
 
--(BOOL)understood {
-    return YES;
-}
-
 -(NSString *)description {
     return [NSString stringWithFormat:@"MocoDriverResponse type=%i data=%@ payload=%@", self.type, self.data, self.payload];
 }
