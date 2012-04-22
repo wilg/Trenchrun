@@ -40,7 +40,7 @@ typedef enum {
     MocoProtocolHandshakeResponseType        =  0,
     MocoProtocolAxisPositionResponseType     =  1,
     MocoProtocolAxisResolutionResponseType   =  2,
-    MocoProtocolAdvancePositionsRequestType  =  3
+	MocoProtocolAdvancePositionRequestType  =  3
 } MocoProtocolResponseType;
 
 // Responses
