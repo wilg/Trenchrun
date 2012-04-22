@@ -1705,7 +1705,6 @@
 				<string key="101800.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101801.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101802.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="101809.CustomClassName">TrackArrayController</string>
 				<string key="101809.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101825.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101840.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>

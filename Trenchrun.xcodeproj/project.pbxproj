@@ -11,11 +11,8 @@
 		3B166873153B8B0F00DD7498 /* MocoTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B166872153B8B0F00DD7498 /* MocoTimelineView.m */; };
 		3B166876153B8B7A00DD7498 /* MocoTimelineTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */; };
 		3B16C566153AA4F000F40A56 /* MocoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C558153A9AC400F40A56 /* MocoFrame.m */; };
-		3B16C567153AA4F400F40A56 /* TrackArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C55A153A9D6600F40A56 /* TrackArrayController.m */; };
 		3B16C572153ABC2700F40A56 /* porkins.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B16C571153ABC2700F40A56 /* porkins.icns */; };
-		3B16C594153ACF7400F40A56 /* readline.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C58E153ACF3100F40A56 /* readline.c */; };
 		3B16C596153ACF7900F40A56 /* MocoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */; };
-		3B16C599153AD16600F40A56 /* OldMocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C598153AD16600F40A56 /* OldMocoDriver.m */; };
 		3B16C5C0153AD7CE00F40A56 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B16C5BF153AD7CE00F40A56 /* IOKit.framework */; };
 		3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E0314153CFADD00890049 /* MocoDriverResponse.m */; };
 		3B349156154389990070B321 /* Trenchrun.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B349155154389990070B321 /* Trenchrun.icns */; };
@@ -42,8 +39,6 @@
 		3B81D4681543B3BA00AEB709 /* MocoAxisPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81D4671543B3BA00AEB709 /* MocoAxisPosition.m */; };
 		3B81D4701543E26900AEB709 /* ReleaseNotesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81D46E1543E26900AEB709 /* ReleaseNotesWindowController.m */; };
 		3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */; };
-		3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */; };
-		3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */; };
 		3B8FC7BB1542868700BC2B9D /* NSColor+M3Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */; };
 		3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B8FC7BC154291ED00BC2B9D /* screen.png */; };
 		3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B615412EB400421D14 /* track-header-bg.png */; };
@@ -78,15 +73,9 @@
 		3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineTrackView.m; sourceTree = "<group>"; };
 		3B16C557153A9AC400F40A56 /* MocoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MocoFrame.h; sourceTree = "<group>"; };
 		3B16C558153A9AC400F40A56 /* MocoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MocoFrame.m; sourceTree = "<group>"; };
-		3B16C559153A9D6600F40A56 /* TrackArrayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackArrayController.h; sourceTree = "<group>"; };
-		3B16C55A153A9D6600F40A56 /* TrackArrayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackArrayController.m; sourceTree = "<group>"; };
 		3B16C571153ABC2700F40A56 /* porkins.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = porkins.icns; sourceTree = "<group>"; };
-		3B16C58E153ACF3100F40A56 /* readline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = readline.c; sourceTree = "<group>"; };
-		3B16C58F153ACF3100F40A56 /* readline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readline.h; sourceTree = "<group>"; };
 		3B16C592153ACF3100F40A56 /* MocoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MocoAppDelegate.h; sourceTree = "<group>"; };
 		3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MocoAppDelegate.m; sourceTree = "<group>"; };
-		3B16C597153AD16600F40A56 /* OldMocoDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldMocoDriver.h; sourceTree = "<group>"; };
-		3B16C598153AD16600F40A56 /* OldMocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldMocoDriver.m; sourceTree = "<group>"; };
 		3B16C5BF153AD7CE00F40A56 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		3B2E0313153CFADD00890049 /* MocoDriverResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriverResponse.h; sourceTree = "<group>"; };
 		3B2E0314153CFADD00890049 /* MocoDriverResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriverResponse.m; sourceTree = "<group>"; };
@@ -129,8 +118,6 @@
 		3B81D46D1543E26800AEB709 /* ReleaseNotesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseNotesWindowController.h; sourceTree = "<group>"; };
 		3B81D46E1543E26900AEB709 /* ReleaseNotesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseNotesWindowController.m; sourceTree = "<group>"; };
 		3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseNotesWindowController.xib; sourceTree = "<group>"; };
-		3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomIn.pdf; sourceTree = "<group>"; };
-		3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TB_zoomOut.pdf; sourceTree = "<group>"; };
 		3B8FC7B81542860400BC2B9D /* NSColor+M3Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+M3Extensions.h"; sourceTree = "<group>"; };
 		3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+M3Extensions.m"; sourceTree = "<group>"; };
 		3B8FC7BC154291ED00BC2B9D /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen.png; sourceTree = "<group>"; };
@@ -168,10 +155,7 @@
 		3B166867153B8A6100DD7498 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3B8FC7B81542860400BC2B9D /* NSColor+M3Extensions.h */,
-				3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */,
 				3B70DACF153FE492006230BC /* MocoTimelineViewConstants.h */,
-				3B6A4FA1153FC18A00793C8A /* TimelineView.xib */,
 				3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */,
 				3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */,
 				3B166871153B8B0F00DD7498 /* MocoTimelineView.h */,
@@ -182,7 +166,6 @@
 				3B166875153B8B7A00DD7498 /* MocoTimelineTrackView.m */,
 				3B70DAD9154005C2006230BC /* MocoTimelineHeaderViewController.h */,
 				3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */,
-				3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */,
 				3B70DAD3153FFF2E006230BC /* MocoTimelineHeaderListView.h */,
 				3B70DAD4153FFF2E006230BC /* MocoTimelineHeaderListView.m */,
 				3B70DAD615400220006230BC /* MocoTimelineHeaderView.h */,
@@ -206,46 +189,42 @@
 				3B9D52B81541339D00421D14 /* divider.png */,
 				3B9D52B615412EB400421D14 /* track-header-bg.png */,
 				3B6A4FA6153FC89D00793C8A /* noise.png */,
-				3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */,
-				3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */,
 				3BCBD248153BA0CD00D8E088 /* playhead.png */,
 				3B16C571153ABC2700F40A56 /* porkins.icns */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		3B16C58B153ACEE100F40A56 /* Document */ = {
+		3B16C58B153ACEE100F40A56 /* Document + Main App */ = {
 			isa = PBXGroup;
 			children = (
 				3B34D49015393F8900BB8F3D /* MocoDocument.h */,
 				3B34D49115393F8900BB8F3D /* MocoDocument.m */,
-				3B34D49315393F8900BB8F3D /* MocoDocument.xib */,
-				3B16C559153A9D6600F40A56 /* TrackArrayController.h */,
-				3B16C55A153A9D6600F40A56 /* TrackArrayController.m */,
+				3B16C592153ACF3100F40A56 /* MocoAppDelegate.h */,
+				3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */,
+				3BAEBFC1154415B3004596FA /* Other Controllers */,
 			);
-			name = Document;
+			name = "Document + Main App";
 			sourceTree = "<group>";
 		};
-		3B16C58C153ACEFF00F40A56 /* Additions */ = {
+		3B16C58C153ACEFF00F40A56 /* Additions + Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3B8FC7B81542860400BC2B9D /* NSColor+M3Extensions.h */,
+				3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */,
 			);
-			name = Additions;
+			name = "Additions + Categories";
 			sourceTree = "<group>";
 		};
 		3B16C58D153ACF2300F40A56 /* Driver */ = {
 			isa = PBXGroup;
 			children = (
-				3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */,
-				3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */,
 				3B7FFAB3153B583E00D465E7 /* MocoDriver.h */,
 				3B7FFAB4153B583E00D465E7 /* MocoDriver.m */,
+				3BA1E96A153D3A6C003D0F74 /* MocoSerialConnection.h */,
+				3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */,
 				3B2E0313153CFADD00890049 /* MocoDriverResponse.h */,
 				3B2E0314153CFADD00890049 /* MocoDriverResponse.m */,
-				3B16C597153AD16600F40A56 /* OldMocoDriver.h */,
-				3B16C598153AD16600F40A56 /* OldMocoDriver.m */,
-				3B16C58F153ACF3100F40A56 /* readline.h */,
-				3B16C58E153ACF3100F40A56 /* readline.c */,
 				3B16684E153B829F00DD7498 /* MocoDriverStatusValueTransformer.h */,
 				3B16684F153B829F00DD7498 /* MocoDriverStatusValueTransformer.m */,
 			);
@@ -295,22 +274,12 @@
 			isa = PBXGroup;
 			children = (
 				3B7579CB153E4022000A1C3F /* Specs */,
-				3B16C592153ACF3100F40A56 /* MocoAppDelegate.h */,
-				3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */,
-				3B81D46D1543E26800AEB709 /* ReleaseNotesWindowController.h */,
-				3B81D46E1543E26900AEB709 /* ReleaseNotesWindowController.m */,
-				3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */,
-				3B16C58B153ACEE100F40A56 /* Document */,
-				3B16C557153A9AC400F40A56 /* MocoFrame.h */,
-				3B16C558153A9AC400F40A56 /* MocoFrame.m */,
-				3BCBD24C153BA5E300D8E088 /* MocoTrack.h */,
-				3BCBD24D153BA5E300D8E088 /* MocoTrack.m */,
-				3B81D4661543B3BA00AEB709 /* MocoAxisPosition.h */,
-				3B81D4671543B3BA00AEB709 /* MocoAxisPosition.m */,
-				3B34D49615393F8900BB8F3D /* MainMenu.xib */,
+				3BAEBFBF1544149D004596FA /* XIBs */,
+				3B16C58B153ACEE100F40A56 /* Document + Main App */,
 				3B16C58D153ACF2300F40A56 /* Driver */,
+				3BAEBFC015441572004596FA /* Models */,
 				3B166867153B8A6100DD7498 /* Views */,
-				3B16C58C153ACEFF00F40A56 /* Additions */,
+				3B16C58C153ACEFF00F40A56 /* Additions + Categories */,
 				3B34D48515393F8900BB8F3D /* Supporting Files */,
 				3B16C56E153ABC0900F40A56 /* Assets */,
 			);
@@ -335,6 +304,40 @@
 				3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */,
 			);
 			name = Specs;
+			sourceTree = "<group>";
+		};
+		3BAEBFBF1544149D004596FA /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				3B34D49315393F8900BB8F3D /* MocoDocument.xib */,
+				3B34D49615393F8900BB8F3D /* MainMenu.xib */,
+				3B6A4FA1153FC18A00793C8A /* TimelineView.xib */,
+				3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		3BAEBFC015441572004596FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B16C557153A9AC400F40A56 /* MocoFrame.h */,
+				3B16C558153A9AC400F40A56 /* MocoFrame.m */,
+				3BCBD24C153BA5E300D8E088 /* MocoTrack.h */,
+				3BCBD24D153BA5E300D8E088 /* MocoTrack.m */,
+				3B81D4661543B3BA00AEB709 /* MocoAxisPosition.h */,
+				3B81D4671543B3BA00AEB709 /* MocoAxisPosition.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3BAEBFC1154415B3004596FA /* Other Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B81D46D1543E26800AEB709 /* ReleaseNotesWindowController.h */,
+				3B81D46E1543E26900AEB709 /* ReleaseNotesWindowController.m */,
+				3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */,
+			);
+			name = "Other Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,8 +398,6 @@
 				3B34D49815393F8900BB8F3D /* MainMenu.xib in Resources */,
 				3B16C572153ABC2700F40A56 /* porkins.icns in Resources */,
 				3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */,
-				3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */,
-				3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */,
 				3B6A4FA2153FC18A00793C8A /* TimelineView.xib in Resources */,
 				3B6A4FA7153FC89D00793C8A /* noise.png in Resources */,
 				3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */,
@@ -419,10 +420,7 @@
 				3B34D48B15393F8900BB8F3D /* main.m in Sources */,
 				3B34D49215393F8900BB8F3D /* MocoDocument.m in Sources */,
 				3B16C566153AA4F000F40A56 /* MocoFrame.m in Sources */,
-				3B16C567153AA4F400F40A56 /* TrackArrayController.m in Sources */,
-				3B16C594153ACF7400F40A56 /* readline.c in Sources */,
 				3B16C596153ACF7900F40A56 /* MocoAppDelegate.m in Sources */,
-				3B16C599153AD16600F40A56 /* OldMocoDriver.m in Sources */,
 				3B8FC7BB1542868700BC2B9D /* NSColor+M3Extensions.m in Sources */,
 				3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */,
 				3B166850153B833700DD7498 /* MocoDriverStatusValueTransformer.m in Sources */,
