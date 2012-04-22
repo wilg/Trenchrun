@@ -8,7 +8,7 @@ enum {
     MocoProtocolBaudRate = 1000000,
     
     // Handshake
-    MocoProtocolRequestHandshakeInstruction = '?',
+    MocoProtocolRequestHandshakeInstruction = 6,
     
     // Axis Data
     MocoProtocolStartSendingAxisDataInstruction = 1,
@@ -47,7 +47,7 @@ typedef enum {
 enum {
     
     // Handshake Responses
-    MocoProtocolHandshakeSuccessfulResponse = '!'
+    MocoProtocolHandshakeSuccessfulResponse = 1
 
 
 };
