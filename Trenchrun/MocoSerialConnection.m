@@ -177,6 +177,7 @@
         while(killThread == 0) {
             
             if (serialFileDescriptor == -1) {
+                NSLog(@"serialFileDescriptor died. breaking.");
                 break;
             }
             
@@ -187,6 +188,7 @@
                     [dataBuffer appendBytes:byte_buffer length:numBytes];
                 }
                 else {
+                    NSLog(@"Crazy progits!");
                     break;
                 }
             }
