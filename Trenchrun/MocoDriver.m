@@ -7,8 +7,6 @@
 //
 
 #import "MocoDriver.h"
-#import "AMSerialPortList.h"
-#import "AMSerialPortAdditions.h"
 #import "MocoDriverResponse.h"
 #import "MocoAxisPosition.h"
 #import "MocoTrack.h"
@@ -16,7 +14,7 @@
 
 @interface MocoDriver ( /* class extension */ ) {
 @private
-	AMSerialPort *port;
+//	AMSerialPort *port;
     
     MocoStatusCode _status;
     
@@ -32,7 +30,7 @@
     NSArray *_playbackTracks;
     NSInteger _playbackPosition;
 }
-@property (retain) AMSerialPort *port;
+//@property (retain) AMSerialPort *port;
 @property (assign) MocoStatusCode status;
 
 - (void)findMocoRig;
@@ -42,7 +40,7 @@
 ///// IMPLEMENTATION
 
 @implementation MocoDriver
-@synthesize port;
+//@synthesize port;
 
 # pragma mark Initializer
 
@@ -94,8 +92,8 @@
 }
 
 - (void)pausePlayback {
-    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
-    [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
+//    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
+//    [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
@@ -157,6 +155,9 @@
     if (driverResponse.type != MocoProtocolAxisPositionResponseType) {
         NSLog(@"Serial Message Received: %@", driverResponse);
     }
+    else {
+        NSLog(@"---------");
+    }
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         
@@ -189,6 +190,8 @@
         
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
+        
+        NSLog(@"Sending next frame to arduino...");
         
         MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
         MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
