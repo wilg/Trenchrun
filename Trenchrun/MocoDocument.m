@@ -183,10 +183,10 @@ static NSString * kTrackEditContext = @"Track Edit";
     }
 }
 
--(IBAction)add1000BogusFrames:(id)sender {
+-(IBAction)addManyBogusFrames:(id)sender {
     int i = 0;
     
-    while (i < 1000) {
+    while (i < 50) {
         [self addBogusFrame:nil];
         i++;
     }
