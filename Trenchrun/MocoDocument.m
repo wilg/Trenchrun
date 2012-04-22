@@ -14,6 +14,7 @@
 #import "MocoFrame.h"
 #import "MocoTrack.h"
 #import "MocoDriverResponse.h"
+#import "MocoAxisPosition.h"
 
 static NSString * kTrackEditContext = @"Track Edit";
 
@@ -91,9 +92,9 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 - (void)axisDataUpdated:(NSNotification *)notification {
     if (recording) {
-        MocoDriverResponse *driverResponse = notification.object;
-        [self savePosition:[driverResponse.payload valueForKey:@"position"]
-                   forAxis:[[driverResponse.payload valueForKey:@"axis"] intValue]];
+        MocoAxisPosition *axisPosition = notification.object;
+        [self savePosition:axisPosition.position
+                   forAxis:axisPosition.axis];
 //        [self tracksDidChange];
     }
 }

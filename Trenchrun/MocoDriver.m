@@ -10,6 +10,7 @@
 #import "AMSerialPortList.h"
 #import "AMSerialPortAdditions.h"
 #import "MocoDriverResponse.h"
+#import "MocoAxisPosition.h"
 
 
 
@@ -24,6 +25,7 @@
     BOOL _waitingForPortHandshakeResponse;
     NSString *_rigPortPath;
     
+    NSMutableDictionary *_axisResolutions;
     
     MocoSerialConnection *_serialConnection;
 }
@@ -59,6 +61,8 @@
         /// initialize port list to arm notifications
 //        [AMSerialPortList sharedPortList];
         
+        _axisResolutions = [NSMutableDictionary dictionary];
+        
         self.status = MocoStatusDisconnected;
         
         // Search all available ports for moco rig.
@@ -78,8 +82,13 @@
 	return self;
 }
 
+- (void)requestAxisResolutionData {
+    NSLog(@"Asking rig to start sending axis resolution...");
+    [_serialConnection writeIntAsByte:MocoProtocolRequestAxisResolutionDataInstruction];
+}
+
 - (void)beginStreamingPositionData {
-    NSLog(@"Asking rig to start sending axis data...");
+    NSLog(@"Asking rig to start sending axis position data...");
     [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
 }
 
@@ -117,8 +126,34 @@
     NSLog(@"Serial Message Received: %@", driverResponse);
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
+        
+        MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
+        
+        NSNumber *axisNumber = [driverResponse.payload objectForKey:@"axis"];
+        NSNumber *resolution = [_axisResolutions objectForKey:axisNumber];
+        if (resolution) {
+            axisPosition.axis = [axisNumber intValue];
+            axisPosition.resolution = resolution;
+            axisPosition.rawPosition = [driverResponse.payload objectForKey:@"rawPosition"];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
+                                                                object:axisPosition];
+            
+        }
+        else {
+            NSLog(@"Position data received for unnormalizable axis.");
+        }
+        
+        
+    }
+    else if (driverResponse.type == MocoProtocolAxisResolutionResponseType) {
+        
+        [_axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
+                             forKey:[driverResponse.payload objectForKey:@"axis"]];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
                                                             object:driverResponse];
+        
     }
     else if (driverResponse.type == MocoProtocolHandshakeResponseType) {
         NSLog(@"right tytpe");
@@ -135,11 +170,16 @@
 -(void)handshakeSuccessful {
     self.status = MocoStatusIdle;
     
+    [self requestAxisResolutionData];
     [self beginStreamingPositionData];
 }
 
 -(void)handshakeFailed {
     NSLog(@"MocoDriver - Handshake failed.");
+    
+    [self severConnections];
+    [_serialConnection closePort];
+    
     self.status = MocoStatusDisconnected;
 }
 
