@@ -72,7 +72,7 @@
         _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
 
     }
-    else if (self.type = MocoProtocolAxisPositionResponseType) {
+    else if (self.type == MocoProtocolAxisPositionResponseType) {
         MocoAxis axis = (int)bytes[1];
         
         Byte fourbytes[4];
@@ -83,9 +83,24 @@
         
         long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"position", [NSNumber numberWithInt:axis], @"axis", nil];
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"rawPosition", [NSNumber numberWithInt:axis], @"axis", nil];
         
     }
+    else if (self.type == MocoProtocolAxisResolutionResponseType) {
+        MocoAxis axis = (int)bytes[1];
+        
+        Byte fourbytes[4];
+        fourbytes[0] = bytes[2];
+        fourbytes[1] = bytes[3];
+        fourbytes[2] = bytes[4];
+        fourbytes[3] = bytes[5];
+        
+        long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
+        
+        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"resolution", [NSNumber numberWithInt:axis], @"axis", nil];
+        
+    }
+
     
     return YES;
 }
