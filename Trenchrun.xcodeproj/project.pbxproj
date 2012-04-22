@@ -160,7 +160,7 @@
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
 		3BCBD24C153BA5E300D8E088 /* MocoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTrack.h; sourceTree = "<group>"; };
 		3BCBD24D153BA5E300D8E088 /* MocoTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTrack.m; sourceTree = "<group>"; };
-		3BCBD24F153BA7FE00D8E088 /* MocoSharedSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoSharedSpec.h; sourceTree = "<group>"; };
+		3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MocoProtocolConstants.h; sourceTree = "<group>"; };
 		3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -366,7 +366,7 @@
 		3B7579CB153E4022000A1C3F /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				3BCBD24F153BA7FE00D8E088 /* MocoSharedSpec.h */,
+				3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */,
 			);
 			name = Specs;
 			sourceTree = "<group>";

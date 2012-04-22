@@ -8,16 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    MocoDriverResponseTypeUnknown      = -1,
-    MocoDriverResponseTypeHandshake    = 0,
-    MocoDriverResponseTypeAxisPosition = 1
-} MocoDriverResponseType;
-
 @interface MocoDriverResponse : NSObject
 
 @property (readonly) NSData *data;
-@property (assign) MocoDriverResponseType type;
+@property (assign) MocoProtocolResponseType type;
 @property (readonly) NSDictionary *parsedResponse;
 
 +(MocoDriverResponse *)responseWithData:(NSData *)data;
