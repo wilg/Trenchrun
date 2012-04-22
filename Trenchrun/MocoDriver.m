@@ -84,18 +84,30 @@
 }
 
 - (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
-    NSLog(@"begin playback");
-    _playbackTracks = tracks;
-    _playbackPosition = frameNumber;
-    
-    [self stopStreamingPositionData];
-    [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
+    if (self.recordAndPlaybackOperational) {
+        NSLog(@"begin playback");
+        _playbackTracks = tracks;
+        _playbackPosition = frameNumber;
+        
+        [self stopStreamingPositionData];
+        [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
+        self.status = MocoStatusPlayback;
+    }
+    else {
+        NSLog(@"Rig offline for playback.");
+    }
 }
 
 - (void)pausePlayback {
-    [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
-    [self beginStreamingPositionData];
-    NSLog(@"pause playback");
+    if (self.recordAndPlaybackOperational) {
+        [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
+        [self beginStreamingPositionData];
+        NSLog(@"pause playback");
+        self.status = MocoStatusIdle;
+    }
+    else {
+        NSLog(@"Rig offline for playback.");
+    }
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
