@@ -86,6 +86,7 @@ static NSString * kTrackEditContext = @"Track Edit";
     MocoTrack *track = [self trackWithAxis:axis];
     if (track.recordEnabled) {
         [track appendFrameWithPosition:position];
+        [timelineViewController followPlayheadToFrame:track.frames.count];
         [self updateChangeCount:NSChangeDone];
     }
 }
@@ -95,7 +96,6 @@ static NSString * kTrackEditContext = @"Track Edit";
         MocoAxisPosition *axisPosition = notification.object;
         [self savePosition:axisPosition.position
                    forAxis:axisPosition.axis];
-//        [self tracksDidChange];
     }
 }
 
