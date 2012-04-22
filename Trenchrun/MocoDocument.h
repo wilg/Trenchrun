@@ -28,16 +28,6 @@
     
     IBOutlet NSWindow *documentWindow;
         
-//
-//    IBOutlet CPTGraphHostingView *graphView;
-//	CPTXYGraph *graph;
-//    
-//	double minimumValueForXAxis, maximumValueForXAxis, minimumValueForYAxis, maximumValueForYAxis;
-//	double majorIntervalLengthForX, majorIntervalLengthForY;
-//	NSMutableArray *dataPoints;
-//    
-//	CPTPlotSpaceAnnotation *zoomAnnotation;
-//	CGPoint dragStart, dragEnd;    
 }
 
 @property BOOL rigPlaybackEngaged;
