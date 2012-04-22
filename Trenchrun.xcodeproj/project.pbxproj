@@ -14,7 +14,6 @@
 		3B16C566153AA4F000F40A56 /* MocoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C558153A9AC400F40A56 /* MocoFrame.m */; };
 		3B16C567153AA4F400F40A56 /* TrackArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C55A153A9D6600F40A56 /* TrackArrayController.m */; };
 		3B16C572153ABC2700F40A56 /* porkins.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B16C571153ABC2700F40A56 /* porkins.icns */; };
-		3B16C574153ABCCF00F40A56 /* shitty-x-wing.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B16C573153ABCCF00F40A56 /* shitty-x-wing.icns */; };
 		3B16C594153ACF7400F40A56 /* readline.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C58E153ACF3100F40A56 /* readline.c */; };
 		3B16C596153ACF7900F40A56 /* MocoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */; };
 		3B16C599153AD16600F40A56 /* OldMocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C598153AD16600F40A56 /* OldMocoDriver.m */; };
@@ -26,6 +25,7 @@
 		3B16C5C0153AD7CE00F40A56 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B16C5BF153AD7CE00F40A56 /* IOKit.framework */; };
 		3B16C5CE153AD88D00F40A56 /* SerialConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C5C2153AD7ED00F40A56 /* SerialConnectionViewController.m */; };
 		3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E0314153CFADD00890049 /* MocoDriverResponse.m */; };
+		3B349156154389990070B321 /* Trenchrun.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B349155154389990070B321 /* Trenchrun.icns */; };
 		3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D47E15393F8900BB8F3D /* Cocoa.framework */; };
 		3B34D48915393F8900BB8F3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D48715393F8900BB8F3D /* InfoPlist.strings */; };
 		3B34D48B15393F8900BB8F3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D48A15393F8900BB8F3D /* main.m */; };
@@ -87,7 +87,6 @@
 		3B16C559153A9D6600F40A56 /* TrackArrayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackArrayController.h; sourceTree = "<group>"; };
 		3B16C55A153A9D6600F40A56 /* TrackArrayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackArrayController.m; sourceTree = "<group>"; };
 		3B16C571153ABC2700F40A56 /* porkins.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = porkins.icns; sourceTree = "<group>"; };
-		3B16C573153ABCCF00F40A56 /* shitty-x-wing.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "shitty-x-wing.icns"; sourceTree = "<group>"; };
 		3B16C58E153ACF3100F40A56 /* readline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = readline.c; sourceTree = "<group>"; };
 		3B16C58F153ACF3100F40A56 /* readline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readline.h; sourceTree = "<group>"; };
 		3B16C592153ACF3100F40A56 /* MocoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MocoAppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		3B16C5C2153AD7ED00F40A56 /* SerialConnectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SerialConnectionViewController.m; sourceTree = "<group>"; };
 		3B2E0313153CFADD00890049 /* MocoDriverResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriverResponse.h; sourceTree = "<group>"; };
 		3B2E0314153CFADD00890049 /* MocoDriverResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriverResponse.m; sourceTree = "<group>"; };
+		3B349155154389990070B321 /* Trenchrun.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Trenchrun.icns; sourceTree = "<group>"; };
 		3B34D47A15393F8900BB8F3D /* Trenchrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trenchrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B34D47E15393F8900BB8F3D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3B34D48115393F8900BB8F3D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -160,7 +160,7 @@
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
 		3BCBD24C153BA5E300D8E088 /* MocoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTrack.h; sourceTree = "<group>"; };
 		3BCBD24D153BA5E300D8E088 /* MocoTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTrack.m; sourceTree = "<group>"; };
-		3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MocoProtocolConstants.h; sourceTree = "<group>"; };
+		3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoProtocolConstants.h; sourceTree = "<group>"; };
 		3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +215,7 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3B349155154389990070B321 /* Trenchrun.icns */,
 				3B721E291543444F008F6D76 /* screengloss.png */,
 				3B8FC7BC154291ED00BC2B9D /* screen.png */,
 				3B9D52B81541339D00421D14 /* divider.png */,
@@ -223,7 +224,6 @@
 				3B8D8E14153BE6C7004D21AE /* TB_zoomIn.pdf */,
 				3B8D8E15153BE6C7004D21AE /* TB_zoomOut.pdf */,
 				3BCBD248153BA0CD00D8E088 /* playhead.png */,
-				3B16C573153ABCCF00F40A56 /* shitty-x-wing.icns */,
 				3B16C571153ABC2700F40A56 /* porkins.icns */,
 			);
 			name = Assets;
@@ -428,7 +428,6 @@
 				3B34D49515393F8900BB8F3D /* MocoDocument.xib in Resources */,
 				3B34D49815393F8900BB8F3D /* MainMenu.xib in Resources */,
 				3B16C572153ABC2700F40A56 /* porkins.icns in Resources */,
-				3B16C574153ABCCF00F40A56 /* shitty-x-wing.icns in Resources */,
 				3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */,
 				3B8D8E16153BE6C7004D21AE /* TB_zoomIn.pdf in Resources */,
 				3B8D8E17153BE6C7004D21AE /* TB_zoomOut.pdf in Resources */,
@@ -439,6 +438,7 @@
 				3B9D52B91541339D00421D14 /* divider.png in Resources */,
 				3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */,
 				3B721E2A1543444F008F6D76 /* screengloss.png in Resources */,
+				3B349156154389990070B321 /* Trenchrun.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
