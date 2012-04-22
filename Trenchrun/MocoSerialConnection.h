@@ -38,5 +38,6 @@
 - (void) writeString: (NSString *) str;
 - (void) writeByte: (uint8_t *) val;
 - (void) writeIntAsByte: (int) val;
+- (void) writeLongAsFourBytes: (long int)longInt;
 
 @end
