@@ -105,14 +105,15 @@
 															<object class="NSView" id="502093379">
 																<reference key="NSNextResponder" ref="1031727205"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrameSize">{395, 464}</string>
+																<string key="NSFrame">{{0, -15}, {395, 464}}</string>
 																<reference key="NSSuperview" ref="1031727205"/>
 																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="360414118"/>
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 															</object>
 														</array>
-														<string key="NSFrameSize">{384, 466}</string>
+														<string key="NSFrameSize">{384, 451}</string>
+														<string key="NSBounds">{{0, -2}, {384, 451}}</string>
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="502093379"/>
@@ -137,6 +138,7 @@
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="1031727205"/>
 														<string key="NSReuseIdentifierKey">_NS:15</string>
+														<bool key="NSEnabled">YES</bool>
 														<reference key="NSTarget" ref="977344762"/>
 														<string key="NSAction">_doScroller:</string>
 														<double key="NSPercent">0.99568965517241381</double>
@@ -163,7 +165,7 @@
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="1031727205"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<int key="NSsFlags">137376</int>
+												<int key="NSsFlags">137952</int>
 												<reference key="NSVScroller" ref="360414118"/>
 												<reference key="NSHScroller" ref="624224527"/>
 												<reference key="NSContentView" ref="1031727205"/>
@@ -193,7 +195,7 @@
 							</object>
 							<object class="NSScroller" id="231092597">
 								<reference key="NSNextResponder" ref="391937304"/>
-								<int key="NSvFlags">256</int>
+								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{568, 1}, {15, 506}}</string>
 								<reference key="NSSuperview" ref="391937304"/>
 								<reference key="NSWindow"/>
@@ -222,7 +224,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="268689469"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<int key="NSsFlags">133138</int>
+						<int key="NSsFlags">133650</int>
 						<reference key="NSVScroller" ref="231092597"/>
 						<reference key="NSHScroller" ref="617774985"/>
 						<reference key="NSContentView" ref="268689469"/>
@@ -430,14 +432,20 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="documentWindow">NSWindow</string>
 						<string key="flattenedFrameArrayController">NSArrayController</string>
 						<string key="listView">NSView</string>
+						<string key="playButton">NSButton</string>
 						<string key="timelineContainer">NSView</string>
 						<string key="timelineViewController">TimelineViewController</string>
 						<string key="trackArrayController">TrackArrayController</string>
 						<string key="viewSwapControl">NSSegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="documentWindow">
+							<string key="name">documentWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="flattenedFrameArrayController">
 							<string key="name">flattenedFrameArrayController</string>
 							<string key="candidateClassName">NSArrayController</string>
@@ -445,6 +453,10 @@
 						<object class="IBToOneOutletInfo" key="listView">
 							<string key="name">listView</string>
 							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="playButton">
+							<string key="name">playButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="timelineContainer">
 							<string key="name">timelineContainer</string>
