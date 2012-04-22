@@ -31,6 +31,7 @@
 - (IBAction)refreshGraph:(id)sender;
 
 - (void)movePlayheadToFrame:(int)frameNumber;
+- (void)followPlayheadToFrame:(int)frameNumber;
 
 -(BOOL)playOneFrame;
 
