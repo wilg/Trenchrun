@@ -402,7 +402,7 @@
     } else if (code == MocoStatusSearchingForDevice) {
         return @"Searching for Devices...";
     } else if (code == MocoStatusAwaitingControl) {
-        return @"Assuming control...";
+        return @"Assuming Direct Control...";
     } else if (code == MocoStatusIdle) {
         return @"Idle";
     } else if (code == MocoStatusSeeking) {
