@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AMSerialPort.h"
 #import "MocoProtocolConstants.h"
 #import "MocoSerialConnection.h"
 
