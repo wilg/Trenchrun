@@ -19,25 +19,32 @@ class AutoAppcast
   # Setup shit
 
   def release!
-        
-    puts "Publishing #{SETTINGS["app_name"]} release #{version_number}."
+    
+    # puts release_notes_data
+    # return
+            
+    puts "Publishing #{SETTINGS["app_name"]} release #{current_version_number}."
     puts "Compressing app..."
     AutoAppcast.zip_folder(SETTINGS["built_app_path"], temporary_zipped_version_path)
     puts "Uploading application..."
     upload_public_file_to_s3(temporary_zipped_version_path, zipped_filename)
     
     puts "Writing appcast..."
-    File.open(temporary_appcast_path, 'w') {|f| f.write(appcast_data) }
+    write_file temporary_appcast_path, appcast_data
     upload_public_file_to_s3(temporary_appcast_path, "appcast.xml")
     
     puts "Writing release notes..."
-    File.open(temporary_release_notes_path, 'w') {|f| f.write(release_notes_data) }
+    write_file temporary_release_notes_path, release_notes_data
     upload_public_file_to_s3(temporary_release_notes_path, "release_notes.html")
     
     puts "Writing head id..."
-    File.open(temporary_head_path, 'w') {|f| f.write(current_head_id) }
+    write_file temporary_head_path, current_head_id
     upload_public_file_to_s3(temporary_head_path, "head_id.txt")
     
+    puts "Writing releases log..."
+    write_file temporary_release_list_path, releases_list_data.to_yaml
+    upload_public_file_to_s3(temporary_release_list_path, "releases.yml")
+        
     puts "Released!"
     
   end
@@ -45,56 +52,105 @@ class AutoAppcast
   def appcast_data
     file = File.open("#{CURRENT_DIR}/appcast.template.xml", "rb")
     contents = file.read
-    contents.sub!("$DESCRIPTION", "Updated to version #{version_number}, #{Time.now.to_s}")
-    contents.sub!("$VERSION", version_number)
+    contents.sub!("$DESCRIPTION", "Updated to version #{current_version_number}, #{Time.now.to_s}")
+    contents.sub!("$VERSION", current_version_number)
     contents.sub!("$URL", s3_url(zipped_filename))
     contents
   end
   
   def release_notes_data
     repo = Grit::Repo.new(Pathname.new(CURRENT_DIR).parent)
-    commits = repo.commits_between(last_commit, repo.commits.first.id)
     
     file = File.open("#{CURRENT_DIR}/release_notes.template.html", "rb")
-    contents = file.read
+    layout = file.read
     
-    contents.gsub!("$APPNAME", SETTINGS["app_name"])
-    contents.sub!("$VERSION", human_version)
-    contents.sub!("$DATE", Time.now.strftime("%b %d %Y, %I:%M%p"))
+    file = File.open("#{CURRENT_DIR}/release_notes.version.template.html", "rb")
+    partial = file.read
     
-    lis = ""
-    for commit in commits
-      lis << "<li>#{commit.message}</li>"
+    rels = releases_list_data
+    
+    puts rels
+
+    versions_html = ""
+    rels.keys.sort.reverse.each do |version|
+      
+      
+      version_hash = rels[version]
+      next_version = (version.to_i + 1).to_s
+      next_version_hash = rels[next_version]
+      previous_version = (version.to_i - 1).to_s
+      previous_version_hash = rels[previous_version]
+
+      # if current_version_number == version
+        
+      if previous_version_hash
+        commits = repo.commits_between(previous_version_hash["head"], version_hash["head"])
+      end
+      # elsif next_version_hash
+      #     commits = repo.commits_between(version_hash["head"], next_version_hash["head"])
+      # end
+            
+      if commits
+      
+        this_partial = partial + ""
+
+        this_partial.gsub!("$APPNAME", SETTINGS["app_name"])
+        this_partial.sub!("$VERSION", version_hash["human_version"])
+        this_partial.sub!("$HEAD", version_hash["head"])
+        this_partial.sub!("$DATE", version_hash["date"].strftime("%b %d %Y, %I:%M%p"))
+      
+        lis = ""
+        for commit in commits
+          lis << "<li>#{commit.message}</li>\n"
+        end
+        if lis.length < 1
+          lis <<"<li><em>Unknown changes.</em></li>"
+        end
+        this_partial.sub!("$FEATURELIST", lis)
+      
+        versions_html << this_partial
+        
+      end
     end
     
-    if lis.length < 1
-      lis <<"<li><em>Unknown changes.</em></li>"
-    end
+    layout.sub!("$VERSIONS", versions_html)
     
-    contents.sub!("$RELEASELIS", lis)
-    
-    lis = ""
-    for commit in repo.commits('master', false)
-      lis << "<li>#{commit.message}</li>"
-    end
-    contents.sub!("$PREV_CHANGES", lis)
-    
-    contents
+    layout
   end
   
+  def previous_releases_hash
+    file = open("#{SETTINGS["base_url"]}/releases.yml")
+    contents = file.read
+    yams = YAML::load(contents)
+    # puts yams
+    yams
+  end
+  
+  def releases_list_data
+    hash = previous_releases_hash
+    unless hash[current_version_number]
+      hash[current_version_number] = {"head" => current_head_id, "date" => Time.now, "human_version" => human_version(current_version_number)}
+    end
+    hash
+  end
+    
   def current_head_id
     repo = Grit::Repo.new(Pathname.new(CURRENT_DIR).parent)
     repo.commits.first.id
   end
   
-  def human_version
-    "build #{version_number}"
+  def human_version(version)
+    "b#{version}"
   end
   
   def last_commit
     file = open("#{SETTINGS["base_url"]}/head_id.txt")
     contents = file.read
     contents
+  end
+  
+  def write_file(path, contents)
+    File.open(path, 'w') {|f| f.write(contents) }
   end
   
   def upload_public_file_to_s3(file, s3_path)
@@ -130,11 +186,15 @@ class AutoAppcast
     "#{tempdir}/head_id.txt"
   end
   
-  def zipped_filename
-    "#{SETTINGS["app_name"]}_#{version_number}.zip".downcase
+  def temporary_release_list_path
+    "#{tempdir}/releases.yml"
   end
   
-  def version_number
+  def zipped_filename
+    "#{SETTINGS["app_name"]}_#{current_version_number}.zip".downcase
+  end
+  
+  def current_version_number
     plist = CFPropertyList::List.new(:file => "#{SETTINGS["built_app_path"]}/Contents/Info.plist")
     data = CFPropertyList.native_types(plist.value)
     data["CFBundleVersion"]
