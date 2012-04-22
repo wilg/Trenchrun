@@ -8,7 +8,6 @@
 
 #include <stdlib.h>
 
-#import "TrackArrayController.h"
 #import "MocoTimelineView.h"
 #import "MocoDocument.h"
 #import "MocoFrame.h"

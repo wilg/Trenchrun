@@ -8,11 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TimelineViewController.h"
-#import "TrackArrayController.h"
 
 @interface MocoDocument : NSDocument {
     
-    IBOutlet TrackArrayController *trackArrayController;
+    IBOutlet NSArrayController *trackArrayController;
     IBOutlet NSArrayController    *flattenedFrameArrayController;
     
     IBOutlet TimelineViewController *timelineViewController;
