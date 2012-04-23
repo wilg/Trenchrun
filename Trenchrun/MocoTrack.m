@@ -74,7 +74,7 @@
 }
 
 -(BOOL)containsFrameNumber:(NSInteger)frameNumber {
-    if (frameNumber >= self.frames.count){
+    if (frameNumber < self.frames.count){
         return YES;
     }
     return NO;
