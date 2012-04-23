@@ -35,7 +35,7 @@
     
     [[titleField cell] setBackgroundStyle:NSBackgroundStyleLowered];
 
-    [visualizationView bind:@"axisPosition" toObject:track withKeyPath:@"currentPosition" options:nil];
+    [visualizationView bind:@"axisPosition" toObject:track withKeyPath:@"positionAtPlayhead" options:nil];
 }
 
 - (void)awakeFromNib {

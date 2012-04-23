@@ -32,7 +32,7 @@
         
         // Initialization code here.
         _horizonView = [[NSImageView alloc] initWithFrame:self.bounds];
-        _horizonView.image = [NSImage imageNamed:@"asis_visualization_horizon.jpg"];
+        _horizonView.image = [NSImage imageNamed:@"asis_visualization_horizon.png"];
         _horizonView.imageScaling = NSImageScaleAxesIndependently;
         _horizonView.wantsLayer = YES;
 
@@ -67,8 +67,8 @@
 }
 
 -(void)setAxisPosition:(MocoAxisPosition *)axisPosition {
-    NSLog(@"axisposition updated");
     _axisPosition = axisPosition;
+    [self placeAtPosition];
 }
 
 -(void)placeAtPosition {
@@ -89,7 +89,7 @@
 
     [_axisView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
     _axisView.layer.position = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2); 
-    _axisView.layer.transform = CATransform3DMakeRotation(self.position / 180.0 * M_PI, 0.0, 0.0, 1.0);
+    _axisView.layer.transform = CATransform3DMakeRotation(self.axisPosition.radiansPosition, 0.0, 0.0, 1.0);
     
     [CATransaction commit];
 
@@ -98,10 +98,10 @@
 -(void)setAxis:(MocoAxis)axis {
     _axis = axis;
     if (_axis == MocoAxisCameraTilt) {
-        _axisView.image = [NSImage imageNamed:@"axis_visualization_tilt.png"];
+        _axisView.image = [NSImage imageNamed:@"axis_visualization_tilt_white.png"];
     }
     else {
-        _axisView.image = [NSImage imageNamed:@"axis_visualization_tilt.png"];
+        _axisView.image = [NSImage imageNamed:@"axis_visualization_tilt_white.png"];
     }
 }
 

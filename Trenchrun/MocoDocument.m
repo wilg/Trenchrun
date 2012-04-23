@@ -75,6 +75,10 @@ static NSString * kTrackEditContext = @"Track Edit";
     [timelineViewController.view setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
     [timelineViewController.view setFrame:[timelineContainer bounds]];
     [timelineContainer addSubview:timelineViewController.view];
+    
+    for (MocoTrack *track in trackList) {
+        [track bind:@"lastKnownPlayheadPosition" toObject:timelineViewController withKeyPath:@"playheadPosition" options:nil];
+    }
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {

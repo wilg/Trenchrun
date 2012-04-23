@@ -9,10 +9,14 @@
 #import "MocoTrack.h"
 #import "MocoFrame.h"
 
+@interface MocoTrack () {
+}
+@end
+
 @implementation MocoTrack
 @synthesize frames = _frames;
 @synthesize axis = _axis;
-@synthesize soloed, muted, recordEnabled, currentPosition;
+@synthesize soloed, muted, recordEnabled, currentPosition, lastKnownPlayheadPosition;
 
 - init {
 	if (self = [super init]) {
@@ -21,6 +25,9 @@
         recordEnabled = YES;
         muted = NO;
         soloed = NO;
+        
+        
+        self.lastKnownPlayheadPosition = 0;
 	}
 	return self;	
 }
@@ -63,6 +70,8 @@
 }
 
 -(MocoFrame *)frameAtFrameNumber:(NSInteger)frameNumber {
+    if (!_frames || ![self containsFrameNumber:frameNumber])
+        return nil;
     return [_frames objectAtIndex:frameNumber];
 }
 
@@ -71,6 +80,10 @@
     axisPosition.axis = self.axis;
     axisPosition.position = [self frameAtFrameNumber:frameNumber].position;
     return axisPosition;
+}
+
+-(MocoAxisPosition *)positionAtPlayhead {
+    return [self axisPositionAtFrameNumber:self.lastKnownPlayheadPosition];
 }
 
 -(BOOL)containsFrameNumber:(NSInteger)frameNumber {
@@ -140,6 +153,22 @@
 
 - (NSInteger)length {
     return self.frames.count;
+}
+
+#pragma mark ======== KVC =========
+
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    if ([key isEqualToString:@"positionAtPlayhead"])
+    {
+        NSSet *affectingKeys = [NSSet setWithObjects:@"lastKnownPlayheadPosition",nil];
+        keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    }
+    
+    return keyPaths;
 }
 
 

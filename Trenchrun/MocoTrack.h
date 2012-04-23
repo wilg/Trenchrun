@@ -24,6 +24,10 @@
 @property (assign) BOOL soloed;
 @property (retain) MocoAxisPosition *currentPosition;
 
+// Stuff that helps with views.
+@property (assign) NSInteger lastKnownPlayheadPosition;
+@property (readonly) MocoAxisPosition *positionAtPlayhead;
+
 +(NSArray *)flattenedTracks:(NSArray *)tracks;
 
 -(void)addFrame:(MocoFrame *)frame;
