@@ -99,10 +99,8 @@ static NSString * kTrackEditContext = @"Track Edit";
         [self savePosition:axisPosition.position
                    forAxis:axisPosition.axis];
     }
-    else {
-        MocoTrack *track = [self trackWithAxis:axisPosition.axis];
-        track.currentPosition = axisPosition;
-    }
+    MocoTrack *track = [self trackWithAxis:axisPosition.axis];
+    track.currentPosition = axisPosition;
 }
 
 
