@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "TimelineViewController.h"
 #import "MocoTimelineTrackView.h"
 #import "MocoTimelineTrackViewController.h"
 #import "MocoLineGraphView.h"
@@ -17,7 +18,7 @@
 @end
 
 @implementation MocoTimelineTrackViewController
-@synthesize track;
+@synthesize track, timelineController;
 
 - (id)init {
     if (self = [super init]) {

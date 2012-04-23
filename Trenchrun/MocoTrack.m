@@ -138,6 +138,10 @@
     return [NSColor whiteColor];
 }
 
+- (NSInteger)length {
+    return self.frames.count;
+}
+
 
 #pragma mark ======== Archiving and unarchiving methods =========
 

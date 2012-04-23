@@ -12,6 +12,7 @@
 #import "TimelineViewController.h"
 
 @class TimelineViewController;
+@class MocoTimelineTrackView;
 
 @interface MocoTimelineView : NSView {
 }

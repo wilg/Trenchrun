@@ -17,6 +17,7 @@
 @property (copy)    NSMutableArray *frames;
 @property (assign)  MocoAxis axis;
 @property (readonly)  NSString *title;
+@property (readonly)  NSInteger length;
 
 @property (assign) BOOL recordEnabled;
 @property (assign) BOOL muted;

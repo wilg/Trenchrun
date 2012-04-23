@@ -27,6 +27,7 @@
 
 @property (readonly) NSString *frameProgress;
 @property (readonly) NSString *playheadTime;
+@property (readonly) float pixelsPerFrame;
 
 - (IBAction)refreshGraph:(id)sender;
 

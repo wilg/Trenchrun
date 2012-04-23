@@ -11,6 +11,7 @@
 
 @class TimelineViewController;
 @class MocoLineGraphView;
+@class MocoTimelineTrackViewController;
 
 @interface MocoTimelineTrackView : NSView 
 @property (retain) MocoTimelineTrackViewController *controller;
