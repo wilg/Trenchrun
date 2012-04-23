@@ -214,13 +214,13 @@ static NSString * kTrackEditContext = @"Track Edit";
     if (button.state == 1)
         recording = YES;
     else {
-        recording = NO;
+        [self stopRecording];
     }
 }
 
 -(IBAction)play:(id)sender {
     if (recording) {
-        [self record:nil];
+        [self stopRecording];
     }
     else {
         NSButton *button = (NSButton *)sender;
@@ -238,6 +238,11 @@ static NSString * kTrackEditContext = @"Track Edit";
             [self stopPlayback:nil];
         }
     }
+}
+
+-(void)stopRecording {
+    recording = NO;
+    recordButton.state = 0;
 }
 
 -(void)advanceFrame {

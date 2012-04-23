@@ -36,6 +36,10 @@
     [[titleField cell] setBackgroundStyle:NSBackgroundStyleLowered];
 
     [visualizationView bind:@"axisPosition" toObject:track withKeyPath:@"positionAtPlayhead" options:nil];
+    
+    ((TrackHeaderButtonCell *)recordButton.cell).position = WGButtonCellPositionLeft;
+    ((TrackHeaderButtonCell *)muteButton.cell).position = WGButtonCellPositionCenter;
+    ((TrackHeaderButtonCell *)soloButton.cell).position = WGButtonCellPositionRight;
 }
 
 - (void)awakeFromNib {

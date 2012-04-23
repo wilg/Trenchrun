@@ -32,6 +32,8 @@
 - (void)awakeFromNib {
     self.headerViews = [NSMutableArray array];
     
+    self.wantsLayer = YES;
+    
     [self updateBounds];    
 }
 

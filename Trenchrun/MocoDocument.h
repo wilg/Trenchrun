@@ -25,6 +25,7 @@
     BOOL recording;
 
     IBOutlet NSButton *playButton;
+    IBOutlet NSButton *recordButton;
     
     IBOutlet NSWindow *documentWindow;
         
