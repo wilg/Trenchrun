@@ -75,7 +75,6 @@
 
 - (void)removeAllTrackViews {
     
-    NSLog(@"removeAllTrackViews");
     for (MocoTimelineTrackView *trackView in self.trackViews) {
         [trackView removeFromSuperview];
     }

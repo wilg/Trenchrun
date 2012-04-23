@@ -15,6 +15,30 @@
 		3B16C596153ACF7900F40A56 /* MocoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */; };
 		3B16C5C0153AD7CE00F40A56 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B16C5BF153AD7CE00F40A56 /* IOKit.framework */; };
 		3B2E0315153CFADD00890049 /* MocoDriverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E0314153CFADD00890049 /* MocoDriverResponse.m */; };
+		3B30C3DE154550E90080447E /* Beginning0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3C6154550E90080447E /* Beginning0D.tiff */; };
+		3B30C3DF154550E90080447E /* Beginning0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3C7154550E90080447E /* Beginning0N.tiff */; };
+		3B30C3E0154550E90080447E /* BeginningBH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3C8154550E90080447E /* BeginningBH.tiff */; };
+		3B30C3E1154550E90080447E /* FFwd0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3C9154550E90080447E /* FFwd0D.tiff */; };
+		3B30C3E2154550E90080447E /* FFwd0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CA154550E90080447E /* FFwd0N.tiff */; };
+		3B30C3E3154550E90080447E /* FFwd1BH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CB154550E90080447E /* FFwd1BH.tiff */; };
+		3B30C3E4154550E90080447E /* Play0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CC154550E90080447E /* Play0D.tiff */; };
+		3B30C3E5154550E90080447E /* Play0H.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CD154550E90080447E /* Play0H.tiff */; };
+		3B30C3E6154550E90080447E /* Play0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CE154550E90080447E /* Play0N.tiff */; };
+		3B30C3E7154550E90080447E /* Play1BH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3CF154550E90080447E /* Play1BH.tiff */; };
+		3B30C3E8154550E90080447E /* Play1BN.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D0154550E90080447E /* Play1BN.tiff */; };
+		3B30C3E9154550E90080447E /* Play1D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D1154550E90080447E /* Play1D.tiff */; };
+		3B30C3EA154550E90080447E /* Record0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D2154550E90080447E /* Record0D.tiff */; };
+		3B30C3EB154550E90080447E /* Record0H.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D3154550E90080447E /* Record0H.tiff */; };
+		3B30C3EC154550E90080447E /* Record0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D4154550E90080447E /* Record0N.tiff */; };
+		3B30C3ED154550E90080447E /* Record1BH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D5154550E90080447E /* Record1BH.tiff */; };
+		3B30C3EE154550E90080447E /* Record1BN.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D6154550E90080447E /* Record1BN.tiff */; };
+		3B30C3EF154550E90080447E /* Record1D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D7154550E90080447E /* Record1D.tiff */; };
+		3B30C3F0154550E90080447E /* Rewind0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D8154550E90080447E /* Rewind0D.tiff */; };
+		3B30C3F1154550E90080447E /* Rewind0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3D9154550E90080447E /* Rewind0N.tiff */; };
+		3B30C3F2154550E90080447E /* Rewind1BH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DA154550E90080447E /* Rewind1BH.tiff */; };
+		3B30C3F3154550E90080447E /* Stop0D.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DB154550E90080447E /* Stop0D.tiff */; };
+		3B30C3F4154550E90080447E /* Stop0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DC154550E90080447E /* Stop0N.tiff */; };
+		3B30C3F5154550E90080447E /* StopBH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DD154550E90080447E /* StopBH.tiff */; };
 		3B349156154389990070B321 /* Trenchrun.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B349155154389990070B321 /* Trenchrun.icns */; };
 		3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D47E15393F8900BB8F3D /* Cocoa.framework */; };
 		3B34D48915393F8900BB8F3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D48715393F8900BB8F3D /* InfoPlist.strings */; };
@@ -115,6 +139,30 @@
 		3B16C5BF153AD7CE00F40A56 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		3B2E0313153CFADD00890049 /* MocoDriverResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriverResponse.h; sourceTree = "<group>"; };
 		3B2E0314153CFADD00890049 /* MocoDriverResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriverResponse.m; sourceTree = "<group>"; };
+		3B30C3C6154550E90080447E /* Beginning0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Beginning0D.tiff; sourceTree = "<group>"; };
+		3B30C3C7154550E90080447E /* Beginning0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Beginning0N.tiff; sourceTree = "<group>"; };
+		3B30C3C8154550E90080447E /* BeginningBH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BeginningBH.tiff; sourceTree = "<group>"; };
+		3B30C3C9154550E90080447E /* FFwd0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FFwd0D.tiff; sourceTree = "<group>"; };
+		3B30C3CA154550E90080447E /* FFwd0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FFwd0N.tiff; sourceTree = "<group>"; };
+		3B30C3CB154550E90080447E /* FFwd1BH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FFwd1BH.tiff; sourceTree = "<group>"; };
+		3B30C3CC154550E90080447E /* Play0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play0D.tiff; sourceTree = "<group>"; };
+		3B30C3CD154550E90080447E /* Play0H.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play0H.tiff; sourceTree = "<group>"; };
+		3B30C3CE154550E90080447E /* Play0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play0N.tiff; sourceTree = "<group>"; };
+		3B30C3CF154550E90080447E /* Play1BH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play1BH.tiff; sourceTree = "<group>"; };
+		3B30C3D0154550E90080447E /* Play1BN.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play1BN.tiff; sourceTree = "<group>"; };
+		3B30C3D1154550E90080447E /* Play1D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play1D.tiff; sourceTree = "<group>"; };
+		3B30C3D2154550E90080447E /* Record0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record0D.tiff; sourceTree = "<group>"; };
+		3B30C3D3154550E90080447E /* Record0H.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record0H.tiff; sourceTree = "<group>"; };
+		3B30C3D4154550E90080447E /* Record0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record0N.tiff; sourceTree = "<group>"; };
+		3B30C3D5154550E90080447E /* Record1BH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record1BH.tiff; sourceTree = "<group>"; };
+		3B30C3D6154550E90080447E /* Record1BN.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record1BN.tiff; sourceTree = "<group>"; };
+		3B30C3D7154550E90080447E /* Record1D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record1D.tiff; sourceTree = "<group>"; };
+		3B30C3D8154550E90080447E /* Rewind0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rewind0D.tiff; sourceTree = "<group>"; };
+		3B30C3D9154550E90080447E /* Rewind0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rewind0N.tiff; sourceTree = "<group>"; };
+		3B30C3DA154550E90080447E /* Rewind1BH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rewind1BH.tiff; sourceTree = "<group>"; };
+		3B30C3DB154550E90080447E /* Stop0D.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Stop0D.tiff; sourceTree = "<group>"; };
+		3B30C3DC154550E90080447E /* Stop0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Stop0N.tiff; sourceTree = "<group>"; };
+		3B30C3DD154550E90080447E /* StopBH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = StopBH.tiff; sourceTree = "<group>"; };
 		3B349155154389990070B321 /* Trenchrun.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Trenchrun.icns; sourceTree = "<group>"; };
 		3B34D47A15393F8900BB8F3D /* Trenchrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trenchrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B34D47E15393F8900BB8F3D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -424,6 +472,30 @@
 				3B9002FA15453A6E0099555E /* Track-RecEnablePrep1.tiff */,
 				3B9002FB15453A6E0099555E /* Track-Solo0.tiff */,
 				3B9002FC15453A6E0099555E /* Track-Solo1.tiff */,
+				3B30C3C6154550E90080447E /* Beginning0D.tiff */,
+				3B30C3C7154550E90080447E /* Beginning0N.tiff */,
+				3B30C3C8154550E90080447E /* BeginningBH.tiff */,
+				3B30C3C9154550E90080447E /* FFwd0D.tiff */,
+				3B30C3CA154550E90080447E /* FFwd0N.tiff */,
+				3B30C3CB154550E90080447E /* FFwd1BH.tiff */,
+				3B30C3CC154550E90080447E /* Play0D.tiff */,
+				3B30C3CD154550E90080447E /* Play0H.tiff */,
+				3B30C3CE154550E90080447E /* Play0N.tiff */,
+				3B30C3CF154550E90080447E /* Play1BH.tiff */,
+				3B30C3D0154550E90080447E /* Play1BN.tiff */,
+				3B30C3D1154550E90080447E /* Play1D.tiff */,
+				3B30C3D2154550E90080447E /* Record0D.tiff */,
+				3B30C3D3154550E90080447E /* Record0H.tiff */,
+				3B30C3D4154550E90080447E /* Record0N.tiff */,
+				3B30C3D5154550E90080447E /* Record1BH.tiff */,
+				3B30C3D6154550E90080447E /* Record1BN.tiff */,
+				3B30C3D7154550E90080447E /* Record1D.tiff */,
+				3B30C3D8154550E90080447E /* Rewind0D.tiff */,
+				3B30C3D9154550E90080447E /* Rewind0N.tiff */,
+				3B30C3DA154550E90080447E /* Rewind1BH.tiff */,
+				3B30C3DB154550E90080447E /* Stop0D.tiff */,
+				3B30C3DC154550E90080447E /* Stop0N.tiff */,
+				3B30C3DD154550E90080447E /* StopBH.tiff */,
 			);
 			name = "Stolen from Garageband";
 			sourceTree = "<group>";
@@ -562,6 +634,30 @@
 				3B90030E15453A6E0099555E /* Track-RecEnablePrep1.tiff in Resources */,
 				3B90030F15453A6E0099555E /* Track-Solo0.tiff in Resources */,
 				3B90031015453A6E0099555E /* Track-Solo1.tiff in Resources */,
+				3B30C3DE154550E90080447E /* Beginning0D.tiff in Resources */,
+				3B30C3DF154550E90080447E /* Beginning0N.tiff in Resources */,
+				3B30C3E0154550E90080447E /* BeginningBH.tiff in Resources */,
+				3B30C3E1154550E90080447E /* FFwd0D.tiff in Resources */,
+				3B30C3E2154550E90080447E /* FFwd0N.tiff in Resources */,
+				3B30C3E3154550E90080447E /* FFwd1BH.tiff in Resources */,
+				3B30C3E4154550E90080447E /* Play0D.tiff in Resources */,
+				3B30C3E5154550E90080447E /* Play0H.tiff in Resources */,
+				3B30C3E6154550E90080447E /* Play0N.tiff in Resources */,
+				3B30C3E7154550E90080447E /* Play1BH.tiff in Resources */,
+				3B30C3E8154550E90080447E /* Play1BN.tiff in Resources */,
+				3B30C3E9154550E90080447E /* Play1D.tiff in Resources */,
+				3B30C3EA154550E90080447E /* Record0D.tiff in Resources */,
+				3B30C3EB154550E90080447E /* Record0H.tiff in Resources */,
+				3B30C3EC154550E90080447E /* Record0N.tiff in Resources */,
+				3B30C3ED154550E90080447E /* Record1BH.tiff in Resources */,
+				3B30C3EE154550E90080447E /* Record1BN.tiff in Resources */,
+				3B30C3EF154550E90080447E /* Record1D.tiff in Resources */,
+				3B30C3F0154550E90080447E /* Rewind0D.tiff in Resources */,
+				3B30C3F1154550E90080447E /* Rewind0N.tiff in Resources */,
+				3B30C3F2154550E90080447E /* Rewind1BH.tiff in Resources */,
+				3B30C3F3154550E90080447E /* Stop0D.tiff in Resources */,
+				3B30C3F4154550E90080447E /* Stop0N.tiff in Resources */,
+				3B30C3F5154550E90080447E /* StopBH.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

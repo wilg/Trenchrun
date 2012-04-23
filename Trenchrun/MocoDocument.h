@@ -23,6 +23,7 @@
     IBOutlet NSSegmentedControl *viewSwapControl;
 
     BOOL recording;
+    BOOL playing;
 
     IBOutlet NSButton *playButton;
     IBOutlet NSButton *recordButton;
