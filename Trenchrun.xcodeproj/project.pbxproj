@@ -53,6 +53,10 @@
 		3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */; };
 		3BDC90661545209C00534771 /* asis_visualization_horizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC90651545209B00534771 /* asis_visualization_horizon.png */; };
 		3BDC90681545212000534771 /* axis_visualization_tilt_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC90671545212000534771 /* axis_visualization_tilt_white.png */; };
+		3BDC906C1545269C00534771 /* rig_status_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC90691545269C00534771 /* rig_status_yellow.png */; };
+		3BDC906D1545269C00534771 /* rig_status_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC906A1545269C00534771 /* rig_status_red.png */; };
+		3BDC906E1545269C00534771 /* rig_status_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC906B1545269C00534771 /* rig_status_green.png */; };
+		3BDC9070154526CF00534771 /* rig_status_gutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC906F154526CF00534771 /* rig_status_gutter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -144,6 +148,10 @@
 		3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		3BDC90651545209B00534771 /* asis_visualization_horizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asis_visualization_horizon.png; sourceTree = "<group>"; };
 		3BDC90671545212000534771 /* axis_visualization_tilt_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = axis_visualization_tilt_white.png; sourceTree = "<group>"; };
+		3BDC90691545269C00534771 /* rig_status_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_status_yellow.png; sourceTree = "<group>"; };
+		3BDC906A1545269C00534771 /* rig_status_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_status_red.png; sourceTree = "<group>"; };
+		3BDC906B1545269C00534771 /* rig_status_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_status_green.png; sourceTree = "<group>"; };
+		3BDC906F154526CF00534771 /* rig_status_gutter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_status_gutter.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,10 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3BDC90691545269C00534771 /* rig_status_yellow.png */,
+				3BDC906A1545269C00534771 /* rig_status_red.png */,
+				3BDC906B1545269C00534771 /* rig_status_green.png */,
+				3BDC906F154526CF00534771 /* rig_status_gutter.png */,
 				3BDC90651545209B00534771 /* asis_visualization_horizon.png */,
 				3BDC90671545212000534771 /* axis_visualization_tilt_white.png */,
 				3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */,
@@ -424,6 +436,10 @@
 				3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */,
 				3BDC90661545209C00534771 /* asis_visualization_horizon.png in Resources */,
 				3BDC90681545212000534771 /* axis_visualization_tilt_white.png in Resources */,
+				3BDC906C1545269C00534771 /* rig_status_yellow.png in Resources */,
+				3BDC906D1545269C00534771 /* rig_status_red.png in Resources */,
+				3BDC906E1545269C00534771 /* rig_status_green.png in Resources */,
+				3BDC9070154526CF00534771 /* rig_status_gutter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@
 
 - (id)transformedValue:(id)value
 {
-    return (value == nil) ? nil : [MocoDriver statusDescriptionForStatusCode:[value intValue]];
+    return (value == nil) ? nil : [[MocoDriver statusDescriptionForStatusCode:[value intValue]] uppercaseString];
 }
 
 

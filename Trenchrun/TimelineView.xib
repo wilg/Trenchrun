@@ -67,7 +67,7 @@
 															<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 															<string>NeXT TIFF v4.0 pasteboard type</string>
 														</set>
-														<string key="NSFrame">{{298, 0}, {2, 466}}</string>
+														<string key="NSFrame">{{314, 0}, {2, 466}}</string>
 														<reference key="NSSuperview" ref="368395529"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="977344762"/>
@@ -87,7 +87,7 @@
 														<bool key="NSEditable">YES</bool>
 													</object>
 												</array>
-												<string key="NSFrame">{{0, 20}, {300, 466}}</string>
+												<string key="NSFrame">{{0, 20}, {316, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="37683401"/>
@@ -112,7 +112,7 @@
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 															</object>
 														</array>
-														<string key="NSFrameSize">{285, 466}</string>
+														<string key="NSFrameSize">{269, 466}</string>
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="502093379"/>
@@ -145,7 +145,7 @@
 													<object class="NSScroller" id="624224527">
 														<reference key="NSNextResponder" ref="977344762"/>
 														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{0, 451}, {285, 15}}</string>
+														<string key="NSFrame">{{0, 451}, {269, 15}}</string>
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="231092597"/>
@@ -154,11 +154,11 @@
 														<int key="NSsFlags">1</int>
 														<reference key="NSTarget" ref="977344762"/>
 														<string key="NSAction">_doScroller:</string>
-														<double key="NSPercent">0.72151898734177211</double>
+														<double key="NSPercent">0.68101265822784807</double>
 														<int key="NSKnobStyle">2</int>
 													</object>
 												</array>
-												<string key="NSFrame">{{299, 20}, {285, 466}}</string>
+												<string key="NSFrame">{{315, 20}, {269, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="360414118"/>
