@@ -12,13 +12,25 @@
 @synthesize axis, position, resolution;
 
 - (NSNumber *)rawPosition {
-    return self.position;
-//    return [NSNumber numberWithDouble: [self.position doubleValue] * [self.resolution doubleValue] ];
+//    return self.position;
+    return [NSNumber numberWithDouble: [self.position doubleValue] * [self.resolution doubleValue] ];
 }
 
 - (void)setRawPosition:(NSNumber *)newRaw {
-    self.position = newRaw;
-//    self.position = [NSNumber numberWithDouble: [newRaw doubleValue] / [self.resolution doubleValue]];
+//    self.position = newRaw;
+    self.position = [NSNumber numberWithDouble: [newRaw doubleValue] / [self.resolution doubleValue]];
+}
+
+-(NSInteger)rotationNumber {
+    return (NSInteger)round([self.position doubleValue]);
+}
+
+-(double)degreesPosition {
+    return [self.position doubleValue] * 360.0;
+}
+
+-(double)radiansPosition {
+    return ([self.position doubleValue] * 360.0) / 180.0 * M_PI;
 }
 
 @end

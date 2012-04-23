@@ -43,7 +43,6 @@
 		3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B8FC7BC154291ED00BC2B9D /* screen.png */; };
 		3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */; };
 		3B9136A01544F51C007F1996 /* MocoAxisVisualizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91369F1544F51C007F1996 /* MocoAxisVisualizationView.m */; };
-		3B9136A21544F596007F1996 /* asis_visualization_horizon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */; };
 		3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B615412EB400421D14 /* track-header-bg.png */; };
 		3B9D52B91541339D00421D14 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B81541339D00421D14 /* divider.png */; };
 		3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D52BB1541365500421D14 /* MocoLineGraphView.m */; };
@@ -52,6 +51,8 @@
 		3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBD248153BA0CD00D8E088 /* playhead.png */; };
 		3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD24D153BA5E300D8E088 /* MocoTrack.m */; };
 		3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */; };
+		3BDC90661545209C00534771 /* asis_visualization_horizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC90651545209B00534771 /* asis_visualization_horizon.png */; };
+		3BDC90681545212000534771 /* axis_visualization_tilt_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC90671545212000534771 /* axis_visualization_tilt_white.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,7 +128,6 @@
 		3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = axis_visualization_tilt.png; sourceTree = "<group>"; };
 		3B91369E1544F51C007F1996 /* MocoAxisVisualizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoAxisVisualizationView.h; sourceTree = "<group>"; };
 		3B91369F1544F51C007F1996 /* MocoAxisVisualizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoAxisVisualizationView.m; sourceTree = "<group>"; };
-		3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asis_visualization_horizon.jpg; sourceTree = "<group>"; };
 		3B9D52B615412EB400421D14 /* track-header-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track-header-bg.png"; sourceTree = "<group>"; };
 		3B9D52B81541339D00421D14 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
 		3B9D52BA1541365500421D14 /* MocoLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoLineGraphView.h; sourceTree = "<group>"; };
@@ -142,6 +142,8 @@
 		3BCBD24F153BA7FE00D8E088 /* MocoProtocolConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoProtocolConstants.h; sourceTree = "<group>"; };
 		3BCBD252153BBA1D00D8E088 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		3BDC90651545209B00534771 /* asis_visualization_horizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asis_visualization_horizon.png; sourceTree = "<group>"; };
+		3BDC90671545212000534771 /* axis_visualization_tilt_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = axis_visualization_tilt_white.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +194,9 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3BDC90651545209B00534771 /* asis_visualization_horizon.png */,
+				3BDC90671545212000534771 /* axis_visualization_tilt_white.png */,
 				3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */,
-				3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */,
 				3B349155154389990070B321 /* Trenchrun.icns */,
 				3B721E291543444F008F6D76 /* screengloss.png */,
 				3B8FC7BC154291ED00BC2B9D /* screen.png */,
@@ -419,7 +422,8 @@
 				3B349156154389990070B321 /* Trenchrun.icns in Resources */,
 				3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */,
 				3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */,
-				3B9136A21544F596007F1996 /* asis_visualization_horizon.jpg in Resources */,
+				3BDC90661545209C00534771 /* asis_visualization_horizon.png in Resources */,
+				3BDC90681545212000534771 /* axis_visualization_tilt_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -134,9 +134,7 @@
     path.flatness = 10.0;
     
     NSRect usableBounds = NSInsetRect(self.bounds, 0, PADDING);
-    
-    int frameCount = self.controller.track.frames.count;
-    
+        
     float maxPosition = 0;
     for (MocoFrame *frame in self.controller.track.frames) {
         float thisPosition = [frame.position floatValue];
@@ -222,7 +220,9 @@
         }
     }
     
+    
     [NSGraphicsContext restoreGraphicsState];
+
 
 //    NSLog(@"line graph draw rect");
     

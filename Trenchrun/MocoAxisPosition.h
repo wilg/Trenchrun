@@ -18,4 +18,8 @@
 // Must set resolution before setting rawPosition;
 @property (retain) NSNumber *rawPosition;
 
+@property (readonly) NSInteger rotationNumber;
+@property (readonly) double degreesPosition;
+@property (readonly) double radiansPosition;
+
 @end
