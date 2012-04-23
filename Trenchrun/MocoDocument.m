@@ -235,7 +235,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(int)fps {
-    return 10;
+    return 50;
 }
 
 -(void)advanceFrame {
