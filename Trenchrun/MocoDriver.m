@@ -434,6 +434,19 @@
     return [MocoDriver statusDescriptionForStatusCode:self.status];
 }
 
+-(NSImage *)imageForStatus {
+    if (self.status == MocoStatusIdle || 
+        self.status == MocoStatusSeeking ||
+        self.status == MocoStatusPlayback ) {
+        return [NSImage imageNamed:@"rig_status_green.png"];
+    }
+    if (self.status == MocoStatusSearchingForDevice || 
+        self.status == MocoStatusAwaitingControl ) {
+        return [NSImage imageNamed:@"rig_status_yellow.png"];
+    }
+    return [NSImage imageNamed:@"rig_status_red.png"];
+}
+
 -(BOOL)recordAndPlaybackOperational {
     if (self.status == MocoStatusIdle || 
         self.status == MocoStatusSeeking ||
@@ -453,6 +466,12 @@
         keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
     }
     
+    if ([key isEqualToString:@"imageForStatus"])
+    {
+        NSSet *affectingKeys = [NSSet setWithObjects:@"status",nil];
+        keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    }
+
     return keyPaths;
 }
 
