@@ -121,9 +121,13 @@
 }
 
 - (MocoAxisPosition *)positionForAxis:(MocoAxis)axis atFrame:(NSInteger)frameNumber {
-   MocoAxisPosition *ap = [[self trackWithAxis:axis] axisPositionAtFrameNumber:frameNumber];
-    ap.resolution = [_axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
-    return ap;
+    MocoTrack *track = [self trackWithAxis:axis];
+    if ([track containsFrameNumber:frameNumber]) {
+        MocoAxisPosition *ap = [track axisPositionAtFrameNumber:frameNumber];
+        ap.resolution = [_axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
+        return ap;
+    }
+    return nil;
 }
 
 - (void)requestAxisResolutionData {
@@ -247,13 +251,18 @@
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
     MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
     
-    [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
-    [_serialConnection writeIntAsByte:axis];
-    [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
-    
-    _playbackPosition++;
-    
-    NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
+    if (position) {
+        [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
+        [_serialConnection writeIntAsByte:axis];
+        [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+        
+        _playbackPosition++;
+        
+        NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
+    }
+    else {
+        NSLog(@"Couldn't write next frame. Possibly out of bounds.");
+    }
 }
 
 -(void)handshakeSuccessful {

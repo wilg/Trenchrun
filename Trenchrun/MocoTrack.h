@@ -29,6 +29,7 @@
 -(void)appendFrameWithPosition:(NSNumber *)position;
 -(MocoFrame *)frameAtFrameNumber:(NSInteger)frameNumber;
 -(MocoAxisPosition *)axisPositionAtFrameNumber:(NSInteger)frameNumber;
+-(BOOL)containsFrameNumber:(NSInteger)frameNumber;
 
 - (NSColor *)color;
 
