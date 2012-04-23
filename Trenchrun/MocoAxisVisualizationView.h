@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MocoProtocolConstants.h"
+#import "MocoAxisPosition.h"
 
 @interface MocoAxisVisualizationView : NSView
 @property MocoAxis axis;
 @property double position;
+@property MocoAxisPosition *axisPosition;
+
+-(IBAction)setPositionFromSlider:(id)sender;
 
 @end

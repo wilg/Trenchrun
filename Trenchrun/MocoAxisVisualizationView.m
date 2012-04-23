@@ -21,6 +21,7 @@
 
 @implementation MocoAxisVisualizationView
 @synthesize position = _position;
+@synthesize axisPosition = _axisPosition;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -29,7 +30,6 @@
         
         self.wantsLayer = YES;
         
-        NSLog(@"initalized mocovis");
         // Initialization code here.
         _horizonView = [[NSImageView alloc] initWithFrame:self.bounds];
         _horizonView.image = [NSImage imageNamed:@"asis_visualization_horizon.jpg"];
@@ -58,17 +58,40 @@
 
 -(void)updatePosition:(double)position {
     self.position = position;
-    
+    [self placeAtPosition];
+
+}
+
+-(MocoAxisPosition *)axisPosition {
+    return _axisPosition;
+}
+
+-(void)setAxisPosition:(MocoAxisPosition *)axisPosition {
+    NSLog(@"axisposition updated");
+    _axisPosition = axisPosition;
+}
+
+-(void)placeAtPosition {
     
     // Modify any animatable properties
-//    [_axisView.animator setBoundsRotation:position * 360.0];
+    //    [_axisView.animator setBoundsRotation:position * 360.0];
     
-//    CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(5 * M_PI / 2.0);
-//    [_axisView.layer setAffineTransform:rotateTransform];
-//    [_axisView setNeedsDisplay];
-    NSLog(@"layer %@", _axisView.layer);
+    //    CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(5 * M_PI / 2.0);
+    //    [_axisView.layer setAffineTransform:rotateTransform];
+    //    [_axisView setNeedsDisplay];
+//    NSLog(@"layer %@", _axisView.layer);
+    
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:0.00f]
+                     forKey:kCATransactionAnimationDuration];
+    
+    
 
-    _axisView.layer.transform = CATransform3DMakeRotation(9430.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
+    [_axisView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
+    _axisView.layer.position = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2); 
+    _axisView.layer.transform = CATransform3DMakeRotation(self.position / 180.0 * M_PI, 0.0, 0.0, 1.0);
+    
+    [CATransaction commit];
 
 }
 
@@ -82,19 +105,25 @@
     }
 }
 
+-(IBAction)setPositionFromSlider:(id)sender {
+    [self updatePosition:[sender doubleValue]];
+    
+}
+
 -(BOOL)isFlipped  {
     return YES;
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [self updatePosition:5];
     
 //    [_axisView.layer setAnchorPoint:CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)];
 
     _axisView.frame = NSInsetRect(self.bounds, 5, 5);
     [self fillFrame:self.bounds withView:_horizonView proportions:NSMakeSize(50, 50)];
-        
+    [self placeAtPosition];
+
+ 
 }
 
 - (void)fillFrame:(NSRect)frame withView:(NSView *)view proportions:(NSSize)proportions {

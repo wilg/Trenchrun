@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MocoTrack.h"
+#import "MocoAxisVisualizationView.h"
 
 @class TimelineViewController;
 
 @interface MocoTimelineHeaderViewController : NSViewController {
     IBOutlet NSTextField *titleField;
+    IBOutlet MocoAxisVisualizationView *visualizationView;
 }
 @property (assign) MocoTrack *track;
 

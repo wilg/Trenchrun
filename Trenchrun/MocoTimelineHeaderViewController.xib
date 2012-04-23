@@ -43,10 +43,20 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="NSCustomView" id="259133243">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{1, 1}, {48, 48}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="695134737"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<string key="NSClassName">MocoAxisVisualizationView</string>
+					</object>
 					<object class="NSButton" id="460599137">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{12, 6}, {45, 17}}</string>
+						<string key="NSFrame">{{57, 5}, {45, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="509477395"/>
@@ -74,7 +84,7 @@
 					<object class="NSButton" id="509477395">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{65, 6}, {45, 17}}</string>
+						<string key="NSFrame">{{110, 5}, {45, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="355814956"/>
@@ -98,10 +108,9 @@
 					<object class="NSButton" id="355814956">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{118, 6}, {45, 17}}</string>
+						<string key="NSFrame">{{163, 5}, {45, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="312909287">
@@ -122,7 +131,7 @@
 					<object class="NSTextField" id="610356364">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{115, 28}, {77, 11}}</string>
+						<string key="NSFrame">{{115, 28}, {177, 11}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="460599137"/>
@@ -155,7 +164,7 @@
 					<object class="NSTextField" id="695134737">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{9, 28}, {104, 17}}</string>
+						<string key="NSFrame">{{54, 26}, {157, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="610356364"/>
@@ -187,10 +196,10 @@
 							<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 							<string>NeXT TIFF v4.0 pasteboard type</string>
 						</set>
-						<string key="NSFrameSize">{200, 50}</string>
+						<string key="NSFrameSize">{300, 50}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="695134737"/>
+						<reference key="NSNextKeyView" ref="259133243"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="681824767">
 							<int key="NSCellFlags">130560</int>
@@ -207,7 +216,7 @@
 						<bool key="NSEditable">YES</bool>
 					</object>
 				</array>
-				<string key="NSFrameSize">{200, 50}</string>
+				<string key="NSFrameSize">{300, 50}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="593758528"/>
@@ -239,6 +248,14 @@
 						<reference key="destination" ref="695134737"/>
 					</object>
 					<int key="connectionID">115</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">visualizationView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="259133243"/>
+					</object>
+					<int key="connectionID">122</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -368,11 +385,12 @@
 						<reference key="object" ref="1005"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="593758528"/>
-							<reference ref="695134737"/>
-							<reference ref="460599137"/>
-							<reference ref="509477395"/>
-							<reference ref="355814956"/>
 							<reference ref="610356364"/>
+							<reference ref="259133243"/>
+							<reference ref="695134737"/>
+							<reference ref="355814956"/>
+							<reference ref="509477395"/>
+							<reference ref="460599137"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -464,6 +482,11 @@
 						<reference key="object" ref="378362522"/>
 						<reference key="parent" ref="610356364"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">121</int>
+						<reference key="object" ref="259133243"/>
+						<reference key="parent" ref="1005"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -479,6 +502,7 @@
 				<string key="108.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="116.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="121.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -490,10 +514,29 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">120</int>
+			<int key="maxID">122</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">MocoAxisVisualizationView</string>
+					<string key="superclassName">NSView</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">setPositionFromSlider:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">setPositionFromSlider:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">setPositionFromSlider:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MocoAxisVisualizationView.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">MocoTimelineHeaderView</string>
 					<string key="superclassName">NSView</string>
@@ -505,17 +548,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MocoTimelineHeaderViewController</string>
 					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">titleField</string>
-						<string key="NS.object.0">NSTextField</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">titleField</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="titleField">NSTextField</string>
+						<string key="visualizationView">MocoAxisVisualizationView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="titleField">
 							<string key="name">titleField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="visualizationView">
+							<string key="name">visualizationView</string>
+							<string key="candidateClassName">MocoAxisVisualizationView</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/MocoTimelineHeaderViewController.h</string>
