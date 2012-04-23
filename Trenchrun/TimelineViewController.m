@@ -179,6 +179,14 @@
     return NO;
 }
 
+-(void)forwardBySeconds:(float)seconds {
+    [self followPlayheadToFrame: self.playheadPosition + seconds * (float)document.fps];
+}
+
+-(void)backBySeconds:(float)seconds {
+    [self followPlayheadToFrame: self.playheadPosition - seconds * (float)document.fps];
+}
+
 - (NSString *)frameProgress {
     
     NSNumberFormatter *numberFormat = [[NSNumberFormatter alloc] init];

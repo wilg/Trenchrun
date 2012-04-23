@@ -71,9 +71,7 @@
 		// re-opening the same port REALLY fast will fail spectacularly... better to sleep a sec
 		sleep(0.5);
 	}
-    
-    NSLog(@"open serial port yaya");
-	
+    	
 	// c-string path to serial-port file
 	const char *bsdPath = [serialPortFile cStringUsingEncoding:NSUTF8StringEncoding];
 	

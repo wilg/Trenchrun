@@ -35,6 +35,9 @@
 - (void)followPlayheadToFrame:(int)frameNumber;
 
 -(BOOL)playOneFrame;
+-(void)forwardBySeconds:(float)seconds;
+-(void)backBySeconds:(float)seconds;
+
 
 -(void)zoomInOneStep;
 -(void)zoomOutOneStep;

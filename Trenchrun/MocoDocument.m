@@ -218,6 +218,36 @@ static NSString * kTrackEditContext = @"Track Edit";
     }
 }
 
+-(IBAction)rewind:(id)sender {
+    if (playing) {
+        [self stopPlayback:nil];
+    }
+    if (recording) {
+        [self stopRecording];
+    }
+    [timelineViewController backBySeconds:1];
+}
+
+-(IBAction)fastForward:(id)sender {
+    if (playing) {
+        [self stopPlayback:nil];
+    }
+    if (recording) {
+        [self stopRecording];
+    }
+    [timelineViewController forwardBySeconds:1];
+}
+
+-(IBAction)beginning:(id)sender {
+    if (playing) {
+        [self stopPlayback:nil];
+    }
+    if (recording) {
+        [self stopRecording];
+    }
+    [timelineViewController followPlayheadToFrame:0];
+}
+
 -(IBAction)play:(id)sender {
     if (recording) {
         [self stopRecording];
@@ -232,6 +262,8 @@ static NSString * kTrackEditContext = @"Track Edit";
             
             // fake playback on the driver
             _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/(float)self.fps target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+            
+            playing = YES;
         }
         else {
             // pause
@@ -264,6 +296,7 @@ static NSString * kTrackEditContext = @"Track Edit";
     [_playbackTimer invalidate];
     _playbackTimer = nil;
     playButton.state = 0;
+    playing = NO;
 }
 
 -(IBAction)updateFakeTabs:(id)sender {

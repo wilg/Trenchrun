@@ -95,9 +95,6 @@
         [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
         self.status = MocoStatusPlayback;
     }
-    else {
-        NSLog(@"Rig offline for playback.");
-    }
 }
 
 - (void)pausePlayback {
@@ -106,9 +103,6 @@
         [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
         [self beginStreamingPositionData];
         self.status = MocoStatusIdle;
-    }
-    else {
-        NSLog(@"Rig offline for playback.");
     }
 }
 
