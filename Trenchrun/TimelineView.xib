@@ -87,7 +87,7 @@
 														<bool key="NSEditable">YES</bool>
 													</object>
 												</array>
-												<string key="NSFrame">{{-1, 20}, {300, 466}}</string>
+												<string key="NSFrame">{{0, 20}, {300, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="37683401"/>
@@ -112,7 +112,7 @@
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 															</object>
 														</array>
-														<string key="NSFrameSize">{284, 466}</string>
+														<string key="NSFrameSize">{285, 466}</string>
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="502093379"/>
@@ -145,7 +145,7 @@
 													<object class="NSScroller" id="624224527">
 														<reference key="NSNextResponder" ref="977344762"/>
 														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{0, 451}, {284, 15}}</string>
+														<string key="NSFrame">{{0, 451}, {285, 15}}</string>
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="231092597"/>
@@ -154,11 +154,11 @@
 														<int key="NSsFlags">1</int>
 														<reference key="NSTarget" ref="977344762"/>
 														<string key="NSAction">_doScroller:</string>
-														<double key="NSPercent">0.71898734177215184</double>
+														<double key="NSPercent">0.72151898734177211</double>
 														<int key="NSKnobStyle">2</int>
 													</object>
 												</array>
-												<string key="NSFrame">{{299, 20}, {284, 466}}</string>
+												<string key="NSFrame">{{299, 20}, {285, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="360414118"/>
@@ -170,14 +170,14 @@
 												<int key="NSScrollerKnobStyle">2</int>
 											</object>
 										</array>
-										<string key="NSFrameSize">{582, 506}</string>
+										<string key="NSFrameSize">{583, 506}</string>
 										<reference key="NSSuperview" ref="268689469"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="368395529"/>
 										<string key="NSClassName">NSView</string>
 									</object>
 								</array>
-								<string key="NSFrame">{{1, 1}, {582, 506}}</string>
+								<string key="NSFrame">{{1, 1}, {583, 506}}</string>
 								<reference key="NSSuperview" ref="391937304"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="280761166"/>
@@ -218,7 +218,7 @@
 								<double key="NSPercent">0.50602412223815918</double>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, -21}, {584, 508}}</string>
+						<string key="NSFrame">{{-1, -21}, {585, 508}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="617774985"/>
