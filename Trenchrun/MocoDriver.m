@@ -184,7 +184,7 @@
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         
-        NSLog(@"Axis position received.");
+//        NSLog(@"Axis position received.");
 
         MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
         
