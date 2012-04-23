@@ -41,6 +41,9 @@
 		3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */; };
 		3B8FC7BB1542868700BC2B9D /* NSColor+M3Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */; };
 		3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B8FC7BC154291ED00BC2B9D /* screen.png */; };
+		3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */; };
+		3B9136A01544F51C007F1996 /* MocoAxisVisualizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91369F1544F51C007F1996 /* MocoAxisVisualizationView.m */; };
+		3B9136A21544F596007F1996 /* asis_visualization_horizon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */; };
 		3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B615412EB400421D14 /* track-header-bg.png */; };
 		3B9D52B91541339D00421D14 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D52B81541339D00421D14 /* divider.png */; };
 		3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D52BB1541365500421D14 /* MocoLineGraphView.m */; };
@@ -121,6 +124,10 @@
 		3B8FC7B81542860400BC2B9D /* NSColor+M3Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+M3Extensions.h"; sourceTree = "<group>"; };
 		3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+M3Extensions.m"; sourceTree = "<group>"; };
 		3B8FC7BC154291ED00BC2B9D /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen.png; sourceTree = "<group>"; };
+		3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = axis_visualization_tilt.png; sourceTree = "<group>"; };
+		3B91369E1544F51C007F1996 /* MocoAxisVisualizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoAxisVisualizationView.h; sourceTree = "<group>"; };
+		3B91369F1544F51C007F1996 /* MocoAxisVisualizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoAxisVisualizationView.m; sourceTree = "<group>"; };
+		3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asis_visualization_horizon.jpg; sourceTree = "<group>"; };
 		3B9D52B615412EB400421D14 /* track-header-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track-header-bg.png"; sourceTree = "<group>"; };
 		3B9D52B81541339D00421D14 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
 		3B9D52BA1541365500421D14 /* MocoLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoLineGraphView.h; sourceTree = "<group>"; };
@@ -176,6 +183,8 @@
 				3B9D52BB1541365500421D14 /* MocoLineGraphView.m */,
 				3BC12F2615415C6F00EE149F /* MocoTimelineRulerView.h */,
 				3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */,
+				3B91369E1544F51C007F1996 /* MocoAxisVisualizationView.h */,
+				3B91369F1544F51C007F1996 /* MocoAxisVisualizationView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -183,6 +192,8 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */,
+				3B9136A11544F596007F1996 /* asis_visualization_horizon.jpg */,
 				3B349155154389990070B321 /* Trenchrun.icns */,
 				3B721E291543444F008F6D76 /* screengloss.png */,
 				3B8FC7BC154291ED00BC2B9D /* screen.png */,
@@ -407,6 +418,8 @@
 				3B721E2A1543444F008F6D76 /* screengloss.png in Resources */,
 				3B349156154389990070B321 /* Trenchrun.icns in Resources */,
 				3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */,
+				3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */,
+				3B9136A21544F596007F1996 /* asis_visualization_horizon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +452,7 @@
 				3BC12F2815415C6F00EE149F /* MocoTimelineRulerView.m in Sources */,
 				3B81D4681543B3BA00AEB709 /* MocoAxisPosition.m in Sources */,
 				3B81D4701543E26900AEB709 /* ReleaseNotesWindowController.m in Sources */,
+				3B9136A01544F51C007F1996 /* MocoAxisVisualizationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
