@@ -9,7 +9,9 @@
 #import "MocoTimelineView.h"
 #import "MocoTimelineTrackView.h"
 #import "MocoTimelineViewConstants.h"
+#import "DuxScrollViewAnimation.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DuxScrollViewAnimation.h"
 
 @interface MocoTimelineView ( /* class extension */ ) {
 @private
@@ -183,7 +185,11 @@
 }
 
 -(void)scrollToPlayhead {
-    [self scrollPoint:NSMakePoint([self playheadRect].origin.x - 100, 0)];
+    NSPoint destination = NSMakePoint([self playheadRect].origin.x - 100, 0);
+//    [self scrollPoint:];
+    
+    [DuxScrollViewAnimation animatedScrollToPoint:destination inScrollView:self.enclosingScrollView duration: 1 / [self.controller fps]];
+
 }
 
 

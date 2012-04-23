@@ -187,6 +187,10 @@
     [self followPlayheadToFrame: self.playheadPosition - seconds * (float)document.fps];
 }
 
+-(int)fps {
+    return document.fps;
+}
+
 - (NSString *)frameProgress {
     
     NSNumberFormatter *numberFormat = [[NSNumberFormatter alloc] init];
