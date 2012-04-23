@@ -42,4 +42,6 @@
 -(void)zoomInOneStep;
 -(void)zoomOutOneStep;
 
+-(int)fps;
+
 @end
