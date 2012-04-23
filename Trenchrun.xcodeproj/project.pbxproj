@@ -40,6 +40,7 @@
 		3B30C3F4154550E90080447E /* Stop0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DC154550E90080447E /* Stop0N.tiff */; };
 		3B30C3F5154550E90080447E /* StopBH.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B30C3DD154550E90080447E /* StopBH.tiff */; };
 		3B30C3F9154556150080447E /* DuxScrollViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C3F81545560D0080447E /* DuxScrollViewAnimation.m */; };
+		3B30C3FC154559280080447E /* MocoTimelinePlaybackAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C3FB154559280080447E /* MocoTimelinePlaybackAnimation.m */; };
 		3B349156154389990070B321 /* Trenchrun.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B349155154389990070B321 /* Trenchrun.icns */; };
 		3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B34D47E15393F8900BB8F3D /* Cocoa.framework */; };
 		3B34D48915393F8900BB8F3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B34D48715393F8900BB8F3D /* InfoPlist.strings */; };
@@ -166,6 +167,8 @@
 		3B30C3DD154550E90080447E /* StopBH.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = StopBH.tiff; sourceTree = "<group>"; };
 		3B30C3F71545560D0080447E /* DuxScrollViewAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DuxScrollViewAnimation.h; sourceTree = "<group>"; };
 		3B30C3F81545560D0080447E /* DuxScrollViewAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DuxScrollViewAnimation.m; sourceTree = "<group>"; };
+		3B30C3FA154559270080447E /* MocoTimelinePlaybackAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelinePlaybackAnimation.h; sourceTree = "<group>"; };
+		3B30C3FB154559280080447E /* MocoTimelinePlaybackAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelinePlaybackAnimation.m; sourceTree = "<group>"; };
 		3B349155154389990070B321 /* Trenchrun.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Trenchrun.icns; sourceTree = "<group>"; };
 		3B34D47A15393F8900BB8F3D /* Trenchrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trenchrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B34D47E15393F8900BB8F3D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -346,6 +349,8 @@
 				3B34D49115393F8900BB8F3D /* MocoDocument.m */,
 				3B16C592153ACF3100F40A56 /* MocoAppDelegate.h */,
 				3B16C593153ACF3100F40A56 /* MocoAppDelegate.m */,
+				3B30C3FA154559270080447E /* MocoTimelinePlaybackAnimation.h */,
+				3B30C3FB154559280080447E /* MocoTimelinePlaybackAnimation.m */,
 				3BAEBFC1154415B3004596FA /* Other Controllers */,
 			);
 			name = "Document + Main App";
@@ -699,6 +704,7 @@
 				3B9136A01544F51C007F1996 /* MocoAxisVisualizationView.m in Sources */,
 				3B90031515453AD50099555E /* TrackHeaderButtonCell.m in Sources */,
 				3B900318154540C90099555E /* NSImage+FlippedDrawing.m in Sources */,
+				3B30C3FC154559280080447E /* MocoTimelinePlaybackAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
