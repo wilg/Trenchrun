@@ -230,7 +230,7 @@
 									<string key="NSFrame">{{159, 10}, {124, 18}}</string>
 									<reference key="NSSuperview" ref="274028959"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="301022127"/>
+									<reference key="NSNextKeyView" ref="812036608"/>
 									<string key="NSReuseIdentifierKey">_NS:1505</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="728071031">
@@ -372,7 +372,7 @@
 								<bool key="NSVertical">NO</bool>
 							</object>
 						</object>
-						<object class="NSTextField" id="301022127">
+						<object class="NSTextField" id="812036608">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{569, 33}, {72, 22}}</string>
@@ -381,13 +381,13 @@
 							<reference key="NSNextKeyView" ref="672353393"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="457071865">
+							<object class="NSTextFieldCell" key="NSCell" id="252429831">
 								<int key="NSCellFlags">-1804468671</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="101888272"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="301022127"/>
+								<reference key="NSControlView" ref="812036608"/>
 								<bool key="NSDrawsBackground">YES</bool>
 								<object class="NSColor" key="NSBackgroundColor">
 									<int key="NSColorSpace">6</int>
@@ -926,26 +926,24 @@
 							<int key="NSvFlags">274</int>
 							<string key="NSFrame">{{20, 73}, {561, 391}}</string>
 							<reference key="NSSuperview" ref="767920202"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="78567782"/>
+							<reference key="NSNextKeyView" ref="34503258"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">MocoAxisVisualizationView</string>
 						</object>
-						<object class="NSSlider" id="78567782">
+						<object class="NSSlider" id="34503258">
 							<reference key="NSNextResponder" ref="767920202"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{141, 30}, {318, 21}}</string>
 							<reference key="NSSuperview" ref="767920202"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSSliderCell" key="NSCell" id="862204098">
+							<object class="NSSliderCell" key="NSCell" id="322132247">
 								<int key="NSCellFlags">-2079981824</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="78567782"/>
+								<reference key="NSControlView" ref="34503258"/>
 								<double key="NSMaxValue">720</double>
 								<double key="NSMinValue">0.0</double>
 								<double key="NSValue">50</double>
@@ -959,7 +957,6 @@
 					</array>
 					<string key="NSFrameSize">{601, 484}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="310120093"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -1374,17 +1371,17 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">setPositionFromSlider:</string>
 						<reference key="source" ref="310120093"/>
-						<reference key="destination" ref="78567782"/>
+						<reference key="destination" ref="34503258"/>
 					</object>
 					<int key="connectionID">102010</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: fps</string>
-						<reference key="source" ref="301022127"/>
+						<reference key="source" ref="812036608"/>
 						<reference key="destination" ref="512844837"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="301022127"/>
+							<reference key="NSSource" ref="812036608"/>
 							<reference key="NSDestination" ref="512844837"/>
 							<string key="NSLabel">value: fps</string>
 							<string key="NSBinding">value</string>
@@ -1435,7 +1432,7 @@
 							<reference ref="221773819"/>
 							<reference ref="177976310"/>
 							<reference ref="529513631"/>
-							<reference ref="301022127"/>
+							<reference ref="812036608"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1820,7 +1817,7 @@
 						<reference key="object" ref="767920202"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="310120093"/>
-							<reference ref="78567782"/>
+							<reference ref="34503258"/>
 						</array>
 						<reference key="parent" ref="457053232"/>
 					</object>
@@ -1831,29 +1828,29 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">102003</int>
-						<reference key="object" ref="301022127"/>
+						<reference key="object" ref="812036608"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="457071865"/>
+							<reference ref="252429831"/>
 						</array>
 						<reference key="parent" ref="568628114"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">102004</int>
-						<reference key="object" ref="457071865"/>
-						<reference key="parent" ref="301022127"/>
+						<reference key="object" ref="252429831"/>
+						<reference key="parent" ref="812036608"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">102008</int>
-						<reference key="object" ref="78567782"/>
+						<reference key="object" ref="34503258"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="862204098"/>
+							<reference ref="322132247"/>
 						</array>
 						<reference key="parent" ref="767920202"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">102009</int>
-						<reference key="object" ref="862204098"/>
-						<reference key="parent" ref="78567782"/>
+						<reference key="object" ref="322132247"/>
+						<reference key="parent" ref="34503258"/>
 					</object>
 				</array>
 			</object>
