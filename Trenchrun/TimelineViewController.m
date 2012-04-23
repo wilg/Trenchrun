@@ -14,6 +14,7 @@
 #import "MocoTimelineHeaderViewController.h"
 #import "MocoTimelineRulerView.h"
 #import "MocoProtocolConstants.h"
+#import "MocoTimelineViewConstants.h"
 
 @interface TimelineViewController ( /* class extension */ ) {
 @private
@@ -129,6 +130,7 @@
     for (MocoTrack *track in document.trackList) {        
         MocoTimelineTrackViewController *trackViewController = [[MocoTimelineTrackViewController alloc] initWithNibName:nil bundle:nil];
         trackViewController.track = track;
+        trackViewController.timelineController = self;
         [trackViewControllers addObject:trackViewController];
         [timelineView addTrackView:(MocoTimelineTrackView *)trackViewController.view];
     }
@@ -217,5 +219,10 @@
 
     return keyPaths;
 }
+
+- (float)pixelsPerFrame {
+    return round(PIXELS_PER_FRAME_AT_100_PERCENT * self.scaleFactor);
+}
+
 
 @end

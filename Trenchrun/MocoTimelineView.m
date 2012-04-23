@@ -113,7 +113,7 @@
     
     self.frame = NSMakeRect(self.frame.origin.x,
                             self.frame.origin.y, 
-                            self.controller.timelineLength * [self pixelsPerFrame] + PADDING + PADDING_LEFT,
+                            self.controller.timelineLength * self.controller.pixelsPerFrame + PADDING + PADDING_LEFT,
                             h);
     
 }
@@ -195,16 +195,12 @@
 }
 
 - (float)absolutePlayheadPosition {
-    return PADDING_LEFT + (float)self.controller.playheadPosition * [self pixelsPerFrame] - playheadImageView.bounds.size.width / 2;
-}
-
-- (float)pixelsPerFrame {
-    return round(PIXELS_PER_FRAME_AT_100_PERCENT * self.controller.scaleFactor);
+    return PADDING_LEFT + (float)self.controller.playheadPosition * self.controller.pixelsPerFrame - playheadImageView.bounds.size.width / 2;
 }
 
 - (void)movePlayheadToPoint:(NSPoint)viewPoint {
     
-    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / [self pixelsPerFrame];
+    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / self.controller.pixelsPerFrame;
     
     [self.controller movePlayheadToFrame:playheadPositionInFrames];
     
@@ -259,7 +255,7 @@
 - (NSRect)tracksRectForTrackCount:(int)count {
     return NSMakeRect(PADDING_LEFT,
                       PADDING,
-                      self.controller.timelineLength * [self pixelsPerFrame], 
+                      self.controller.timelineLength * self.controller.pixelsPerFrame, 
                       (count) * TRACK_HEIGHT + ((count) * TRACK_BOTTOM_MARGIN)
                       );
 }
@@ -273,7 +269,7 @@
     // How long is this track?
     MocoTimelineTrackView *trackView = [trackViews objectAtIndex:index];
     NSArray *frames = [trackView.controller.track.frames copy];
-    trackWidth = (float)frames.count * (float)[self pixelsPerFrame];
+    trackWidth = (float)frames.count * (float)self.controller.pixelsPerFrame;
             
     return NSMakeRect(tracks.origin.x, 
                       tracks.size.height + PADDING,

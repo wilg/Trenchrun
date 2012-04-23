@@ -16,12 +16,14 @@
 @interface MocoLineGraphView () {
 }
 @property (retain) NSMutableArray *paths;
+@property (assign) NSInteger frameCount;
 @end
 
 
 @implementation MocoLineGraphView
-@synthesize controller;
+@synthesize controller = _controller;
 @synthesize paths = _paths;
+@synthesize frameCount = _frameCount;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -64,6 +66,9 @@
         currentIndex = [changedFramesSet indexGreaterThanIndex: currentIndex];
     }
 
+    // Update frame count. Fuck it.
+    self.frameCount = self.controller.track.length;
+
 }
 
 
@@ -82,6 +87,7 @@
     }
                               
     self.paths = tempPaths;
+    self.frameCount = self.controller.track.length;
 
     [self setNeedsDisplayInRect:self.bounds];
 }
@@ -141,16 +147,19 @@
     NSPoint lastPoint = NSZeroPoint;
     BOOL first = YES;
     
+    
+    int i = range.location;
     for (MocoFrame *frame in [self.controller.track.frames subarrayWithRange:range]) {
         
-        double xPercentage = frame.frameNumber.floatValue / (float)frameCount;
         double yPercentage = frame.position.floatValue / maxPosition;
         
-        float xPositionForFrame = usableBounds.size.width * xPercentage;
+        float xPositionForFrame = [self xPositionForFrameAtIndex:i]; //usableBounds.size.width * xPercentage;
         float yPositionForFrame = usableBounds.size.height * yPercentage;
         
-        NSPoint point = NSMakePoint(xPositionForFrame + PADDING / 2, yPositionForFrame + PADDING / 2);
+        NSPoint point = NSMakePoint(xPositionForFrame, yPositionForFrame + PADDING / 2);
         
+        NSPoint endpoint = NSMakePoint([self xPositionForFrameAtIndex:i + 1], yPositionForFrame + PADDING / 2);
+
         if (first) {
             lastPoint = point;
             first = NO;
@@ -159,12 +168,36 @@
         [path moveToPoint:lastPoint];
         [path lineToPoint:point];
         
-        lastPoint = point;
+        [path lineToPoint:endpoint];
+
+        lastPoint = endpoint;
+        i++;
     }
             
     return path;
 }
 
+-(float)pixelsPerFrame {
+    return self.controller.timelineController.pixelsPerFrame;
+}
+
+-(float)xPositionForFrameAtIndex:(int)index {
+    return [self pixelsPerFrame] * index;
+}
+
+-(void)drawFrameBackgroundForFrame:(int)i {
+    NSRect frameRect = NSMakeRect([self xPositionForFrameAtIndex:i],
+                                  0, 
+                                  [self pixelsPerFrame], 
+                                  self.bounds.size.height);
+    
+    if ([self needsToDrawRect:frameRect]) {
+        if (i % 2 == 0) {
+            [[NSColor colorWithDeviceWhite:0 alpha:0.1] set];
+            NSRectFill(frameRect);
+        }
+    }
+}
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -175,6 +208,10 @@
     [NSGraphicsContext saveGraphicsState];
 //    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
 
+    for (int i = 0; i < self.frameCount; i++) {
+        [self drawFrameBackgroundForFrame:i];
+    }
+
     [[NSColor colorWithDeviceWhite:1.0 alpha:0.9] set];
 
     
@@ -184,7 +221,7 @@
             [path stroke];
         }
     }
-
+    
     [NSGraphicsContext restoreGraphicsState];
 
 //    NSLog(@"line graph draw rect");
