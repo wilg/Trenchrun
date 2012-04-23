@@ -186,9 +186,12 @@
 
 -(void)scrollToPlayhead {
     NSPoint destination = NSMakePoint([self playheadRect].origin.x - 100, 0);
-//    [self scrollPoint:];
     
-    [DuxScrollViewAnimation animatedScrollToPoint:destination inScrollView:self.enclosingScrollView duration: 1 / [self.controller fps]];
+    if (!CGRectIntersectsRect(self.visibleRect, [self playheadRect])  ) {
+        [self scrollPoint:destination];
+//        [DuxScrollViewAnimation animatedScrollToPoint:destination inScrollView:self.enclosingScrollView];
+    }
+    
 
 }
 
