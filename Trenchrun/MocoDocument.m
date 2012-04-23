@@ -16,11 +16,13 @@
 #import "MocoAxisPosition.h"
 #import "MocoAppDelegate.h"
 #import "MocoDriver.h"
+#import "MocoTimelinePlaybackAnimation.h"
 
 static NSString * kTrackEditContext = @"Track Edit";
 
 @interface MocoDocument ( /* class extension */ ) {
     NSTimer *_playbackTimer;
+    MocoTimelinePlaybackAnimation *_playbackAnimation;
 }
 @end
 
@@ -261,7 +263,8 @@ static NSString * kTrackEditContext = @"Track Edit";
             }
             
             // fake playback on the driver
-            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/(float)self.fps target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+//            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/(float)self.fps target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
+            _playbackAnimation = [MocoTimelinePlaybackAnimation playTimelineAnimatedWithDelegate:self];
             
             playing = YES;
         }
@@ -269,6 +272,27 @@ static NSString * kTrackEditContext = @"Track Edit";
             // pause
             [self stopPlayback:nil];
         }
+    }
+}
+
+- (NSTimeInterval)durationOfTimelinePlaybackAnimation {
+    return timelineViewController.timeRemaining;
+}
+
+- (NSTimeInterval)currentPlayheadTimeForTimelineAnimation {
+    return timelineViewController.playheadTimeInterval;
+}
+
+- (void)timelinePlaybackAnimationDidAdvanceToTime:(NSTimeInterval)seconds {
+//    NSLog(@"timelinePlaybackAnimationDidAdvanceToTime: %f", seconds);
+    if (![timelineViewController playToTime:seconds]) {
+        [self stopPlayback:nil];
+    }
+}
+
+- (void)animationDidEnd:(NSAnimation *)animation {
+    if (animation == _playbackAnimation) {
+        [self stopPlayback:nil];
     }
 }
 
@@ -293,8 +317,11 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 -(IBAction)stopPlayback:(id)sender {
     [[self driver] pausePlayback];
-    [_playbackTimer invalidate];
-    _playbackTimer = nil;
+//    [_playbackTimer invalidate];
+//    _playbackTimer = nil;
+    [_playbackAnimation stopAnimation];
+    _playbackAnimation = nil;
+    
     playButton.state = 0;
     playing = NO;
 }

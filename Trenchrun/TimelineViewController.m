@@ -179,6 +179,18 @@
     return NO;
 }
 
+-(BOOL)playToTime:(NSTimeInterval)seconds {
+    NSInteger desiredPos = [self frameAtTime:seconds];
+    if (desiredPos > timelineLength) {
+        return NO;
+    }
+    else {
+        [self followPlayheadToFrame:desiredPos];
+        return YES;
+    }
+    return NO;
+}
+
 -(void)forwardBySeconds:(float)seconds {
     [self followPlayheadToFrame: self.playheadPosition + seconds * (float)document.fps];
 }
@@ -190,6 +202,19 @@
 -(int)fps {
     return document.fps;
 }
+
+- (NSInteger)frameAtTime:(NSTimeInterval)seconds {
+    return round((NSTimeInterval)self.fps * seconds);
+}
+
+-(NSInteger)framesRemaining {
+    return self.timelineLength - self.playheadPosition;
+}
+
+- (NSTimeInterval)timeRemaining {
+    return (NSTimeInterval)self.framesRemaining / (NSTimeInterval)self.fps;
+}
+
 
 - (NSString *)frameProgress {
     
@@ -204,9 +229,13 @@
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
 }
 
+
+- (NSTimeInterval)playheadTimeInterval {
+    return (NSTimeInterval)self.playheadPosition / (NSTimeInterval)self.fps;
+}
+
 - (NSString *)playheadTime {
-    NSTimeInterval theTimeInterval = (NSTimeInterval)playheadPosition / (float)document.fps;
-    NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:theTimeInterval];
+    NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:self.playheadTimeInterval];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm:ss.SSS"];
     return [NSString stringWithFormat:@"%@s", [formatter stringFromDate: date1]];

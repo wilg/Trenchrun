@@ -29,12 +29,18 @@
 @property (readonly) NSString *playheadTime;
 @property (readonly) float pixelsPerFrame;
 
+@property (readonly) NSTimeInterval playheadTimeInterval;
+@property (readonly) NSTimeInterval timeRemaining;
+@property (readonly) NSInteger framesRemaining;
+
 - (IBAction)refreshGraph:(id)sender;
 
 - (void)movePlayheadToFrame:(int)frameNumber;
 - (void)followPlayheadToFrame:(int)frameNumber;
 
 -(BOOL)playOneFrame;
+-(BOOL)playToTime:(NSTimeInterval)seconds;
+
 -(void)forwardBySeconds:(float)seconds;
 -(void)backBySeconds:(float)seconds;
 

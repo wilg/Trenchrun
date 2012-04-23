@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TimelineViewController.h"
+#import "MocoTimelinePlaybackAnimation.h"
 
-@interface MocoDocument : NSDocument {
+@interface MocoDocument : NSDocument<MocoTimelinePlaybackAnimationDelegate> {
     
     IBOutlet NSArrayController *trackArrayController;
     IBOutlet NSArrayController    *flattenedFrameArrayController;
