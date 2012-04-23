@@ -26,7 +26,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 @implementation MocoDocument
 
-@synthesize trackList, flattenedFrameArray, rigPlaybackEngaged;
+@synthesize trackList, flattenedFrameArray, rigPlaybackEngaged, fps;
 
 -(id)init
 {
@@ -35,6 +35,8 @@ static NSString * kTrackEditContext = @"Track Edit";
 
         recording = NO;
         self.rigPlaybackEngaged = YES;
+        
+        self.fps = 50;
         
         // create the collection array
         trackList = [[NSMutableArray alloc] init];
@@ -232,10 +234,6 @@ static NSString * kTrackEditContext = @"Track Edit";
             [self stopPlayback:nil];
         }
     }
-}
-
--(int)fps {
-    return 50;
 }
 
 -(void)advanceFrame {
