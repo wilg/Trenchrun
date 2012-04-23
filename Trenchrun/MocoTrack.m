@@ -73,6 +73,12 @@
     return axisPosition;
 }
 
+-(BOOL)containsFrameNumber:(NSInteger)frameNumber {
+    if (frameNumber >= self.frames.count){
+        return YES;
+    }
+    return NO;
+}
 
 - (NSString *)title {
     if (self.axis == MocoAxisCameraPan) {
