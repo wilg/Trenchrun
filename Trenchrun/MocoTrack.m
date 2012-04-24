@@ -148,7 +148,7 @@
     else if (self.axis == MocoAxisZoom) {
         return [NSColor colorWithCalibratedHue:0.114 saturation:0.082 brightness:0.906 alpha:1.000];
     }
-    return [NSColor whiteColor];
+    return [NSColor colorWithCalibratedHue:0.114 saturation:0 brightness:1 alpha:1.000];
 }
 
 - (NSInteger)length {
