@@ -28,11 +28,12 @@
     
     MocoSerialConnection *_serialConnection;
     
-    NSArray *_playbackTracks;
-    NSInteger _playbackPosition;
 }
 //@property (retain) AMSerialPort *port;
 @property (assign) MocoStatusCode status;
+
+@property (retain) NSArray *playbackTracks;
+@property (assign) NSInteger playbackPosition;
 
 - (void)findMocoRig;
 - (void)testNextPort;
@@ -86,8 +87,8 @@
 
 - (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
     if (self.recordAndPlaybackOperational) {
-        _playbackTracks = tracks;
-        _playbackPosition = frameNumber;
+        self.playbackTracks = tracks;
+        self.playbackPosition = frameNumber;
         
         [self stopStreamingPositionData];
         
@@ -107,7 +108,7 @@
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
-    for (MocoTrack *track in _playbackTracks) {
+    for (MocoTrack *track in self.playbackTracks) {
         if (track.axis == axis)
             return track;
     }
@@ -253,14 +254,14 @@
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
     if (self.status == MocoStatusPlayback ||
         self.status == MocoStatusPlaybackBuffering) {
-        MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
+        MocoAxisPosition *position = [self positionForAxis:axis atFrame:self.playbackPosition];
         
         if (position) {
             [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
             [_serialConnection writeIntAsByte:axis];
             [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
             
-            _playbackPosition++;
+            self.playbackPosition = self.playbackPosition + 1;
             
             NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
         }
