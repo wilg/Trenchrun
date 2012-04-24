@@ -46,7 +46,7 @@ typedef enum {
 
 // Move a specified axis to a position.
 // This will put the driver in MocoStatusSeeking
-- (void)moveAxis:(MocoAxis)axis toPosition:(int)position;
+//- (void)moveAxis:(MocoAxis)axis toPosition:(int)position;
 
 // Starts playback.
 // This should probably be a special wrapper class that contains data
@@ -60,7 +60,7 @@ typedef enum {
 - (void)pausePlayback;
 
 // Seeks the playback to a specified position.
-- (void)seekPlaybackToTime:(int)position;
+//- (void)seekPlaybackToTime:(int)position;
 
 - (void)severConnections;
 
