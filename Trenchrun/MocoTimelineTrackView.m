@@ -28,7 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:self.bounds];
+        lineGraphView = [[MocoLineGraphView alloc] initWithFrame:NSInsetRect(self.bounds, 1, 1)];
         [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
 
         self.canDrawConcurrently = YES;
@@ -45,7 +45,7 @@
 {
     // Drawing code here.
     
-    lineGraphView.frame = self.bounds;
+    lineGraphView.frame = NSInsetRect(self.bounds, 1, 1);
         
     [NSGraphicsContext saveGraphicsState];
 //    
