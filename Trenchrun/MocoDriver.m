@@ -76,7 +76,7 @@
         NSLog(@"intializing hardcoded port");
         
         self.status = MocoStatusDisconnected;
-        [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A800H22L" baud:MocoProtocolBaudRate];
+        [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A6008RQE" baud:MocoProtocolBaudRate];
         
         
         
@@ -151,7 +151,7 @@
 
 - (void)openSerialConnectionSuccessful {
     self.status = MocoStatusAwaitingControl;
-    [NSTimer scheduledTimerWithTimeInterval:1.5f
+    [NSTimer scheduledTimerWithTimeInterval:MocoProtocolPortOpenedWaitTime
                                      target:self 
                                    selector:@selector(requestHandshake) 
                                    userInfo:nil 
