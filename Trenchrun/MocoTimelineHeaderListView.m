@@ -101,7 +101,7 @@
     NSRect tracks = [self tracksRect];
         
     return NSMakeRect(tracks.origin.x, 
-                      TRACK_HEIGHT * index + PADDING + TRACK_BOTTOM_MARGIN * index,
+                      TRACK_HEIGHT * index + TRACK_TOP_PADDING + TRACK_BOTTOM_MARGIN * index,
                       self.frame.size.width,
                       TRACK_HEIGHT
                       );

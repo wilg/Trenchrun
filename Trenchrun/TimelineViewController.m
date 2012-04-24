@@ -215,6 +215,10 @@
     return (NSTimeInterval)self.framesRemaining / (NSTimeInterval)self.fps;
 }
 
+- (NSTimeInterval)totalTimeInterval {
+    return (NSTimeInterval)self.timelineLength / (NSTimeInterval)self.fps;
+}
+
 
 - (NSString *)frameProgress {
     
@@ -263,6 +267,10 @@
 
 - (float)pixelsPerFrame {
     return round(PIXELS_PER_FRAME_AT_100_PERCENT * self.scaleFactor);
+}
+
+- (float)pixelsPerSecond {
+    return (float)[self pixelsPerFrame] * (float)self.fps;
 }
 
 
