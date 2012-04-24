@@ -10,7 +10,7 @@
 
 @implementation MocoSerialConnection
 
-@synthesize delegate;
+@synthesize delegate, responseThread;
 
 -(id)init {
 	self = [super init];
@@ -214,10 +214,17 @@
             
             // DATA BUFFER SHOULD BE FULL NOW
             
-            [self performSelectorOnMainThread: @selector(serialMessageReceived:) 
-                                   withObject: [dataBuffer copy] 
-                                waitUntilDone: NO];
+//            [self performSelectorOnMainThread: @selector(serialMessageReceived:) 
+//                                   withObject: [dataBuffer copy] 
+//                                waitUntilDone: NO];
+            
+//            [self performSelectorInBackground:@selector(serialMessageReceived:)  withObject:[dataBuffer copy]];
 
+            [self performSelector:@selector(serialMessageReceived:) 
+                         onThread:self.responseThread
+                       withObject:[dataBuffer copy]
+                    waitUntilDone:NO];
+            
             // Empty data buffer.
             [dataBuffer setData:[NSData data]];
 
