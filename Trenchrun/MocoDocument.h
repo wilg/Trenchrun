@@ -23,9 +23,6 @@
     
     IBOutlet NSSegmentedControl *viewSwapControl;
 
-    BOOL recording;
-    BOOL playing;
-
     IBOutlet NSButton *playButton;
     IBOutlet NSButton *recordButton;
     
@@ -34,8 +31,9 @@
 }
 
 @property BOOL rigPlaybackEngaged;
-@property (copy) NSMutableArray *trackList;
-@property (copy) NSMutableArray *flattenedFrameArray;
+@property BOOL recording;
+@property BOOL playing;
+@property (retain) NSMutableArray *trackList;
 @property (assign) int fps;
 
 -(IBAction)record:(id)sender;

@@ -28,20 +28,24 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 @implementation MocoDocument
 
-@synthesize trackList, flattenedFrameArray, rigPlaybackEngaged, fps;
+@synthesize trackList = _trackList;
+@synthesize rigPlaybackEngaged = _rigPlaybackEngaged;
+@synthesize fps = _fps;
+@synthesize  recording = _recording;
+@synthesize playing = _playing;
 
 -(id)init
 {
 	self = [super init];
 	if ( self ) {
 
-        recording = NO;
+        self.recording = NO;
         self.rigPlaybackEngaged = YES;
         
         self.fps = 50;
         
         // create the collection array
-        trackList = [[NSMutableArray alloc] init];
+        self.trackList = [[NSMutableArray alloc] init];
 
         [self addObserver:self
                     forKeyPath:@"trackList"
@@ -52,7 +56,7 @@ static NSString * kTrackEditContext = @"Track Edit";
         for (int i = 0; i < 8; i++) {
             MocoTrack *track = [[MocoTrack alloc] init];
             track.axis = i;
-            [trackList addObject:track];
+            [self.trackList addObject:track];
         }
         
 //        [self add1000BogusFrames:nil];
@@ -83,13 +87,14 @@ static NSString * kTrackEditContext = @"Track Edit";
     [timelineViewController.view setFrame:[timelineContainer bounds]];
     [timelineContainer addSubview:timelineViewController.view];
     
-    for (MocoTrack *track in trackList) {
+    for (MocoTrack *track in self.trackList) {
         [track bind:@"lastKnownPlayheadPosition" toObject:timelineViewController withKeyPath:@"playheadPosition" options:nil];
     }
+    
 }
 
 - (MocoTrack *)trackWithAxis:(MocoAxis)axis {
-    for (MocoTrack *track in trackList) {
+    for (MocoTrack *track in self.trackList) {
         if (track.axis == axis)
             return track;
     }
@@ -108,7 +113,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 - (void)axisDataUpdated:(NSNotification *)notification {
     MocoAxisPosition *axisPosition = notification.object;
-    if (recording) {
+    if (self.recording) {
         [self savePosition:axisPosition.position
                    forAxis:axisPosition.axis];
     }
@@ -192,7 +197,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 #pragma mark UI Shit
 
 -(IBAction)addBogusFrame:(id)sender {
-    for (MocoTrack *track in trackList) {
+    for (MocoTrack *track in self.trackList) {
         [self savePosition:[NSNumber numberWithFloat:(float)random()/RAND_MAX] forAxis:track.axis];
     }
 }
@@ -219,63 +224,64 @@ static NSString * kTrackEditContext = @"Track Edit";
 -(IBAction)record:(id)sender {
     NSButton *button = (NSButton *)sender;
     if (button.state == 1)
-        recording = YES;
+        self.recording = YES;
     else {
         [self stopRecording];
     }
 }
 
 -(IBAction)rewind:(id)sender {
-    if (playing) {
+    if (self.playing) {
         [self stopPlayback:nil];
     }
-    if (recording) {
+    if (self.recording) {
         [self stopRecording];
     }
     [timelineViewController backBySeconds:1];
 }
 
 -(IBAction)fastForward:(id)sender {
-    if (playing) {
+    if (self.playing) {
         [self stopPlayback:nil];
     }
-    if (recording) {
+    if (self.recording) {
         [self stopRecording];
     }
     [timelineViewController forwardBySeconds:1];
 }
 
 -(IBAction)beginning:(id)sender {
-    if (playing) {
+    if (self.playing) {
         [self stopPlayback:nil];
     }
-    if (recording) {
+    if (self.recording) {
         [self stopRecording];
     }
     [timelineViewController followPlayheadToFrame:0];
 }
 
 -(IBAction)play:(id)sender {
-    if (recording) {
+    if (self.recording) {
         [self stopRecording];
     }
     else {
-        NSButton *button = (NSButton *)sender;
-        if (button.state == 1){
+        if (self.playing){
+            [self stopPlayback:nil];
+        }
+        else {
             // play
-            if (rigPlaybackEngaged && [self driver].recordAndPlaybackOperational) {
+            if (self.rigPlaybackEngaged && [self driver].recordAndPlaybackOperational) {
                 [timelineViewController startPulsingPlayhead];
                 [[self driver] beginPlaybackWithTracks:self.trackList atFrame:timelineViewController.playheadPosition];
             }
             else {
                 [self startTimelinePlayback];
             }
-                        
-            playing = YES;
-        }
-        else {
-            // pause
-            [self stopPlayback:nil];
+            
+            playButton.image = [NSImage imageNamed:@"Stop0N.tiff"];
+            playButton.alternateImage = [NSImage imageNamed:@"StopBH.tiff"];
+            
+            self.playing = YES;
         }
     }
 }
@@ -312,7 +318,7 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(void)stopRecording {
-    recording = NO;
+    self.recording = NO;
     recordButton.state = 0;
 }
 
@@ -337,8 +343,11 @@ static NSString * kTrackEditContext = @"Track Edit";
     [_playbackAnimation stopAnimation];
     _playbackAnimation = nil;
     
-    playButton.state = 0;
-    playing = NO;
+//    playButton.state = 0;
+    self.playing = NO;
+    
+    playButton.image = [NSImage imageNamed:@"Play0N.tiff"];
+    playButton.alternateImage = [NSImage imageNamed:@"Play0H.tiff"];
     
     [timelineViewController stopPulsingPlayhead];
 }

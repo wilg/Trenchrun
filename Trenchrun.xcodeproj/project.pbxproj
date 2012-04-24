@@ -96,6 +96,8 @@
 		3B9D52BC1541365500421D14 /* MocoLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D52BB1541365500421D14 /* MocoLineGraphView.m */; };
 		3BA1E96C153D3A6C003D0F74 /* MocoSerialConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */; };
 		3BC12F2815415C6F00EE149F /* MocoTimelineRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */; };
+		3BC69E42154773350053D80B /* rig_disengaged.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC69E40154773350053D80B /* rig_disengaged.png */; };
+		3BC69E43154773350053D80B /* rig_engaged.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC69E41154773350053D80B /* rig_engaged.png */; };
 		3BCBD249153BA0CD00D8E088 /* playhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBD248153BA0CD00D8E088 /* playhead.png */; };
 		3BCBD24E153BA5E300D8E088 /* MocoTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD24D153BA5E300D8E088 /* MocoTrack.m */; };
 		3BCBD254153BBA1D00D8E088 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBD253153BBA1D00D8E088 /* TimelineViewController.m */; };
@@ -246,6 +248,8 @@
 		3BA1E96B153D3A6C003D0F74 /* MocoSerialConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoSerialConnection.m; sourceTree = "<group>"; };
 		3BC12F2615415C6F00EE149F /* MocoTimelineRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineRulerView.h; sourceTree = "<group>"; };
 		3BC12F2715415C6F00EE149F /* MocoTimelineRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineRulerView.m; sourceTree = "<group>"; };
+		3BC69E40154773350053D80B /* rig_disengaged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_disengaged.png; sourceTree = "<group>"; };
+		3BC69E41154773350053D80B /* rig_engaged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rig_engaged.png; sourceTree = "<group>"; };
 		3BCBD248153BA0CD00D8E088 /* playhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playhead.png; sourceTree = "<group>"; };
 		3BCBD24C153BA5E300D8E088 /* MocoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTrack.h; sourceTree = "<group>"; };
 		3BCBD24D153BA5E300D8E088 /* MocoTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTrack.m; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 		3B16C56E153ABC0900F40A56 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3BC69E40154773350053D80B /* rig_disengaged.png */,
+				3BC69E41154773350053D80B /* rig_engaged.png */,
 				3B90031215453A720099555E /* Stolen from Garageband */,
 				3BDC907715452ED200534771 /* TB3_j-32-Active.tif */,
 				3BDC907815452ED200534771 /* TB3_j-32-Inactive.tif */,
@@ -668,6 +674,8 @@
 				3B30C3F3154550E90080447E /* Stop0D.tiff in Resources */,
 				3B30C3F4154550E90080447E /* Stop0N.tiff in Resources */,
 				3B30C3F5154550E90080447E /* StopBH.tiff in Resources */,
+				3BC69E42154773350053D80B /* rig_disengaged.png in Resources */,
+				3BC69E43154773350053D80B /* rig_engaged.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
