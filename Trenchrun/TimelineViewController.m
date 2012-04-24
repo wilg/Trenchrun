@@ -273,5 +273,13 @@
     return (float)[self pixelsPerFrame] * (float)self.fps;
 }
 
+-(void)startPulsingPlayhead {
+    [timelineView startPulsingPlayhead];
+}
+
+-(void)stopPulsingPlayhead {
+    [timelineView stopPulsingPlayhead];
+}
+
 
 @end

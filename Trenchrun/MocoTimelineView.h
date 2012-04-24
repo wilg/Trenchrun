@@ -27,4 +27,8 @@
 -(void)playheadMoved;
 -(void)scrollToPlayhead;
 
+-(void)startPulsingPlayhead;
+-(void)stopPulsingPlayhead;
+
+
 @end

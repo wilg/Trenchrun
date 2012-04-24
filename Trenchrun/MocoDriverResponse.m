@@ -151,6 +151,12 @@
     else if (self.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
         return @"Debug String";
     }
+    else if (self.type == MocoProtocolPlaybackStartingNotificationResponseType) {
+        return @"Playback Starting Notification";
+    }
+    else if (self.type == MocoProtocolPlaybackCompleteNotificationResponseType) {
+        return @"Playback Complete Notification";
+    }
     return [NSString stringWithFormat:@"Undefined type: %i", self.type];
 }
 

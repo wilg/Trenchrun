@@ -17,7 +17,8 @@ typedef enum {
     MocoStatusAwaitingControl,    // The rig is connected but hasn't yet responded with control.
     MocoStatusIdle,               // The rig is connected but stationary.
     MocoStatusSeeking,            // The rig has been given a target position but is still moving towards it.
-    MocoStatusPlayback            // The driver is playing back data to the rig.
+    MocoStatusPlayback,            // The driver is playing back data to the rig.
+    MocoStatusPlaybackBuffering
 } MocoStatusCode;
 
 @interface MocoDriver : NSObject <MocoSerialConnectionDelegate> {

@@ -282,6 +282,33 @@
     clickPoint = viewPoint;
 }
 
+
+-(void)startPulsingPlayhead {
+    // create the animation that will handle the pulsing.
+    CABasicAnimation* pulseAnimation = [CABasicAnimation animation];
+    
+    // over a one second duration, and run an infinite
+    // number of times
+    pulseAnimation.duration = 0.5;
+    pulseAnimation.repeatCount = MAXFLOAT;
+    
+    // we want it to fade on, and fade off, so it needs to
+    // automatically autoreverse.. this causes the intensity
+    // input to go from 0 to 1 to 0
+    pulseAnimation.autoreverses = YES;
+
+    [pulseAnimation setFromValue:[NSNumber numberWithFloat:0.0]];
+    [pulseAnimation setToValue:[NSNumber numberWithFloat:1.0]];
+    
+    [playheadImageView.layer addAnimation:pulseAnimation forKey:@"opacity"];
+
+}
+
+-(void)stopPulsingPlayhead {
+    [playheadImageView.layer removeAllAnimations];
+}
+
+
 # pragma mark Drawing Tracks
 
 - (void)reloadData {

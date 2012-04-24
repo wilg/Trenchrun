@@ -62,6 +62,11 @@ static NSString * kTrackEditContext = @"Track Edit";
                                                      name:@"MocoAxisPositionUpdated"
                                                    object:nil];
 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(rigPlaybackStarted:)
+                                                     name:@"MocoRigPlaybackStarted"
+                                                   object:nil];
+        
     
 	}
 	return self;
@@ -258,14 +263,14 @@ static NSString * kTrackEditContext = @"Track Edit";
         NSButton *button = (NSButton *)sender;
         if (button.state == 1){
             // play
-            if (rigPlaybackEngaged) {
+            if (rigPlaybackEngaged && [self driver].recordAndPlaybackOperational) {
+                [timelineViewController startPulsingPlayhead];
                 [[self driver] beginPlaybackWithTracks:self.trackList atFrame:timelineViewController.playheadPosition];
             }
-            
-            // fake playback on the driver
-//            _playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/(float)self.fps target:self selector:@selector(advanceFrame) userInfo:nil repeats:YES];
-            _playbackAnimation = [MocoTimelinePlaybackAnimation playTimelineAnimatedWithDelegate:self];
-            
+            else {
+                [self startTimelinePlayback];
+            }
+                        
             playing = YES;
         }
         else {
@@ -273,6 +278,16 @@ static NSString * kTrackEditContext = @"Track Edit";
             [self stopPlayback:nil];
         }
     }
+}
+
+- (void)startTimelinePlayback {
+    _playbackAnimation = [MocoTimelinePlaybackAnimation playTimelineAnimatedWithDelegate:self];
+}
+
+-(void)rigPlaybackStarted:(NSNotification *)notification{ 
+    NSLog(@"Heard from the rig. Starting the timeline.");
+    [self startTimelinePlayback];
+    [timelineViewController stopPulsingPlayhead];
 }
 
 - (NSTimeInterval)durationOfTimelinePlaybackAnimation {
@@ -324,6 +339,8 @@ static NSString * kTrackEditContext = @"Track Edit";
     
     playButton.state = 0;
     playing = NO;
+    
+    [timelineViewController stopPulsingPlayhead];
 }
 
 -(IBAction)updateFakeTabs:(id)sender {
