@@ -45,6 +45,8 @@
 -(void)forwardBySeconds:(float)seconds;
 -(void)backBySeconds:(float)seconds;
 
+-(void)startPulsingPlayhead;
+-(void)stopPulsingPlayhead;
 
 -(void)zoomInOneStep;
 -(void)zoomOutOneStep;

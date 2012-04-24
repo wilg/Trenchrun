@@ -43,7 +43,9 @@ typedef enum {
     MocoProtocolAxisPositionResponseType     =  1,
     MocoProtocolAxisResolutionResponseType   =  2,
 	MocoProtocolAdvancePlaybackRequestType   =  3,
-	MocoProtocolNewlineDelimitedDebugStringResponseType = 4
+	MocoProtocolNewlineDelimitedDebugStringResponseType = 4,
+    MocoProtocolPlaybackStartingNotificationResponseType   =  5,
+	MocoProtocolPlaybackCompleteNotificationResponseType   =  6
 } MocoProtocolResponseType;
 
 // Responses

@@ -93,7 +93,7 @@
         
         NSLog(@"Asked device to start playback...");
         [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
-        self.status = MocoStatusPlayback;
+        self.status = MocoStatusPlaybackBuffering;
     }
 }
 
@@ -231,6 +231,14 @@
     else if (driverResponse.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
         NSLog(@"Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
     }
+    else if (driverResponse.type == MocoProtocolPlaybackCompleteNotificationResponseType) {
+        self.status = MocoStatusIdle;
+    }
+    else if (driverResponse.type == MocoProtocolPlaybackStartingNotificationResponseType) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoRigPlaybackStarted"
+                                                            object:driverResponse];
+        self.status = MocoStatusPlayback;
+    }
     else {
         NSLog(@"Serial message recieved but not understood.");
     }
@@ -243,7 +251,8 @@
 }
 
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
-    if (self.status == MocoStatusPlayback) {
+    if (self.status == MocoStatusPlayback ||
+        self.status == MocoStatusPlaybackBuffering) {
         MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
         
         if (position) {
@@ -449,6 +458,7 @@
 -(BOOL)recordAndPlaybackOperational {
     if (self.status == MocoStatusIdle || 
         self.status == MocoStatusSeeking ||
+        self.status == MocoStatusPlaybackBuffering ||
         self.status == MocoStatusPlayback ) {
         return YES;
     }
