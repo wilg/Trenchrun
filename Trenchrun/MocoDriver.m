@@ -243,19 +243,24 @@
 }
 
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
-    MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
-    
-    if (position) {
-        [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
-        [_serialConnection writeIntAsByte:axis];
-        [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+    if (self.status == MocoStatusPlayback) {
+        MocoAxisPosition *position = [self positionForAxis:axis atFrame:_playbackPosition];
         
-        _playbackPosition++;
-        
-        NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
+        if (position) {
+            [_serialConnection writeIntAsByte:MocoProtocolPlaybackFrameDataHeader];
+            [_serialConnection writeIntAsByte:axis];
+            [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+            
+            _playbackPosition++;
+            
+            NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
+        }
+        else {
+            NSLog(@"Couldn't write next frame. Possibly out of bounds.");
+        }
     }
     else {
-        NSLog(@"Couldn't write next frame. Possibly out of bounds.");
+        NSLog(@"Device requested playback but it has already finished.");
     }
 }
 
