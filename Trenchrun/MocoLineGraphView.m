@@ -8,6 +8,9 @@
 
 #import "MocoLineGraphView.h"
 
+#define EQUAL_NSPOINTS(p1,p2) (p1.x == p2.x && p1.y == p2.y)
+#define NOTEQUAL_NSPOINTS(p1,p2) (p1.x != p2.x || p1.y != p2.y)
+
 #define PADDING 8
 
 #define SEGMENT_LENGTH 25
@@ -156,7 +159,7 @@
         
         NSPoint point = NSMakePoint(xPositionForFrame, yPositionForFrame + PADDING / 2);
         
-        NSPoint endpoint = NSMakePoint([self xPositionForFrameAtIndex:i + 1], yPositionForFrame + PADDING / 2);
+        NSPoint nextFramePoint = NSMakePoint([self xPositionForFrameAtIndex:i + 1], yPositionForFrame + PADDING / 2);
 
         if (first) {
             lastPoint = point;
@@ -164,11 +167,13 @@
         }
         
         [path moveToPoint:lastPoint];
-        [path lineToPoint:point];
+        if (NOTEQUAL_NSPOINTS(point, lastPoint)) {
+            [path lineToPoint:point];
+        }
         
-        [path lineToPoint:endpoint];
+        [path lineToPoint:nextFramePoint];
 
-        lastPoint = endpoint;
+        lastPoint = nextFramePoint;
         i++;
     }
             
