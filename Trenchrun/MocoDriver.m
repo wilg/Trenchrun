@@ -23,9 +23,7 @@
     int _currentPortPathIndex;
     BOOL _waitingForPortHandshakeResponse;
     NSString *_rigPortPath;
-    
-    NSMutableDictionary *_axisResolutions;
-    
+        
     MocoSerialConnection *_serialConnection;
     
 }
@@ -35,6 +33,8 @@
 @property (retain) NSArray *playbackTracks;
 @property (assign) NSInteger playbackPosition;
 
+@property (retain) NSMutableDictionary *axisResolutions;
+
 - (void)findMocoRig;
 - (void)testNextPort;
 @end
@@ -42,6 +42,7 @@
 ///// IMPLEMENTATION
 
 @implementation MocoDriver
+@synthesize playbackTracks, playbackPosition, axisResolutions;
 //@synthesize port;
 
 # pragma mark Initializer
@@ -64,7 +65,7 @@
         /// initialize port list to arm notifications
 //        [AMSerialPortList sharedPortList];
         
-        _axisResolutions = [NSMutableDictionary dictionary];
+        self.axisResolutions = [NSMutableDictionary dictionary];
         
         self.status = MocoStatusDisconnected;
         
@@ -119,7 +120,7 @@
     MocoTrack *track = [self trackWithAxis:axis];
     if ([track containsFrameNumber:frameNumber]) {
         MocoAxisPosition *ap = [track axisPositionAtFrameNumber:frameNumber];
-        ap.resolution = [_axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
+        ap.resolution = [self.axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
         return ap;
     }
     return nil;
@@ -184,7 +185,7 @@
         MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
         
         NSNumber *axisNumber = [driverResponse.payload objectForKey:@"axis"];
-        NSNumber *resolution = [_axisResolutions objectForKey:axisNumber];
+        NSNumber *resolution = [self.axisResolutions objectForKey:axisNumber];
         if (resolution) {
             axisPosition.axis = [axisNumber intValue];
             axisPosition.resolution = resolution;
@@ -202,7 +203,7 @@
     }
     else if (driverResponse.type == MocoProtocolAxisResolutionResponseType) {
         
-        [_axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
+        [self.axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
                              forKey:[driverResponse.payload objectForKey:@"axis"]];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
