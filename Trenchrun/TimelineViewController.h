@@ -29,6 +29,7 @@
 @property (readonly) NSString *playheadTime;
 @property (readonly) float pixelsPerFrame;
 
+@property (readonly) NSTimeInterval totalTimeInterval;
 @property (readonly) NSTimeInterval playheadTimeInterval;
 @property (readonly) NSTimeInterval timeRemaining;
 @property (readonly) NSInteger framesRemaining;
@@ -49,5 +50,6 @@
 -(void)zoomOutOneStep;
 
 -(int)fps;
+- (float)pixelsPerSecond;
 
 @end

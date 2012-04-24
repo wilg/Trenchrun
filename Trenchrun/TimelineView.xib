@@ -12,10 +12,10 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSView</string>
-			<string>NSTextField</string>
-			<string>NSScrollView</string>
-			<string>NSTextFieldCell</string>
 			<string>NSUserDefaultsController</string>
+			<string>NSScrollView</string>
+			<string>NSTextField</string>
+			<string>NSTextFieldCell</string>
 			<string>NSCustomView</string>
 			<string>NSImageCell</string>
 			<string>NSImageView</string>
@@ -62,6 +62,7 @@
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="37683401"/>
+												<bool key="NSViewIsLayerTreeHost">YES</bool>
 												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<string key="NSReuseIdentifierKey">_NS:1505</string>
 												<bool key="NSEnabled">YES</bool>
@@ -106,6 +107,7 @@
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="43281448"/>
+												<bool key="NSViewIsLayerTreeHost">YES</bool>
 												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSImageCell" key="NSCell" id="947006946">
@@ -137,6 +139,7 @@
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="49706418"/>
+												<bool key="NSViewIsLayerTreeHost">YES</bool>
 												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSImageCell" key="NSCell" id="856453756">
@@ -163,11 +166,12 @@
 														<array class="NSMutableArray" key="NSSubviews">
 															<object class="NSView" id="502093379">
 																<reference key="NSNextResponder" ref="1031727205"/>
-																<int key="NSvFlags">268</int>
+																<int key="NSvFlags">276</int>
 																<string key="NSFrameSize">{395, 464}</string>
 																<reference key="NSSuperview" ref="1031727205"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="624224527"/>
+																<reference key="NSNextKeyView" ref="360414118"/>
+																<int key="NSViewLayerContentsRedrawPolicy">2</int>
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 															</object>
 														</array>
@@ -175,6 +179,7 @@
 														<reference key="NSSuperview" ref="977344762"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="502093379"/>
+														<int key="NSViewLayerContentsRedrawPolicy">2</int>
 														<string key="NSReuseIdentifierKey">_NS:11</string>
 														<reference key="NSDocView" ref="502093379"/>
 														<object class="NSColor" key="NSBGColor">
@@ -217,7 +222,8 @@
 												<string key="NSFrame">{{315, 20}, {269, 466}}</string>
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="360414118"/>
+												<reference key="NSNextKeyView" ref="1031727205"/>
+												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<int key="NSsFlags">137888</int>
 												<reference key="NSVScroller" ref="360414118"/>
@@ -240,6 +246,7 @@
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="977344762"/>
+												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSImageCell" key="NSCell" id="778627088">
 													<int key="NSCellFlags">130560</int>
@@ -262,6 +269,7 @@
 												<reference key="NSSuperview" ref="280761166"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="921288005"/>
+												<int key="NSViewLayerContentsRedrawPolicy">2</int>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">MocoTimelineHeaderListView</string>
 											</object>
@@ -269,7 +277,8 @@
 										<string key="NSFrameSize">{583, 506}</string>
 										<reference key="NSSuperview" ref="268689469"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="368395529"/>
+										<reference key="NSNextKeyView" ref="617774985"/>
+										<int key="NSViewLayerContentsRedrawPolicy">2</int>
 										<string key="NSClassName">NSView</string>
 									</object>
 								</array>
@@ -288,7 +297,6 @@
 								<string key="NSFrame">{{568, 1}, {15, 506}}</string>
 								<reference key="NSSuperview" ref="391937304"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:26</string>
 								<reference key="NSTarget" ref="391937304"/>
 								<string key="NSAction">_doScroller:</string>
@@ -312,7 +320,7 @@
 						<string key="NSFrame">{{-1, -21}, {585, 508}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="617774985"/>
+						<reference key="NSNextKeyView" ref="268689469"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133650</int>
 						<reference key="NSVScroller" ref="231092597"/>
@@ -516,19 +524,6 @@
 						<reference key="parent" ref="280761166"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">94</int>
-						<reference key="object" ref="43281448"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="85616296"/>
-						</array>
-						<reference key="parent" ref="280761166"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">95</int>
-						<reference key="object" ref="85616296"/>
-						<reference key="parent" ref="43281448"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">96</int>
 						<reference key="object" ref="947006946"/>
 						<reference key="parent" ref="49706418"/>
@@ -555,6 +550,19 @@
 						<int key="objectID">78</int>
 						<reference key="object" ref="778627088"/>
 						<reference key="parent" ref="37683401"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">94</int>
+						<reference key="object" ref="43281448"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="85616296"/>
+						</array>
+						<reference key="parent" ref="280761166"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">95</int>
+						<reference key="object" ref="85616296"/>
+						<reference key="parent" ref="43281448"/>
 					</object>
 				</array>
 			</object>

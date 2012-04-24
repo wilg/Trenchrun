@@ -83,11 +83,13 @@
     [self.trackViews removeAllObjects];
 }
 
+
+
 - (void)drawRect:(NSRect)dirtyRect {
     
-//    if ([self needsToDrawRect:[self playheadRect]]) {
-//        playheadImageView.frame = [self playheadRect];
-//    }
+    if ([self needsToDrawRect:[self playheadRect]]) {
+        playheadImageView.frame = [self playheadRect];
+    }
     
     
 //    NSLog(@"%@", NSStringFromRect([self frame]));
@@ -100,7 +102,72 @@
 //        [trackView setNeedsDisplay:YES];
 //    }
     
+    
+    
+    if (self.controller && self.controller.totalTimeInterval > 0) {
+        for (int i = 0; i < (int)ceil(self.controller.totalTimeInterval); i++) {
+            [self drawSecond:i];
+        }
+    }
 
+
+}
+
+-(void)drawSecond:(int)i {
+    NSRect frameRect = NSMakeRect([self xPositionForTime:i],
+                                  0, 
+                                  [self.controller pixelsPerSecond], 
+                                  self.bounds.size.height);
+    
+    [NSGraphicsContext saveGraphicsState];
+
+    if ([self needsToDrawRect:frameRect]) {
+        if (i % 2 != 0) {
+            [[NSColor colorWithDeviceWhite:0 alpha:0.1] set];
+            NSRectFill(frameRect);
+            
+            
+            [[NSColor colorWithDeviceWhite:0 alpha:0.3] setStroke];
+            [NSBezierPath setDefaultLineWidth:1];
+            
+            NSBezierPath *linePath = [NSBezierPath bezierPath];
+            [linePath moveToPoint:NSMakePoint(frameRect.origin.x - 1, 0)];
+            [linePath lineToPoint:NSMakePoint(frameRect.origin.x - 1, frameRect.origin.y + frameRect.size.height)];
+            [linePath setLineWidth:1];
+            [linePath stroke];
+            
+            
+            float xposition2 = [self xPositionForTime:i+1];
+
+            NSBezierPath *linePath2 = [NSBezierPath bezierPath];
+            [linePath2 moveToPoint:NSMakePoint(xposition2 + 1, 0)];
+            [linePath2 lineToPoint:NSMakePoint(xposition2 + 1, frameRect.origin.y + frameRect.size.height)];
+            [linePath2 setLineWidth:1];
+            [linePath2 stroke];
+
+        }
+        
+        NSShadow *shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [NSColor colorWithDeviceWhite:0.3 alpha:1];
+        shadow.shadowOffset = NSMakeSize(0, -30);
+        shadow.shadowBlurRadius = 0.0;
+        
+        NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                    [NSFont fontWithName:@"Futura" size:13], NSFontAttributeName,
+                                    shadow, NSShadowAttributeName,
+                                    [NSColor colorWithDeviceWhite:0.25 alpha:1], NSForegroundColorAttributeName, nil];
+
+        NSString *title = [NSString stringWithFormat:@"%is", i];
+        [title drawAtPoint:NSMakePoint(frameRect.origin.x + 10, 5 - 30) withAttributes:attributes];
+
+    }
+    
+    [NSGraphicsContext restoreGraphicsState];
+
+}
+
+-(float)xPositionForTime:(NSTimeInterval)seconds {
+    return round(PADDING + [self.controller pixelsPerSecond] * seconds);
 }
 
 - (void)updateBounds {
@@ -264,7 +331,7 @@
     return NSMakeRect(PADDING_LEFT,
                       PADDING,
                       self.controller.timelineLength * self.controller.pixelsPerFrame, 
-                      (count) * TRACK_HEIGHT + ((count) * TRACK_BOTTOM_MARGIN)
+                      (count) * TRACK_HEIGHT + ((count - 1) * TRACK_BOTTOM_MARGIN) + TRACK_TOP_PADDING
                       );
 }
 
