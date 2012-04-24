@@ -3,7 +3,7 @@
 //  Timmy Fell Down The Well
 //
 //  Created by Wil Gieseler on 1/25/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Wil Gieseler. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
