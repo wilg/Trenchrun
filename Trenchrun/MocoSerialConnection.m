@@ -207,7 +207,7 @@
 
                 }
                 else {
-                    NSLog(@"Crazy progits!");
+                    NSLog(@"Read zero bytes from file descriptor. This likely means the device was forcefully unplugged.");
                     break;
                 }
             }
