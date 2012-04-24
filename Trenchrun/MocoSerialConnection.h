@@ -31,6 +31,7 @@
 }
 
 @property (assign) id<MocoSerialConnectionDelegate> delegate;
+@property (assign) NSThread *responseThread;
 
 -(void)openThreadedConnectionWithSerialPort:(NSString *)port baud:(int)baud;
 -(void)closePort;

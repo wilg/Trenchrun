@@ -21,6 +21,8 @@
         
     MocoSerialConnection *_serialConnection;
     
+    BOOL killProcessorThread;
+    
 }
 @property (assign) MocoStatusCode status;
 
@@ -42,6 +44,8 @@
 -(id)init {
 	self = [super init];
 	if (self) {
+        
+        killProcessorThread = NO;
 
         
         self.axisResolutions = [NSMutableDictionary dictionary];
@@ -59,12 +63,51 @@
 - (void)establishConnection {
     NSLog(@"intializing hardcoded port");
 
+    
+    NSThread* myThread = [[NSThread alloc] initWithTarget:self
+                                                 selector:@selector(dataProcessorThread:)
+                                                   object:nil];
+    [myThread start];  // Actually create the thread
+    
     _serialConnection = [[MocoSerialConnection alloc] init];
     _serialConnection.delegate = self;
-    
+    _serialConnection.responseThread = myThread;
+
     
     self.status = MocoStatusDisconnected;
     [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A6008RQE" baud:MocoProtocolBaudRate];
+}
+
+//- (void)dataProcessorThread: (NSThread *) parentThread {
+//	
+//    @autoreleasepool {
+//        
+//        
+//        // assign a high priority to this thread
+//        [NSThread setThreadPriority:1.0];
+//                
+//        NSLog(@"MocoDriver dataProcessorThread arrived!");
+//        // this will loop unitl the serial port closes
+//        while(killProcessorThread == NO) {
+//
+//            
+//        }
+//
+//    }
+//}
+
+- (void)dataProcessorThread: (NSThread *) parentThread {
+    @autoreleasepool {
+       
+        NSLog(@"hello from vegas");
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        BOOL running = YES;
+        [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        while (running && [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]){
+            //run loop spinned ones
+        }
+    
+    }
 }
 
 - (void)beginPlaybackWithTracks:(NSArray *)tracks atFrame:(int)frameNumber {
@@ -172,9 +215,11 @@
             axisPosition.resolution = resolution;
             axisPosition.rawPosition = [driverResponse.payload objectForKey:@"rawPosition"];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
-                                                                object:axisPosition];
-            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
+//                                                                object:axisPosition];
+
+            [self postNotificationOnMainThread:@"MocoAxisPositionUpdated" object:axisPosition];
+
         }
         else {
             NSLog(@"Position data received for unnormalizable axis.");
@@ -187,8 +232,11 @@
         [self.axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
                              forKey:[driverResponse.payload objectForKey:@"axis"]];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
-                                                            object:driverResponse];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
+//                                                            object:driverResponse];
+        
+        [self postNotificationOnMainThread:@"MocoAxisResolutionUpdated" object:driverResponse];
+
         
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
@@ -198,8 +246,11 @@
             [self writeNextPlaybackFrameToConnectionOnAxis:axis];
 //        }
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
-                                                            object:driverResponse];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
+//                                                            object:driverResponse];
+        
+        [self postNotificationOnMainThread:@"MocoPlaybackAdvanced" object:driverResponse];
+
         
     }
     else if (driverResponse.type == MocoProtocolHandshakeResponseType) {
@@ -218,8 +269,12 @@
         self.status = MocoStatusIdle;
     }
     else if (driverResponse.type == MocoProtocolPlaybackStartingNotificationResponseType) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoRigPlaybackStarted"
-                                                            object:driverResponse];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoRigPlaybackStarted"
+//                                                            object:driverResponse];
+        
+        [self postNotificationOnMainThread:@"MocoRigPlaybackStarted" object:driverResponse];
+
+        
         self.status = MocoStatusPlayback;
     }
     else {
@@ -231,6 +286,14 @@
         NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
         NSLog(@"serialMessageReceived took %f ms", executionTime * 1000); 
     }
+}
+
+-(void)postNotificationOnMainThread:(NSString *)name object:(id)object {
+    NSNotification *note = [NSNotification notificationWithName:name  object:object userInfo:nil];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) 
+                                                           withObject:note 
+                                                        waitUntilDone:NO];
+
 }
 
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
@@ -273,6 +336,7 @@
 }
 
 - (void)severConnections {
+    killProcessorThread = YES;
     [self notifyDeviceOfHostDisconnection];
 }
 
@@ -280,7 +344,8 @@
 
 -(void)setStatus:(MocoStatusCode)newStatus {
     _status = newStatus;
-    [[NSNotificationCenter defaultCenter]  postNotificationName:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
+//    [[NSNotificationCenter defaultCenter]  postNotificationName:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
+    [self postNotificationOnMainThread:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
 //    NSLog(@"Status updated: %@", [self statusDescription]);
 }
 
