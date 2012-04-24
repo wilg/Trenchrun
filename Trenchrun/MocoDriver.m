@@ -3,7 +3,7 @@
 //  Trenchrun
 //
 //  Created by Wil Gieseler on 4/15/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Wil Gieseler. All rights reserved.
 //
 
 #import "MocoDriver.h"
@@ -18,7 +18,6 @@
     
     MocoStatusCode _status;
     
-        
     MocoSerialConnection *_serialConnection;
     
     BOOL killProcessorThread;
@@ -37,7 +36,6 @@
 
 @implementation MocoDriver
 @synthesize playbackTracks, playbackPosition, axisResolutions;
-//@synthesize port;
 
 # pragma mark Initializer
 
@@ -49,57 +47,40 @@
 
         
         self.axisResolutions = [NSMutableDictionary dictionary];
-        
         self.status = MocoStatusDisconnected;
         
-        
         [self establishConnection];
-        
         
 	}
 	return self;
 }
 
 - (void)establishConnection {
-    NSLog(@"intializing hardcoded port");
-
+    NSLog(@"MocoDriver - Attempting to establish connection with %@", [self portAddress]);
     
+    // Set the intitial status.
+    self.status = MocoStatusDisconnected;
+    
+    // Spin up a background thread to process data
     NSThread* myThread = [[NSThread alloc] initWithTarget:self
                                                  selector:@selector(dataProcessorThread:)
                                                    object:nil];
-    [myThread start];  // Actually create the thread
+    [myThread start];
     
+    // Open a serial connection.
     _serialConnection = [[MocoSerialConnection alloc] init];
     _serialConnection.delegate = self;
     _serialConnection.responseThread = myThread;
-
-    
-    self.status = MocoStatusDisconnected;
-    [_serialConnection openThreadedConnectionWithSerialPort:@"/dev/cu.usbserial-A6008RQE" baud:MocoProtocolBaudRate];
+    [_serialConnection openThreadedConnectionWithSerialPort:[self portAddress] baud:MocoProtocolBaudRate];
 }
 
-//- (void)dataProcessorThread: (NSThread *) parentThread {
-//	
-//    @autoreleasepool {
-//        
-//        
-//        // assign a high priority to this thread
-//        [NSThread setThreadPriority:1.0];
-//                
-//        NSLog(@"MocoDriver dataProcessorThread arrived!");
-//        // this will loop unitl the serial port closes
-//        while(killProcessorThread == NO) {
-//
-//            
-//        }
-//
-//    }
-//}
+- (NSString *)portAddress {
+    return @"/dev/cu.usbserial-A6008RQE";
+}
 
 - (void)dataProcessorThread: (NSThread *) parentThread {
     @autoreleasepool {
-       
-        NSLog(@"hello from vegas");
+        NSLog(@"MocoDriver - Data processing thread started.");
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         BOOL running = YES;
         [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
@@ -117,7 +98,7 @@
         
         [self stopStreamingPositionData];
         
-        NSLog(@"Asked device to start playback...");
+        NSLog(@"MocoDriver - Instructed device to start playback.");
         [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
         self.status = MocoStatusPlaybackBuffering;
     }
@@ -125,7 +106,7 @@
 
 - (void)pausePlayback {
     if (self.recordAndPlaybackOperational) {
-        NSLog(@"Asked device to stop playback...");
+        NSLog(@"MocoDriver - Instructed device to stop playback.");
         [_serialConnection writeIntAsByte:MocoProtocolStopPlaybackInstruction];
         [self beginStreamingPositionData];
         self.status = MocoStatusIdle;
@@ -151,17 +132,17 @@
 }
 
 - (void)requestAxisResolutionData {
-    NSLog(@"Asking rig to start sending axis resolution...");
+    NSLog(@"MocoDriver - Instructed device to send axis resolution data.");
     [_serialConnection writeIntAsByte:MocoProtocolRequestAxisResolutionDataInstruction];
 }
 
 - (void)beginStreamingPositionData {
-    NSLog(@"Asking rig to start sending axis position data...");
+    NSLog(@"MocoDriver - Instructed device to start sending axis position data.");
     [_serialConnection writeIntAsByte:MocoProtocolStartSendingAxisDataInstruction];
 }
 
 - (void)stopStreamingPositionData {
-    NSLog(@"Asking rig to cease sending axis data...");
+    NSLog(@"MocoDriver - Instructed device to stop sending axis data.");
     [_serialConnection writeIntAsByte:MocoProtocolStopSendingAxisDataInstruction];
 }
 
@@ -171,7 +152,7 @@
 }
 
 - (void)notifyDeviceOfHostDisconnection {
-    NSLog(@"Notifying device of host disconnection...");
+    NSLog(@"MocoDriver - Notifying device of host disconnection.");
     [_serialConnection writeIntAsByte:MocoProtocolHostWillDisconnectNotificationInstruction];
 }
 
@@ -186,7 +167,7 @@
 
 - (void)openSerialConnectionFailedWithMessage:(NSString *)string {
     self.status = MocoStatusDisconnected;
-    NSLog(@"MocoDriver - Couldn't open connection - %@", string);
+    NSLog(@"MocoDriver - Couldn't open connection. Error: %@", string);
 }
 
 - (void)serialMessageReceived:(NSData *)data {
@@ -199,13 +180,11 @@
     
     if (driverResponse.type != MocoProtocolAxisPositionResponseType &&
         driverResponse.type != MocoProtocolNewlineDelimitedDebugStringResponseType) {
-        NSLog(@"Serial Message Received: %@", driverResponse);
+        NSLog(@"MocoDriver - Serial Message Received: %@", driverResponse);
     }
     
     if (driverResponse.type == MocoProtocolAxisPositionResponseType) {
         
-//        NSLog(@"Axis position received.");
-
         MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
         
         NSNumber *axisNumber = [driverResponse.payload objectForKey:@"axis"];
@@ -215,14 +194,10 @@
             axisPosition.resolution = resolution;
             axisPosition.rawPosition = [driverResponse.payload objectForKey:@"rawPosition"];
             
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisPositionUpdated"
-//                                                                object:axisPosition];
-
-            [self postNotificationOnMainThread:@"MocoAxisPositionUpdated" object:axisPosition];
-
+            [self postNotification:@"MocoAxisPositionUpdated" object:axisPosition];
         }
         else {
-            NSLog(@"Position data received for unnormalizable axis.");
+            NSLog(@"MocoDriver - Position data received for unnormalizable axis.");
         }
         
         
@@ -231,30 +206,18 @@
         
         [self.axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
                              forKey:[driverResponse.payload objectForKey:@"axis"]];
-        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoAxisResolutionUpdated"
-//                                                            object:driverResponse];
-        
-        [self postNotificationOnMainThread:@"MocoAxisResolutionUpdated" object:driverResponse];
+                
+        [self postNotification:@"MocoAxisResolutionUpdated" object:driverResponse];
 
-        
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
-        
-//        for (int i = 0; i < 10; i++) {
-            MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
-            [self writeNextPlaybackFrameToConnectionOnAxis:axis];
-//        }
 
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoPlaybackAdvanced"
-//                                                            object:driverResponse];
+        MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
+        [self writeNextPlaybackFrameToConnectionOnAxis:axis];
         
-        [self postNotificationOnMainThread:@"MocoPlaybackAdvanced" object:driverResponse];
-
-        
+        [self postNotification:@"MocoPlaybackAdvanced" object:driverResponse];
     }
     else if (driverResponse.type == MocoProtocolHandshakeResponseType) {
-        NSLog(@"right tytpe");
         if ([[driverResponse.payload objectForKey:@"successful"] boolValue] == YES) {
             [self handshakeSuccessful];
         }
@@ -263,32 +226,28 @@
         }
     }
     else if (driverResponse.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
-        NSLog(@"Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
+        NSLog(@"MocoDriver - Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
     }
     else if (driverResponse.type == MocoProtocolPlaybackCompleteNotificationResponseType) {
         self.status = MocoStatusIdle;
     }
     else if (driverResponse.type == MocoProtocolPlaybackStartingNotificationResponseType) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"MocoRigPlaybackStarted"
-//                                                            object:driverResponse];
-        
-        [self postNotificationOnMainThread:@"MocoRigPlaybackStarted" object:driverResponse];
-
-        
+        [self postNotification:@"MocoRigPlaybackStarted" object:driverResponse];        
         self.status = MocoStatusPlayback;
     }
     else {
-        NSLog(@"Serial message recieved but not understood.");
+        NSLog(@"MocoDriver - The serial message was received and processed but no action was taken.");
     }
         
     if (TIME_CONNECTION) {
         NSDate *methodFinish = [NSDate date];
         NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-        NSLog(@"serialMessageReceived took %f ms", executionTime * 1000); 
+        NSLog(@"MocoDriver - serialMessageReceived took %fms.", executionTime * 1000); 
     }
 }
 
--(void)postNotificationOnMainThread:(NSString *)name object:(id)object {
+-(void)postNotification:(NSString *)name object:(id)object {
+    // Always posts on main thread.
     NSNotification *note = [NSNotification notificationWithName:name  object:object userInfo:nil];
     [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) 
                                                            withObject:note 
@@ -308,14 +267,14 @@
             
             self.playbackPosition = self.playbackPosition + 1;
             
-            NSLog(@"Sent playback frame: header=%i axis=%i rawPosition=%li)", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
+            NSLog(@"MocoDriver - Sent playback frame: header=%i axis=%i rawPosition=%li", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
         }
         else {
-            NSLog(@"Couldn't write next frame. Possibly out of bounds.");
+            NSLog(@"MocoDriver - Couldn't write next frame. Possibly out of bounds.");
         }
     }
     else {
-        NSLog(@"Device requested playback but it has already finished.");
+        NSLog(@"MocoDriver - Device requested playback but it has already finished.");
     }
 }
 
@@ -344,9 +303,7 @@
 
 -(void)setStatus:(MocoStatusCode)newStatus {
     _status = newStatus;
-//    [[NSNotificationCenter defaultCenter]  postNotificationName:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
-    [self postNotificationOnMainThread:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
-//    NSLog(@"Status updated: %@", [self statusDescription]);
+    [self postNotification:@"MocoDriverStatusDidChange" object:[NSNumber numberWithInt:self.status]];
 }
 
 -(MocoStatusCode)status {
@@ -366,6 +323,8 @@
         return @"Seeking...";
     } else if (code == MocoStatusPlayback) {
         return @"Playing Back";
+    } else if (code == MocoStatusPlaybackBuffering) {
+        return @"Initializing Playback";
     }
     return nil;
 }
