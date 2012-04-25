@@ -20,6 +20,7 @@ enum {
     MocoProtocolStartPlaybackInstruction = 2,
     MocoProtocolStopPlaybackInstruction =  3,
     MocoProtocolPlaybackFrameDataHeader =  7,
+    MocoProtocolPlaybackLastFrameSentNotificationInstruction =  8,
     
     // Disconnection
     MocoProtocolHostWillDisconnectNotificationInstruction = 5
