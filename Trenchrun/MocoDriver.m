@@ -236,6 +236,10 @@
         [self postNotification:@"MocoRigPlaybackStarted" object:driverResponse];        
         self.status = MocoStatusPlayback;
     }
+    else if (driverResponse.type == MocoProtocolPlaybackAbortedNotificationResponseType) {
+        [self postNotification:@"MocoRigPlaybackAborted" object:driverResponse];        
+        self.status = MocoStatusIdle;
+    }
     else {
         NSLog(@"MocoDriver - The serial message was received and processed but no action was taken.");
     }
@@ -277,6 +281,7 @@
         }
         
         if (self.playbackPosition >= [[self trackWithAxis:axis] length]) {
+            NSLog(@"MocoDriver - Notified device that it has received the last playback frame.");
             [_serialConnection writeIntAsByte:MocoProtocolPlaybackLastFrameSentNotificationInstruction];
         }
 
