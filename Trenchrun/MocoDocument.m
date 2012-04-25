@@ -76,6 +76,11 @@ static NSString * kTrackEditContext = @"Track Edit";
                                                      name:@"MocoRigPlaybackComplete"
                                                    object:nil];
 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(rigPlaybackAborted:)
+                                                     name:@"MocoRigPlaybackAborted"
+                                                   object:nil];
+
     
 	}
 	return self;
@@ -303,12 +308,17 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(void)rigPlaybackComplete:(NSNotification *)notification{ 
-    NSLog(@"Rig stopped playing back. Stopping timeline.");
+    NSLog(@"Rig stopped playing back. Stopping timeline and moving playhead to end of it.");
     [self stopPlayback:nil];
     
     // Rig may be slightly different in playback than
     // the visual timeline. Eliminate these descrepancies.
     [timelineViewController movePlayheadToEnd];
+}
+
+-(void)rigPlaybackAborted:(NSNotification *)notification{ 
+    NSLog(@"Rig aborted playing back. Stopping timeline.");
+    [self stopPlayback:nil];
 }
 
 - (NSTimeInterval)durationOfTimelinePlaybackAnimation {
