@@ -258,6 +258,8 @@
 -(void)writeNextPlaybackFrameToConnectionOnAxis:(MocoAxis)axis {
     if (self.status == MocoStatusPlayback ||
         self.status == MocoStatusPlaybackBuffering) {
+        
+        
         MocoAxisPosition *position = [self positionForAxis:axis atFrame:self.playbackPosition];
         
         if (position) {
@@ -269,6 +271,11 @@
             
             NSLog(@"MocoDriver - Sent playback frame: header=%i axis=%i rawPosition=%li", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
         }
+        
+        if (self.playbackPosition >= [[self trackWithAxis:axis] length]) {
+            [_serialConnection writeIntAsByte:MocoProtocolPlaybackLastFrameSentNotificationInstruction];
+        }
+
         else {
             NSLog(@"MocoDriver - Couldn't write next frame. Possibly out of bounds.");
         }
