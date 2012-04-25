@@ -226,8 +226,13 @@
     numberFormat.usesGroupingSeparator = YES;
     numberFormat.groupingSeparator = @",";
     numberFormat.groupingSize = 3;   
+    
+    NSInteger formattedPlayhead = playheadPosition + 1;
+    if (timelineLength == 0) {
+        formattedPlayhead = 0;
+    }
 
-    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:playheadPosition + 1]];
+    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:formattedPlayhead]];
     NSString *length = [numberFormat stringFromNumber:[NSNumber numberWithInt:timelineLength]];
 
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
