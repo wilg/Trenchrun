@@ -162,6 +162,14 @@
     [timelineView playheadMoved];
 }
 
+- (void)movePlayheadToEnd {
+    [self movePlayheadToFrame:self.timelineLength];
+}
+
+- (void)movePlayheadToBeginning {
+    [self movePlayheadToFrame:0];
+}
+
 - (void)followPlayheadToFrame:(int)frameNumber {
     [self movePlayheadToFrame:frameNumber];
     [timelineView scrollToPlayhead];

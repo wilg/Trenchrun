@@ -305,6 +305,10 @@ static NSString * kTrackEditContext = @"Track Edit";
 -(void)rigPlaybackComplete:(NSNotification *)notification{ 
     NSLog(@"Rig stopped playing back. Stopping timeline.");
     [self stopPlayback:nil];
+    
+    // Rig may be slightly different in playback than
+    // the visual timeline. Eliminate these descrepancies.
+    [timelineViewController movePlayheadToEnd];
 }
 
 - (NSTimeInterval)durationOfTimelinePlaybackAnimation {
