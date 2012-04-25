@@ -38,6 +38,8 @@
 
 - (void)movePlayheadToFrame:(int)frameNumber;
 - (void)followPlayheadToFrame:(int)frameNumber;
+- (void)movePlayheadToEnd;
+- (void)movePlayheadToBeginning;
 
 -(BOOL)playOneFrame;
 -(BOOL)playToTime:(NSTimeInterval)seconds;
