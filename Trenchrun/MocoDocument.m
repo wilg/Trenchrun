@@ -71,6 +71,11 @@ static NSString * kTrackEditContext = @"Track Edit";
                                                      name:@"MocoRigPlaybackStarted"
                                                    object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(rigPlaybackComplete:)
+                                                     name:@"MocoRigPlaybackComplete"
+                                                   object:nil];
+
     
 	}
 	return self;
@@ -266,6 +271,7 @@ static NSString * kTrackEditContext = @"Track Edit";
     }
     else {
         if (self.playing){
+            [[self driver] pausePlayback];
             [self stopPlayback:nil];
         }
         else {
@@ -294,6 +300,11 @@ static NSString * kTrackEditContext = @"Track Edit";
     NSLog(@"Heard from the rig. Starting the timeline.");
     [self startTimelinePlayback];
     [timelineViewController stopPulsingPlayhead];
+}
+
+-(void)rigPlaybackComplete:(NSNotification *)notification{ 
+    NSLog(@"Rig stopped playing back. Stopping timeline.");
+    [self stopPlayback:nil];
 }
 
 - (NSTimeInterval)durationOfTimelinePlaybackAnimation {
@@ -337,7 +348,6 @@ static NSString * kTrackEditContext = @"Track Edit";
 }
 
 -(IBAction)stopPlayback:(id)sender {
-    [[self driver] pausePlayback];
 //    [_playbackTimer invalidate];
 //    _playbackTimer = nil;
     [_playbackAnimation stopAnimation];
