@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11D50</string>
+		<string key="IBDocument.SystemVersion">11D50b</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
@@ -68,7 +68,7 @@
 							<string key="NSFrame">{{495, 16}, {42, 34}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="409833539"/>
+							<reference key="NSNextKeyView" ref="672353393"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -463,46 +463,6 @@
 								<bool key="NSVertical">NO</bool>
 							</object>
 						</object>
-						<object class="NSTextField" id="409833539">
-							<reference key="NSNextResponder" ref="568628114"/>
-							<int key="NSvFlags">289</int>
-							<string key="NSFrame">{{591, 33}, {72, 22}}</string>
-							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="672353393"/>
-							<int key="NSViewLayerContentsRedrawPolicy">2</int>
-							<string key="NSReuseIdentifierKey">_NS:9</string>
-							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="418819885">
-								<int key="NSCellFlags">-1804468671</int>
-								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents"/>
-								<reference key="NSSupport" ref="101888272"/>
-								<string key="NSPlaceholderString">FPS</string>
-								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="409833539"/>
-								<bool key="NSDrawsBackground">YES</bool>
-								<int key="NSTextBezelStyle">1</int>
-								<object class="NSColor" key="NSBackgroundColor">
-									<int key="NSColorSpace">6</int>
-									<string key="NSCatalogName">System</string>
-									<string key="NSColorName">textBackgroundColor</string>
-									<object class="NSColor" key="NSColor" id="378003015">
-										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-									</object>
-								</object>
-								<object class="NSColor" key="NSTextColor">
-									<int key="NSColorSpace">6</int>
-									<string key="NSCatalogName">System</string>
-									<string key="NSColorName">textColor</string>
-									<object class="NSColor" key="NSColor" id="237980243">
-										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MAA</bytes>
-									</object>
-								</object>
-							</object>
-						</object>
 					</array>
 					<string key="NSFrameSize">{824, 621}</string>
 					<reference key="NSSuperview"/>
@@ -613,7 +573,10 @@
 														<int key="NSColorSpace">6</int>
 														<string key="NSCatalogName">System</string>
 														<string key="NSColorName">headerTextColor</string>
-														<reference key="NSColor" ref="237980243"/>
+														<object class="NSColor" key="NSColor" id="237980243">
+															<int key="NSColorSpace">3</int>
+															<bytes key="NSWhite">MAA</bytes>
+														</object>
 													</object>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="1011893368">
@@ -669,7 +632,10 @@
 										</array>
 										<double key="NSIntercellSpacingWidth">3</double>
 										<double key="NSIntercellSpacingHeight">2</double>
-										<reference key="NSBackgroundColor" ref="378003015"/>
+										<object class="NSColor" key="NSBackgroundColor" id="378003015">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MQA</bytes>
+										</object>
 										<object class="NSColor" key="NSGridColor" id="4982742">
 											<int key="NSColorSpace">6</int>
 											<string key="NSCatalogName">System</string>
@@ -1377,22 +1343,6 @@
 					</object>
 					<int key="connectionID">101965</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: fps</string>
-						<reference key="source" ref="409833539"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="409833539"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">value: fps</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">fps</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">102007</int>
-				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1436,7 +1386,6 @@
 							<reference ref="298262225"/>
 							<reference ref="526004096"/>
 							<reference ref="1069423921"/>
-							<reference ref="409833539"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1790,19 +1739,6 @@
 						<reference key="parent" ref="254641114"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">102003</int>
-						<reference key="object" ref="409833539"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="418819885"/>
-						</array>
-						<reference key="parent" ref="568628114"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">102004</int>
-						<reference key="object" ref="418819885"/>
-						<reference key="parent" ref="409833539"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">102033</int>
 						<reference key="object" ref="298262225"/>
 						<array class="NSMutableArray" key="children">
@@ -1900,8 +1836,6 @@
 				<string key="101962.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101966.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="101967.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="102003.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="102004.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="102033.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="102034.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="102036.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
