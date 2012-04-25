@@ -229,6 +229,7 @@
         NSLog(@"MocoDriver - Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
     }
     else if (driverResponse.type == MocoProtocolPlaybackCompleteNotificationResponseType) {
+        [self postNotification:@"MocoRigPlaybackComplete" object:driverResponse];        
         self.status = MocoStatusIdle;
     }
     else if (driverResponse.type == MocoProtocolPlaybackStartingNotificationResponseType) {
@@ -347,7 +348,8 @@
         return [NSImage imageNamed:@"rig_status_green.png"];
     }
     if (self.status == MocoStatusSearchingForDevice || 
-        self.status == MocoStatusAwaitingControl ) {
+        self.status == MocoStatusAwaitingControl ||
+        self.status == MocoStatusPlaybackBuffering ) {
         return [NSImage imageNamed:@"rig_status_yellow.png"];
     }
     return [NSImage imageNamed:@"rig_status_red.png"];
