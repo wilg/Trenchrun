@@ -156,8 +156,8 @@
 - (void)movePlayheadToFrame:(int)frameNumber {
     if (frameNumber < 0)
         frameNumber = 0;
-    if (frameNumber > self.timelineLength)
-        frameNumber = self.timelineLength;
+    if (frameNumber >= self.timelineLength)
+        frameNumber = self.timelineLength - 1;
     self.playheadPosition = frameNumber;
     [timelineView playheadMoved];
 }
@@ -227,7 +227,7 @@
     numberFormat.groupingSeparator = @",";
     numberFormat.groupingSize = 3;   
 
-    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:playheadPosition]];
+    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:playheadPosition + 1]];
     NSString *length = [numberFormat stringFromNumber:[NSNumber numberWithInt:timelineLength]];
 
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
