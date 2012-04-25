@@ -272,14 +272,14 @@
             
             NSLog(@"MocoDriver - Sent playback frame: header=%i axis=%i rawPosition=%li", MocoProtocolPlaybackFrameDataHeader, axis, [position.rawPosition longValue]);
         }
+        else {
+            NSLog(@"MocoDriver - Couldn't write next frame. Possibly out of bounds.");
+        }
         
         if (self.playbackPosition >= [[self trackWithAxis:axis] length]) {
             [_serialConnection writeIntAsByte:MocoProtocolPlaybackLastFrameSentNotificationInstruction];
         }
 
-        else {
-            NSLog(@"MocoDriver - Couldn't write next frame. Possibly out of bounds.");
-        }
     }
     else {
         NSLog(@"MocoDriver - Device requested playback but it has already finished.");
