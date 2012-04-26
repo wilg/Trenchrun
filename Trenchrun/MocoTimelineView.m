@@ -17,6 +17,8 @@
 @private
     NSImageView *playheadImageView;
     NSPoint clickPoint;
+    
+    NSInteger secondsPerHighlightSection;
 }
 @property (retain) NSMutableArray *trackViews;
 
@@ -34,7 +36,7 @@
 # pragma mark Base Drawing  Initialization
 
 - (void)awakeFromNib {
-    
+        
     self.wantsLayer = YES;
 //    self.layer.shouldRasterize = YES;
     
@@ -90,6 +92,8 @@
     if ([self needsToDrawRect:[self playheadRect]]) {
         playheadImageView.frame = [self playheadRect];
     }
+        
+        [self updateBounds];
     
     
 //    NSLog(@"%@", NSStringFromRect([self frame]));
@@ -102,10 +106,22 @@
 //        [trackView setNeedsDisplay:YES];
 //    }
     
-    
-    
+    secondsPerHighlightSection = 1;
+    if ([self.controller pixelsPerSecond] < 100) {
+        secondsPerHighlightSection = 2;
+    }
+    if ([self.controller pixelsPerSecond] < 75) {
+        secondsPerHighlightSection = 5;
+    }
+    if ([self.controller pixelsPerSecond] < 50) {
+        secondsPerHighlightSection = 10;
+    }
+    if ([self.controller pixelsPerSecond] < 20) {
+        secondsPerHighlightSection = 25;
+    }
+
     if (self.controller && self.controller.totalTimeInterval > 0) {
-        for (int i = 0; i < (int)ceil(self.controller.totalTimeInterval); i++) {
+        for (int i = 0; i < ((int)ceil(self.controller.totalTimeInterval / (float)secondsPerHighlightSection) + 6 ); i++) {
             [self drawSecond:i];
         }
     }
@@ -114,9 +130,13 @@
 }
 
 -(void)drawSecond:(int)i {
-    NSRect frameRect = NSMakeRect([self xPositionForTime:i],
+    
+    NSTimeInterval time = (NSTimeInterval)i * (NSTimeInterval)secondsPerHighlightSection;
+    NSTimeInterval nextTime = (NSTimeInterval)(i+1) * (NSTimeInterval)secondsPerHighlightSection;
+    
+    NSRect frameRect = NSMakeRect([self xPositionForTime:time],
                                   0, 
-                                  [self.controller pixelsPerSecond], 
+                                  [self.controller pixelsPerSecond] * secondsPerHighlightSection, 
                                   self.bounds.size.height);
     
     [NSGraphicsContext saveGraphicsState];
@@ -137,7 +157,7 @@
             [linePath stroke];
             
             
-            float xposition2 = [self xPositionForTime:i+1];
+            float xposition2 = [self xPositionForTime:nextTime];
 
             NSBezierPath *linePath2 = [NSBezierPath bezierPath];
             [linePath2 moveToPoint:NSMakePoint(xposition2 + 1, 0)];
@@ -149,7 +169,7 @@
         
         NSShadow *shadow = [[NSShadow alloc] init];
         shadow.shadowColor = [NSColor colorWithDeviceWhite:0.3 alpha:1];
-        shadow.shadowOffset = NSMakeSize(0, -30);
+        shadow.shadowOffset = NSMakeSize(0, 0);
         shadow.shadowBlurRadius = 0.0;
         
         NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -157,10 +177,14 @@
                                     shadow, NSShadowAttributeName,
                                     [NSColor colorWithDeviceWhite:0.25 alpha:1], NSForegroundColorAttributeName, nil];
 
-        NSString *title = [NSString stringWithFormat:@"%is", i];
-        [title drawAtPoint:NSMakePoint(frameRect.origin.x + 10, 5 - 30) withAttributes:attributes];
+        NSString *title = [NSString stringWithFormat:@"%is", (int)time];
+        [title drawAtPoint:NSMakePoint(frameRect.origin.x + 10, 5) withAttributes:attributes];
 
     }
+    
+    [[NSColor yellowColor] set];
+    NSRectFill(self.bounds);
+
     
     [NSGraphicsContext restoreGraphicsState];
 
@@ -179,11 +203,25 @@
         h = superViewHeight;
     
     
-    self.frame = NSMakeRect(self.frame.origin.x,
-                            self.frame.origin.y, 
-                            self.controller.timelineLength * self.controller.pixelsPerFrame + PADDING + PADDING_LEFT,
-                            h);
     
+//    NSLog(@"timelien visible: %@", NSStringFromRect(self.enclosingScrollView.visibleRect));
+    
+    float widthPad = 0;
+    if (self.frame.size.width < self.enclosingScrollView.documentVisibleRect.size.width) {
+//        widthPad = self.enclosingScrollView.documentVisibleRect.size.width;
+        widthPad = 1000;
+        NSLog(@"widthpad: %f", widthPad);
+    }
+
+    
+    [[self superview] setNeedsDisplayInRect:[self frame]];
+
+    [self setFrameSize:NSMakeSize(self.controller.timelineLength * self.controller.pointsPerFrame + PADDING + PADDING_LEFT + widthPad,
+                                  h
+                                  )];
+    
+    [self setNeedsDisplay:YES];
+
 }
 
 # pragma mark Interaction
@@ -270,12 +308,12 @@
 }
 
 - (float)absolutePlayheadPosition {
-    return PADDING_LEFT + (float)self.controller.playheadPosition * self.controller.pixelsPerFrame - playheadImageView.bounds.size.width / 2;
+    return PADDING_LEFT + (float)self.controller.playheadPosition * self.controller.pointsPerFrame - playheadImageView.bounds.size.width / 2;
 }
 
 - (void)movePlayheadToPoint:(NSPoint)viewPoint {
     
-    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / self.controller.pixelsPerFrame;
+    int playheadPositionInFrames = (viewPoint.x - PADDING_LEFT + playheadImageView.bounds.size.width / 4.0f  ) / self.controller.pointsPerFrame;
     
     [self.controller movePlayheadToFrame:playheadPositionInFrames];
     
@@ -357,7 +395,7 @@
 - (NSRect)tracksRectForTrackCount:(int)count {
     return NSMakeRect(PADDING_LEFT,
                       PADDING,
-                      self.controller.timelineLength * self.controller.pixelsPerFrame, 
+                      self.controller.timelineLength * self.controller.pointsPerFrame, 
                       (count) * TRACK_HEIGHT + ((count - 1) * TRACK_BOTTOM_MARGIN) + TRACK_TOP_PADDING
                       );
 }
@@ -371,7 +409,7 @@
     // How long is this track?
     MocoTimelineTrackView *trackView = [trackViews objectAtIndex:index];
     NSArray *frames = [trackView.controller.track.frames copy];
-    trackWidth = (float)frames.count * (float)self.controller.pixelsPerFrame;
+    trackWidth = (float)frames.count * (float)self.controller.pointsPerFrame;
             
     return NSMakeRect(tracks.origin.x, 
                       tracks.size.height + PADDING,

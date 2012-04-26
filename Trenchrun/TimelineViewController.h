@@ -22,12 +22,12 @@
     IBOutlet NSScrollView *timelineScrollView;
 }
 @property (assign) int playheadPosition; // in frames
-@property (assign) float scaleFactor;    // 0.0-1.0
+@property (assign) double scaleFactor;    // 0.0-1.0
 @property (assign) int timelineLength;    // in frames
 
 @property (readonly) NSString *frameProgress;
 @property (readonly) NSString *playheadTime;
-@property (readonly) float pixelsPerFrame;
+@property (readonly) double pointsPerFrame;
 
 @property (readonly) NSTimeInterval totalTimeInterval;
 @property (readonly) NSTimeInterval playheadTimeInterval;

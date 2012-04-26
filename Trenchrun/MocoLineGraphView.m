@@ -180,18 +180,18 @@
     return path;
 }
 
--(float)pixelsPerFrame {
-    return self.controller.timelineController.pixelsPerFrame;
+-(float)pointsPerFrame {
+    return self.controller.timelineController.pointsPerFrame;
 }
 
 -(float)xPositionForFrameAtIndex:(int)index {
-    return [self pixelsPerFrame] * index;
+    return [self pointsPerFrame] * index;
 }
 
 -(void)drawFrameBackgroundForFrame:(int)i {
     NSRect frameRect = NSMakeRect([self xPositionForFrameAtIndex:i],
                                   0, 
-                                  [self pixelsPerFrame], 
+                                  [self pointsPerFrame], 
                                   self.bounds.size.height);
     
     if ([self needsToDrawRect:frameRect]) {

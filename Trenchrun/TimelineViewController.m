@@ -278,12 +278,24 @@
     return keyPaths;
 }
 
-- (float)pixelsPerFrame {
-    return round(PIXELS_PER_FRAME_AT_100_PERCENT * self.scaleFactor);
+- (double)pointsPerFrame {
+    double range = PIXELS_PER_FRAME_AT_MAX_ZOOM - PIXELS_PER_FRAME_AT_MIN_ZOOM;
+    
+    double pxpf = range * (double)self.scaleFactor;
+    
+    double finalposition = PIXELS_PER_FRAME_AT_MIN_ZOOM + pxpf;
+    
+//    if (finalposition > 0.9) {
+//        finalposition = round(finalposition);
+//    }
+    
+//    NSLog(@"%fpx per frame", penis);
+    
+    return finalposition;
 }
 
 - (float)pixelsPerSecond {
-    return (float)[self pixelsPerFrame] * (float)self.fps;
+    return (double)[self pointsPerFrame] * (double)self.fps;
 }
 
 -(void)startPulsingPlayhead {
