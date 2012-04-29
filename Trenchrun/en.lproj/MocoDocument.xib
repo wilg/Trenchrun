@@ -277,37 +277,6 @@
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">292</int>
 							<array class="NSMutableArray" key="NSSubviews">
-								<object class="NSImageView" id="254641114">
-									<reference key="NSNextResponder" ref="274028959"/>
-									<int key="NSvFlags">268</int>
-									<set class="NSMutableSet" key="NSDragTypes">
-										<string>Apple PDF pasteboard type</string>
-										<string>Apple PICT pasteboard type</string>
-										<string>Apple PNG pasteboard type</string>
-										<string>NSFilenamesPboardType</string>
-										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-										<string>NeXT TIFF v4.0 pasteboard type</string>
-									</set>
-									<string key="NSFrameSize">{300, 52}</string>
-									<reference key="NSSuperview" ref="274028959"/>
-									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="39928700"/>
-									<int key="NSViewLayerContentsRedrawPolicy">2</int>
-									<bool key="NSEnabled">YES</bool>
-									<object class="NSImageCell" key="NSCell" id="455861887">
-										<int key="NSCellFlags">130560</int>
-										<int key="NSCellFlags2">33554432</int>
-										<object class="NSCustomResource" key="NSContents">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">screengloss</string>
-										</object>
-										<int key="NSAlign">0</int>
-										<int key="NSScale">0</int>
-										<int key="NSStyle">0</int>
-										<bool key="NSAnimates">YES</bool>
-									</object>
-									<bool key="NSEditable">YES</bool>
-								</object>
 								<object class="NSTextField" id="205868384">
 									<reference key="NSNextResponder" ref="274028959"/>
 									<int key="NSvFlags">268</int>
@@ -347,7 +316,7 @@
 								<object class="NSTextField" id="756195265">
 									<reference key="NSNextResponder" ref="274028959"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{159, 26}, {124, 18}}</string>
+									<string key="NSFrame">{{159, 28}, {124, 18}}</string>
 									<reference key="NSSuperview" ref="274028959"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="205868384"/>
@@ -396,6 +365,37 @@
 										</object>
 									</object>
 								</object>
+								<object class="NSImageView" id="254641114">
+									<reference key="NSNextResponder" ref="274028959"/>
+									<int key="NSvFlags">268</int>
+									<set class="NSMutableSet" key="NSDragTypes">
+										<string>Apple PDF pasteboard type</string>
+										<string>Apple PICT pasteboard type</string>
+										<string>Apple PNG pasteboard type</string>
+										<string>NSFilenamesPboardType</string>
+										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
+										<string>NeXT TIFF v4.0 pasteboard type</string>
+									</set>
+									<string key="NSFrameSize">{302, 54}</string>
+									<reference key="NSSuperview" ref="274028959"/>
+									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView" ref="39928700"/>
+									<int key="NSViewLayerContentsRedrawPolicy">2</int>
+									<bool key="NSEnabled">YES</bool>
+									<object class="NSImageCell" key="NSCell" id="455861887">
+										<int key="NSCellFlags">130560</int>
+										<int key="NSCellFlags2">33554432</int>
+										<object class="NSCustomResource" key="NSContents">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">status_display_shine</string>
+										</object>
+										<int key="NSAlign">0</int>
+										<int key="NSScale">0</int>
+										<int key="NSStyle">0</int>
+										<bool key="NSAnimates">YES</bool>
+									</object>
+									<bool key="NSEditable">YES</bool>
+								</object>
 								<object class="NSImageView" id="624287025">
 									<reference key="NSNextResponder" ref="274028959"/>
 									<int key="NSvFlags">268</int>
@@ -407,7 +407,7 @@
 										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 										<string>NeXT TIFF v4.0 pasteboard type</string>
 									</set>
-									<string key="NSFrameSize">{300, 52}</string>
+									<string key="NSFrameSize">{302, 54}</string>
 									<reference key="NSSuperview" ref="274028959"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="254641114"/>
@@ -418,7 +418,7 @@
 										<int key="NSCellFlags2">33554432</int>
 										<object class="NSCustomResource" key="NSContents">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">screen</string>
+											<string key="NSResourceName">status_display_bg</string>
 										</object>
 										<int key="NSAlign">0</int>
 										<int key="NSScale">0</int>
@@ -428,7 +428,7 @@
 									<bool key="NSEditable">YES</bool>
 								</object>
 							</array>
-							<string key="NSFrame">{{8, 8}, {300, 52}}</string>
+							<string key="NSFrame">{{8, 6}, {302, 54}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="624287025"/>
@@ -470,7 +470,7 @@
 					<reference key="NSNextKeyView" ref="386656471"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{700, 643}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSAutorecalculatesContentBorderThicknessMinY">NO</bool>
@@ -2006,8 +2006,8 @@
 			<string key="Record0N">{42, 34}</string>
 			<string key="Rewind0N">{41, 34}</string>
 			<string key="Rewind1BH">{41, 34}</string>
-			<string key="screen">{300, 52}</string>
-			<string key="screengloss">{300, 52}</string>
+			<string key="status_display_bg">{302, 54}</string>
+			<string key="status_display_shine">{302, 54}</string>
 		</dictionary>
 	</data>
 </archive>

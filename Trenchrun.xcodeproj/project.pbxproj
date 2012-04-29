@@ -60,13 +60,13 @@
 		3B70DAD815400220006230BC /* MocoTimelineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DAD715400220006230BC /* MocoTimelineHeaderView.m */; };
 		3B70DADC154005C3006230BC /* MocoTimelineHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */; };
 		3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */; };
-		3B721E2A1543444F008F6D76 /* screengloss.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B721E291543444F008F6D76 /* screengloss.png */; };
+		3B7E788F154DF61100617073 /* status_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B7E788D154DF61100617073 /* status_display_bg.png */; };
+		3B7E7890154DF61100617073 /* status_display_shine.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B7E788E154DF61100617073 /* status_display_shine.png */; };
 		3B7FFAB5153B583E00D465E7 /* MocoDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFAB4153B583E00D465E7 /* MocoDriver.m */; };
 		3B81D4681543B3BA00AEB709 /* MocoAxisPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81D4671543B3BA00AEB709 /* MocoAxisPosition.m */; };
 		3B81D4701543E26900AEB709 /* ReleaseNotesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81D46E1543E26900AEB709 /* ReleaseNotesWindowController.m */; };
 		3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */; };
 		3B8FC7BB1542868700BC2B9D /* NSColor+M3Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */; };
-		3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B8FC7BC154291ED00BC2B9D /* screen.png */; };
 		3B9002FD15453A6E0099555E /* Track-HeaderButton-Left0H.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B9002E915453A6E0099555E /* Track-HeaderButton-Left0H.tiff */; };
 		3B9002FE15453A6E0099555E /* Track-HeaderButton-Left0N.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B9002EA15453A6E0099555E /* Track-HeaderButton-Left0N.tiff */; };
 		3B9002FF15453A6E0099555E /* Track-HeaderButton-Middle0H.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B9002EB15453A6E0099555E /* Track-HeaderButton-Middle0H.tiff */; };
@@ -202,7 +202,8 @@
 		3B70DAD9154005C2006230BC /* MocoTimelineHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoTimelineHeaderViewController.h; sourceTree = "<group>"; };
 		3B70DADA154005C2006230BC /* MocoTimelineHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoTimelineHeaderViewController.m; sourceTree = "<group>"; };
 		3B70DADB154005C2006230BC /* MocoTimelineHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MocoTimelineHeaderViewController.xib; sourceTree = "<group>"; };
-		3B721E291543444F008F6D76 /* screengloss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screengloss.png; sourceTree = "<group>"; };
+		3B7E788D154DF61100617073 /* status_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_display_bg.png; sourceTree = "<group>"; };
+		3B7E788E154DF61100617073 /* status_display_shine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_display_shine.png; sourceTree = "<group>"; };
 		3B7FFAB3153B583E00D465E7 /* MocoDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoDriver.h; sourceTree = "<group>"; };
 		3B7FFAB4153B583E00D465E7 /* MocoDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MocoDriver.m; sourceTree = "<group>"; };
 		3B81D4661543B3BA00AEB709 /* MocoAxisPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MocoAxisPosition.h; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 		3B81D46F1543E26900AEB709 /* ReleaseNotesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseNotesWindowController.xib; sourceTree = "<group>"; };
 		3B8FC7B81542860400BC2B9D /* NSColor+M3Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+M3Extensions.h"; sourceTree = "<group>"; };
 		3B8FC7B91542860400BC2B9D /* NSColor+M3Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+M3Extensions.m"; sourceTree = "<group>"; };
-		3B8FC7BC154291ED00BC2B9D /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen.png; sourceTree = "<group>"; };
 		3B9002E915453A6E0099555E /* Track-HeaderButton-Left0H.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Track-HeaderButton-Left0H.tiff"; sourceTree = "<group>"; };
 		3B9002EA15453A6E0099555E /* Track-HeaderButton-Left0N.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Track-HeaderButton-Left0N.tiff"; sourceTree = "<group>"; };
 		3B9002EB15453A6E0099555E /* Track-HeaderButton-Middle0H.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Track-HeaderButton-Middle0H.tiff"; sourceTree = "<group>"; };
@@ -336,9 +336,9 @@
 				3BDC90651545209B00534771 /* asis_visualization_horizon.png */,
 				3BDC90671545212000534771 /* axis_visualization_tilt_white.png */,
 				3B91369C1544F3BB007F1996 /* axis_visualization_tilt.png */,
+				3B7E788D154DF61100617073 /* status_display_bg.png */,
+				3B7E788E154DF61100617073 /* status_display_shine.png */,
 				3B349155154389990070B321 /* Trenchrun.icns */,
-				3B721E291543444F008F6D76 /* screengloss.png */,
-				3B8FC7BC154291ED00BC2B9D /* screen.png */,
 				3B9D52B81541339D00421D14 /* divider.png */,
 				3B9D52B615412EB400421D14 /* track-header-bg.png */,
 				3B6A4FA6153FC89D00793C8A /* noise.png */,
@@ -613,8 +613,6 @@
 				3B70DADD154005C3006230BC /* MocoTimelineHeaderViewController.xib in Resources */,
 				3B9D52B715412EB400421D14 /* track-header-bg.png in Resources */,
 				3B9D52B91541339D00421D14 /* divider.png in Resources */,
-				3B8FC7BD154291ED00BC2B9D /* screen.png in Resources */,
-				3B721E2A1543444F008F6D76 /* screengloss.png in Resources */,
 				3B349156154389990070B321 /* Trenchrun.icns in Resources */,
 				3B81D4711543E26900AEB709 /* ReleaseNotesWindowController.xib in Resources */,
 				3B91369D1544F3BB007F1996 /* axis_visualization_tilt.png in Resources */,
@@ -676,6 +674,8 @@
 				3B30C3F5154550E90080447E /* StopBH.tiff in Resources */,
 				3BC69E42154773350053D80B /* rig_disengaged.png in Resources */,
 				3BC69E43154773350053D80B /* rig_engaged.png in Resources */,
+				3B7E788F154DF61100617073 /* status_display_bg.png in Resources */,
+				3B7E7890154DF61100617073 /* status_display_shine.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
