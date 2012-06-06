@@ -75,7 +75,7 @@
 }
 
 - (NSString *)portAddress {
-    return @"/dev/cu.usbserial-A6008RQE";
+    return @"/dev/cu.usbserial-A100A9J6";
 }
 
 - (void)dataProcessorThread: (NSThread *) parentThread {
