@@ -61,7 +61,7 @@
             [_paths addObject:replacementPath];
         }
         else {
-            [_paths replaceObjectAtIndex:affectedSubpath withObject:replacementPath];
+            _paths[affectedSubpath] = replacementPath;
         }
         [self setNeedsDisplayInRect:replacementPath.bounds];
         

@@ -61,7 +61,7 @@
 - (void)updateBounds {
     
     for (int i = 0; i < headerViews.count; i++) {
-        MocoTimelineHeaderView *headerView = (MocoTimelineHeaderView *)[headerViews objectAtIndex:i];
+        MocoTimelineHeaderView *headerView = (MocoTimelineHeaderView *)headerViews[i];
         headerView.frame = [self rectForTrackAtIndex:i];
     }
     

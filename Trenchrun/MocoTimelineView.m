@@ -152,10 +152,9 @@
         shadow.shadowOffset = NSMakeSize(0, -30);
         shadow.shadowBlurRadius = 0.0;
         
-        NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSFont fontWithName:@"Futura" size:13], NSFontAttributeName,
-                                    shadow, NSShadowAttributeName,
-                                    [NSColor colorWithDeviceWhite:0.25 alpha:1], NSForegroundColorAttributeName, nil];
+        NSDictionary *attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Futura" size:13],
+                                    NSShadowAttributeName: shadow,
+                                    NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite:0.25 alpha:1]};
 
         NSString *title = [NSString stringWithFormat:@"%is", i];
         [title drawAtPoint:NSMakePoint(frameRect.origin.x + 10, 5 - 30) withAttributes:attributes];
@@ -243,7 +242,7 @@
 
 -(void)playheadMoved {
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.05f]
+    [CATransaction setValue:@0.05f
                      forKey:kCATransactionAnimationDuration];
 
     playheadImageView.layer.frame = [self playheadRect];
@@ -297,8 +296,8 @@
     // input to go from 0 to 1 to 0
     pulseAnimation.autoreverses = YES;
 
-    [pulseAnimation setFromValue:[NSNumber numberWithFloat:0.0]];
-    [pulseAnimation setToValue:[NSNumber numberWithFloat:1.0]];
+    [pulseAnimation setFromValue:@0.0f];
+    [pulseAnimation setToValue:@1.0f];
     
     [playheadImageView.layer addAnimation:pulseAnimation forKey:@"opacity"];
 
@@ -369,7 +368,7 @@
     float trackWidth = 0;
     
     // How long is this track?
-    MocoTimelineTrackView *trackView = [trackViews objectAtIndex:index];
+    MocoTimelineTrackView *trackView = trackViews[index];
     NSArray *frames = [trackView.controller.track.frames copy];
     trackWidth = (float)frames.count * (float)self.controller.pixelsPerFrame;
             

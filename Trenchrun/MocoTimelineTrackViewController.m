@@ -66,10 +66,10 @@
                        context:(void *)context
 {
     
-    NSKeyValueChange changeKind = [[change objectForKey:NSKeyValueChangeKindKey] intValue];
+    NSKeyValueChange changeKind = [change[NSKeyValueChangeKindKey] intValue];
     
     if (changeKind == NSKeyValueChangeInsertion) {        
-        NSIndexSet *changedIndexes = [change objectForKey:NSKeyValueChangeIndexesKey];
+        NSIndexSet *changedIndexes = change[NSKeyValueChangeIndexesKey];
         [[self trackView] reloadDataForChangedFrames:changedIndexes];
     }
     else {

@@ -241,7 +241,7 @@
     }
 
     NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:formattedPlayhead]];
-    NSString *length = [numberFormat stringFromNumber:[NSNumber numberWithInt:timelineLength]];
+    NSString *length = [numberFormat stringFromNumber:@(timelineLength)];
 
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];
 }

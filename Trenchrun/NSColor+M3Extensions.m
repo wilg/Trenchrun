@@ -151,10 +151,10 @@
 
 + (NSColor *)colorWithString:(NSString *)string {
 	NSArray *components = [string componentsSeparatedByString:@"/"];
-	return [NSColor colorWithCalibratedRed:[[components objectAtIndex:0] floatValue]
-									 green:[[components objectAtIndex:1] floatValue]
-									  blue:[[components objectAtIndex:2] floatValue]
-									 alpha:[[components objectAtIndex:3] floatValue]];
+	return [NSColor colorWithCalibratedRed:[components[0] floatValue]
+									 green:[components[1] floatValue]
+									  blue:[components[2] floatValue]
+									 alpha:[components[3] floatValue]];
 }
 
 - (NSColor *)lighterColourBy:(CGFloat)lighten {

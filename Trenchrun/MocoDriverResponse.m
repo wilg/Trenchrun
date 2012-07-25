@@ -69,7 +69,7 @@
         if ((int)bytes[1] == (int)MocoProtocolHandshakeSuccessfulResponse) {
             handshakeSuccessful = YES;
         }
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:handshakeSuccessful], @"successful", nil];
+        _payload = @{@"successful": @(handshakeSuccessful)};
 
     }
     else if (self.type == MocoProtocolAxisPositionResponseType) {
@@ -83,7 +83,7 @@
         
         long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"rawPosition", [NSNumber numberWithInt:axis], @"axis", nil];
+        _payload = @{@"rawPosition": @(positionValue), @"axis": [NSNumber numberWithInt:axis]};
         
     }
     else if (self.type == MocoProtocolAxisResolutionResponseType) {
@@ -97,7 +97,7 @@
         
         long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"resolution", [NSNumber numberWithInt:axis], @"axis", nil];
+        _payload = @{@"resolution": @(positionValue), @"axis": [NSNumber numberWithInt:axis]};
         
     }
     else if (self.type == MocoProtocolAdvancePlaybackRequestType) {
@@ -111,15 +111,14 @@
         
         long int positionValue = [MocoDriverResponse longIntFromFourBytes:fourbytes];
         
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithLong:positionValue], @"rawPosition", [NSNumber numberWithInt:axis], @"axis", nil];
+        _payload = @{@"rawPosition": @(positionValue), @"axis": [NSNumber numberWithInt:axis]};
         
     }
     else if (self.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
 
         NSData *subdata = [self.data subdataWithRange:NSMakeRange(1, self.data.length - 1)];
         NSString *string = [[NSString alloc] initWithData:subdata encoding:NSASCIIStringEncoding];
-        _payload = [NSDictionary dictionaryWithObjectsAndKeys:
-                    [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]], @"message", nil];
+        _payload = @{@"message": [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]};
         
     }
 

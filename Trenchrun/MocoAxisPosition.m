@@ -13,12 +13,12 @@
 
 - (NSNumber *)rawPosition {
 //    return self.position;
-    return [NSNumber numberWithDouble: [self.position doubleValue] * [self.resolution doubleValue] ];
+    return @([self.position doubleValue] * [self.resolution doubleValue]);
 }
 
 - (void)setRawPosition:(NSNumber *)newRaw {
 //    self.position = newRaw;
-    self.position = [NSNumber numberWithDouble: [newRaw doubleValue] / [self.resolution doubleValue]];
+    self.position = @([newRaw doubleValue] / [self.resolution doubleValue]);
 }
 
 -(NSInteger)rotationNumber {

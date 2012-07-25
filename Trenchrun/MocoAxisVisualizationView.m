@@ -82,7 +82,7 @@
 //    NSLog(@"layer %@", _axisView.layer);
     
     [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.00f]
+    [CATransaction setValue:@0.00f
                      forKey:kCATransactionAnimationDuration];
     
     

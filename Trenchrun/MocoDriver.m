@@ -125,7 +125,7 @@
     MocoTrack *track = [self trackWithAxis:axis];
     if ([track containsFrameNumber:frameNumber]) {
         MocoAxisPosition *ap = [track axisPositionAtFrameNumber:frameNumber];
-        ap.resolution = [self.axisResolutions objectForKey:[NSNumber numberWithInt:axis]];
+        ap.resolution = (self.axisResolutions)[[NSNumber numberWithInt:axis]];
         return ap;
     }
     return nil;
@@ -187,12 +187,12 @@
         
         MocoAxisPosition *axisPosition = [[MocoAxisPosition alloc] init];
         
-        NSNumber *axisNumber = [driverResponse.payload objectForKey:@"axis"];
-        NSNumber *resolution = [self.axisResolutions objectForKey:axisNumber];
+        NSNumber *axisNumber = (driverResponse.payload)[@"axis"];
+        NSNumber *resolution = (self.axisResolutions)[axisNumber];
         if (resolution) {
             axisPosition.axis = [axisNumber intValue];
             axisPosition.resolution = resolution;
-            axisPosition.rawPosition = [driverResponse.payload objectForKey:@"rawPosition"];
+            axisPosition.rawPosition = (driverResponse.payload)[@"rawPosition"];
             
             [self postNotification:@"MocoAxisPositionUpdated" object:axisPosition];
         }
@@ -204,21 +204,20 @@
     }
     else if (driverResponse.type == MocoProtocolAxisResolutionResponseType) {
         
-        [self.axisResolutions setObject:[driverResponse.payload objectForKey:@"resolution"] 
-                             forKey:[driverResponse.payload objectForKey:@"axis"]];
+        (self.axisResolutions)[(driverResponse.payload)[@"axis"]] = (driverResponse.payload)[@"resolution"];
                 
         [self postNotification:@"MocoAxisResolutionUpdated" object:driverResponse];
 
     }
     else if (driverResponse.type == MocoProtocolAdvancePlaybackRequestType) {
 
-        MocoAxis axis = [[driverResponse.payload objectForKey:@"axis"] intValue];
+        MocoAxis axis = [(driverResponse.payload)[@"axis"] intValue];
         [self writeNextPlaybackFrameToConnectionOnAxis:axis];
         
         [self postNotification:@"MocoPlaybackAdvanced" object:driverResponse];
     }
     else if (driverResponse.type == MocoProtocolHandshakeResponseType) {
-        if ([[driverResponse.payload objectForKey:@"successful"] boolValue] == YES) {
+        if ([(driverResponse.payload)[@"successful"] boolValue] == YES) {
             [self handshakeSuccessful];
         }
         else {
@@ -226,7 +225,7 @@
         }
     }
     else if (driverResponse.type == MocoProtocolNewlineDelimitedDebugStringResponseType) {
-        NSLog(@"MocoDriver - Device Message: %@", [driverResponse.payload objectForKey:@"message"]);
+        NSLog(@"MocoDriver - Device Message: %@", (driverResponse.payload)[@"message"]);
     }
     else if (driverResponse.type == MocoProtocolPlaybackCompleteNotificationResponseType) {
         [self postNotification:@"MocoRigPlaybackComplete" object:driverResponse];        

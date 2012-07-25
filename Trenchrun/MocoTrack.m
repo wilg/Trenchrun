@@ -37,13 +37,13 @@
     //let's assume all tracks are the same length right now
     NSMutableArray *flattenedArray = [NSMutableArray array];
     
-    for (int i = 0; i < [[(MocoTrack *)[tracks objectAtIndex:0] frames] count]; i++) {
+    for (int i = 0; i < [[(MocoTrack *)tracks[0] frames] count]; i++) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         int frameNumber = -1;
         for (MocoTrack *track in tracks) {
-            MocoFrame *thisFrame = [track.frames objectAtIndex:i];
+            MocoFrame *thisFrame = (track.frames)[i];
             if (frameNumber == -1 || [thisFrame.frameNumber intValue] == frameNumber) {
-                [dict setObject:thisFrame.position forKey:[[NSNumber numberWithInt:track.axis] stringValue]];
+                dict[[[NSNumber numberWithInt:track.axis] stringValue]] = thisFrame.position;
                 frameNumber = [thisFrame.frameNumber intValue];
             }
         }
@@ -64,7 +64,7 @@
     nextFrame++;
     
     MocoFrame *frame = [[MocoFrame alloc] init];
-    frame.frameNumber = [NSNumber numberWithInt:nextFrame];
+    frame.frameNumber = @(nextFrame);
     frame.position = position;
     [self addFrame:frame];
 }
@@ -72,7 +72,7 @@
 -(MocoFrame *)frameAtFrameNumber:(NSInteger)frameNumber {
     if (!_frames || ![self containsFrameNumber:frameNumber])
         return nil;
-    return [_frames objectAtIndex:frameNumber];
+    return _frames[frameNumber];
 }
 
 -(MocoAxisPosition *)axisPositionAtFrameNumber:(NSInteger)frameNumber {
