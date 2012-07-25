@@ -578,7 +578,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Moco;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 3B34D47415393F8900BB8F3D /* Build configuration list for PBXProject "Trenchrun" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -804,6 +804,7 @@
 		3B34D49C15393F8900BB8F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -821,6 +822,7 @@
 		3B34D49D15393F8900BB8F3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
