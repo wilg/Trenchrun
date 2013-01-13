@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Xbox360ControllerManager.h"
+#import "MocoDriver.h"
 
 @interface MocoGameControllerManager : NSObject <Xbox360ControllerDelegate> {
     BOOL _pollingThreadRunning;
+    IBOutlet MocoDriver *mocoDriver;
+    float _lastKnownYPosition;
 }
 
 @end

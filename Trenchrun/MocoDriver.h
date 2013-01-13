@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MocoProtocolConstants.h"
 #import "MocoSerialConnection.h"
+#import "MocoAxisPosition.h"
 
 typedef enum {
     MocoStatusDisconnected,       // The rig is disconnected.
@@ -65,5 +66,6 @@ typedef enum {
 - (void)severConnections;
 
 +(NSString *)statusDescriptionForStatusCode:(MocoStatusCode)code;
+- (void)setPosition:(MocoAxisPosition *)position forAxis:(MocoAxis)axis;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "MocoDriver.h"
 #import "MocoDriverResponse.h"
-#import "MocoAxisPosition.h"
 #import "MocoTrack.h"
 
 #define TIME_CONNECTION NO
@@ -129,6 +128,15 @@
         return ap;
     }
     return nil;
+}
+
+- (void)setPosition:(MocoAxisPosition *)position forAxis:(MocoAxis)axis {
+    if (position) {
+        [_serialConnection writeIntAsByte:MocoProtocolSeekPositionDataHeader];
+        [_serialConnection writeIntAsByte:axis];
+        [_serialConnection writeLongAsFourBytes:[position.rawPosition longValue]];
+        NSLog(@"MocoDriver - Sent seek position: header=%i axis=%i rawPosition=%li", MocoProtocolSeekPositionDataHeader, axis, [position.rawPosition longValue]);
+    }
 }
 
 - (void)requestAxisResolutionData {

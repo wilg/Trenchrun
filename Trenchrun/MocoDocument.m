@@ -208,7 +208,9 @@ static NSString * kTrackEditContext = @"Track Edit";
 
 -(IBAction)addBogusFrame:(id)sender {
     for (MocoTrack *track in self.trackList) {
-        [self savePosition:@((float)random()/RAND_MAX) forAxis:track.axis];
+        MocoFrame *lastFrame = [[track frames] lastObject];
+        [self savePosition:@(lastFrame.position.floatValue + 0.001) forAxis:track.axis];
+//        [self savePosition:@((float)random()/RAND_MAX) forAxis:track.axis];
     }
 }
 

@@ -40,4 +40,7 @@
 -(IBAction)updateFakeTabs:(id)sender;
 -(IBAction)swapViews:(id)sender;
 
+- (MocoTrack *)trackWithAxis:(MocoAxis)axis;
+
+
 @end

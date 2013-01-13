@@ -7,6 +7,9 @@
 //
 
 #import "MocoGameControllerManager.h"
+#import "MocoDocument.h"
+
+#define XBOX_JOYSTICK_RESOLUTION 32768
 
 @implementation MocoGameControllerManager
 
@@ -19,6 +22,7 @@
 
 - (void)awakeFromNib {
     Xbox360ControllerManager *mrManager = [Xbox360ControllerManager sharedInstance];
+    [mrManager setAllDelegates:self];
     [mrManager updateControllers];
 }
 
@@ -50,16 +54,57 @@
     }
 }
 
+#define DEADZONE 0.3
+
+- (float)normalizeAndDeadZoneJoystickData:(int)rawData {
+    float val = (float)rawData / XBOX_JOYSTICK_RESOLUTION;
+    if (fabs(val) < DEADZONE) {
+        return 0;
+    }
+    int dir = val / fabs(val);
+    val = fabs(val) - DEADZONE;
+    return (1 / (1 - DEADZONE)) * val * dir;
+}
+
+#define DELAY_S 0.1
+
 - (void)checkControllers {
-    Xbox360ControllerManager *mrManager = [Xbox360ControllerManager sharedInstance];
-    Xbox360Controller *firstController = [mrManager getController:0];
-    if (firstController) {
-        NSLog(@"Controller 1: left stick = %i, %i", firstController.leftStickX, firstController.leftStickY);
-        usleep(10000);
+    
+    MocoDocument *doc = [[NSDocumentController sharedDocumentController] currentDocument];
+    MocoAxisPosition *currentPosition = [doc trackWithAxis:MocoAxisCameraTilt].currentPosition;
+
+    if (currentPosition) {
+        Xbox360ControllerManager *mrManager = [Xbox360ControllerManager sharedInstance];
+        Xbox360Controller *firstController = [mrManager getController:0];
+        if (firstController) {
+            float normalizedLeftStickX = [self normalizeAndDeadZoneJoystickData:firstController.leftStickX];
+            float normalizedLeftStickY = [self normalizeAndDeadZoneJoystickData:firstController.leftStickY] * -1;
+            
+
+            if (fabs(normalizedLeftStickY) > 0) {
+                
+                NSLog(@"[Xbox Controller] Left Stick %f, %f", normalizedLeftStickX, normalizedLeftStickY);
+                
+                MocoAxisPosition *desiredPosition = [[MocoAxisPosition alloc] init];
+                desiredPosition.resolution = currentPosition.resolution;
+                desiredPosition.position = @(currentPosition.position.floatValue + DELAY_S * 0.33 * normalizedLeftStickY);
+                
+                NSLog(@"[Xbox Controller] Move from %@ to %@.", currentPosition.position, desiredPosition.position);
+                
+                [mocoDriver setPosition:desiredPosition forAxis:desiredPosition.axis];
+            }
+            
+            usleep(DELAY_S * 1000000);
+        }
+        else {
+            NSLog(@"no first controller");
+        }
+  
     }
     else {
-        NSLog(@"no first controller");
+//        NSLog(@"No device position for game controller.");
     }
+    
 }
 
 - (void)pollingThreadMain:(NSThread *)parentThread {
@@ -72,10 +117,14 @@
     }
 }
 
-//
-//-(void)buttonAPressed {
-//    NSLog(@"A!!!!!");
-//}
+
+-(void)buttonAPressed {
+    NSLog(@"A!!!!!");
+}
+
+-(void)buttonBackPressed {
+    NSLog(@"BACK");  
+}
 
 
 @end
