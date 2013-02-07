@@ -74,7 +74,7 @@
 }
 
 - (NSString *)portAddress {
-    return @"/dev/cu.usbserial-A100A9J6";
+    return @"/dev/cu.usbserial-A6008RQE";
 }
 
 - (void)dataProcessorThread: (NSThread *) parentThread {
@@ -99,6 +99,13 @@
         
         NSLog(@"MocoDriver - Instructed device to start playback.");
         [_serialConnection writeIntAsByte:MocoProtocolStartPlaybackInstruction];
+        long maxLength = 0;
+        for (MocoTrack *track in self.playbackTracks) {
+            if ([track length] > maxLength)
+                maxLength = track.length;
+        }
+        long duration = maxLength - frameNumber;
+        [_serialConnection writeLongAsFourBytes:duration];
         self.status = MocoStatusPlaybackBuffering;
     }
 }
