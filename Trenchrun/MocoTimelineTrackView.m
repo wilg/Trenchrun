@@ -31,7 +31,7 @@
         lineGraphView = [[MocoLineGraphView alloc] initWithFrame:NSInsetRect(self.bounds, 1, 1)];
         [self addSubview:lineGraphView positioned:NSWindowAbove relativeTo:nil];
 
-        self.canDrawConcurrently = YES;
+//        self.canDrawConcurrently = YES;
 
         self.wantsLayer = YES;
 //        self.layer.shouldRasterize = YES;
