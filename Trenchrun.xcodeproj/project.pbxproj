@@ -117,6 +117,7 @@
 		3BDC907A15452ED300534771 /* TB3_j-32-Active.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC907715452ED200534771 /* TB3_j-32-Active.tif */; };
 		3BDC907B15452ED300534771 /* TB3_j-32-Inactive.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC907815452ED200534771 /* TB3_j-32-Inactive.tif */; };
 		3BDC907C15452ED300534771 /* TB3_j-32-Pressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3BDC907915452ED300534771 /* TB3_j-32-Pressed.tif */; };
+		5997314AE32D40F6ACFEFDD2 /* libPods-Trenchrun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F1722F1365F490097DF5688 /* libPods-Trenchrun.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,6 +281,8 @@
 		3BDC907715452ED200534771 /* TB3_j-32-Active.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "TB3_j-32-Active.tif"; sourceTree = "<group>"; };
 		3BDC907815452ED200534771 /* TB3_j-32-Inactive.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "TB3_j-32-Inactive.tif"; sourceTree = "<group>"; };
 		3BDC907915452ED300534771 /* TB3_j-32-Pressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "TB3_j-32-Pressed.tif"; sourceTree = "<group>"; };
+		7F1722F1365F490097DF5688 /* libPods-Trenchrun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trenchrun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5E7E74772D941A581305F27 /* Pods-Trenchrun.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trenchrun.xcconfig"; path = "Pods/Pods-Trenchrun.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +295,7 @@
 				3B34D4AF153940AC00BB8F3D /* QuartzCore.framework in Frameworks */,
 				3B34D47F15393F8900BB8F3D /* Cocoa.framework in Frameworks */,
 				3B4E9708154354E500E0A98E /* Sparkle.framework in Frameworks */,
+				5997314AE32D40F6ACFEFDD2 /* libPods-Trenchrun.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				3B34D48415393F8900BB8F3D /* Trenchrun */,
 				3B34D47D15393F8900BB8F3D /* Frameworks */,
 				3B34D47B15393F8900BB8F3D /* Products */,
+				E5E7E74772D941A581305F27 /* Pods-Trenchrun.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -428,6 +433,7 @@
 				3B34D4AE153940AC00BB8F3D /* QuartzCore.framework */,
 				3B34D47E15393F8900BB8F3D /* Cocoa.framework */,
 				3B34D48015393F8900BB8F3D /* Other Frameworks */,
+				7F1722F1365F490097DF5688 /* libPods-Trenchrun.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -586,10 +592,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B34D49B15393F8900BB8F3D /* Build configuration list for PBXNativeTarget "Trenchrun" */;
 			buildPhases = (
+				2457F9E85CAF4106A3E70183 /* Check Pods Manifest.lock */,
 				3B34D47615393F8900BB8F3D /* Sources */,
 				3B34D47715393F8900BB8F3D /* Frameworks */,
 				3B34D47815393F8900BB8F3D /* Resources */,
 				3B34D4AC1539406300BB8F3D /* CopyFiles */,
+				960EB595C78249DC937559A9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -709,6 +717,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2457F9E85CAF4106A3E70183 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		960EB595C78249DC937559A9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Trenchrun-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B34D47615393F8900BB8F3D /* Sources */ = {
@@ -849,6 +890,7 @@
 		};
 		3B34D49C15393F8900BB8F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5E7E74772D941A581305F27 /* Pods-Trenchrun.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -859,7 +901,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -867,6 +909,7 @@
 		};
 		3B34D49D15393F8900BB8F3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5E7E74772D941A581305F27 /* Pods-Trenchrun.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -877,7 +920,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trenchrun/Trenchrun-Prefix.pch";
 				INFOPLIST_FILE = "Trenchrun/Trenchrun-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

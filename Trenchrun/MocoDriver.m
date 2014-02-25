@@ -9,6 +9,8 @@
 #import "MocoDriver.h"
 #import "MocoDriverResponse.h"
 #import "MocoTrack.h"
+#import <ORSSerialPort/ORSSerialPort.h>
+#import <ORSSerialPort/ORSSerialPortManager.h>
 
 #define TIME_CONNECTION NO
 
@@ -29,6 +31,8 @@
 
 @property (retain) NSMutableDictionary *axisResolutions;
 
+@property (strong) ORSSerialPort *currentPort;
+
 @end
 
 ///// IMPLEMENTATION
@@ -48,14 +52,26 @@
         self.axisResolutions = [NSMutableDictionary dictionary];
         self.status = MocoStatusDisconnected;
         
-        [self establishConnection];
+        
+        
+        NSArray *availablePorts = [ORSSerialPortManager.sharedSerialPortManager availablePorts];
+        if (availablePorts.count > 0) {
+            self.currentPort = availablePorts[0];
+        }
+
+        if (self.currentPort) {
+            [self establishConnection];
+        }
+        else {
+            NSLog(@"MocoDriver - No serial ports available");
+        }
         
 	}
 	return self;
 }
 
 - (void)establishConnection {
-    NSLog(@"MocoDriver - Attempting to establish connection with %@", [self portAddress]);
+    NSLog(@"MocoDriver - Attempting to establish connection with %@", self.currentPort.name);
     
     // Set the intitial status.
     self.status = MocoStatusDisconnected;
@@ -70,11 +86,7 @@
     _serialConnection = [[MocoSerialConnection alloc] init];
     _serialConnection.delegate = self;
     _serialConnection.responseThread = myThread;
-    [_serialConnection openThreadedConnectionWithSerialPort:[self portAddress] baud:MocoProtocolBaudRate];
-}
-
-- (NSString *)portAddress {
-    return @"/dev/cu.usbserial-A6008RQE";
+    [_serialConnection openThreadedConnectionWithSerialPort:self.currentPort.name baud:MocoProtocolBaudRate];
 }
 
 - (void)dataProcessorThread: (NSThread *) parentThread {
