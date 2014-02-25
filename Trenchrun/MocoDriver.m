@@ -71,7 +71,7 @@
 }
 
 - (void)establishConnection {
-    NSLog(@"MocoDriver - Attempting to establish connection with %@", self.currentPort.name);
+    NSLog(@"MocoDriver - Attempting to establish connection with %@", self.currentPort.path);
     
     // Set the intitial status.
     self.status = MocoStatusDisconnected;
@@ -86,7 +86,7 @@
     _serialConnection = [[MocoSerialConnection alloc] init];
     _serialConnection.delegate = self;
     _serialConnection.responseThread = myThread;
-    [_serialConnection openThreadedConnectionWithSerialPort:self.currentPort.name baud:MocoProtocolBaudRate];
+    [_serialConnection openThreadedConnectionWithSerialPort:self.currentPort.path baud:MocoProtocolBaudRate];
 }
 
 - (void)dataProcessorThread: (NSThread *) parentThread {
