@@ -101,12 +101,12 @@ static Xbox360ControllerManager *sharedXbox360ControllerManager = nil;
 }
 #endif
 
--(int)controllerCount {
+-(NSUInteger)controllerCount {
     return controllers.count;
 }
 
 -(Xbox360Controller*)getController:(int)index {
-    return [controllers objectAtIndex:index];
+    return controllers[index];
 }
 
 // Update the device list from the I/O Kit

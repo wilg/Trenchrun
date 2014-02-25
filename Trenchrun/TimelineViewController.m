@@ -114,9 +114,9 @@
 }
 
 - (void)calculateTimelineLength {
-    int newLength = 0;
+    NSUInteger newLength = 0;
     for (MocoTrack *track in document.trackList) {
-        int trackLength = track.frames.count;
+        NSUInteger trackLength = track.frames.count;
         if (trackLength > newLength)
             newLength = trackLength;
     }
@@ -153,9 +153,7 @@
     
 }
 
-- (void)movePlayheadToFrame:(int)frameNumber {
-    if (frameNumber < 0)
-        frameNumber = 0;
+- (void)movePlayheadToFrame:(NSUInteger)frameNumber {
     if (frameNumber >= self.timelineLength)
         frameNumber = self.timelineLength - 1;
     self.playheadPosition = frameNumber;
@@ -170,7 +168,7 @@
     [self movePlayheadToFrame:0];
 }
 
-- (void)followPlayheadToFrame:(int)frameNumber {
+- (void)followPlayheadToFrame:(NSUInteger)frameNumber {
     [self movePlayheadToFrame:frameNumber];
     [timelineView scrollToPlayhead];
 }
@@ -240,7 +238,7 @@
         formattedPlayhead = 0;
     }
 
-    NSString *currentFrame = [numberFormat stringFromNumber:[NSNumber numberWithInt:formattedPlayhead]];
+    NSString *currentFrame = [numberFormat stringFromNumber:@(formattedPlayhead)];
     NSString *length = [numberFormat stringFromNumber:@(timelineLength)];
 
     return [NSString stringWithFormat:@"%@ / %@ frames",currentFrame, length];

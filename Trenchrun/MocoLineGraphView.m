@@ -53,7 +53,7 @@
         //use the currentIndex
 
         
-        int affectedSubpath = [self subpathIndexForFrameNumber:currentIndex];
+        NSUInteger affectedSubpath = [self subpathIndexForFrameNumber:currentIndex];
 //        NSLog(@"trying to changed frame %lu on subpath %i", currentIndex, affectedSubpath);
         
         NSBezierPath *replacementPath = [self subpathForIndex:affectedSubpath];
@@ -95,7 +95,7 @@
     [self setNeedsDisplayInRect:self.bounds];
 }
 
--(int)subpathIndexForFrameNumber:(int)frameNumber {
+-(NSUInteger)subpathIndexForFrameNumber:(NSUInteger)frameNumber {
     for (int i = 0; i < [self numberOfSubpaths]; i++) {
         int subpathMin = SEGMENT_LENGTH * i;
         int subPathMax = SEGMENT_LENGTH * (i + 1);
@@ -110,18 +110,18 @@
     return (int)ceil((float)[self currentFrameCount] / (float)SEGMENT_LENGTH);
 }
 
-- (int)currentFrameCount {
+- (NSUInteger)currentFrameCount {
     return self.controller.track.frames.count;
 }
 
--(NSBezierPath *)subpathForIndex:(int)i {
+-(NSBezierPath *)subpathForIndex:(NSUInteger)i {
     
-    int totalFrameCount = [self currentFrameCount];
+    NSUInteger totalFrameCount = [self currentFrameCount];
 
-    int location = SEGMENT_LENGTH * i;
+    NSUInteger location = SEGMENT_LENGTH * i;
     
-    int length = SEGMENT_LENGTH;
-    int endValue = SEGMENT_LENGTH * (i + 1);
+    NSUInteger length = SEGMENT_LENGTH;
+    NSUInteger endValue = SEGMENT_LENGTH * (i + 1);
     if (endValue >= totalFrameCount)
         length = totalFrameCount - location;
     else {
@@ -149,7 +149,7 @@
     BOOL first = YES;
     
     
-    int i = range.location;
+    NSUInteger i = range.location;
     for (MocoFrame *frame in [self.controller.track.frames subarrayWithRange:range]) {
         
         double yPercentage = frame.position.floatValue / maxPosition;
@@ -184,7 +184,7 @@
     return self.controller.timelineController.pixelsPerFrame;
 }
 
--(float)xPositionForFrameAtIndex:(int)index {
+-(float)xPositionForFrameAtIndex:(NSUInteger)index {
     return [self pixelsPerFrame] * index;
 }
 

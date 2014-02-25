@@ -36,8 +36,8 @@
 
 - (IBAction)refreshGraph:(id)sender;
 
-- (void)movePlayheadToFrame:(int)frameNumber;
-- (void)followPlayheadToFrame:(int)frameNumber;
+- (void)movePlayheadToFrame:(NSUInteger)frameNumber;
+- (void)followPlayheadToFrame:(NSUInteger)frameNumber;
 - (void)movePlayheadToEnd;
 - (void)movePlayheadToBeginning;
 

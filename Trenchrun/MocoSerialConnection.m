@@ -162,9 +162,9 @@
         // mark that the thread is running
         readThreadRunning = TRUE;
         
-        const int SYSTEM_BUFFER_SIZE = 1;
+        const ssize_t SYSTEM_BUFFER_SIZE = 1;
         char byte_buffer[SYSTEM_BUFFER_SIZE]; // buffer for holding incoming data
-        int numBytes=0; // number of bytes read during read
+        ssize_t numBytes=0; // number of bytes read during read
                 
         NSMutableData *dataBuffer = [NSMutableData data]; // Cocoa buffer for holding data until the packet size is reached.
         
@@ -287,7 +287,7 @@
 // send a byte to the serial port
 - (void) writeByte: (uint8_t *) val {
 	if(serialFileDescriptor!=-1) {
-		int ret = write(serialFileDescriptor, val, 1);
+		ssize_t ret = write(serialFileDescriptor, val, 1);
         if (ret == -1) {
             NSLog(@"writing byte failed");
         }
@@ -301,7 +301,7 @@
 // send a byte to the serial port
 - (void) writeMultipleBytes: (unsigned char[])arr length:(int)length {
 	if(serialFileDescriptor!=-1) {
-		int ret = write(serialFileDescriptor, arr, length);
+		ssize_t ret = write(serialFileDescriptor, arr, length);
         if (ret == -1) {
             NSLog(@"writing multiple bytes failed");
         }

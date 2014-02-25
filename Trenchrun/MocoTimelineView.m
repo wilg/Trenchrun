@@ -343,7 +343,7 @@
 }
 
 - (void)positionTrackView:(MocoTimelineTrackView *)trackView {
-    int index = [self.trackViews indexOfObject:trackView];
+    NSUInteger index = [self.trackViews indexOfObject:trackView];
     trackView.frame = [self rectForTrackAtIndex:index];
 
     [self updateBounds];
@@ -353,7 +353,7 @@
     return [self tracksRectForTrackCount:self.trackViews.count];
 }
 
-- (NSRect)tracksRectForTrackCount:(int)count {
+- (NSRect)tracksRectForTrackCount:(NSUInteger)count {
     return NSMakeRect(PADDING_LEFT,
                       PADDING,
                       self.controller.timelineLength * self.controller.pixelsPerFrame, 

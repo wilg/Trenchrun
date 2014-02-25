@@ -28,10 +28,10 @@
 
 - (void)controllersUpdated {
     
-    int controllers = [Xbox360ControllerManager sharedInstance].controllerCount;
+    NSUInteger controllers = [Xbox360ControllerManager sharedInstance].controllerCount;
     if (controllers > 0) {
         
-        NSLog(@"There are %i Xbox Controllers available.", controllers);
+        NSLog(@"There are %lu Xbox Controllers available.", (unsigned long)controllers);
         if (_pollingThreadRunning) {
             NSLog(@"We already have a thread watching Xbox controllers.");
         }

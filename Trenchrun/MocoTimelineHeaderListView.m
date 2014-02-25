@@ -72,7 +72,7 @@
 
 - (void)addHeaderView:(MocoTimelineHeaderView *)headerView {
     
-    int idx = self.headerViews.count;
+    NSUInteger idx = self.headerViews.count;
     [self.headerViews addObject:headerView];
     headerView.frame = [self rectForTrackAtIndex:idx];
     [self addSubview:headerView positioned:NSWindowBelow relativeTo:nil];

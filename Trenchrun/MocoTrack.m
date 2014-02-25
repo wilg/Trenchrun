@@ -60,7 +60,7 @@
 }
 
 -(void)appendFrameWithPosition:(NSNumber *)position {
-    int nextFrame = self.frames.count;
+    NSInteger nextFrame = self.frames.count;
     nextFrame++;
     
     MocoFrame *frame = [[MocoFrame alloc] init];

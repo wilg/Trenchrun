@@ -24,7 +24,7 @@
     NSMutableArray *controllers;
 }
 
-@property (readonly) int controllerCount;
+@property (readonly) NSUInteger controllerCount;
 
 +(Xbox360ControllerManager*)sharedInstance;
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
