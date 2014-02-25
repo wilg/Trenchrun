@@ -23,3 +23,5 @@ profile
 
 # used to add version strings to *-Info.plist
 */*-Info-plist.h
+
+Pods
