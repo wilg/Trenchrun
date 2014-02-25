@@ -20,10 +20,10 @@
         readThreadRunning = FALSE;
         killThread = 0;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(killThread) 
-                                                     name:@"MocoSerialConnectionShouldKillPortNotification" 
-                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self 
+//                                                 selector:@selector(killThread) 
+//                                                     name:@"MocoSerialConnectionShouldKillPortNotification" 
+//                                                   object:nil];
 
     
     }
